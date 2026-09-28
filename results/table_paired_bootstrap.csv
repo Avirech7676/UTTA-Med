@@ -1,0 +1,10 @@
+Level,Contrast,Delta AUROC [95% CI],Delta F1 [95% CI],P-value,Sign count (pos/neg)
+Seed-level (n=5),UTTA - Source,"+0.0058 [-0.012, +0.024]","+0.0231 [+0.010, +0.036]",p=0.007 (F1),"3+/2- (AUROC), 5+/0 (F1)"
+Seed-level (n=5),UTTA - Confidence,"-0.0000 [-0.0008, +0.0007]","-0.0010 [-0.0015, -0.0005]",p=0.87 (AUROC),"1+/4- (AUROC), 0+/5- (F1)"
+Seed-level (n=5),UTTA - Tent,"+0.2370 [-0.141, +0.616]","+0.3243 [-0.108, +0.757]",p=0.085 (Harm),"5+/0 (AUROC), 5+/0 (F1)"
+Seed-level (n=5),UTTA - EATA,"+0.0145 [+0.002, +0.027]","+0.0209 [+0.009, +0.033]",p=0.033 (AUROC),"5+/0 (AUROC), 5+/0 (F1)"
+WSI-level (Seed 42),UTTA - Source,"+0.0143 [+0.002, +0.026]","+0.0399 [+0.018, +0.090]",Excludes 0,10 slides pooled (1000 boots)
+WSI-level (Seed 42),Confidence - Source,"+0.0149 [+0.002, +0.026]","+0.0401 [+0.018, +0.083]",Excludes 0,10 slides pooled (1000 boots)
+WSI-level (Seed 42),UTTA - Confidence,"-0.0007 [-0.0012, -0.0004]","-0.0011 [-0.0020, -0.0007]",Excludes 0 (gap < 0.001),10 slides pooled (1000 boots)
+WSI-level (Seed 42),UTTA - Tent,"+0.0273 [-0.0489, +0.1361]",—,Includes 0,10 slides pooled (1000 boots)
+WSI-level (Seed 42),Tent - Source,"-0.0160 [-0.1282, +0.0633]",—,Includes 0,10 slides pooled (1000 boots)

@@ -1,0 +1,7 @@
+# Optional robustness (Figure 9). Primary dataset remains Camelyon17-WILDS.
+dataset: pathmnist
+resize: 96
+# Camelyon17-C uses the same corruption list on hospital-2 patches.
+corruptions: [gaussian_noise, defocus_blur, brightness, contrast, jpeg]
+severities: [1, 2, 3]
+max_patches: 8000

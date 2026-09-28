@@ -1,0 +1,5 @@
+Split Role,Hospital Centers,Number of Patches,Number of WSIs,Labels Accessible During TTA?,Purpose
+Source Train,"0, 3, 4","302,436",30,Yes (Supervised ERM),Source model baseline training
+In-Domain Val,"0, 3, 4","33,560",30 (Same slides),Yes (Validation only),In-domain generalization tracking
+OOD Validation,1,"34,904",10,Yes (Val tuning only),Selection of tau (70th %ile) & LR sweep
+Target Test,2,"85,054",10,No (Withheld during TTA),Unlabeled streaming adaptation & final evaluation

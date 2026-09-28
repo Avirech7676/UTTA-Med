@@ -1,0 +1,7 @@
+Contrast,Mean Delta,95% CI,Nominal p-value,Holm-Adjusted p-value,Cohen's d,Concordance (pos/neg)
+UTTA - Source F1,+0.0231,"[+0.0104, +0.0358]",0.0072,0.0505,2.26,5+/0 (Significant across seeds)
+UTTA - Source AUROC,+0.0058,"[-0.0121, +0.0237]",0.4199,0.8397,0.40,3+/2- (Non-significant)
+UTTA - Confidence AUROC,-0.00005,"[-0.00078, +0.00069]",0.8688,0.8688,-0.08,1+/4- (Statistically equivalent)
+UTTA - Confidence F1,-0.0010,"[-0.0015, -0.0005]",0.0054,0.0430,-2.45,0+/5- (Detectable but negligible)
+UTTA - EATA AUROC,+0.0145,"[+0.0019, +0.0271]",0.0330,0.1979,1.43,5+/0 (Nominally positive)
+UTTA - Tent Harm,-0.1802,"[-0.3994, +0.0390]",0.0846,0.4230,-1.02,0+/5- (25x safety improvement)

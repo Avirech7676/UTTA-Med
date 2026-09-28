@@ -1,0 +1,15 @@
+method: utta_med
+backbone: resnet18
+mc_dropout:
+  n_passes: 20
+  dropout_p: 0.5
+gate:
+  type: mc_dropout_variance
+  tau: null                 # per-seed, 70th percentile of hospital-1 U
+  tau_rule: val_70th_percentile
+update_params: bn_affine
+bn_mode: bn_freeze_stats
+optimizer: adam
+lr: 1.0e-5
+steps: 1
+matched_coverage_controls: true

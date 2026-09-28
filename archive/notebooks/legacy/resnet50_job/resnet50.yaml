@@ -1,0 +1,6 @@
+# Optional capacity check (B2 / B9). Not in the 5-seed headline.
+backbone: resnet50
+pretrained: true
+dropout_p: 0.5
+num_classes: 1
+loss: bce_with_logits

@@ -1,0 +1,54 @@
+# Camelyon17-WILDS — single source of truth (verified from the official loader).
+# Do NOT overwrite hospital IDs from papers or chat.
+
+dataset: camelyon17
+root: ${CAMELYON17_ROOT}
+download: false
+backend: huggingface_parquet   # wltjr1007/Camelyon17-WILDS
+leakage_free: true
+
+image_size: 96
+channels: 3
+label_definition: "central 32x32 region contains tumor tissue"
+normalize: imagenet
+
+splits:
+  train:
+    domain_ids: [0, 3, 4]
+    n_samples: 302436
+    n_wsis: 30
+    role: SOURCE TRAIN
+  id_val:
+    domain_ids: [0, 3, 4]
+    n_samples: 33560
+    n_wsis: 30
+    role: IN-DOMAIN VAL (report only; not used for tau)
+    note: "Same hospitals as train; held-out patches. Slide overlap with train is expected."
+  val:
+    domain_ids: [1]
+    n_samples: 34904
+    n_wsis: 10
+    role: OOD VALIDATION (tau / lr / T / k only)
+  test:
+    domain_ids: [2]
+    n_samples: 85054
+    n_wsis: 10
+    wsi_ids: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+    role: TARGET (unlabeled adaptation + final evaluation only)
+
+protocol:
+  seeds: [42, 123, 2024, 7, 99]
+  backbone: resnet18
+  head: 1-logit BCE
+  dropout: 0.5
+  tta_bn_mode: bn_freeze_stats
+  tta_lr: 1.0e-5
+  tta_steps: 1
+  n_mc: 20
+  tau_rule: "70th percentile of hospital-1 MC-Dropout U (per seed)"
+  eata_e_margin: 0.4
+
+notes: |
+  Official WILDS splits only. Target labels never used for training,
+  adaptation, tau, temperature, or model selection.
+  HF validation parquet is MIXED: center 1 = OOD val; centers {0,3,4} = id_val.

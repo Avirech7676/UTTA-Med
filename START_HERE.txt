@@ -1,0 +1,34 @@
+UTTA-Med — FINAL RELEASE
+
+This repository is the cleaned Phase-20 release of the completed study.
+
+Canonical active paths:
+  configs/FINAL/
+  src/
+  scripts/
+  tests/
+  results/
+  reproducibility/
+  paper/
+
+Historical notebooks, development documents, duplicate configurations and
+optional/historical experiments are retained under archive/.
+
+Quick setup (Windows PowerShell):
+
+  .\.venv\Scripts\Activate.ps1
+  python -m pip install -r reproducibility\requirements-lock.txt
+  python -m pytest -q
+
+Set the dataset location before data-dependent commands:
+
+  $env:CAMELYON17_ROOT = "C:\path\to\Camelyon17-Data"
+
+Then verify the frozen protocol:
+
+  python scripts\verify_config.py
+  python scripts\verify_protocol.py
+  python scripts\verify_step2_guardrails.py
+
+See LOCAL_RUN.md and reproducibility/reproduction_commands.md for the
+complete reproduction workflow.

@@ -1,0 +1,7 @@
+# Optional medical TTA baseline (Yang et al., TMI 2022) — simplified
+method: dltta
+update_params: bn_affine
+lr: 1.0e-5
+lr_min: 1.0e-6
+lr_max: 5.0e-5
+steps: 1

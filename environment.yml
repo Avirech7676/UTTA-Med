@@ -1,0 +1,29 @@
+# UTTA-Med Base Conda Environment
+# Authoritative frozen reproduction lock: reproducibility/requirements-lock.txt
+name: utta-med
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - torch>=2.0.0
+      - torchvision>=0.15.0
+      - numpy>=1.24
+      - pandas>=2.0
+      - pyarrow>=14.0
+      - scipy>=1.10
+      - scikit-learn>=1.3
+      - matplotlib>=3.7
+      - seaborn>=0.13
+      - pyyaml>=6.0
+      - tqdm>=4.65
+      - pillow>=10.0
+      - pytest>=7.4
+      - tensorboard>=2.14
+      - huggingface_hub>=0.20
+      - datasets>=2.16
+      - umap-learn>=0.5.5
+      - fpdf2>=2.7

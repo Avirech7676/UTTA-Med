@@ -1,0 +1,6 @@
+mc_dropout:
+  n_passes: 20
+  dropout_p: 0.5
+  type: mc_dropout_variance
+tau_rule: val_70th_percentile
+# See configs/tau_by_seed.yaml for the five frozen values.

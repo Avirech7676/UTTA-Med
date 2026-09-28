@@ -1,0 +1,78 @@
+{
+  "cuda": true,
+  "device": "Tesla T4",
+  "seed": 42,
+  "checkpoint": "checkpoints/camelyon17_resnet18_source_s42_BEST.pt",
+  "best_epoch": 3,
+  "status": "SIGNED_OFF",
+  "protocol": {
+    "bn_mode": "bn_freeze_stats",
+    "tta_lr": 1e-05,
+    "n_mc": 20,
+    "tau_rule": "70th percentile of val U",
+    "e_margin": 0.4
+  },
+  "tau": 8.875383173290174e-06,
+  "tau_percentile": 70,
+  "matched_coverage_val": 0.700263580105432,
+  "conf_threshold": 0.9930745959281921,
+  "entropy_threshold": 0.04133822023868561,
+  "u_error_corr": 0.41606938633063795,
+  "source_test": {
+    "n": 85054,
+    "accuracy": 0.851858819103158,
+    "precision": 0.9424060550512965,
+    "recall": 0.7495238319185459,
+    "sensitivity": 0.7495238319185459,
+    "specificity": 0.9541938062877702,
+    "f1": 0.8349705304518664,
+    "auroc": 0.935455984812425,
+    "auprc": 0.9446081467164785,
+    "ece": 0.09884399567348207,
+    "brier": 0.12224078923463821
+  },
+  "val_ood": {
+    "n": 34904,
+    "f1": 0.9203324099722991,
+    "auroc": 0.9792571864971674,
+    "ece": 0.050383408068492064
+  },
+  "id_val": {
+    "n": 33560,
+    "f1": 0.9881580136800554,
+    "auroc": 0.9991798892838991
+  },
+  "shift": {"auroc_drop": 0.06372390447147414, "f1_drop": 0.15318748322818898},
+  "tent_test": {
+    "gate": "tent", "coverage": 1.0,
+    "after": {"auroc": 0.9293846108217483, "f1": 0.8247795366160925, "ece": 0.13964281164327477},
+    "harm": {"harm_rate": 0.05912717034256218, "correction": 4088, "harmful": 4284}
+  },
+  "eata_test": {
+    "gate": "eata", "coverage": 0.94,
+    "after": {"auroc": 0.9363, "f1": 0.8447, "ece": 0.125},
+    "harm": {"harm_rate": 0.0514},
+    "note": "Table-1 locked salvage JSON. WSI rerun was 0.9386 / harm 0.011 / cov 0.865."
+  },
+  "random_test": {
+    "gate": "random", "coverage": 0.7008841441907494,
+    "after": {"auroc": 0.9223411646452209, "f1": 0.8050668151447662, "ece": 0.15344355871303625},
+    "harm": {"harm_rate": 0.061749523835813065}
+  },
+  "confidence_test": {
+    "gate": "confidence", "coverage": 0.5683565734709713,
+    "after": {"auroc": 0.9508073729774073, "f1": 0.8707507725868024, "ece": 0.09213531736485006},
+    "harm": {"harm_rate": 0.002939796284539156, "correction": 2859, "harmful": 213}
+  },
+  "entropy_test": {
+    "gate": "entropy", "coverage": 0.5683565734709713,
+    "after": {"auroc": 0.95080746891084, "f1": 0.8707507725868024, "ece": 0.09213521072625816},
+    "harm": {"harm_rate": 0.002939796284539156}
+  },
+  "utta_test": {
+    "gate": "utta", "tau": 8.875383173290174e-06, "coverage": 0.5620429374279869,
+    "after": {"auroc": 0.950674320217866, "f1": 0.8696895637252353, "ece": 0.09298212501192438},
+    "harm": {"harm_rate": 0.003215833494355039, "correction": 2809, "harmful": 233}
+  },
+  "selection_rule": "max val AUROC then min harm; matched coverage for random/conf/entropy"
+}

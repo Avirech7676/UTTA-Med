@@ -1,0 +1,8 @@
+Method,Latency_note,MC_overhead,BN_affine_tensors_R18,BN_affine_params_R18,BN_affine_tensors_R50,Computational_profile
+Source-only,1 forward,1.0x,0 updated,0,"—",Deterministic
+Tent k=1,1 fwd + 1 bwd,1.0x,40,9600,106,BN γ β only; stats frozen
+EATA,1 fwd + 1 bwd,1.0x,40,9600,106,Entropy filter + BN affine
+Random-gated,1 fwd + 1 bwd (if kept),1.0x,40,9600,106,Random mask; skip empty batch
+Confidence-gated,1 fwd + 1 bwd (if kept),1.0x,40,9600,106,max(p;1-p) gate
+Entropy-gated,1 fwd + 1 bwd (if kept),1.0x,40,9600,106,H(p) gate (binary ≡ confidence rank)
+UTTA-Med N=20,20 stochastic fwd + 1 bwd,20x,40,9600,106,MC-Dropout variance gate; skip empty batch

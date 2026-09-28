@@ -1,0 +1,10 @@
+# Official Tent for this project (NOT the original Tent paper default lr=1e-3).
+# lr=1e-3 with BN.train() collapsed. Salvage on hospital 1 selected:
+method: tent
+update_params: bn_affine
+bn_mode: bn_freeze_stats
+loss: entropy
+optimizer: adam
+lr: 1.0e-5  # official; 1e-3 collapsed
+steps: 1
+episodic: false

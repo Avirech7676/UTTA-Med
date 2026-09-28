@@ -1,0 +1,12 @@
+Figure,Filename,Purpose
+Figure 3,fig3_uncertainty_vs_error.png,Uncertainty deciles vs error
+Figure 4,fig4_harmful_adaptation_rate.png,Harmful adaptation rate by method
+Figure 5A,fig5_main_comparison.png,Five-seed AUROC/F1 comparison
+Figure 5B,fig5_per_seed_auroc.png,Per-seed AUROC trajectory
+Figure 6,fig6_coverage_analysis.png,Frozen validation vs realized target coverage
+MC sensitivity,fig_d_mc_n_sensitivity.png,"MC-pass sensitivity N=5,10,20,30,50"
+UMAP split,fig_b_umap_split.png,Frozen ResNet-18 embedding by split
+UMAP hospital,fig_b_umap_hospital.png,Frozen ResNet-18 embedding by hospital
+Adaptation steps,fig_adapt_steps_val_s42.png,Validation adaptation-step stability
+Grad-CAM,compare_TP.png / compare_TN.png / compare_FP.png / compare_FN.png,Post-TTA audit
+Frozen-source Grad-CAM,frozen_TP.png / frozen_TN.png / frozen_FP.png / frozen_FN.png,Frozen-source-U audit

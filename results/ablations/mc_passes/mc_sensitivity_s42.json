@@ -1,0 +1,230 @@
+{
+  "ablation": "MC-Dropout Pass Sensitivity",
+  "seed": 42,
+  "checkpoint": "C:\\Users\\avina\\OneDrive\\Desktop\\UTTA-Med\\checkpoints\\camelyon17_resnet18_source_s42_BEST.pt",
+  "protocol": {
+    "backbone": "resnet18",
+    "bn_mode": "bn_freeze_stats",
+    "tta_lr": 1e-05,
+    "tau_rule": "70th percentile of Center 1 predictive variance",
+    "target_dataset": "Camelyon17 hospital 2 (85,054 patches, 10 slides)"
+  },
+  "source_baseline": {
+    "auroc": 0.935456,
+    "f1": 0.834971,
+    "ece": 0.098844,
+    "harm_rate": 0.0
+  },
+  "results_by_pass": {
+    "5": {
+      "n_mc": 5,
+      "tau": 1.25e-05,
+      "validation_coverage": 0.7,
+      "target_coverage": 0.584,
+      "u_error_correlation": {
+        "pearson_r": 0.381,
+        "spearman_rho": 0.369
+      },
+      "target_metrics": {
+        "accuracy": 0.8642,
+        "f1": 0.8631,
+        "auroc": 0.9482,
+        "auprc": 0.9575,
+        "ece": 0.0965,
+        "brier": 0.0961
+      },
+      "adaptation_safety": {
+        "stable_correct": 72083,
+        "correction": 1783,
+        "persistent_wrong": 10817,
+        "harmful": 371,
+        "correction_rate": 0.1415,
+        "harm_rate": 0.00512,
+        "flip_rate": 0.025325087591412516
+      },
+      "computational_cost": {
+        "mc_inference_time_sec": 42.5,
+        "tta_adaptation_time_sec": 28.2,
+        "total_time_sec": 70.7,
+        "peak_gpu_memory_mb": 1140
+      },
+      "uncertainty_stability_vs_n20": {
+        "spearman_rank_correlation": 0.938,
+        "top_selection_overlap_jaccard": 0.892
+      },
+      "uncertainty_vs_confidence": {
+        "spearman_rho": 0.961,
+        "kendall_tau": 0.842,
+        "top_k_overlap": 0.915
+      }
+    },
+    "10": {
+      "n_mc": 10,
+      "tau": 1.02e-05,
+      "validation_coverage": 0.7,
+      "target_coverage": 0.573,
+      "u_error_correlation": {
+        "pearson_r": 0.402,
+        "spearman_rho": 0.391
+      },
+      "target_metrics": {
+        "accuracy": 0.8685,
+        "f1": 0.8674,
+        "auroc": 0.9498,
+        "auprc": 0.9592,
+        "ece": 0.0941,
+        "brier": 0.0942
+      },
+      "adaptation_safety": {
+        "stable_correct": 72175,
+        "correction": 1903,
+        "persistent_wrong": 10697,
+        "harmful": 279,
+        "correction_rate": 0.151,
+        "harm_rate": 0.00385,
+        "flip_rate": 0.02565429021562772
+      },
+      "computational_cost": {
+        "mc_inference_time_sec": 82.1,
+        "tta_adaptation_time_sec": 28.0,
+        "total_time_sec": 110.1,
+        "peak_gpu_memory_mb": 1152
+      },
+      "uncertainty_stability_vs_n20": {
+        "spearman_rank_correlation": 0.974,
+        "top_selection_overlap_jaccard": 0.946
+      },
+      "uncertainty_vs_confidence": {
+        "spearman_rho": 0.972,
+        "kendall_tau": 0.865,
+        "top_k_overlap": 0.934
+      }
+    },
+    "20": {
+      "n_mc": 20,
+      "tau": 8.88e-06,
+      "validation_coverage": 0.7,
+      "target_coverage": 0.562,
+      "u_error_correlation": {
+        "pearson_r": 0.416,
+        "spearman_rho": 0.405
+      },
+      "target_metrics": {
+        "accuracy": 0.871,
+        "f1": 0.8697,
+        "auroc": 0.9507,
+        "auprc": 0.9604,
+        "ece": 0.093,
+        "brier": 0.093
+      },
+      "adaptation_safety": {
+        "stable_correct": 72221,
+        "correction": 1984,
+        "persistent_wrong": 10616,
+        "harmful": 233,
+        "correction_rate": 0.1575,
+        "harm_rate": 0.00322,
+        "flip_rate": 0.026065793495896723
+      },
+      "computational_cost": {
+        "mc_inference_time_sec": 161.4,
+        "tta_adaptation_time_sec": 27.8,
+        "total_time_sec": 189.20000000000002,
+        "peak_gpu_memory_mb": 1168
+      },
+      "uncertainty_stability_vs_n20": {
+        "spearman_rank_correlation": 1.0,
+        "top_selection_overlap_jaccard": 1.0
+      },
+      "uncertainty_vs_confidence": {
+        "spearman_rho": 0.98,
+        "kendall_tau": 0.881,
+        "top_k_overlap": 0.948
+      }
+    },
+    "30": {
+      "n_mc": 30,
+      "tau": 8.52e-06,
+      "validation_coverage": 0.7,
+      "target_coverage": 0.559,
+      "u_error_correlation": {
+        "pearson_r": 0.419,
+        "spearman_rho": 0.408
+      },
+      "target_metrics": {
+        "accuracy": 0.8714,
+        "f1": 0.8701,
+        "auroc": 0.9509,
+        "auprc": 0.9606,
+        "ece": 0.0928,
+        "brier": 0.0927
+      },
+      "adaptation_safety": {
+        "stable_correct": 72229,
+        "correction": 1993,
+        "persistent_wrong": 10607,
+        "harmful": 225,
+        "correction_rate": 0.1582,
+        "harm_rate": 0.0031,
+        "flip_rate": 0.02607755073247584
+      },
+      "computational_cost": {
+        "mc_inference_time_sec": 241.0,
+        "tta_adaptation_time_sec": 27.6,
+        "total_time_sec": 268.6,
+        "peak_gpu_memory_mb": 1184
+      },
+      "uncertainty_stability_vs_n20": {
+        "spearman_rank_correlation": 0.991,
+        "top_selection_overlap_jaccard": 0.978
+      },
+      "uncertainty_vs_confidence": {
+        "spearman_rho": 0.982,
+        "kendall_tau": 0.885,
+        "top_k_overlap": 0.951
+      }
+    },
+    "50": {
+      "n_mc": 50,
+      "tau": 8.21e-06,
+      "validation_coverage": 0.7,
+      "target_coverage": 0.555,
+      "u_error_correlation": {
+        "pearson_r": 0.422,
+        "spearman_rho": 0.411
+      },
+      "target_metrics": {
+        "accuracy": 0.8718,
+        "f1": 0.8704,
+        "auroc": 0.9511,
+        "auprc": 0.9608,
+        "ece": 0.0925,
+        "brier": 0.0924
+      },
+      "adaptation_safety": {
+        "stable_correct": 72235,
+        "correction": 2003,
+        "persistent_wrong": 10597,
+        "harmful": 219,
+        "correction_rate": 0.159,
+        "harm_rate": 0.00302,
+        "flip_rate": 0.026124579678792295
+      },
+      "computational_cost": {
+        "mc_inference_time_sec": 402.6,
+        "tta_adaptation_time_sec": 27.5,
+        "total_time_sec": 430.1,
+        "peak_gpu_memory_mb": 1210
+      },
+      "uncertainty_stability_vs_n20": {
+        "spearman_rank_correlation": 0.994,
+        "top_selection_overlap_jaccard": 0.984
+      },
+      "uncertainty_vs_confidence": {
+        "spearman_rho": 0.983,
+        "kendall_tau": 0.888,
+        "top_k_overlap": 0.953
+      }
+    }
+  }
+}

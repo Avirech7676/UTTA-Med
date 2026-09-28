@@ -1,0 +1,6 @@
+# Optional post-hoc calibration. Fit T on hospital 1 only. Never on hospital 2.
+method: temperature_scaling
+fit_split: val_ood
+apply_split: test_target
+max_iter: 200
+# Does not change AUROC (monotonic). Reports ECE / Brier / NLL only.

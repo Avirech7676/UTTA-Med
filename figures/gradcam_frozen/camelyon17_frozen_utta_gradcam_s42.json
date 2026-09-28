@@ -1,0 +1,31 @@
+{
+  "seed": 42,
+  "checkpoint": "/kaggle/input/datasets/avinash7676/cameloyon17/camelyon17_resnet18_source_s42_BEST.pt",
+  "tau": 8.95668472367106e-06,
+  "gate": "frozen_source_U",
+  "tent_test": {
+    "n": 85054,
+    "auroc": 0.92938456962843,
+    "auprc": 0.9477732895839744,
+    "recall": 0.7081618736332213,
+    "f1": 0.8247795366160926,
+    "coverage": 1.0,
+    "n_skip_batch": 0
+  },
+  "utta_test": {
+    "n": 85054,
+    "auroc": 0.9496322368080967,
+    "auprc": 0.9596256964007477,
+    "recall": 0.7859477508406424,
+    "f1": 0.8691604581919361,
+    "coverage": 0.5628306722787876,
+    "n_skip_batch": 0
+  },
+  "cam_transitions": {
+    "tent_fix": 7,
+    "tent_harm": 0,
+    "utta_fix": 2,
+    "utta_harm": 0
+  },
+  "note": "Official Gate D protocol: MC-Dropout U from frozen source. Do not confuse with the collapsed online-U run (AUROC 0.324)."
+}

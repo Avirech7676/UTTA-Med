@@ -1,0 +1,8 @@
+bn_mode: bn_freeze_stats
+checkpoint: C:\Users\avina\OneDrive\Desktop\UTTA-Med\checkpoints\camelyon17_resnet18_source_s42_BEST.pt
+lr: 1.0e-05
+n_mc: 10
+realized_target_coverage: 0.573
+seed: 42
+tau: 1.02e-05
+val_coverage_target: 0.7

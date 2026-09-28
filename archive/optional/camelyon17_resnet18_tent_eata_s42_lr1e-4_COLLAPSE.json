@@ -1,0 +1,12 @@
+{
+  "status": "NOT_OFFICIAL_BASELINE",
+  "reason": "All Tent lrs in {1e-4, 2.5e-4, 1e-3} collapsed on OOD val (AUROC 0.57/0.56/0.53). Test Tent/EATA at 1e-4 also collapsed. Keep as audit of too-large lr + BN-train continual Tent. Re-run wider lr + frozen-BN-stats before locking Gate C.",
+  "tent_lr_selected_on": "ood_val",
+  "tent_lr": 0.0001,
+  "val_tent_auroc_after": {"1e-4": 0.567, "2.5e-4": 0.559, "1e-3": 0.529},
+  "test_source_auroc": 0.9355,
+  "test_tent_auroc": 0.5674,
+  "test_eata_auroc": 0.5603,
+  "test_eata_coverage": 0.928,
+  "test_tent_harm_rate": 0.359
+}

@@ -1,0 +1,22 @@
+# Optional backbone sensitivity (Phase 11). Same head/TTA protocol as ResNet-18.
+# No 5-seed table until a trained BEST.pt exists.
+model:
+  name: resnet50
+  pretrained: true
+  dropout_p: 0.5
+  num_classes: 1
+  loss: BCEWithLogitsLoss
+
+optimizer: adam
+lr: 1.0e-4
+weight_decay: 1.0e-4
+epochs: 20
+batch_size: 32            # 64 may OOM on T4
+early_stopping_patience: 5
+
+tta:
+  bn_mode: bn_freeze_stats
+  lr: 1.0e-5
+  steps: 1
+  n_passes: 20
+  tau_rule: val_70th_percentile

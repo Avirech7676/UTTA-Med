@@ -1,0 +1,7 @@
+Method,ECE mean±SD,Brier not fully stored in headline
+Source-only,0.128 ± 0.026
+Tent,0.284 ± 0.179
+EATA,0.152 ± 0.024
+Random-gated,0.298 ± 0.166
+Confidence-gated,0.130 ± 0.030
+UTTA-Med,0.131 ± 0.031

@@ -1,0 +1,1 @@
+Kaggle: GPU T4, Internet on. Add this zip, import kaggle_resnet50_s42.ipynb, Run All. Download camelyon17_resnet50_full_s42.json. Not part of the 5-seed table.

@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Data (never commit)
+/data/
+Camelyon17-Data/
+*.h5
+*.hdf5
+*.parquet
+*.pt
+*.pth
+*.ckpt
+
+# Keep checkpoint placeholders
+checkpoints/*
+!checkpoints/.gitkeep
+
+logs/*
+!logs/.gitkeep
+
+# Results: ignore dumps/npz/png binaries, keep tables
+results/**/*.npz
+results/**/*.pt
+experiments/smoke/
+experiments/**/metrics.json
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
+.ipynb_checkpoints/

@@ -1,0 +1,16 @@
+# OBSOLETE — do not use.
+# This file previously had num_classes: 2, dropout_p: 0.2, optimizer: adamw.
+# Those values do NOT match the trained BEST.pt files.
+# Canonical config: configs/resnet18.yaml and configs/authoritative_resnet18_utta.yaml
+
+status: obsolete
+superseded_by: configs/resnet18.yaml
+model:
+  name: resnet18
+  num_classes: 1
+  pretrained: true
+  dropout_p: 0.5
+training:
+  optimizer: adam
+  learning_rate: 0.0001
+  weight_decay: 0.0001

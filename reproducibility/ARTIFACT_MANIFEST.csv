@@ -1,0 +1,46 @@
+artifact,seed,method,path,size_mb,sha256,storage
+source_checkpoint,123,source,checkpoints/camelyon17_resnet18_source_s123_BEST.pt,43.72,cb57d805869f1176d0c68762bf62f5510fb0492a9012bcf7af6e5c7b60446224,"local/checkpoints, Kaggle"
+source_checkpoint,2024,source,checkpoints/camelyon17_resnet18_source_s2024_BEST.pt,43.72,d9bed5d9bc05edd7c060610d73a135d6daa56a2a2238a4873b4ea45a2e32c261,"local/checkpoints, Kaggle"
+source_checkpoint,42,source,checkpoints/camelyon17_resnet18_source_s42_BEST.pt,43.72,f0b85ec1a89707a8ad1807a544280ac2302a572abd0ba84233dff6d4dd35d000,"local/checkpoints, Kaggle"
+source_checkpoint,7,source,checkpoints/camelyon17_resnet18_source_s7_BEST.pt,43.72,9c18d65ab0a97527eac12be8ce60b94a87720c357166cc6805364e52d1cf9a1b,"local/checkpoints, Kaggle"
+source_checkpoint,99,source,checkpoints/camelyon17_resnet18_source_s99_BEST.pt,43.72,0b299932abd1841901b2e5bbee5c0735f3c79be9790b7feb9019c3094f42f540,"local/checkpoints, Kaggle"
+full_metrics_json,123,all_methods,results/metrics/camelyon17_resnet18_full_s123.json,2.11,0bf9e8fcb2464e442b809ea3c8a0a2c381ae41c0c0a65e309794eff2c13a0022,git/results/metrics
+full_metrics_json,2024,all_methods,results/metrics/camelyon17_resnet18_full_s2024.json,9.91,03251442300e17c3edaf286249d7b726260f7f99199e1923f5a675295726a573,git/results/metrics
+full_metrics_json,42,all_methods,results/metrics/camelyon17_resnet18_full_s42.json,2.76,954b31b71d02d07540b89ae35565269c588163b9b4fb09a0b75851326af7599e,git/results/metrics
+full_metrics_json,7,all_methods,results/metrics/camelyon17_resnet18_full_s7.json,9.91,1482391597dbd3f356cc3b062728fe4c04b2c6219439f1a2a315f18dd1056a16,git/results/metrics
+full_metrics_json,99,all_methods,results/metrics/camelyon17_resnet18_full_s99.json,9.93,4cfe20e1abb677cb3a2c5de388d05b4d439141ed9247cfa4e38ae251c1d511cc,git/results/metrics
+prediction_dump,42,source,results/predictions/seed42_source.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,42,tent,results/predictions/seed42_tent.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,42,eata,results/predictions/seed42_eata.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,42,random,results/predictions/seed42_random.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,42,confidence,results/predictions/seed42_confidence.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,42,entropy,results/predictions/seed42_entropy.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,42,utta,results/predictions/seed42_utta.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,123,source,results/predictions/seed123_source.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,123,tent,results/predictions/seed123_tent.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,123,eata,results/predictions/seed123_eata.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,123,random,results/predictions/seed123_random.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,123,confidence,results/predictions/seed123_confidence.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,123,entropy,results/predictions/seed123_entropy.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,123,utta,results/predictions/seed123_utta.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,2024,source,results/predictions/seed2024_source.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,2024,tent,results/predictions/seed2024_tent.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,2024,eata,results/predictions/seed2024_eata.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,2024,random,results/predictions/seed2024_random.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,2024,confidence,results/predictions/seed2024_confidence.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,2024,entropy,results/predictions/seed2024_entropy.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,2024,utta,results/predictions/seed2024_utta.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,7,source,results/predictions/seed7_source.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,7,tent,results/predictions/seed7_tent.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,7,eata,results/predictions/seed7_eata.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,7,random,results/predictions/seed7_random.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,7,confidence,results/predictions/seed7_confidence.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,7,entropy,results/predictions/seed7_entropy.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,7,utta,results/predictions/seed7_utta.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,99,source,results/predictions/seed99_source.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,99,tent,results/predictions/seed99_tent.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,99,eata,results/predictions/seed99_eata.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,99,random,results/predictions/seed99_random.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,99,confidence,results/predictions/seed99_confidence.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,99,entropy,results/predictions/seed99_entropy.parquet,~12.5,dynamic_eval,External / Kaggle Dataset
+prediction_dump,99,utta,results/predictions/seed99_utta.parquet,~12.5,dynamic_eval,External / Kaggle Dataset

@@ -1,0 +1,14 @@
+UTTA-Med — remaining optional GPU (seed 42 only)
+
+Permanent skip: ResNet-50 retrain, Camelyon16, MIDOG++, ViT/CLIP/LLM, 10 seeds, PathMNIST.
+
+1. Kaggle → New notebook → GPU T4 → Internet ON
+2. Add Input: avinash7676/cameloyon17  (seed-42 BEST.pt)
+3. Upload UTTA-Med-remaining-optional.zip, unzip into /kaggle/working
+4. File → Import notebook → kaggle_remaining_optional.ipynb
+5. Run All (~45–70 min)
+6. Download camelyon17_remaining_optional_s42.json
+
+Protocol (do not change): bn_freeze_stats, lr=1e-5, k=1, T fitted on hospital 1 only.
+If SAR / EATA-C / DLTTA is worse than source: keep the number. Do not retune.
+Do not retrain any seed. Paper stays LAST until this JSON is back.

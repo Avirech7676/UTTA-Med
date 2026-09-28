@@ -1,0 +1,11 @@
+# EATA family — BN-affine parity with Tent / UTTA-Med / SAR.
+method: eata
+update_params: bn_affine
+lr: 1.0e-5
+steps: 1
+e_margin: 0.4
+# EATA-C extras (use method: eata_c)
+d_margin: 0.4
+memory: 64
+# EATA-F extras (use method: eata_f; requires source Fisher)
+fishers_alpha: 2000.0

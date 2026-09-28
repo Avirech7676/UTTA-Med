@@ -1,0 +1,53 @@
+{
+  "cuda": true,
+  "device": "Tesla T4",
+  "checkpoint": "checkpoints/camelyon17_resnet18_source_s42_BEST.pt",
+  "best_epoch": 3,
+  "seed": 42,
+  "gate": "B-FULL",
+  "status": "SIGNED_OFF",
+  "id_val": {
+    "n": 33560,
+    "accuracy": 0.988289630512515,
+    "precision": 0.9890222570721998,
+    "recall": 0.9872952793834296,
+    "sensitivity": 0.9872952793834296,
+    "specificity": 0.9892638036809815,
+    "f1": 0.9881580136800554,
+    "auroc": 0.9991798892838991,
+    "auprc": 0.9992336065277643,
+    "ece": 0.002424813955464468,
+    "brier": 0.009130168706178665
+  },
+  "val_ood": {
+    "n": 34904,
+    "accuracy": 0.9176025670410268,
+    "precision": 0.8908193908193908,
+    "recall": 0.9518679807471923,
+    "sensitivity": 0.9518679807471923,
+    "specificity": 0.8833371533348613,
+    "f1": 0.9203324099722991,
+    "auroc": 0.9792571864971674,
+    "auprc": 0.9797735780086759,
+    "ece": 0.050383408068492064,
+    "brier": 0.06463812291622162
+  },
+  "test_target": {
+    "n": 85054,
+    "accuracy": 0.851858819103158,
+    "precision": 0.9424060550512965,
+    "recall": 0.7495238319185459,
+    "sensitivity": 0.7495238319185459,
+    "specificity": 0.9541938062877702,
+    "f1": 0.8349705304518664,
+    "auroc": 0.935455984812425,
+    "auprc": 0.9446081467164785,
+    "ece": 0.09884399567348207,
+    "brier": 0.12224078923463821
+  },
+  "shift": {
+    "auroc_drop_id_minus_test": 0.06372390447147414,
+    "f1_drop_id_minus_test": 0.15318748322818898,
+    "note": "Primary shift evidence is id_val vs test. OOD val (hospital 1) is for HP/tau only."
+  }
+}

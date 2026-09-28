@@ -1,0 +1,43 @@
+# Authoritative frozen protocol (all 5 seeds).
+# Do not copy dropout 0.2 / AdamW / 2-class from obsolete configs/.
+
+model:
+  backbone: resnet18
+  pretrained: true
+  num_classes: 1
+  dropout_p: 0.5
+  loss: BCEWithLogitsLoss
+
+source:
+  optimizer: adam
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  epochs: 20
+  patience: 5
+  early_stop_metric: val_auroc
+
+tta:
+  bn_mode: bn_freeze_stats
+  trainable_parameters: [bn_weight, bn_bias]
+  freeze_running_stats: true
+  optimizer: adam
+  learning_rate: 1.0e-5
+  steps: 1
+  mc_passes: 20
+
+gate:
+  uncertainty: predictive_variance
+  threshold_selection: ood_validation
+  threshold_percentile: 70
+  # per-seed tau is NOT a constant. See configs/tau_by_seed.yaml
+
+controls:
+  random: matched_validation_coverage
+  confidence: matched_validation_coverage
+  entropy: matched_validation_coverage
+
+protocol:
+  seeds: [42, 123, 2024, 7, 99]
+  ood_validation_center: 1
+  target_test_center: 2
+  target_labels_for_adaptation: false

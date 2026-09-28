@@ -1,0 +1,17 @@
+# Frozen τ = 70th percentile of hospital-1 MC-Dropout U, computed per seed.
+# NEVER use a global tau such as 0.05 (that is coverage-scale, not U-scale).
+# NEVER retune τ on hospital 2.
+
+rule: val_70th_percentile_of_U
+n_mc: 20
+dropout_p: 0.5
+
+tau:
+  42: 8.875383173290174e-06
+  123: 7.0986357059155125e-06
+  2024: 1.2937300198245794e-05
+  7: 1.1984909178863745e-05
+  99: 1.8291444575879723e-05
+
+# If you re-run MC on val, recompute the 70th percentile; do not copy these
+# into test-time selection after looking at test metrics.

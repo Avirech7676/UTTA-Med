@@ -1,0 +1,2 @@
+epoch,train_loss,val_n,val_accuracy,val_precision,val_recall,val_sensitivity,val_specificity,val_f1,val_auroc,val_auprc,val_ece,val_brier,is_best,note
+3,N/A,34904,0.9176025670410268,0.8908193908193908,0.9518679807471923,0.9518679807471923,0.8833371533348613,0.9203324099722991,0.9792571864971674,0.9797735780086759,0.050383408068492064,0.06463812291622162,True,Full per-epoch training history unavailable for Seed 42; best checkpoint metadata retained from Gate B-FULL.

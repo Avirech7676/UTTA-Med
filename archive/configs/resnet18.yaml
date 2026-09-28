@@ -1,0 +1,21 @@
+# OFFICIAL ResNet-18 — frozen. Matches all 5 BEST.pt files.
+# 1-logit BCE, dropout 0.5, Adam (not AdamW).
+model:
+  name: resnet18
+  pretrained: true
+  num_classes: 1
+  dropout_p: 0.5
+  loss: BCEWithLogitsLoss
+
+classification_head:
+  hidden_dim: 512
+  activation: relu
+  dropout: 0.5
+
+optimizer: adam          # NOT adamw
+lr: 1.0e-4
+weight_decay: 1.0e-4
+batch_size: 64
+epochs: 20
+early_stopping_patience: 5
+early_stopping_split: ood_val   # hospital 1 only

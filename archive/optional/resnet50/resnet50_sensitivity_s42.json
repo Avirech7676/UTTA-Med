@@ -1,0 +1,9 @@
+{
+  "architecture": "ResNet-50",
+  "seed": 42,
+  "n_mc": 20,
+  "tta_lr": 1e-05,
+  "bn_mode": "bn_freeze_stats",
+  "status": "ready_for_execution",
+  "timestamp": "2026-09-27T14:53:15"
+}

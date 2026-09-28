@@ -1,0 +1,9 @@
+# Optional strong TTA baseline (Niu et al., ICLR 2023)
+method: sar
+update_params: bn_affine
+lr: 1.0e-5
+steps: 1
+e_margin: 0.4
+rho: 0.05
+reset_constant: 0.2
+# Distinct from EATA (filter) and EATA-C (filter + diversity).
