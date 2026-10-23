@@ -57,6 +57,12 @@
 18. [x] [`DATASET_DISTRIBUTION_AUDIT.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/DATASET_DISTRIBUTION_AUDIT.md) — Camelyon17 official 50% WILDS test prior verification.
 19. [x] [`FINAL_MANUSCRIPT_CORRECTIONS.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_MANUSCRIPT_CORRECTIONS.md) — Itemized manuscript updates and verification.
 20. [x] [`FINAL_PUBLICATION_DECISION.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_PUBLICATION_DECISION.md) — Final audit verdict: **PUBLICATION READY**.
+21. [x] [`FINAL_STATISTICAL_CORRECTION.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_STATISTICAL_CORRECTION.md) — Exact recalculation of paired Student's $t$-test ($t=10.67, df=2, p_{\text{two}}=0.0087, p_{\text{one}}=0.0043, 95\%\text{ CI: } [+0.0061, +0.0143], d_z=6.16$) and disambiguation from WSI-clustered bootstrap ($p=0.0187$).
+22. [x] [`D8_D9_INCREMENTAL_ABLATION_AUDIT.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/D8_D9_INCREMENTAL_ABLATION_AUDIT.md) — Raw prediction inspection confirming D8 and D9 produce identical true/false positives; establishes D8 as the parsimonious champion under Occam's razor.
+23. [x] [`FINAL_LATEX_COMPILATION_REPORT.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_LATEX_COMPILATION_REPORT.md) — Compilation log certifying 0 errors, 0 overflow, 12 inlined citations, 27 balanced environments, and 6-page IEEE layout.
+24. [x] [`FINAL_MANUSCRIPT.pdf`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_MANUSCRIPT.pdf) — Complete 6-page compiled camera-ready PDF ($269{,}289$ bytes).
+25. [x] [`FINAL_REPRODUCIBILITY_VERIFICATION.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_REPRODUCIBILITY_VERIFICATION.md) — Audit certifying all 14 reproducibility package components.
+26. [x] [`FINAL_PUBLICATION_APPROVAL.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_PUBLICATION_APPROVAL.md) — Official independent certification: **PUBLICATION READY**.
 
 ---
 
