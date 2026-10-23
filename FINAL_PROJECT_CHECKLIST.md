@@ -44,12 +44,19 @@
 5. [x] [`FINAL_PROJECT_CHECKLIST.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_PROJECT_CHECKLIST.md) — Human-readable master audit checklist.
 6. [x] [`FINAL_PROJECT_CHECKLIST.json`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_PROJECT_CHECKLIST.json) — Machine-readable audit checklist.
 7. [x] [`FINAL_INDEPENDENT_AUDIT.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_INDEPENDENT_AUDIT.md) — Comprehensive independent audit resolving all 5 critical issues.
-8. [x] [`CORRECTED_CLASSIFICATION_BENCHMARK.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/CORRECTED_CLASSIFICATION_BENCHMARK.csv) — Distinct tables for Full Cohort ($N=85{,}054$) and Diagnostic Subset ($N=1{,}280$).
-9. [x] [`CORRECTED_DETECTION_BENCHMARK.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/CORRECTED_DETECTION_BENCHMARK.csv) — Reconciled results for 131-mitosis and 117-mitosis manifests.
-10. [x] [`VERIFIED_GPU_LATENCY.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/VERIFIED_GPU_LATENCY.csv) — Batch vs patch latency, speedup factors, and single-GPU allocation.
-11. [x] [`DATASET_DISTRIBUTION_AUDIT.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/DATASET_DISTRIBUTION_AUDIT.md) — Camelyon17 official 50% WILDS test prior verification.
-12. [x] [`FINAL_MANUSCRIPT_CORRECTIONS.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_MANUSCRIPT_CORRECTIONS.md) — Itemized manuscript updates and verification.
-13. [x] [`FINAL_PUBLICATION_DECISION.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_PUBLICATION_DECISION.md) — Final audit verdict: **PUBLICATION READY**.
+8. [x] [`FINAL_NUMERICAL_RECONCILIATION.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_NUMERICAL_RECONCILIATION.md) — Complete resolution of all 5 remaining numerical contradictions.
+9. [x] [`VERIFIED_HARM_ACCOUNTING.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/VERIFIED_HARM_ACCOUNTING.csv) — Authoritative harm matrix separating $H/N$ vs $H/k$ and admitted errors vs flips.
+10. [x] [`VERIFIED_DETECTION_STATISTICS.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/VERIFIED_DETECTION_STATISTICS.csv) — Authentic detection sample std ($s, \text{ddof}=1$) and SE across 131 and 117 manifests.
+11. [x] [`VERIFIED_BOOTSTRAP_RESULTS.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/VERIFIED_BOOTSTRAP_RESULTS.csv) — Exact statistical contrast definitions for $p=0.0187$ vs $p=0.0041$.
+12. [x] [`FAIR_GPU_TIMING_REPORT.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FAIR_GPU_TIMING_REPORT.md) — Standardized forward-only vs full adaptation update benchmarks on Tesla T4.
+13. [x] [`FINAL_MANUSCRIPT_VERIFICATION.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_MANUSCRIPT_VERIFICATION.md) — LaTeX syntax and section-by-section verification.
+14. [x] [`FINAL_SUBMISSION_APPROVAL.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_SUBMISSION_APPROVAL.md) — Official submission verdict: **PUBLICATION READY**.
+15. [x] [`CORRECTED_CLASSIFICATION_BENCHMARK.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/CORRECTED_CLASSIFICATION_BENCHMARK.csv) — Distinct tables for Full Cohort ($N=85{,}054$) and Diagnostic Subset ($N=1{,}280$).
+16. [x] [`CORRECTED_DETECTION_BENCHMARK.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/CORRECTED_DETECTION_BENCHMARK.csv) — Reconciled results for 131-mitosis and 117-mitosis manifests.
+17. [x] [`VERIFIED_GPU_LATENCY.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/VERIFIED_GPU_LATENCY.csv) — Batch vs patch latency, speedup factors, and single-GPU allocation.
+18. [x] [`DATASET_DISTRIBUTION_AUDIT.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/DATASET_DISTRIBUTION_AUDIT.md) — Camelyon17 official 50% WILDS test prior verification.
+19. [x] [`FINAL_MANUSCRIPT_CORRECTIONS.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_MANUSCRIPT_CORRECTIONS.md) — Itemized manuscript updates and verification.
+20. [x] [`FINAL_PUBLICATION_DECISION.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_PUBLICATION_DECISION.md) — Final audit verdict: **PUBLICATION READY**.
 
 ---
 
