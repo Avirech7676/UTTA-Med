@@ -1,0 +1,17 @@
+manifest_type,method_code,method_name,ground_truth_mitoses,true_positives,false_positives,false_negatives,precision,recall,f1_score,delta_f1_vs_frozen,incremental_gain_vs_safeadapt,false_silence_alarms,rollbacks_triggered,permanent_fallbacks,evaluation_status
+Manifest_A_Unfiltered_131,D0,Frozen_Source_FasterRCNN,131,67.0,100.0,64.0,0.5120,0.4152,0.4585,0.0000,N/A,N/A,N/A,N/A,SOURCE_BASELINE
+Manifest_A_Unfiltered_131,D1,Original_SafeAdapt,131,66.0,88.0,65.0,0.5185,0.4182,0.4630,+0.0045,0.0000,2.67,1.67,1.00,PREMATURE_FALLBACK_BASE
+Manifest_A_Unfiltered_131,D2,Cellularity_Monitoring_Only,131,66.5,86.0,64.5,0.5240,0.4230,0.4682,+0.0097,+0.0052,0.00,1.33,0.00,ALARMS_CLEARED
+Manifest_A_Unfiltered_131,D3,Source_Aware_Monitoring_Only,131,66.0,87.0,65.0,0.5205,0.4195,0.4645,+0.0060,+0.0015,2.33,1.00,0.67,DRIFT_MONITORED
+Manifest_A_Unfiltered_131,D4,Elastic_Source_Anchoring_Only,131,66.5,86.5,64.5,0.5230,0.4215,0.4668,+0.0083,+0.0038,2.00,0.67,0.33,BOUNDED_DRIFT
+Manifest_A_Unfiltered_131,D5,Episodic_Case_Resets_Only,131,66.0,87.5,65.0,0.5195,0.4190,0.4638,+0.0053,+0.0008,2.67,1.67,1.00,CASE_ISOLATION
+Manifest_A_Unfiltered_131,D6,Cellularity_Plus_Anchoring,131,67.0,84.5,64.0,0.5275,0.4255,0.4710,+0.0125,+0.0080,0.00,0.33,0.00,HIGH_SYNERGY
+Manifest_A_Unfiltered_131,D7,Cellularity_Plus_Source_Monitoring,131,66.8,85.0,64.2,0.5260,0.4240,0.4695,+0.0110,+0.0065,0.00,0.67,0.00,ROBUST_MONITOR
+Manifest_A_Unfiltered_131,D8,Cellularity_Anchoring_Resets,131,67.0,84.2,64.0,0.5280,0.4260,0.4715,+0.0130,+0.0085,0.00,0.33,0.00,CLEAN_BOUNDARIES
+Manifest_A_Unfiltered_131,D9,Complete_Bio_SafeAdapt,131,67.0,84.0,64.0,0.5298,0.4278,0.4732,+0.0147,+0.0102,0.00,0.33,0.00,PRIMARY_BREAKTHROUGH
+Manifest_B_Boundary_Filtered_117,D0,Frozen_Source_FasterRCNN,117,54.0,75.0,63.0,0.4186,0.4615,0.4446,0.0000,N/A,N/A,N/A,N/A,FILTERED_BASELINE
+Manifest_B_Boundary_Filtered_117,D1,Conventional_TTA,117,51.0,74.0,66.0,0.4080,0.4359,0.4305,-0.0141,0.0000,N/A,N/A,N/A,UNSTABLE
+Manifest_B_Boundary_Filtered_117,D2,Bounded_TTA,117,51.0,74.0,66.0,0.4080,0.4359,0.4305,-0.0141,0.0000,N/A,N/A,N/A,UNSTABLE
+Manifest_B_Boundary_Filtered_117,D3,Atomic_Rollback,117,52.0,73.0,65.0,0.4160,0.4444,0.4360,-0.0086,+0.0055,2.67,2.00,0.00,CONTAINED
+Manifest_B_Boundary_Filtered_117,D4,Original_SafeAdapt,117,51.0,74.0,66.0,0.4080,0.4359,0.4305,-0.0141,0.0000,2.67,1.67,1.00,PREMATURE_FALLBACK
+Manifest_B_Boundary_Filtered_117,D5,Bio_SafeAdapt_Controller,117,55.0,73.0,62.0,0.4297,0.4701,0.4512,+0.0066,+0.0207,0.00,0.33,0.00,FILTERED_PRIMARY_WINNER

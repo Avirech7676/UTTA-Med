@@ -43,6 +43,13 @@
 4. [x] [`FINAL_PUBLICATION_READINESS.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_PUBLICATION_READINESS.md) — Peer-review and camera-ready checklist.
 5. [x] [`FINAL_PROJECT_CHECKLIST.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_PROJECT_CHECKLIST.md) — Human-readable master audit checklist.
 6. [x] [`FINAL_PROJECT_CHECKLIST.json`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_PROJECT_CHECKLIST.json) — Machine-readable audit checklist.
+7. [x] [`FINAL_INDEPENDENT_AUDIT.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_INDEPENDENT_AUDIT.md) — Comprehensive independent audit resolving all 5 critical issues.
+8. [x] [`CORRECTED_CLASSIFICATION_BENCHMARK.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/CORRECTED_CLASSIFICATION_BENCHMARK.csv) — Distinct tables for Full Cohort ($N=85{,}054$) and Diagnostic Subset ($N=1{,}280$).
+9. [x] [`CORRECTED_DETECTION_BENCHMARK.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/CORRECTED_DETECTION_BENCHMARK.csv) — Reconciled results for 131-mitosis and 117-mitosis manifests.
+10. [x] [`VERIFIED_GPU_LATENCY.csv`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/VERIFIED_GPU_LATENCY.csv) — Batch vs patch latency, speedup factors, and single-GPU allocation.
+11. [x] [`DATASET_DISTRIBUTION_AUDIT.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/DATASET_DISTRIBUTION_AUDIT.md) — Camelyon17 official 50% WILDS test prior verification.
+12. [x] [`FINAL_MANUSCRIPT_CORRECTIONS.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_MANUSCRIPT_CORRECTIONS.md) — Itemized manuscript updates and verification.
+13. [x] [`FINAL_PUBLICATION_DECISION.md`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/FINAL_PUBLICATION_DECISION.md) — Final audit verdict: **PUBLICATION READY**.
 
 ---
 
