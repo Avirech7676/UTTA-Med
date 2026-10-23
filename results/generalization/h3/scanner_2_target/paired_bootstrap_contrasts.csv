@@ -1,0 +1,6 @@
+contrast,mean_delta,ci_95_lower,ci_95_upper,significant_at_05,tost_equivalent_strict_03,tost_equivalent_standard_05,scientific_determination
+Delta_Arm_E_vs_Arm_A,0.0069,0.0023,0.0129,True,True,True,SUPERIOR
+Delta_Arm_E_vs_Arm_D,-0.0485,-0.0856,-0.0151,True,False,False,INFERIOR
+Delta_Arm_D_vs_Arm_A,0.0553,0.0224,0.09,True,False,False,SUPERIOR
+Delta_Arm_B_vs_Arm_A,0.0553,0.0224,0.09,True,False,False,SUPERIOR
+Delta_Arm_C_vs_Arm_B,0.0,0.0,0.0,False,True,True,EQUIVALENT_STRICT_MARGIN

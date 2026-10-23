@@ -1,0 +1,23 @@
+{
+  "seed_42": {
+    "filename": "source_fasterrcnn_s42.pt",
+    "path": "/kaggle/working/h3_1_repaired_checkpoints/checkpoints/source_fasterrcnn_s42.pt",
+    "size_bytes": 165731879,
+    "sha256": "af9c34437e37cb13e38a6179c247ea8069ce74869fbd180201590b6137347003",
+    "best_val_f1": 0.47852760736196315
+  },
+  "seed_7": {
+    "filename": "source_fasterrcnn_s7.pt",
+    "path": "/kaggle/working/h3_1_repaired_checkpoints/checkpoints/source_fasterrcnn_s7.pt",
+    "size_bytes": 165731578,
+    "sha256": "3f1ed8e0e3997eac411cd41bf663a3eafe36fc6f37ec44ec03ba2b880a4fa58e",
+    "best_val_f1": 0.7021276595744681
+  },
+  "seed_123": {
+    "filename": "source_fasterrcnn_s123.pt",
+    "path": "/kaggle/working/h3_1_repaired_checkpoints/checkpoints/source_fasterrcnn_s123.pt",
+    "size_bytes": 165732308,
+    "sha256": "44584d70480a7913eeff93e9ac6a8e4217c5ea90298d3de3623356817afd9348",
+    "best_val_f1": 0.7142857142857144
+  }
+}

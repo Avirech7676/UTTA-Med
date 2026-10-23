@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "source_fasterrcnn_s7.pt",
+    "path": "/kaggle/input/datasets/avinashreddy2424/utta-med-h3-1-repaired-checkpoints/checkpoints/source_fasterrcnn_s7.pt",
+    "size_bytes": 165731578,
+    "sha256": "3f1ed8e0e3997eac411cd41bf663a3eafe36fc6f37ec44ec03ba2b880a4fa58e"
+  },
+  {
+    "filename": "source_fasterrcnn_s42.pt",
+    "path": "/kaggle/input/datasets/avinashreddy2424/utta-med-h3-1-repaired-checkpoints/checkpoints/source_fasterrcnn_s42.pt",
+    "size_bytes": 165731879,
+    "sha256": "af9c34437e37cb13e38a6179c247ea8069ce74869fbd180201590b6137347003"
+  },
+  {
+    "filename": "source_fasterrcnn_s123.pt",
+    "path": "/kaggle/input/datasets/avinashreddy2424/utta-med-h3-1-repaired-checkpoints/checkpoints/source_fasterrcnn_s123.pt",
+    "size_bytes": 165732308,
+    "sha256": "44584d70480a7913eeff93e9ac6a8e4217c5ea90298d3de3623356817afd9348"
+  },
+  {
+    "filename": "midog_resnet18_s42_BEST.pt",
+    "path": "/kaggle/working/midog_resnet18_s42_BEST.pt",
+    "size_bytes": 44785291,
+    "sha256": "2761ba37dae78b7db7b018489dca23a19da36c87e34a94d9dcbfbedb03b47981"
+  }
+]

@@ -1,0 +1,248 @@
+{
+  "seed_42": {
+    "seed": 42,
+    "prespecified_tau_0_10": {
+      "threshold": 0.1,
+      "tp": 24,
+      "fp": 318,
+      "fn": 12,
+      "total_pred": 342,
+      "total_gt": 36,
+      "precision": 0.0702,
+      "recall": 0.6667,
+      "f1": 0.127
+    },
+    "sweep": {
+      "tau_0.05": {
+        "threshold": 0.05,
+        "tp": 26,
+        "fp": 355,
+        "fn": 10,
+        "total_pred": 381,
+        "total_gt": 36,
+        "precision": 0.0682,
+        "recall": 0.7222,
+        "f1": 0.1247
+      },
+      "tau_0.10": {
+        "threshold": 0.1,
+        "tp": 24,
+        "fp": 318,
+        "fn": 12,
+        "total_pred": 342,
+        "total_gt": 36,
+        "precision": 0.0702,
+        "recall": 0.6667,
+        "f1": 0.127
+      },
+      "tau_0.20": {
+        "threshold": 0.2,
+        "tp": 22,
+        "fp": 151,
+        "fn": 14,
+        "total_pred": 173,
+        "total_gt": 36,
+        "precision": 0.1272,
+        "recall": 0.6111,
+        "f1": 0.2105
+      },
+      "tau_0.30": {
+        "threshold": 0.3,
+        "tp": 19,
+        "fp": 133,
+        "fn": 17,
+        "total_pred": 152,
+        "total_gt": 36,
+        "precision": 0.125,
+        "recall": 0.5278,
+        "f1": 0.2021
+      },
+      "tau_0.40": {
+        "threshold": 0.4,
+        "tp": 19,
+        "fp": 128,
+        "fn": 17,
+        "total_pred": 147,
+        "total_gt": 36,
+        "precision": 0.1293,
+        "recall": 0.5278,
+        "f1": 0.2077
+      },
+      "tau_0.50": {
+        "threshold": 0.5,
+        "tp": 18,
+        "fp": 42,
+        "fn": 18,
+        "total_pred": 60,
+        "total_gt": 36,
+        "precision": 0.3,
+        "recall": 0.5,
+        "f1": 0.375
+      }
+    }
+  },
+  "seed_7": {
+    "seed": 7,
+    "prespecified_tau_0_10": {
+      "threshold": 0.1,
+      "tp": 21,
+      "fp": 51,
+      "fn": 15,
+      "total_pred": 72,
+      "total_gt": 36,
+      "precision": 0.2917,
+      "recall": 0.5833,
+      "f1": 0.3889
+    },
+    "sweep": {
+      "tau_0.05": {
+        "threshold": 0.05,
+        "tp": 23,
+        "fp": 74,
+        "fn": 13,
+        "total_pred": 97,
+        "total_gt": 36,
+        "precision": 0.2371,
+        "recall": 0.6389,
+        "f1": 0.3459
+      },
+      "tau_0.10": {
+        "threshold": 0.1,
+        "tp": 21,
+        "fp": 51,
+        "fn": 15,
+        "total_pred": 72,
+        "total_gt": 36,
+        "precision": 0.2917,
+        "recall": 0.5833,
+        "f1": 0.3889
+      },
+      "tau_0.20": {
+        "threshold": 0.2,
+        "tp": 19,
+        "fp": 31,
+        "fn": 17,
+        "total_pred": 50,
+        "total_gt": 36,
+        "precision": 0.38,
+        "recall": 0.5278,
+        "f1": 0.4419
+      },
+      "tau_0.30": {
+        "threshold": 0.3,
+        "tp": 16,
+        "fp": 20,
+        "fn": 20,
+        "total_pred": 36,
+        "total_gt": 36,
+        "precision": 0.4444,
+        "recall": 0.4444,
+        "f1": 0.4444
+      },
+      "tau_0.40": {
+        "threshold": 0.4,
+        "tp": 16,
+        "fp": 18,
+        "fn": 20,
+        "total_pred": 34,
+        "total_gt": 36,
+        "precision": 0.4706,
+        "recall": 0.4444,
+        "f1": 0.4571
+      },
+      "tau_0.50": {
+        "threshold": 0.5,
+        "tp": 16,
+        "fp": 15,
+        "fn": 20,
+        "total_pred": 31,
+        "total_gt": 36,
+        "precision": 0.5161,
+        "recall": 0.4444,
+        "f1": 0.4776
+      }
+    }
+  },
+  "seed_123": {
+    "seed": 123,
+    "prespecified_tau_0_10": {
+      "threshold": 0.1,
+      "tp": 22,
+      "fp": 37,
+      "fn": 14,
+      "total_pred": 59,
+      "total_gt": 36,
+      "precision": 0.3729,
+      "recall": 0.6111,
+      "f1": 0.4632
+    },
+    "sweep": {
+      "tau_0.05": {
+        "threshold": 0.05,
+        "tp": 22,
+        "fp": 65,
+        "fn": 14,
+        "total_pred": 87,
+        "total_gt": 36,
+        "precision": 0.2529,
+        "recall": 0.6111,
+        "f1": 0.3577
+      },
+      "tau_0.10": {
+        "threshold": 0.1,
+        "tp": 22,
+        "fp": 37,
+        "fn": 14,
+        "total_pred": 59,
+        "total_gt": 36,
+        "precision": 0.3729,
+        "recall": 0.6111,
+        "f1": 0.4632
+      },
+      "tau_0.20": {
+        "threshold": 0.2,
+        "tp": 19,
+        "fp": 21,
+        "fn": 17,
+        "total_pred": 40,
+        "total_gt": 36,
+        "precision": 0.475,
+        "recall": 0.5278,
+        "f1": 0.5
+      },
+      "tau_0.30": {
+        "threshold": 0.3,
+        "tp": 18,
+        "fp": 16,
+        "fn": 18,
+        "total_pred": 34,
+        "total_gt": 36,
+        "precision": 0.5294,
+        "recall": 0.5,
+        "f1": 0.5143
+      },
+      "tau_0.40": {
+        "threshold": 0.4,
+        "tp": 17,
+        "fp": 11,
+        "fn": 19,
+        "total_pred": 28,
+        "total_gt": 36,
+        "precision": 0.6071,
+        "recall": 0.4722,
+        "f1": 0.5312
+      },
+      "tau_0.50": {
+        "threshold": 0.5,
+        "tp": 14,
+        "fp": 9,
+        "fn": 22,
+        "total_pred": 23,
+        "total_gt": 36,
+        "precision": 0.6087,
+        "recall": 0.3889,
+        "f1": 0.4746
+      }
+    }
+  }
+}

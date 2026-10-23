@@ -1,0 +1,19 @@
+# CANONICAL UTTA-MED TEST-TIME ADAPTATION CONFIGURATION (FROZEN PROTOCOL)
+
+tta:
+  method: utta_med
+  optimizer: adam
+  learning_rate: 1.0e-5
+  steps_per_batch: 1
+  mc_passes: 20
+  dropout_p: 0.5
+  bn_adaptation: bn_affine_only
+  bn_running_stats: frozen
+  tau_rule: val_center1_70th_percentile
+
+tau_by_seed:
+  42: 8.875383173290174e-06
+  123: 7.0986357059155125e-06
+  2024: 1.2937300198245794e-05
+  7: 1.1984909178863745e-05
+  99: 1.8291444575879723e-05

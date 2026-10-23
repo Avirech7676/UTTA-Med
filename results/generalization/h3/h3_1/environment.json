@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-10-13T02:17:05.742496+00:00",
+  "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+  "python_version": "3.13.15",
+  "torch_version": "2.11.0+cu128",
+  "cuda_available": true,
+  "device_count": 2,
+  "git_revision": "17ec6839825528d32e8db2fd919a754b9ed140b0",
+  "devices": [
+    {
+      "device_index": 0,
+      "name": "Tesla T4",
+      "total_memory_bytes": 15636037632,
+      "total_memory_gb": 14.56
+    },
+    {
+      "device_index": 1,
+      "name": "Tesla T4",
+      "total_memory_bytes": 15636037632,
+      "total_memory_gb": 14.56
+    }
+  ],
+  "torchvision_version": "0.26.0+cu128"
+}

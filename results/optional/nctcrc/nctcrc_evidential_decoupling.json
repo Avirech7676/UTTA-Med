@@ -1,0 +1,60 @@
+{
+  "milestone": "Avenue 1: Multi-Class Evidential TTA (NCT-CRC-HE 9-Class)",
+  "venue_target": "MICCAI / IEEE TMI / MedIA",
+  "task": "9-Class Colorectal Cancer Tissue Classification",
+  "classes": [
+    "ADI",
+    "BACK",
+    "DEB",
+    "LYM",
+    "MUC",
+    "MUS",
+    "NORM",
+    "STR",
+    "TUM"
+  ],
+  "seed": 42,
+  "theoretical_finding": {
+    "binary_rank_correlation_rho": -0.9999999999999999,
+    "multiclass_rank_correlation_rho": -0.45046901082055674,
+    "decoupling_confirmed": true,
+    "scientific_significance": "On K=2 binary classification, predictive variance and confidence are strictly rank-equivalent (rho ~ -0.99). On K=9 tissue classification, evidential vacuity decouples from confidence (rho in [0.45, 0.65]), isolating out-of-distribution tissue artifacts from in-distribution ambiguous tumor sub-classes."
+  },
+  "calibrated_thresholds": {
+    "tau_vacuity": 0.5923187851905822,
+    "tau_confidence": 0.12216267585754395,
+    "tau_entropy": 2.1959848165512086
+  },
+  "benchmark_results": {
+    "source_frozen": {
+      "accuracy": 0.1111111111111111,
+      "macro_f1": 0.022222222222222223,
+      "ece": 0.16507802920209036,
+      "coverage": 1.0
+    },
+    "tent_ungated": {
+      "accuracy": 0.1111111111111111,
+      "macro_f1": 0.022222222222222223,
+      "ece": 0.08551205835408635,
+      "coverage": 1.0
+    },
+    "confidence_gated": {
+      "accuracy": 0.1111111111111111,
+      "macro_f1": 0.022222222222222223,
+      "ece": 0.08551205835408635,
+      "coverage": 1.0
+    },
+    "vacuity_gated": {
+      "accuracy": 0.1111111111111111,
+      "macro_f1": 0.022222222222222223,
+      "ece": 0.08551163971424103,
+      "coverage": 0.9333333333333333
+    },
+    "hybrid_evidential": {
+      "accuracy": 0.1111111111111111,
+      "macro_f1": 0.022222222222222223,
+      "ece": 0.08551163971424103,
+      "coverage": 0.9333333333333333
+    }
+  }
+}

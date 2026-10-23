@@ -1,0 +1,151 @@
+dataset,scanner_id,scanner_model,domain_role,case_id,tile_dimensions_px,resolution_um_px,total_windows_evaluated,total_area_mm2,gt_mitoses_unfiltered,gt_mitoses_boundary_filtered,boundary_slits_filtered,canonical_status
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,101,512x512,0.25,22,0.3604,0,1,-1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,102,512x512,0.25,22,0.3604,4,7,-3,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,103,512x512,0.25,22,0.3604,2,2,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,104,512x512,0.25,22,0.3604,0,1,-1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,105,512x512,0.25,22,0.3604,0,0,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,106,512x512,0.25,22,0.3604,4,3,1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,107,512x512,0.25,22,0.3604,1,6,-5,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,108,512x512,0.25,22,0.3604,7,1,6,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,109,512x512,0.25,22,0.3604,2,2,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,110,512x512,0.25,22,0.3604,1,1,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,111,512x512,0.25,22,0.3604,0,0,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,112,512x512,0.25,22,0.3604,5,6,-1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,113,512x512,0.25,22,0.3604,3,2,1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,114,512x512,0.25,22,0.3604,4,1,3,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,115,512x512,0.25,22,0.3604,1,0,1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,116,512x512,0.25,22,0.3604,1,0,1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,117,512x512,0.25,22,0.3604,1,1,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,118,512x512,0.25,22,0.3604,3,2,1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,119,512x512,0.25,22,0.3604,0,0,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,120,512x512,0.25,22,0.3604,1,0,1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,121,512x512,0.25,22,0.3604,2,3,-1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,122,512x512,0.25,22,0.3604,2,0,2,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,123,512x512,0.25,22,0.3604,10,3,7,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,124,512x512,0.25,22,0.3604,0,1,-1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,125,512x512,0.25,22,0.3604,0,0,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,126,512x512,0.25,22,0.3604,0,0,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,127,512x512,0.25,22,0.3604,0,3,-3,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,128,512x512,0.25,22,0.3604,7,6,1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,129,512x512,0.25,22,0.3604,0,0,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,130,512x512,0.25,22,0.3604,4,0,4,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,131,512x512,0.25,22,0.3604,3,5,-2,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,132,512x512,0.25,22,0.3604,0,0,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,133,512x512,0.25,22,0.3604,0,0,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,134,512x512,0.25,22,0.3604,11,12,-1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,135,512x512,0.25,22,0.3604,3,5,-2,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,136,512x512,0.25,22,0.3604,5,4,1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,137,512x512,0.25,22,0.3604,2,2,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,138,512x512,0.25,22,0.3604,1,1,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,139,512x512,0.25,22,0.3604,14,9,5,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,140,512x512,0.25,22,0.3604,3,2,1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,141,512x512,0.25,22,0.3604,5,9,-4,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,142,512x512,0.25,22,0.3604,1,3,-2,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,143,512x512,0.25,22,0.3604,0,0,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,144,512x512,0.25,22,0.3604,5,4,1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,145,512x512,0.25,22,0.3604,2,2,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,146,512x512,0.25,22,0.3604,0,3,-3,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,147,512x512,0.25,22,0.3604,0,0,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,148,512x512,0.25,22,0.3604,0,0,0,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,149,512x512,0.25,22,0.3604,9,3,6,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_3_Aperio_CS2,Aperio ScanScope CS2,Primary_Target_Test,150,512x512,0.25,22,0.3604,2,1,1,Primary_Evaluation_Standard
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,51,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,52,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,53,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,54,512x512,0.25,22,0.3604,2,2,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,55,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,56,512x512,0.25,22,0.3604,5,5,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,57,512x512,0.25,22,0.3604,3,3,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,58,512x512,0.25,22,0.3604,2,2,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,59,512x512,0.25,22,0.3604,3,3,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,60,512x512,0.25,22,0.3604,3,3,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,61,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,62,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,63,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,64,512x512,0.25,22,0.3604,4,4,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,65,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,66,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,67,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,68,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,69,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,70,512x512,0.25,22,0.3604,11,11,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,71,512x512,0.25,22,0.3604,6,6,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,72,512x512,0.25,22,0.3604,5,5,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,73,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,74,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,75,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,76,512x512,0.25,22,0.3604,6,6,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,77,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,78,512x512,0.25,22,0.3604,7,7,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,79,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,80,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,81,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,82,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,83,512x512,0.25,22,0.3604,3,3,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,84,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,85,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,86,512x512,0.25,22,0.3604,2,2,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,87,512x512,0.25,22,0.3604,2,2,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,88,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,89,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,90,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,91,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,92,512x512,0.25,22,0.3604,3,3,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,93,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,94,512x512,0.25,22,0.3604,5,5,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,95,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,96,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,97,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,98,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,99,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_2_Hamamatsu_XR,Hamamatsu NanoZoomer XR,Held_Out_Cross_Target,100,512x512,0.25,22,0.3604,7,7,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,1,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,2,512x512,0.25,22,0.3604,2,2,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,3,512x512,0.25,22,0.3604,2,2,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,4,512x512,0.25,22,0.3604,2,2,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,5,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,6,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,7,512x512,0.25,22,0.3604,4,4,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,8,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,9,512x512,0.25,22,0.3604,2,2,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,10,512x512,0.25,22,0.3604,2,2,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,11,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,12,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,13,512x512,0.25,22,0.3604,2,2,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,14,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,15,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,16,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,17,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,18,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,19,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,20,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,21,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,22,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,23,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,24,512x512,0.25,22,0.3604,9,9,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,25,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,26,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,27,512x512,0.25,22,0.3604,2,2,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,28,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,29,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,30,512x512,0.25,22,0.3604,3,3,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,31,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,32,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,33,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,34,512x512,0.25,22,0.3604,5,5,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,35,512x512,0.25,22,0.3604,3,3,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,36,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,37,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,38,512x512,0.25,22,0.3604,3,3,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,39,512x512,0.25,22,0.3604,4,4,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,40,512x512,0.25,22,0.3604,3,3,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,41,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,42,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,43,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,44,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,45,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,46,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,47,512x512,0.25,22,0.3604,1,1,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,48,512x512,0.25,22,0.3604,0,0,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,49,512x512,0.25,22,0.3604,3,3,0,Cross_Scanner_Generalization
+MIDOG_2021,Scanner_1_3DHISTECH,3DHISTECH Pannoramic MIDI II,Held_Out_Cross_Target,50,512x512,0.25,22,0.3604,4,4,0,Cross_Scanner_Generalization

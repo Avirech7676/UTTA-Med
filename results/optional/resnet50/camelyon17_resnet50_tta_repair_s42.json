@@ -1,0 +1,157 @@
+{
+  "arch": "resnet50",
+  "seed": 42,
+  "repair": true,
+  "not_table_1": true,
+  "tau": 0.00014187883061822504,
+  "source_test": {
+    "n": 85054,
+    "accuracy": 0.7898511533849084,
+    "precision": 0.9774567145675417,
+    "recall": 0.5933877301477666,
+    "specificity": 0.9863145766216789,
+    "f1": 0.7384700877720515,
+    "auroc": 0.9199181327418899,
+    "auprc": 0.928716952517347,
+    "ece": 0.10972957942735628,
+    "brier": 0.16092582182512452,
+    "n_nonfinite": 0
+  },
+  "results": {
+    "source_test": {
+      "n": 85054,
+      "accuracy": 0.7898511533849084,
+      "precision": 0.9774567145675417,
+      "recall": 0.5933877301477666,
+      "specificity": 0.9863145766216789,
+      "f1": 0.7384700877720515,
+      "auroc": 0.9199181327418899,
+      "auprc": 0.928716952517347,
+      "ece": 0.10972957942735628,
+      "brier": 0.16092582182512452,
+      "n_nonfinite": 0
+    },
+    "tent": {
+      "n": 85054,
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 0.999999999999765,
+      "f1": 0.0,
+      "auroc": 0.7525967202126521,
+      "auprc": 0.7362806688298489,
+      "ece": 0.499996744304274,
+      "brier": 0.49999462903846204,
+      "n_nonfinite": 0,
+      "coverage": 1.0,
+      "harm": {
+        "harm_rate": 0.3756326287585591,
+        "correction_rate": 0.032561262168512926,
+        "harmful": 25235,
+        "correction": 582
+      }
+    },
+    "eata": {
+      "n": 85054,
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 0.999999999999765,
+      "f1": 0.0,
+      "auroc": 0.7491746157003033,
+      "auprc": 0.7304428532203942,
+      "ece": 0.4999967144307421,
+      "brier": 0.49999465355452877,
+      "n_nonfinite": 0,
+      "coverage": 0.9973899126052856,
+      "harm": {
+        "harm_rate": 0.3756326287585591,
+        "correction_rate": 0.032561262168512926,
+        "harmful": 25235,
+        "correction": 582
+      }
+    },
+    "random": {
+      "n": 85054,
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 0.999999999999765,
+      "f1": 0.0,
+      "auroc": 0.7512155928460905,
+      "auprc": 0.7331017861462498,
+      "ece": 0.49999642870220995,
+      "brier": 0.4999941274385515,
+      "n_nonfinite": 0,
+      "coverage": 0.7006137371063232,
+      "harm": {
+        "harm_rate": 0.3756326287585591,
+        "correction_rate": 0.032561262168512926,
+        "harmful": 25235,
+        "correction": 582
+      }
+    },
+    "confidence": {
+      "n": 85054,
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 0.999999999999765,
+      "f1": 0.0,
+      "auroc": 0.7317380941933596,
+      "auprc": 0.7059339596693407,
+      "ece": 0.4999967960262376,
+      "brier": 0.4999950144840763,
+      "n_nonfinite": 0,
+      "coverage": 0.9911938309669495,
+      "harm": {
+        "harm_rate": 0.3756326287585591,
+        "correction_rate": 0.032561262168512926,
+        "harmful": 25235,
+        "correction": 582
+      }
+    },
+    "entropy": {
+      "n": 85054,
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 0.999999999999765,
+      "f1": 0.0,
+      "auroc": 0.7317384198693933,
+      "auprc": 0.7059341857228232,
+      "ece": 0.49999679602858427,
+      "brier": 0.49999501449064204,
+      "n_nonfinite": 0,
+      "coverage": 0.9911938309669495,
+      "harm": {
+        "harm_rate": 0.3756326287585591,
+        "correction_rate": 0.032561262168512926,
+        "harmful": 25235,
+        "correction": 582
+      }
+    },
+    "utta": {
+      "n": 85054,
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 0.999999999999765,
+      "f1": 0.0,
+      "auroc": 0.8000286972561257,
+      "auprc": 0.7811499561578888,
+      "ece": 0.49999833930454074,
+      "brier": 0.49999718375636165,
+      "n_nonfinite": 0,
+      "coverage": 0.5071013569831848,
+      "harm": {
+        "harm_rate": 0.3756326287585591,
+        "correction_rate": 0.032561262168512926,
+        "harmful": 25235,
+        "correction": 582
+      }
+    }
+  },
+  "rejected_gates": [],
+  "note": "Supplement only. Keep collapse numbers if finite. Do not cite NaN rows."
+}

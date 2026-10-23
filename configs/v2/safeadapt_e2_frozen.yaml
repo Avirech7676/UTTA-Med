@@ -1,0 +1,57 @@
+# Stage E2 Frozen Configuration: Hospital 2 Target Validation Protocol
+# Strictly frozen during Stage E1.5. No modifications permitted during evaluation.
+
+metadata:
+  stage: STAGE_E2_TARGET_EVALUATION
+  dataset: Camelyon17-WILDS
+  target_hospital: Hospital 2 (Center 2)
+  status: FROZEN_PRESPECIFIED
+  date: "2026-10-11"
+
+model:
+  architecture: resnet18
+  checkpoint_path: checkpoints/camelyon17_resnet18_source_s42_BEST.pt
+  checkpoint_sha256: f0b85ec1a89707a8ad1807a544280ac2302a572abd0ba84233dff6d4dd35d000
+
+adaptation:
+  scope: bn_affine_only
+  train_bn_running_stats: false
+  eval_dropout: true
+  batch_size: 32
+  loss_function: shannon_entropy
+  optimizer:
+    name: adam
+    lr: 1.0e-05
+    betas: [0.9, 0.999]
+    eps: 1.0e-08
+    weight_decay: 0.0
+  grad_clip_norm: 1.0
+
+gating:
+  policy: confidence_only
+  tau_conf: 0.90
+  zero_selected_bypass: true
+
+controller:
+  max_param_displacement_linf: 0.05
+  reject_non_finite_loss: true
+  reject_non_finite_grad: true
+  atomic_rollback_on_rejection: true
+
+monitor:
+  mode: ACTIVE
+  window_size: 50
+  min_samples_for_alarm: 20
+  min_window_samples: 20
+  decision_threshold: 0.5
+  min_logit_variance: 0.08
+  max_disagreement_rate: 0.35
+  min_predictive_entropy: 0.05
+  consecutive_suspicious_for_rollback: 2
+  consecutive_suspicious_for_fallback: 4
+
+execution:
+  prediction_timing: pre_adaptation
+  reset_policy: per_wsi_boundary
+  eval_slides: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+  patches_per_slide: 128

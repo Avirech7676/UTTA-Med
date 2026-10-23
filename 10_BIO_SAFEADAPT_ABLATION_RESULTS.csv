@@ -1,0 +1,41 @@
+method_id,method_name,seed,cellularity_conditioning,source_monitoring,elastic_anchoring,episodic_resets,ground_truth_mitoses,true_positives,false_positives,false_negatives,precision,recall,f1_score,admitted_updates,rollbacks,permanent_fallbacks,false_silence_alarms,adaptation_coverage,gpu_inference_time_ms,peak_gpu_memory_mb,micro_pooled_f1
+D0_Frozen_Source,Frozen Source Faster R-CNN,42,False,False,False,False,131,67.0,100.0,64.0,0.4012,0.5115,0.4497,0.0,0.0,0.0,0.0,0.0,53.4,1850.0,
+D0_Frozen_Source,Frozen Source Faster R-CNN,7,False,False,False,False,131,59.0,66.0,72.0,0.472,0.4504,0.4609,0.0,0.0,0.0,0.0,0.0,53.4,1850.0,
+D0_Frozen_Source,Frozen Source Faster R-CNN,123,False,False,False,False,131,53.0,44.0,78.0,0.5464,0.4046,0.4649,0.0,0.0,0.0,0.0,0.0,53.4,1850.0,
+D1_Original_SafeAdapt,Original SafeAdapt Controller,42,False,True,False,False,131,66.0,88.0,65.0,0.4286,0.5038,0.4632,309.0,4.0,1.0,3.0,0.428,106.2,2100.0,
+D1_Original_SafeAdapt,Original SafeAdapt Controller,7,False,True,False,False,131,59.0,66.0,72.0,0.472,0.4504,0.4609,80.0,3.0,1.0,2.0,0.016,106.2,2100.0,
+D1_Original_SafeAdapt,Original SafeAdapt Controller,123,False,True,False,False,131,53.0,44.0,78.0,0.5464,0.4046,0.4649,76.0,3.0,1.0,3.0,0.013,106.2,2100.0,
+D2_Cellularity_Monitoring_Only,Cellularity Monitoring Only (H-OD),42,True,False,False,False,131,66.0,86.0,65.0,0.4342,0.5038,0.4664,382.0,3.0,0.0,0.0,0.512,72.1,1920.0,
+D2_Cellularity_Monitoring_Only,Cellularity Monitoring Only (H-OD),7,True,False,False,False,131,59.0,65.0,72.0,0.4758,0.4504,0.4627,240.0,2.0,0.0,0.0,0.35,72.1,1920.0,
+D2_Cellularity_Monitoring_Only,Cellularity Monitoring Only (H-OD),123,True,False,False,False,131,53.0,43.0,78.0,0.5521,0.4046,0.467,255.0,2.0,0.0,0.0,0.375,72.1,1920.0,
+D3_Source_Aware_Monitoring_Only,Source-Aware Detection Monitoring Only,42,False,True,False,False,131,66.0,87.0,65.0,0.4314,0.5038,0.4648,320.0,4.0,1.0,3.0,0.435,98.4,2050.0,
+D3_Source_Aware_Monitoring_Only,Source-Aware Detection Monitoring Only,7,False,True,False,False,131,59.0,66.0,72.0,0.472,0.4504,0.4609,85.0,3.0,1.0,2.0,0.02,98.4,2050.0,
+D3_Source_Aware_Monitoring_Only,Source-Aware Detection Monitoring Only,123,False,True,False,False,131,53.0,44.0,78.0,0.5464,0.4046,0.4649,80.0,3.0,1.0,3.0,0.015,98.4,2050.0,
+D4_Elastic_Source_Anchoring_Only,Elastic Source Anchoring Only (lambda=0.01),42,False,False,True,False,131,67.0,86.0,64.0,0.4379,0.5115,0.4718,335.0,2.0,0.0,2.0,0.46,75.3,1950.0,
+D4_Elastic_Source_Anchoring_Only,Elastic Source Anchoring Only (lambda=0.01),7,False,False,True,False,131,60.0,65.0,71.0,0.48,0.458,0.4688,190.0,1.0,0.0,1.0,0.28,75.3,1950.0,
+D4_Elastic_Source_Anchoring_Only,Elastic Source Anchoring Only (lambda=0.01),123,False,False,True,False,131,54.0,44.0,77.0,0.551,0.4122,0.4716,210.0,2.0,0.0,1.0,0.31,75.3,1950.0,
+D5_Episodic_Case_Resets_Only,Episodic Case Resets Only,42,False,False,False,True,131,66.0,86.0,65.0,0.4342,0.5038,0.4664,315.0,3.0,1.0,2.0,0.441,68.2,1880.0,
+D5_Episodic_Case_Resets_Only,Episodic Case Resets Only,7,False,False,False,True,131,59.0,65.0,72.0,0.4758,0.4504,0.4627,95.0,2.0,1.0,2.0,0.035,68.2,1880.0,
+D5_Episodic_Case_Resets_Only,Episodic Case Resets Only,123,False,False,False,True,131,53.0,43.0,78.0,0.5521,0.4046,0.467,90.0,2.0,1.0,2.0,0.025,68.2,1880.0,
+D6_Cellularity_Plus_Anchoring,Cellularity Monitoring + Elastic Anchoring,42,True,False,True,False,131,67.0,85.0,64.0,0.4408,0.5115,0.4735,360.0,1.0,0.0,0.0,0.485,76.5,1960.0,
+D6_Cellularity_Plus_Anchoring,Cellularity Monitoring + Elastic Anchoring,7,True,False,True,False,131,60.0,64.0,71.0,0.4839,0.458,0.4706,255.0,1.0,0.0,0.0,0.37,76.5,1960.0,
+D6_Cellularity_Plus_Anchoring,Cellularity Monitoring + Elastic Anchoring,123,True,False,True,False,131,54.0,43.0,77.0,0.5567,0.4122,0.4737,270.0,1.0,0.0,0.0,0.395,76.5,1960.0,
+D7_Cellularity_Plus_Source_Aware,Cellularity Monitoring + Source-Aware Detection,42,True,True,False,False,131,66.0,85.0,65.0,0.4371,0.5038,0.4681,370.0,2.0,0.0,0.0,0.49,82.0,2010.0,
+D7_Cellularity_Plus_Source_Aware,Cellularity Monitoring + Source-Aware Detection,7,True,True,False,False,131,59.0,64.0,72.0,0.4797,0.4504,0.4646,250.0,2.0,0.0,0.0,0.365,82.0,2010.0,
+D7_Cellularity_Plus_Source_Aware,Cellularity Monitoring + Source-Aware Detection,123,True,True,False,False,131,53.0,43.0,78.0,0.5521,0.4046,0.467,260.0,2.0,0.0,0.0,0.38,82.0,2010.0,
+D8_Cellularity_Anchoring_Resets,Cellularity + Anchoring + Episodic Resets,42,True,False,True,True,131,67.0,84.0,64.0,0.4437,0.5115,0.4752,368.0,1.0,0.0,0.0,0.492,77.0,1960.0,
+D8_Cellularity_Anchoring_Resets,Cellularity + Anchoring + Episodic Resets,7,True,False,True,True,131,60.0,64.0,71.0,0.4839,0.458,0.4706,260.0,1.0,0.0,0.0,0.38,77.0,1960.0,
+D8_Cellularity_Anchoring_Resets,Cellularity + Anchoring + Episodic Resets,123,True,False,True,True,131,54.0,43.0,77.0,0.5567,0.4122,0.4737,275.0,1.0,0.0,0.0,0.405,77.0,1960.0,
+D9_Complete_Bio_SafeAdapt,Complete Bio-SafeAdapt Controller (Unified),42,True,True,True,True,131,67.0,84.0,64.0,0.4437,0.5115,0.4752,372.0,1.0,0.0,0.0,0.495,77.2,1970.0,
+D9_Complete_Bio_SafeAdapt,Complete Bio-SafeAdapt Controller (Unified),7,True,True,True,True,131,60.0,64.0,71.0,0.4839,0.458,0.4706,265.0,1.0,0.0,0.0,0.385,77.2,1970.0,
+D9_Complete_Bio_SafeAdapt,Complete Bio-SafeAdapt Controller (Unified),123,True,True,True,True,131,54.0,43.0,77.0,0.5567,0.4122,0.4737,280.0,1.0,0.0,0.0,0.412,77.2,1970.0,
+D0_Frozen_Source,Frozen Source Faster R-CNN,Across_3_Seeds_Mean,False,False,False,False,131,59.7,70.0,71.3,0.4732,0.4555,0.4585,0.0,0.0,0.0,0.0,0.0,53.4,1850.0,0.4578
+D1_Original_SafeAdapt,Original SafeAdapt Controller,Across_3_Seeds_Mean,False,True,False,False,131,59.3,66.0,71.7,0.4823,0.4529,0.463,155.0,3.3,1.0,2.67,0.152,106.2,2100.0,0.4629
+D2_Cellularity_Monitoring_Only,Cellularity Monitoring Only (H-OD),Across_3_Seeds_Mean,True,False,False,False,131,59.3,64.7,71.7,0.4874,0.4529,0.4654,292.3,2.3,0.0,0.0,0.412,72.1,1920.0,0.4654
+D3_Source_Aware_Monitoring_Only,Source-Aware Detection Monitoring Only,Across_3_Seeds_Mean,False,True,False,False,131,59.3,65.7,71.7,0.4833,0.4529,0.4635,161.7,3.3,1.0,2.67,0.157,98.4,2050.0,0.4635
+D4_Elastic_Source_Anchoring_Only,Elastic Source Anchoring Only (lambda=0.01),Across_3_Seeds_Mean,False,False,True,False,131,60.3,65.0,70.7,0.4896,0.4606,0.4707,245.0,1.7,0.0,1.33,0.35,75.3,1950.0,0.4707
+D5_Episodic_Case_Resets_Only,Episodic Case Resets Only,Across_3_Seeds_Mean,False,False,False,True,131,59.3,64.7,71.7,0.4874,0.4529,0.4654,166.7,2.3,1.0,2.0,0.167,68.2,1880.0,0.4654
+D6_Cellularity_Plus_Anchoring,Cellularity Monitoring + Elastic Anchoring,Across_3_Seeds_Mean,True,False,True,False,131,60.3,64.0,70.7,0.4938,0.4606,0.4726,295.0,1.0,0.0,0.0,0.417,76.5,1960.0,0.4726
+D7_Cellularity_Plus_Source_Aware,Cellularity Monitoring + Source-Aware Detection,Across_3_Seeds_Mean,True,True,False,False,131,59.3,64.0,71.7,0.4896,0.4529,0.4666,293.3,2.0,0.0,0.0,0.412,82.0,2010.0,0.4666
+D8_Cellularity_Anchoring_Resets,Cellularity + Anchoring + Episodic Resets,Across_3_Seeds_Mean,True,False,True,True,131,60.3,63.7,70.7,0.4948,0.4606,0.4732,301.0,1.0,0.0,0.0,0.426,77.0,1960.0,0.4732
+D9_Complete_Bio_SafeAdapt,Complete Bio-SafeAdapt Controller (Unified),Across_3_Seeds_Mean,True,True,True,True,131,60.3,63.7,70.7,0.4948,0.4606,0.4732,305.7,1.0,0.0,0.0,0.431,77.2,1970.0,0.4732

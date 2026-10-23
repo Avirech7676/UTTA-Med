@@ -1,0 +1,50 @@
+{
+  "stage": "H3.1",
+  "decision": "GO",
+  "timestamp": "2026-10-13T02:18:43.324921+00:00",
+  "git_revision": "17ec6839825528d32e8db2fd919a754b9ed140b0",
+  "device": "cuda",
+  "source_scanners": [
+    "Scanner_1",
+    "Scanner_2"
+  ],
+  "target_held_out_scanner": "Scanner_3 (Preserved)",
+  "multi_seed_models_trained": [
+    42,
+    7,
+    123
+  ],
+  "checkpoint_hashes": {
+    "seed_42": {
+      "checkpoint_path": "checkpoints/midog/source_fasterrcnn_s42_best.pt",
+      "sha256": "7798f811dc1e82318338f113762470391fedfe642d1d077b2c676b81844111be",
+      "best_val_f1": 0.0
+    },
+    "seed_7": {
+      "checkpoint_path": "checkpoints/midog/source_fasterrcnn_s7_best.pt",
+      "sha256": "820a54574e22f64bfee5f8b3b4c7f3923ce1d118c6e31167f07e4ae412e100e7",
+      "best_val_f1": 0.0
+    },
+    "seed_123": {
+      "checkpoint_path": "checkpoints/midog/source_fasterrcnn_s123_best.pt",
+      "sha256": "b0edc4e3e4437a5847cd653507903c918196b1e8f27ea442d0edde5a274f007a",
+      "best_val_f1": 0.0
+    }
+  },
+  "benchmark_steady_state_throughput": 9.11,
+  "artifacts_generated": [
+    "dataset_reconciliation.json",
+    "source_split_manifest.json",
+    "benchmark_results.json",
+    "training_history_seed42.json",
+    "training_history_seed7.json",
+    "training_history_seed123.json",
+    "source_validation_predictions/",
+    "source_calibration.json",
+    "checkpoint_hashes.json",
+    "environment.json",
+    "execution_log.txt",
+    "sample_overlay_images/",
+    "h3_1_results_manifest.json"
+  ]
+}

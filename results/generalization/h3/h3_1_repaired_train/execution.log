@@ -1,0 +1,73 @@
+================================================================================
+UTTA-MED — STAGE H3.1-REPAIRED: 3-SEED SOURCE DETECTOR TRAINING
+================================================================================
+[*] Compute Device: cuda
+[*] GPU Model: Tesla T4 (14.56 GB)
+
+[*] Resolving MIDOG dataset and WSI images...
+  [+] Found MIDOG.json: /kaggle/input/datasets/joshiharshit5088/midog-challenge/MIDOG.json
+  [+] Discovered 153 image files on disk.
+
+[*] Establishing Canonical Source-Training Split Manifest...
+  [+] 80 Training Cases (Scanners 1 & 2): 80
+  [+] 20 Held-Out Validation Cases:     20
+  [+] Target Scanner 3 (Cases 101–150): STRICTLY PRESERVED AND UNTOUCHED.
+
+[*] Harvesting Balanced Patches with Corrected Coordinate Offsets...
+  [+] Harvested Training Pool:   294 patches (134 pos, 160 neg)
+  [+] Harvested Validation Pool: 76 patches (36 pos, 40 neg)
+
+================================================================================
+[*] TRAINING SOURCE DETECTOR: SEED 42
+================================================================================
+  [+] Initialized with ImageNet pre-trained ResNet-50 backbone weights.
+  [Ep 01/08] Loss: 0.0959 | Val F1 (@0.10): 0.0863 (Rec: 0.9574, Prec: 0.0452) | Mean Box Width: 49.3 px [33.4s]
+  [Ep 02/08] Loss: 0.0663 | Val F1 (@0.10): 0.0677 (Rec: 1.0000, Prec: 0.0350) | Mean Box Width: 53.1 px [32.4s]
+  [Ep 03/08] Loss: 0.0470 | Val F1 (@0.10): 0.2228 (Rec: 0.9362, Prec: 0.1264) | Mean Box Width: 52.5 px [34.7s]
+  [Ep 04/08] Loss: 0.0352 | Val F1 (@0.10): 0.4774 (Rec: 0.7872, Prec: 0.3426) | Mean Box Width: 53.1 px [36.4s]
+  [Ep 05/08] Loss: 0.0298 | Val F1 (@0.10): 0.4634 (Rec: 0.8085, Prec: 0.3248) | Mean Box Width: 48.7 px [35.0s]
+  [Ep 06/08] Loss: 0.0283 | Val F1 (@0.10): 0.4756 (Rec: 0.8298, Prec: 0.3333) | Mean Box Width: 50.6 px [35.7s]
+  [Ep 07/08] Loss: 0.0232 | Val F1 (@0.10): 0.4756 (Rec: 0.8298, Prec: 0.3333) | Mean Box Width: 52.6 px [35.5s]
+  [Ep 08/08] Loss: 0.0211 | Val F1 (@0.10): 0.4785 (Rec: 0.8298, Prec: 0.3362) | Mean Box Width: 51.5 px [35.3s]
+
+[+] Saved Seed 42 Checkpoint: source_fasterrcnn_s42.pt
+    Size: 165,731,879 bytes
+    SHA-256: af9c34437e37cb13e38a6179c247ea8069ce74869fbd180201590b6137347003
+
+================================================================================
+[*] TRAINING SOURCE DETECTOR: SEED 7
+================================================================================
+  [+] Initialized with ImageNet pre-trained ResNet-50 backbone weights.
+  [Ep 01/08] Loss: 0.1121 | Val F1 (@0.10): 0.2491 (Rec: 0.7021, Prec: 0.1514) | Mean Box Width: 51.3 px [35.7s]
+  [Ep 02/08] Loss: 0.0809 | Val F1 (@0.10): 0.3957 (Rec: 0.7872, Prec: 0.2643) | Mean Box Width: 50.4 px [35.8s]
+  [Ep 03/08] Loss: 0.0602 | Val F1 (@0.10): 0.2741 (Rec: 1.0000, Prec: 0.1588) | Mean Box Width: 46.7 px [35.8s]
+  [Ep 04/08] Loss: 0.0456 | Val F1 (@0.10): 0.5818 (Rec: 0.6809, Prec: 0.5079) | Mean Box Width: 49.5 px [35.6s]
+  [Ep 05/08] Loss: 0.0376 | Val F1 (@0.10): 0.5455 (Rec: 0.8298, Prec: 0.4062) | Mean Box Width: 46.8 px [35.6s]
+  [Ep 06/08] Loss: 0.0301 | Val F1 (@0.10): 0.5379 (Rec: 0.8298, Prec: 0.3980) | Mean Box Width: 45.9 px [35.5s]
+  [Ep 07/08] Loss: 0.0266 | Val F1 (@0.10): 0.6931 (Rec: 0.7447, Prec: 0.6481) | Mean Box Width: 47.9 px [35.6s]
+  [Ep 08/08] Loss: 0.0224 | Val F1 (@0.10): 0.7021 (Rec: 0.7021, Prec: 0.7021) | Mean Box Width: 49.2 px [35.5s]
+
+[+] Saved Seed 7 Checkpoint: source_fasterrcnn_s7.pt
+    Size: 165,731,578 bytes
+    SHA-256: 3f1ed8e0e3997eac411cd41bf663a3eafe36fc6f37ec44ec03ba2b880a4fa58e
+
+================================================================================
+[*] TRAINING SOURCE DETECTOR: SEED 123
+================================================================================
+  [+] Initialized with ImageNet pre-trained ResNet-50 backbone weights.
+  [Ep 01/08] Loss: 0.1086 | Val F1 (@0.10): 0.0845 (Rec: 0.8936, Prec: 0.0444) | Mean Box Width: 44.0 px [35.7s]
+  [Ep 02/08] Loss: 0.0790 | Val F1 (@0.10): 0.1603 (Rec: 0.9362, Prec: 0.0876) | Mean Box Width: 45.3 px [35.6s]
+  [Ep 03/08] Loss: 0.0626 | Val F1 (@0.10): 0.6240 (Rec: 0.8298, Prec: 0.5000) | Mean Box Width: 50.2 px [35.6s]
+  [Ep 04/08] Loss: 0.0471 | Val F1 (@0.10): 0.5891 (Rec: 0.8085, Prec: 0.4634) | Mean Box Width: 48.9 px [35.7s]
+  [Ep 05/08] Loss: 0.0383 | Val F1 (@0.10): 0.6261 (Rec: 0.7660, Prec: 0.5294) | Mean Box Width: 50.9 px [35.7s]
+  [Ep 06/08] Loss: 0.0314 | Val F1 (@0.10): 0.7143 (Rec: 0.7447, Prec: 0.6863) | Mean Box Width: 51.4 px [35.4s]
+  [Ep 07/08] Loss: 0.0267 | Val F1 (@0.10): 0.6230 (Rec: 0.8085, Prec: 0.5067) | Mean Box Width: 48.5 px [35.6s]
+  [Ep 08/08] Loss: 0.0236 | Val F1 (@0.10): 0.6667 (Rec: 0.8085, Prec: 0.5672) | Mean Box Width: 50.7 px [35.7s]
+
+[+] Saved Seed 123 Checkpoint: source_fasterrcnn_s123.pt
+    Size: 165,732,308 bytes
+    SHA-256: 44584d70480a7913eeff93e9ac6a8e4217c5ea90298d3de3623356817afd9348
+
+================================================================================
+[*] EXPORTING REPAIRED CHECKPOINT HASHES & PACKAGING ARCHIVE
+================================================================================

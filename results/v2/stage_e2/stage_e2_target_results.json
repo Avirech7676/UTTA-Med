@@ -1,0 +1,1051 @@
+{
+  "metadata": {
+    "evaluation_stage": "STAGE_E2_TARGET_EVALUATION",
+    "target_cohort": "Camelyon17-WILDS Center 2 (Hospital 2)",
+    "slides_evaluated": [
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "patches_per_wsi": 128,
+    "total_patches": 1280,
+    "prediction_timing": "pre_adaptation",
+    "reset_policy": "per_wsi_boundary",
+    "checkpoint_sha256": "f0b85ec1a89707a8ad1807a544280ac2302a572abd0ba84233dff6d4dd35d000",
+    "config_sha256": "3042225de8be5bd013a5725898a787802714004fb2b3ee95d61ba14e18df1418",
+    "timestamp": "2026-10-11T09:21:50Z"
+  },
+  "effective_runtime_config": {
+    "metadata": {
+      "stage": "STAGE_E2_TARGET_EVALUATION",
+      "dataset": "Camelyon17-WILDS",
+      "target_hospital": "Hospital 2 (Center 2)",
+      "status": "FROZEN_PRESPECIFIED",
+      "date": "2026-10-11"
+    },
+    "model": {
+      "architecture": "resnet18",
+      "checkpoint_path": "checkpoints/camelyon17_resnet18_source_s42_BEST.pt",
+      "checkpoint_sha256": "f0b85ec1a89707a8ad1807a544280ac2302a572abd0ba84233dff6d4dd35d000"
+    },
+    "adaptation": {
+      "scope": "bn_affine_only",
+      "train_bn_running_stats": false,
+      "eval_dropout": true,
+      "batch_size": 32,
+      "loss_function": "shannon_entropy",
+      "optimizer": {
+        "name": "adam",
+        "lr": 1e-05,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0.0
+      },
+      "grad_clip_norm": 1.0
+    },
+    "gating": {
+      "policy": "confidence_only",
+      "tau_conf": 0.9,
+      "zero_selected_bypass": true
+    },
+    "controller": {
+      "max_param_displacement_linf": 0.05,
+      "reject_non_finite_loss": true,
+      "reject_non_finite_grad": true,
+      "atomic_rollback_on_rejection": true
+    },
+    "monitor": {
+      "mode": "ACTIVE",
+      "window_size": 50,
+      "min_samples_for_alarm": 20,
+      "min_window_samples": 20,
+      "decision_threshold": 0.5,
+      "min_logit_variance": 0.08,
+      "max_disagreement_rate": 0.35,
+      "min_predictive_entropy": 0.05,
+      "consecutive_suspicious_for_rollback": 2,
+      "consecutive_suspicious_for_fallback": 4
+    },
+    "execution": {
+      "prediction_timing": "pre_adaptation",
+      "reset_policy": "per_wsi_boundary",
+      "eval_slides": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "patches_per_slide": 128
+    }
+  },
+  "arms": {
+    "arm_a": {
+      "arm_name": "Frozen Source",
+      "overall_metrics": {
+        "n": 1280,
+        "f1": 0.7840236686390533,
+        "brier": 0.0917087915156072,
+        "ece": 0.06501414758481337,
+        "auroc": 0.9364005291762013,
+        "auprc": 0.8897038531812739,
+        "macro_auroc_valid_slides": 0.930774323872688,
+        "valid_slides_count": 8
+      },
+      "slide_metrics": {
+        "20": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.013615397179035153,
+          "ece": 0.027934041912385688,
+          "auroc": null,
+          "auprc": 0.0
+        },
+        "21": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.05435961552547548,
+          "ece": 0.09137339658549548,
+          "auroc": null,
+          "auprc": 0.0
+        },
+        "22": {
+          "n": 128,
+          "f1": 0.7741935483870968,
+          "brier": 0.16825089962502207,
+          "ece": 0.1965539385396582,
+          "auroc": 0.9655345911949685,
+          "auprc": 0.9785323084291879
+        },
+        "23": {
+          "n": 128,
+          "f1": 0.935251798561151,
+          "brier": 0.052682804058855726,
+          "ece": 0.06186804599371952,
+          "auroc": 0.9914467253176931,
+          "auprc": 0.9928227308911737
+        },
+        "24": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.0802189781723441,
+          "ece": 0.09449091945145227,
+          "auroc": 0.7706666666666667,
+          "auprc": 0.07213309566250742
+        },
+        "25": {
+          "n": 128,
+          "f1": 0.9354838709677419,
+          "brier": 0.03176897108888016,
+          "ece": 0.05698327563310458,
+          "auroc": 0.9860544217687075,
+          "auprc": 0.9179435029214085
+        },
+        "26": {
+          "n": 128,
+          "f1": 0.35714285714285715,
+          "brier": 0.1121187797211067,
+          "ece": 0.08909819265576857,
+          "auroc": 0.8376116071428572,
+          "auprc": 0.3649976970246934
+        },
+        "27": {
+          "n": 128,
+          "f1": 0.5,
+          "brier": 0.022073226095199086,
+          "ece": 0.033805906537711206,
+          "auroc": 0.9813333333333333,
+          "auprc": 0.47619047619047616
+        },
+        "28": {
+          "n": 128,
+          "f1": 0.9619047619047619,
+          "brier": 0.05724957579093695,
+          "ece": 0.06448335326342661,
+          "auroc": 0.9842592592592593,
+          "auprc": 0.9969720662442838
+        },
+        "29": {
+          "n": 128,
+          "f1": 0.36585365853658536,
+          "brier": 0.32474966789921667,
+          "ece": 0.36521069616232893,
+          "auroc": 0.9292879862980181,
+          "auprc": 0.9298128014806554
+        }
+      },
+      "slide_telemetry": {
+        "20": {
+          "candidate_updates": 0,
+          "accepted_updates": 0,
+          "rejected_updates": 0,
+          "selected_patches": 0,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 0.0,
+          "in_fallback": false
+        },
+        "21": {
+          "candidate_updates": 0,
+          "accepted_updates": 0,
+          "rejected_updates": 0,
+          "selected_patches": 0,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 0.0,
+          "in_fallback": false
+        },
+        "22": {
+          "candidate_updates": 0,
+          "accepted_updates": 0,
+          "rejected_updates": 0,
+          "selected_patches": 0,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 0.0,
+          "in_fallback": false
+        },
+        "23": {
+          "candidate_updates": 0,
+          "accepted_updates": 0,
+          "rejected_updates": 0,
+          "selected_patches": 0,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 0.0,
+          "in_fallback": false
+        },
+        "24": {
+          "candidate_updates": 0,
+          "accepted_updates": 0,
+          "rejected_updates": 0,
+          "selected_patches": 0,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 0.0,
+          "in_fallback": false
+        },
+        "25": {
+          "candidate_updates": 0,
+          "accepted_updates": 0,
+          "rejected_updates": 0,
+          "selected_patches": 0,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 0.0,
+          "in_fallback": false
+        },
+        "26": {
+          "candidate_updates": 0,
+          "accepted_updates": 0,
+          "rejected_updates": 0,
+          "selected_patches": 0,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 0.0,
+          "in_fallback": false
+        },
+        "27": {
+          "candidate_updates": 0,
+          "accepted_updates": 0,
+          "rejected_updates": 0,
+          "selected_patches": 0,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 0.0,
+          "in_fallback": false
+        },
+        "28": {
+          "candidate_updates": 0,
+          "accepted_updates": 0,
+          "rejected_updates": 0,
+          "selected_patches": 0,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 0.0,
+          "in_fallback": false
+        },
+        "29": {
+          "candidate_updates": 0,
+          "accepted_updates": 0,
+          "rejected_updates": 0,
+          "selected_patches": 0,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 0.0,
+          "in_fallback": false
+        }
+      },
+      "elapsed_s": 223.84971840001526
+    },
+    "arm_b": {
+      "arm_name": "Confidence TTA (Unsafeguarded)",
+      "overall_metrics": {
+        "n": 1280,
+        "f1": 0.7822222222222223,
+        "brier": 0.09205100552814964,
+        "ece": 0.06548830400878249,
+        "auroc": 0.9359506102212053,
+        "auprc": 0.8890975395034755,
+        "macro_auroc_valid_slides": 0.9299240147635415,
+        "valid_slides_count": 8
+      },
+      "slide_metrics": {
+        "20": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.013524856849942268,
+          "ece": 0.027708002034699142,
+          "auroc": null,
+          "auprc": 0.0
+        },
+        "21": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.053785441314813075,
+          "ece": 0.09068086089137983,
+          "auroc": null,
+          "auprc": 0.0
+        },
+        "22": {
+          "n": 128,
+          "f1": 0.7741935483870968,
+          "brier": 0.16941299341030264,
+          "ece": 0.19756281921452512,
+          "auroc": 0.9655345911949685,
+          "auprc": 0.9785323084291879
+        },
+        "23": {
+          "n": 128,
+          "f1": 0.935251798561151,
+          "brier": 0.05265060049906271,
+          "ece": 0.06165193938772975,
+          "auroc": 0.9914467253176931,
+          "auprc": 0.9928227308911737
+        },
+        "24": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.07999139612596619,
+          "ece": 0.09372963496992526,
+          "auroc": 0.7706666666666667,
+          "auprc": 0.07213309566250742
+        },
+        "25": {
+          "n": 128,
+          "f1": 0.9354838709677419,
+          "brier": 0.031773046130500054,
+          "ece": 0.056504104116815064,
+          "auroc": 0.985374149659864,
+          "auprc": 0.9162119011898067
+        },
+        "26": {
+          "n": 128,
+          "f1": 0.35714285714285715,
+          "brier": 0.11242224228916738,
+          "ece": 0.08930177883755075,
+          "auroc": 0.8353794642857143,
+          "auprc": 0.3589379513062306
+        },
+        "27": {
+          "n": 128,
+          "f1": 0.5,
+          "brier": 0.022130086356830846,
+          "ece": 0.03355437935219108,
+          "auroc": 0.9786666666666667,
+          "auprc": 0.44285714285714284
+        },
+        "28": {
+          "n": 128,
+          "f1": 0.9619047619047619,
+          "brier": 0.05696100019356068,
+          "ece": 0.06436608217256885,
+          "auroc": 0.9842592592592593,
+          "auprc": 0.9969720662442838
+        },
+        "29": {
+          "n": 128,
+          "f1": 0.345679012345679,
+          "brier": 0.32785839211135076,
+          "ece": 0.3675868960563271,
+          "auroc": 0.9280645950574994,
+          "auprc": 0.9282496263162912
+        }
+      },
+      "slide_telemetry": {
+        "20": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 121,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.011392593383789e-05,
+          "in_fallback": false
+        },
+        "21": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 105,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        },
+        "22": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 107,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.005804657936096e-05,
+          "in_fallback": false
+        },
+        "23": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 114,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0084123611450195e-05,
+          "in_fallback": false
+        },
+        "24": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 98,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.010647535324097e-05,
+          "in_fallback": false
+        },
+        "25": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 105,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0024518966674805e-05,
+          "in_fallback": false
+        },
+        "26": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 92,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        },
+        "27": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 113,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        },
+        "28": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 115,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.011392593383789e-05,
+          "in_fallback": false
+        },
+        "29": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 99,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        }
+      },
+      "elapsed_s": 354.09688900000765
+    },
+    "arm_c": {
+      "arm_name": "Stage B SafeAdapt (Bounds & Numerical)",
+      "overall_metrics": {
+        "n": 1280,
+        "f1": 0.7822222222222223,
+        "brier": 0.09205298496920182,
+        "ece": 0.06548883598022841,
+        "auroc": 0.9359416714340197,
+        "auprc": 0.8890891108456971,
+        "macro_auroc_valid_slides": 0.9299937692278273,
+        "valid_slides_count": 8
+      },
+      "slide_metrics": {
+        "20": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.013524856849942268,
+          "ece": 0.027708002034699142,
+          "auroc": null,
+          "auprc": 0.0
+        },
+        "21": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.053785441314813075,
+          "ece": 0.09068086089137983,
+          "auroc": null,
+          "auprc": 0.0
+        },
+        "22": {
+          "n": 128,
+          "f1": 0.7741935483870968,
+          "brier": 0.16942521105769498,
+          "ece": 0.19757479245761544,
+          "auroc": 0.9655345911949685,
+          "auprc": 0.9785323084291879
+        },
+        "23": {
+          "n": 128,
+          "f1": 0.935251798561151,
+          "brier": 0.05264434897826381,
+          "ece": 0.061649071613146575,
+          "auroc": 0.9914467253176931,
+          "auprc": 0.9928227308911737
+        },
+        "24": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.08000247878263975,
+          "ece": 0.09374635348991944,
+          "auroc": 0.7706666666666667,
+          "auprc": 0.07213309566250742
+        },
+        "25": {
+          "n": 128,
+          "f1": 0.9354838709677419,
+          "brier": 0.031774308623421704,
+          "ece": 0.056503449295114194,
+          "auroc": 0.985374149659864,
+          "auprc": 0.9162119011898067
+        },
+        "26": {
+          "n": 128,
+          "f1": 0.35714285714285715,
+          "brier": 0.11238784021205936,
+          "ece": 0.0893086039734734,
+          "auroc": 0.8359375,
+          "auprc": 0.35963099566106926
+        },
+        "27": {
+          "n": 128,
+          "f1": 0.5,
+          "brier": 0.022130609822308932,
+          "ece": 0.03355367019311073,
+          "auroc": 0.9786666666666667,
+          "auprc": 0.44285714285714284
+        },
+        "28": {
+          "n": 128,
+          "f1": 0.9619047619047619,
+          "brier": 0.05696100019356068,
+          "ece": 0.06436608217256885,
+          "auroc": 0.9842592592592593,
+          "auprc": 0.9969720662442838
+        },
+        "29": {
+          "n": 128,
+          "f1": 0.345679012345679,
+          "brier": 0.32789375385731373,
+          "ece": 0.36761161890401084,
+          "auroc": 0.9280645950574994,
+          "auprc": 0.9282496263162912
+        }
+      },
+      "slide_telemetry": {
+        "20": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 121,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.011392593383789e-05,
+          "in_fallback": false
+        },
+        "21": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 105,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        },
+        "22": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 107,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.00543212890625e-05,
+          "in_fallback": false
+        },
+        "23": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 114,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0084123611450195e-05,
+          "in_fallback": false
+        },
+        "24": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 98,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        },
+        "25": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 105,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.00543212890625e-05,
+          "in_fallback": false
+        },
+        "26": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 92,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        },
+        "27": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 113,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0084123611450195e-05,
+          "in_fallback": false
+        },
+        "28": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 115,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        },
+        "29": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 99,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 0,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        }
+      },
+      "elapsed_s": 389.89571949999663
+    },
+    "arm_d": {
+      "arm_name": "Stage C2 Active SafeAdapt (Dual Safeguards)",
+      "overall_metrics": {
+        "n": 1280,
+        "f1": 0.7822222222222223,
+        "brier": 0.09205298496920182,
+        "ece": 0.06548883598022841,
+        "auroc": 0.9359416714340197,
+        "auprc": 0.8890891108456971,
+        "macro_auroc_valid_slides": 0.9299937692278273,
+        "valid_slides_count": 8
+      },
+      "slide_metrics": {
+        "20": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.013524856849942268,
+          "ece": 0.027708002034699142,
+          "auroc": null,
+          "auprc": 0.0
+        },
+        "21": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.053785441314813075,
+          "ece": 0.09068086089137983,
+          "auroc": null,
+          "auprc": 0.0
+        },
+        "22": {
+          "n": 128,
+          "f1": 0.7741935483870968,
+          "brier": 0.16942521105769498,
+          "ece": 0.19757479245761544,
+          "auroc": 0.9655345911949685,
+          "auprc": 0.9785323084291879
+        },
+        "23": {
+          "n": 128,
+          "f1": 0.935251798561151,
+          "brier": 0.05264434897826381,
+          "ece": 0.061649071613146575,
+          "auroc": 0.9914467253176931,
+          "auprc": 0.9928227308911737
+        },
+        "24": {
+          "n": 128,
+          "f1": 0.0,
+          "brier": 0.08000247878263975,
+          "ece": 0.09374635348991944,
+          "auroc": 0.7706666666666667,
+          "auprc": 0.07213309566250742
+        },
+        "25": {
+          "n": 128,
+          "f1": 0.9354838709677419,
+          "brier": 0.031774308623421704,
+          "ece": 0.056503449295114194,
+          "auroc": 0.985374149659864,
+          "auprc": 0.9162119011898067
+        },
+        "26": {
+          "n": 128,
+          "f1": 0.35714285714285715,
+          "brier": 0.11238784021205936,
+          "ece": 0.0893086039734734,
+          "auroc": 0.8359375,
+          "auprc": 0.35963099566106926
+        },
+        "27": {
+          "n": 128,
+          "f1": 0.5,
+          "brier": 0.022130609822308932,
+          "ece": 0.03355367019311073,
+          "auroc": 0.9786666666666667,
+          "auprc": 0.44285714285714284
+        },
+        "28": {
+          "n": 128,
+          "f1": 0.9619047619047619,
+          "brier": 0.05696100019356068,
+          "ece": 0.06436608217256885,
+          "auroc": 0.9842592592592593,
+          "auprc": 0.9969720662442838
+        },
+        "29": {
+          "n": 128,
+          "f1": 0.345679012345679,
+          "brier": 0.32789375385731373,
+          "ece": 0.36761161890401084,
+          "auroc": 0.9280645950574994,
+          "auprc": 0.9282496263162912
+        }
+      },
+      "slide_telemetry": {
+        "20": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 121,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 4,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.011392593383789e-05,
+          "in_fallback": false
+        },
+        "21": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 105,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 4,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        },
+        "22": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 107,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 4,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.00543212890625e-05,
+          "in_fallback": false
+        },
+        "23": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 114,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 4,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0084123611450195e-05,
+          "in_fallback": false
+        },
+        "24": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 98,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 4,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        },
+        "25": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 105,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 4,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.00543212890625e-05,
+          "in_fallback": false
+        },
+        "26": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 92,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 4,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        },
+        "27": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 113,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 4,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0084123611450195e-05,
+          "in_fallback": false
+        },
+        "28": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 115,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 4,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        },
+        "29": {
+          "candidate_updates": 4,
+          "accepted_updates": 4,
+          "rejected_updates": 0,
+          "selected_patches": 99,
+          "non_finite_failures": 0,
+          "param_bound_clamps": 0,
+          "eligible_monitor_decisions": 4,
+          "monitor_warnings": 0,
+          "rollbacks": 0,
+          "fallbacks": 0,
+          "max_displacement_linf": 4.0143728256225586e-05,
+          "in_fallback": false
+        }
+      },
+      "elapsed_s": 495.84506469999906
+    }
+  }
+}

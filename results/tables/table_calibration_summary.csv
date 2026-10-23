@@ -1,0 +1,8 @@
+Method,ECE mean ± SD,Brier mean ± SD,Reliability Status
+Source-only,0.128 ± 0.026,0.122 ± 0.018,Overconfident on OOD shift
+Tent (Full),0.284 ± 0.179,0.315 ± 0.248,Severe miscalibration (Seeds 7/99 collapse)
+EATA,0.152 ± 0.024,0.134 ± 0.021,Moderate calibration drift
+Random-gated,0.298 ± 0.166,0.320 ± 0.235,Degrades with unconstrained entropy updates
+Confidence-gated,0.130 ± 0.030,0.119 ± 0.019,Stable; prevents overconfidence collapse
+Entropy-gated,0.130 ± 0.030,0.119 ± 0.019,Identical to Confidence-gated (binary)
+UTTA-Med,0.131 ± 0.031,0.120 ± 0.020,Calibrated; matches Confidence baseline

@@ -1,0 +1,17 @@
+{
+  "all_passed": true,
+  "checks": {
+    "check_checkpoint_hashes": true,
+    "check_strict_loading": true,
+    "check_no_scanner_3": true,
+    "check_frozen_patch_selection": true,
+    "check_coord_transforms": true,
+    "check_empty_gt_handling": true,
+    "check_empty_pred_handling": true,
+    "check_one_to_one_matching": true,
+    "check_no_cross_case_matching": true,
+    "check_deduplication": true,
+    "check_reconstruction_from_raw_csv": true,
+    "check_no_parameter_updates": true
+  }
+}

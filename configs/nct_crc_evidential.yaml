@@ -1,0 +1,49 @@
+# Canonical Configuration for Multi-Class Evidential Test-Time Adaptation
+# Venue: Extended Journal Track / Top-Tier Elevation (MICCAI / IEEE TMI / MedIA)
+protocol:
+  name: "NCT-CRC-HE Evidential TTA"
+  task: "Multi-Class Colorectal Cancer Tissue Classification (9-Class)"
+  num_classes: 9
+  classes:
+    - "ADI"   # Adipose
+    - "BACK"  # Background
+    - "DEB"   # Debris
+    - "LYM"   # Lymphocytes
+    - "MUC"   # Mucus
+    - "MUS"   # Smooth muscle
+    - "NORM"  # Normal colon mucosa
+    - "STR"   # Cancer-associated stroma
+    - "TUM"   # Colorectal adenocarcinoma epithelium
+
+model:
+  backbone: "resnet18"
+  dropout_p: 0.5
+  evidence_activation: "softplus"
+  head_type: "dirichlet_prior_network"
+
+adaptation:
+  bn_mode: "bn_freeze_stats"
+  trainable_params: "bn_affine_only"
+  optimizer: "Adam"
+  lr: 1.0e-05
+  k_steps: 1
+  loss: "dirichlet_entropy"
+  batch_size: 64
+
+gating:
+  primary_gate: "vacuity"
+  tau_vacuity_percentile: 70.0
+  competing_gates:
+    - "confidence"
+    - "entropy"
+    - "hybrid"
+    - "none"  # standard unconstrained Tent
+
+data:
+  image_size: 224
+  source_dataset: "NCT-CRC-HE-100K"
+  target_dataset: "CRC-VAL-HE-7K"
+  seeds:
+    - 42
+    - 123
+    - 2024

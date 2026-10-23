@@ -1,0 +1,14 @@
+{
+  "check_provenance_authenticated": true,
+  "check_scanner_3_exclusive": true,
+  "check_annotation_independent_sampling": true,
+  "check_captured_mitoses_population": true,
+  "check_boundary_filter_applied_all_arms": true,
+  "check_cellular_scale_proposals": true,
+  "check_no_oversized_proposals": true,
+  "check_displacement_bound_respected": true,
+  "check_primary_matching_radius_30px": true,
+  "check_sensitivity_matching_radius_25px": true,
+  "check_scientific_determination_strict": true,
+  "check_zero_parameter_updates_in_frozen_arm": true
+}

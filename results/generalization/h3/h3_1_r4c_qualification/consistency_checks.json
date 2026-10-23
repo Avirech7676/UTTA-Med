@@ -1,0 +1,14 @@
+{
+  "check_checkpoint_hashes": true,
+  "check_no_scanner_3": true,
+  "check_disjoint_validation": true,
+  "check_gt_mitosis_count_exceeds_100": true,
+  "check_cellular_scale_unclipped": true,
+  "check_seed42_pathology_confined_to_boundary": true,
+  "check_empty_gt_handling": true,
+  "check_empty_pred_handling": true,
+  "check_one_to_one_matching": true,
+  "check_reconstruction_from_raw_csv": true,
+  "check_no_parameter_updates": true,
+  "check_non_overlapping_windows": true
+}

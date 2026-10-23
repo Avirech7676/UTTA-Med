@@ -1,0 +1,5 @@
+boundary_filter_h1,matching_radius_px,arm_a_mean_f1,arm_e_mean_f1,delta_f1,safeadapt_superior
+True,30.0,0.4447,0.4513,0.0066,True
+True,25.0,0.4447,0.4513,0.0066,True
+False,30.0,0.3785,0.3821,0.0036,True
+False,25.0,0.3785,0.3808,0.0023,True

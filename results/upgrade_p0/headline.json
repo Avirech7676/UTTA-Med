@@ -1,0 +1,76 @@
+{
+  "d2_tumor_burden_mae_source": 0.10165924523957073,
+  "d5_source_error_cov1.0": 0.16600982904978015,
+  "d5_source_error_cov0.5": 0.03271444667613775,
+  "d5_utta_error_cov1.0": 0.146495167775766,
+  "d5_utta_error_cov0.5": 0.042032038406897565,
+  "d6_n_slides_tent_delta_lt_minus_0.3_on_seeds_7_99": 15,
+  "d6_worst": [
+    {
+      "seed": 99,
+      "slide": 29,
+      "n": 12742,
+      "tumor_frac": 0.5245644450187683,
+      "source_auroc": 0.8193699435281409,
+      "tent_auroc": 0.003523094823053985,
+      "utta_auroc": 0.7278460864742755,
+      "delta_tent": -0.8158468487050868,
+      "delta_utta": -0.09152385705386534,
+      "tent_mean_p": 0.0023859702050685883,
+      "source_mean_p": 0.09167429059743881
+    },
+    {
+      "seed": 7,
+      "slide": 29,
+      "n": 12742,
+      "tumor_frac": 0.5245644450187683,
+      "source_auroc": 0.7384193964625615,
+      "tent_auroc": 0.006989363146081002,
+      "utta_auroc": 0.6256492199186044,
+      "delta_tent": -0.7314300333164805,
+      "delta_utta": -0.11277017654395705,
+      "tent_mean_p": 0.002673214301466942,
+      "source_mean_p": 0.06273489445447922
+    },
+    {
+      "seed": 99,
+      "slide": 28,
+      "n": 31878,
+      "tumor_frac": 0.8469163775444031,
+      "source_auroc": 0.9472789043875746,
+      "tent_auroc": 0.2388437698481612,
+      "utta_auroc": 0.9588137600356553,
+      "delta_tent": -0.7084351345394133,
+      "delta_utta": 0.011534855648080766,
+      "tent_mean_p": 0.010031387209892273,
+      "source_mean_p": 0.6851247549057007
+    },
+    {
+      "seed": 99,
+      "slide": 24,
+      "n": 7727,
+      "tumor_frac": 0.023812605068087578,
+      "source_auroc": 0.7601483379349699,
+      "tent_auroc": 0.06579884027229392,
+      "utta_auroc": 0.8252165843367592,
+      "delta_tent": -0.6943494976626761,
+      "delta_utta": 0.06506824640178921,
+      "tent_mean_p": 0.006960075814276934,
+      "source_mean_p": 0.03767460957169533
+    },
+    {
+      "seed": 99,
+      "slide": 26,
+      "n": 3815,
+      "tumor_frac": 0.12975098192691803,
+      "source_auroc": 0.7439144456614336,
+      "tent_auroc": 0.0554375076061823,
+      "utta_auroc": 0.7362492393817694,
+      "delta_tent": -0.6884769380552513,
+      "delta_utta": -0.007665206279664161,
+      "tent_mean_p": 0.0075070541352033615,
+      "source_mean_p": 0.054166678339242935
+    }
+  ],
+  "note": "MIL slide-label AUROC undefined: all 10 WSIs contain tumor patches."
+}

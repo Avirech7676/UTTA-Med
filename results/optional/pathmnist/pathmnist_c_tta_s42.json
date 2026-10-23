@@ -1,0 +1,114 @@
+{
+  "dataset": "PathMNIST + synthetic C",
+  "source": {
+    "n": 7180,
+    "accuracy": 0.9045961002785515,
+    "macro_f1": 0.8765010727267817,
+    "auroc_ovr": 0.9847335563977683
+  },
+  "source_C": {
+    "source_identity_0": {
+      "n": 7180,
+      "accuracy": 0.9045961002785515,
+      "macro_f1": 0.8765010727267817,
+      "auroc_ovr": 0.9847335563977683
+    },
+    "source_gaussian_noise_1": {
+      "n": 7180,
+      "accuracy": 0.15501392757660168,
+      "macro_f1": 0.0987570039879914,
+      "auroc_ovr": 0.570220583825871
+    },
+    "source_gaussian_noise_3": {
+      "n": 7180,
+      "accuracy": 0.1415041782729805,
+      "macro_f1": 0.05264384104789612,
+      "auroc_ovr": 0.5835396530142571
+    },
+    "source_defocus_blur_3": {
+      "n": 7180,
+      "accuracy": 0.3097493036211699,
+      "macro_f1": 0.12756420119225018,
+      "auroc_ovr": 0.7614944234928122
+    },
+    "source_brightness_3": {
+      "n": 7180,
+      "accuracy": 0.1703342618384401,
+      "macro_f1": 0.13303181362551042,
+      "auroc_ovr": 0.6014224973073863
+    },
+    "source_jpeg_3": {
+      "n": 7180,
+      "accuracy": 0.2976323119777159,
+      "macro_f1": 0.21700144661343962,
+      "auroc_ovr": 0.7730706295459098
+    }
+  },
+  "tta_C": {
+    "tent_identity_0": {
+      "n": 7180,
+      "accuracy": 0.9066852367688022,
+      "macro_f1": 0.8786979593826961,
+      "auroc_ovr": 0.9851649013371675,
+      "coverage": 1.0
+    },
+    "confidence_identity_0": {
+      "n": 7180,
+      "accuracy": 0.9069637883008357,
+      "macro_f1": 0.8788934230137279,
+      "auroc_ovr": 0.9851822669423788,
+      "coverage": 0.6739554405212402
+    },
+    "utta_identity_0": {
+      "n": 7180,
+      "accuracy": 0.906824512534819,
+      "macro_f1": 0.8785421027739562,
+      "auroc_ovr": 0.9851500159597472,
+      "coverage": 0.6246517896652222
+    },
+    "tent_gaussian_noise_3": {
+      "n": 7180,
+      "accuracy": 0.14108635097493036,
+      "macro_f1": 0.054676867962986694,
+      "auroc_ovr": 0.5848011384468399,
+      "coverage": 1.0
+    },
+    "confidence_gaussian_noise_3": {
+      "n": 7180,
+      "accuracy": 0.1413649025069638,
+      "macro_f1": 0.05473537758859651,
+      "auroc_ovr": 0.5841359671194912,
+      "coverage": 0.07298050075769424
+    },
+    "utta_gaussian_noise_3": {
+      "n": 7180,
+      "accuracy": 0.1415041782729805,
+      "macro_f1": 0.05338518462312628,
+      "auroc_ovr": 0.5834493952240803,
+      "coverage": 0.008217270486056805
+    },
+    "tent_jpeg_3": {
+      "n": 7180,
+      "accuracy": 0.299025069637883,
+      "macro_f1": 0.2172175337630107,
+      "auroc_ovr": 0.7722988517720107,
+      "coverage": 1.0
+    },
+    "confidence_jpeg_3": {
+      "n": 7180,
+      "accuracy": 0.3108635097493036,
+      "macro_f1": 0.22439648309386723,
+      "auroc_ovr": 0.7751208758987426,
+      "coverage": 0.18050138652324677
+    },
+    "utta_jpeg_3": {
+      "n": 7180,
+      "accuracy": 0.30877437325905294,
+      "macro_f1": 0.2234100863115668,
+      "auroc_ovr": 0.77489006284991,
+      "coverage": 0.11782729625701904
+    }
+  },
+  "tau": 8.102730930659163e-07,
+  "note": "Supplement. Not Camelyon17 Table 1. TTA under C; do not claim robustness if TTA fails."
+}

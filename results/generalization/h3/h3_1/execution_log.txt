@@ -1,0 +1,55 @@
+================================================================================
+UTTA-MED — STAGE H3.1: MIDOG SOURCE DETECTOR TRAINING AND CALIBRATION
+================================================================================
+[*] Compute Device: cuda | Git Revision: 17ec6839825528d32e8db2fd919a754b9ed140b0
+[*] GPU Model: Tesla T4 (14.56 GB)
+[*] Gate 0: Executing dataset reconciliation...
+[*] Gate 0 Reconciliation:
+    - Total images in JSON: 200
+    - Total images on disk: 150
+    - Scanner 1 (Hamamatsu XR, Source): 50 cases
+    - Scanner 2 (Hamamatsu S360, Source): 50 cases
+    - Scanner 3 (Aperio CS2, Target Held-Out): 50 cases
+    - Source/Target Disjointness: True (Overlap cases: [])
+  [+] Generated overlay: overlay_scanner_1_case001.png
+  [+] Generated overlay: overlay_scanner_2_case051.png
+
+[*] Loading real training patches from Source Scanners 1 and 2...
+[+] Loaded 40 real training patch tiles.
+
+[*] Gate 1: Executing full 20-iteration Faster R-CNN training benchmark...
+  -> Running 5 warm-up iterations...
+  -> Running 20 measured iterations with CUDA synchronization...
+     [Iter 05/20] 0.216s | loss=0.1778
+     [Iter 10/20] 0.220s | loss=0.1323
+     [Iter 15/20] 0.218s | loss=0.1486
+     [Iter 20/20] 0.219s | loss=0.1094
+[*] Gate 1 Results: 9.11 patches/sec | Peak VRAM: 1598.63 MB
+[*] Gate 2 Split Generated: 80 Train Cases | 20 Val Cases (Disjoint: True)
+
+[*] Gate 3: Training Detector for Seed 42 on device: cuda (Epochs: 5)...
+  [Seed 42 | Epoch 1/5] Loss: 0.9313 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (3.6s)
+  [Seed 42 | Epoch 2/5] Loss: 0.2621 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (3.6s)
+  [Seed 42 | Epoch 3/5] Loss: 0.2418 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (3.6s)
+  [Seed 42 | Epoch 4/5] Loss: 0.1708 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (3.7s)
+  [Seed 42 | Epoch 5/5] Loss: 0.1262 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (3.7s)
+  [+] Saved best checkpoint: checkpoints/midog/source_fasterrcnn_s42_best.pt (SHA-256: 7798f811dc1e...)
+
+[*] Gate 3: Training Detector for Seed 7 on device: cuda (Epochs: 5)...
+  [Seed 7 | Epoch 1/5] Loss: 1.0316 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (3.8s)
+  [Seed 7 | Epoch 2/5] Loss: 0.4321 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (3.8s)
+  [Seed 7 | Epoch 3/5] Loss: 0.2498 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (3.8s)
+  [Seed 7 | Epoch 4/5] Loss: 0.1973 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (3.9s)
+  [Seed 7 | Epoch 5/5] Loss: 0.1235 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (3.9s)
+  [+] Saved best checkpoint: checkpoints/midog/source_fasterrcnn_s7_best.pt (SHA-256: 820a54574e22...)
+
+[*] Gate 3: Training Detector for Seed 123 on device: cuda (Epochs: 5)...
+  [Seed 123 | Epoch 1/5] Loss: 0.9335 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (4.0s)
+  [Seed 123 | Epoch 2/5] Loss: 0.3336 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (4.0s)
+  [Seed 123 | Epoch 3/5] Loss: 0.2430 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (4.0s)
+  [Seed 123 | Epoch 4/5] Loss: 0.2164 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (4.1s)
+  [Seed 123 | Epoch 5/5] Loss: 0.1620 | Val F1: 0.0000 | Prec: 0.0000 | Rec: 0.0000 (4.2s)
+  [+] Saved best checkpoint: checkpoints/midog/source_fasterrcnn_s123_best.pt (SHA-256: b0edc4e3e443...)
+[*] Gate 5 Monitor Calibration: Mean rate=1.7500 | Calibrated Proliferation Cutoff=4
+
+[*] Writing execution log to results/generalization/h3/h3_1/execution_log.txt...

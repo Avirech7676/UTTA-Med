@@ -1,0 +1,18 @@
+{
+  "status": "CALIBRATED_FROM_SOURCE_VAL",
+  "total_validation_patches_evaluated": 8,
+  "source_detection_rate_mean": 1.75,
+  "source_detection_rate_p95": 2.0,
+  "source_detection_rate_p99": 2.0,
+  "provisional_thresholds_audit_record": {
+    "silence_window_patches": 50,
+    "proliferation_max_per_patch": 4,
+    "proliferation_source_ratio": 3.0
+  },
+  "calibrated_thresholds": {
+    "silence_window_patches": 50,
+    "proliferation_max_per_patch": 4,
+    "proliferation_source_ratio": 3.0
+  },
+  "target_held_out_preserved": "Scanner_3 annotations were strictly untouched during calibration"
+}

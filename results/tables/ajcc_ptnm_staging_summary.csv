@@ -1,0 +1,7 @@
+method,mean_stage_accuracy,slide29_macro_detected,discordance_rate
+source,0.880,100.0%,0.120
+tent,0.500,60.0%,0.500
+eata,0.840,80.0%,0.160
+random,0.480,60.0%,0.520
+confidence,0.860,80.0%,0.140
+utta,0.860,80.0%,0.140

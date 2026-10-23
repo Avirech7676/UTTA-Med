@@ -1,0 +1,11 @@
+ablation_arm,f1_mean,f1_std,auroc_mean,auroc_std,avg_mc_passes,avg_latency_ms,harm_rate_mean
+A0_frozen_source,0.7871,0.0016,0.9302,0.0018,0.0,4425.5,0.0
+A1_confidence_gating,0.8291,0.0032,0.9345,0.0012,0.0,5864.3,0.0065
+A2_original_utta_med,0.8319,0.0017,0.9341,0.002,20.0,66277.1,0.0068
+A3_adaptive_mc_dropout,0.8301,0.0018,0.9384,0.0018,1.0,2379.9,0.006
+A4_consistency_uncertainty,0.8301,0.0022,0.9341,0.0016,5.0,12295.7,0.0055
+A5_feature_shift_uncertainty,0.83,0.0014,0.9365,0.0017,1.0,5081.7,0.0055
+A6_combined_uncertainty_gating,0.8334,0.0033,0.9398,0.0027,15.0,45071.6,0.0048
+A7_combined_with_consistency_loss,0.8295,0.0019,0.9333,0.0012,15.0,48110.6,0.0055
+A8_combined_with_source_regularization,0.8309,0.003,0.9343,0.0009,15.0,40587.6,0.0055
+A9_complete_utta_med_2_0,0.8342,0.002,0.9389,0.001,1.0,3247.0,0.0048

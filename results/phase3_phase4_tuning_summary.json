@@ -1,0 +1,154 @@
+{
+  "best_weights": {
+    "w_conf": 0.0,
+    "w_feat": 1.0
+  },
+  "optimal_config": {
+    "config_name": "standard_tent",
+    "post_auc": 0.9927,
+    "post_f1": 0.9641,
+    "delta_f1": 0.0122,
+    "harm_rate": 0.0
+  },
+  "weight_ablation_table": [
+    {
+      "w_conf": 1.0,
+      "w_feat": 0.0,
+      "auc_error_detection": 0.9463,
+      "err_rate_at_60_cov": 0.0,
+      "admitted_errors_at_60_cov": 0,
+      "err_rate_at_80_cov": 0.0063,
+      "admitted_errors_at_80_cov": 1
+    },
+    {
+      "w_conf": 0.8,
+      "w_feat": 0.2,
+      "auc_error_detection": 0.9563,
+      "err_rate_at_60_cov": 0.0,
+      "admitted_errors_at_60_cov": 0,
+      "err_rate_at_80_cov": 0.0,
+      "admitted_errors_at_80_cov": 0
+    },
+    {
+      "w_conf": 0.7,
+      "w_feat": 0.3,
+      "auc_error_detection": 0.96,
+      "err_rate_at_60_cov": 0.0,
+      "admitted_errors_at_60_cov": 0,
+      "err_rate_at_80_cov": 0.0,
+      "admitted_errors_at_80_cov": 0
+    },
+    {
+      "w_conf": 0.6,
+      "w_feat": 0.4,
+      "auc_error_detection": 0.9611,
+      "err_rate_at_60_cov": 0.0,
+      "admitted_errors_at_60_cov": 0,
+      "err_rate_at_80_cov": 0.0,
+      "admitted_errors_at_80_cov": 0
+    },
+    {
+      "w_conf": 0.5,
+      "w_feat": 0.5,
+      "auc_error_detection": 0.9616,
+      "err_rate_at_60_cov": 0.0,
+      "admitted_errors_at_60_cov": 0,
+      "err_rate_at_80_cov": 0.0,
+      "admitted_errors_at_80_cov": 0
+    },
+    {
+      "w_conf": 0.4,
+      "w_feat": 0.6,
+      "auc_error_detection": 0.9626,
+      "err_rate_at_60_cov": 0.0,
+      "admitted_errors_at_60_cov": 0,
+      "err_rate_at_80_cov": 0.0,
+      "admitted_errors_at_80_cov": 0
+    },
+    {
+      "w_conf": 0.3,
+      "w_feat": 0.7,
+      "auc_error_detection": 0.9647,
+      "err_rate_at_60_cov": 0.0,
+      "admitted_errors_at_60_cov": 0,
+      "err_rate_at_80_cov": 0.0,
+      "admitted_errors_at_80_cov": 0
+    },
+    {
+      "w_conf": 0.2,
+      "w_feat": 0.8,
+      "auc_error_detection": 0.9647,
+      "err_rate_at_60_cov": 0.0,
+      "admitted_errors_at_60_cov": 0,
+      "err_rate_at_80_cov": 0.0,
+      "admitted_errors_at_80_cov": 0
+    },
+    {
+      "w_conf": 0.0,
+      "w_feat": 1.0,
+      "auc_error_detection": 0.9663,
+      "err_rate_at_60_cov": 0.0,
+      "admitted_errors_at_60_cov": 0,
+      "err_rate_at_80_cov": 0.0,
+      "admitted_errors_at_80_cov": 0
+    }
+  ],
+  "hyperparameter_ablation_table": [
+    {
+      "config_name": "standard_tent",
+      "post_auc": 0.9927,
+      "post_f1": 0.9641,
+      "delta_f1": 0.0122,
+      "harm_rate": 0.0
+    },
+    {
+      "config_name": "clip_norm_0.5",
+      "post_auc": 0.9927,
+      "post_f1": 0.9641,
+      "delta_f1": 0.0122,
+      "harm_rate": 0.0
+    },
+    {
+      "config_name": "clip_norm_1.0",
+      "post_auc": 0.9927,
+      "post_f1": 0.9641,
+      "delta_f1": 0.0122,
+      "harm_rate": 0.0
+    },
+    {
+      "config_name": "anchor_0.01",
+      "post_auc": 0.9927,
+      "post_f1": 0.9641,
+      "delta_f1": 0.0122,
+      "harm_rate": 0.0
+    },
+    {
+      "config_name": "anchor_0.05",
+      "post_auc": 0.9927,
+      "post_f1": 0.9641,
+      "delta_f1": 0.0122,
+      "harm_rate": 0.0
+    },
+    {
+      "config_name": "weighted_entropy",
+      "post_auc": 0.9927,
+      "post_f1": 0.9641,
+      "delta_f1": 0.0122,
+      "harm_rate": 0.0
+    },
+    {
+      "config_name": "class_balanced",
+      "post_auc": 0.9928,
+      "post_f1": 0.9641,
+      "delta_f1": 0.0122,
+      "harm_rate": 0.0
+    },
+    {
+      "config_name": "frequency_step2",
+      "post_auc": 0.9926,
+      "post_f1": 0.9592,
+      "delta_f1": 0.0073,
+      "harm_rate": 0.0
+    }
+  ]
+}

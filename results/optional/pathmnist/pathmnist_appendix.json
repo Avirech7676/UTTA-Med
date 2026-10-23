@@ -1,0 +1,60 @@
+{
+  "task": "9-class PathMNIST",
+  "note": "Different source model. Not Camelyon17. Appendix only.",
+  "source": {
+    "n": 7180,
+    "accuracy": 0.9197771587743733,
+    "macro_f1": 0.8926429942607056,
+    "auroc_ovr": 0.9920777491685606
+  },
+  "c": [
+    {
+      "corruption": "identity",
+      "severity": 0,
+      "n": 7180,
+      "accuracy": 0.9197771587743733,
+      "macro_f1": 0.8926429942607056,
+      "auroc_ovr": 0.9920777491685606
+    },
+    {
+      "corruption": "gaussian_noise",
+      "severity": 3,
+      "n": 7180,
+      "accuracy": 0.14484679665738162,
+      "macro_f1": 0.054292613730843174,
+      "auroc_ovr": 0.59829370751118
+    },
+    {
+      "corruption": "defocus_blur",
+      "severity": 3,
+      "n": 7180,
+      "accuracy": 0.7842618384401114,
+      "macro_f1": 0.6955528624003553,
+      "auroc_ovr": 0.9662322862393083
+    },
+    {
+      "corruption": "brightness",
+      "severity": 3,
+      "n": 7180,
+      "accuracy": 0.11977715877437325,
+      "macro_f1": 0.0976388076773606,
+      "auroc_ovr": 0.6108907674405484
+    },
+    {
+      "corruption": "contrast",
+      "severity": 3,
+      "n": 7180,
+      "accuracy": 0.13481894150417828,
+      "macro_f1": 0.10849577184080707,
+      "auroc_ovr": 0.6578271156497909
+    },
+    {
+      "corruption": "jpeg",
+      "severity": 3,
+      "n": 7180,
+      "accuracy": 0.7725626740947075,
+      "macro_f1": 0.716322387435977,
+      "auroc_ovr": 0.9643690174682887
+    }
+  ]
+}

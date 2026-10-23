@@ -1,0 +1,30 @@
+{
+  "status": "VALIDATED",
+  "timestamp": "2026-10-13T02:17:12.248425+00:00",
+  "total_json_images": 200,
+  "total_disk_images": 150,
+  "scanner_case_counts": {
+    "Scanner_1": 50,
+    "Scanner_2": 50,
+    "Scanner_3": 50
+  },
+  "source_scanners": [
+    "Scanner_1",
+    "Scanner_2"
+  ],
+  "target_held_out_scanner": "Scanner_3",
+  "total_source_cases": 100,
+  "total_target_cases": 50,
+  "source_target_disjoint": true,
+  "pixel_spacing_um": 0.25,
+  "sample_overlays_produced": [
+    "overlay_scanner_1_case001.png",
+    "overlay_scanner_2_case051.png"
+  ],
+  "unmatched_files": [
+    "/kaggle/input/datasets/joshiharshit5088/midog-challenge/Reference_algorithm_preprint/preprint/preprint/figures/retinanet.png",
+    "/kaggle/input/datasets/joshiharshit5088/midog-challenge/Reference_algorithm_preprint/preprint/preprint/figures/AUCPR.png",
+    "/kaggle/input/datasets/joshiharshit5088/midog-challenge/Reference_algorithm_preprint/preprint/preprint/figures/mf.png"
+  ],
+  "duplicate_files": []
+}

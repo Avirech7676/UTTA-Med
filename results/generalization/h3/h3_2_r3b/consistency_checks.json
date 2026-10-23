@@ -1,0 +1,11 @@
+{
+  "check_raw_metrics_reconstructed_exactly": true,
+  "check_bootstrap_10k_micro_strictly_positive": true,
+  "check_bootstrap_10k_macro_strictly_positive": true,
+  "check_tost_strict_margin_satisfied": true,
+  "check_true_positive_difference_documented": true,
+  "check_false_positive_reduction_documented": true,
+  "check_spatial_sampling_limitation_documented": true,
+  "check_matching_radius_invariance_verified": true,
+  "check_decision_rule_applied_strictly": true
+}

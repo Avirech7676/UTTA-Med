@@ -1,0 +1,44 @@
+{
+  "status": "SIGNED_OFF",
+  "seed": 42,
+  "n_pos": 4000,
+  "n_neg": 4000,
+  "identity_auroc": 0.9373,
+  "identity_f1": 0.838,
+  "note": "Stratified hospital-2 subset. Use as Supplementary Figure 9 only. Do not enter Table 1. Unshuffled first-8k C run was invalid (all non-tumor).",
+  "source": {
+    "identity": {"auroc": 0.9373, "f1": 0.838, "recall": 0.756},
+    "gaussian_noise_1": {"auroc": 0.9215, "f1": 0.7869},
+    "gaussian_noise_3": {"auroc": 0.8775, "f1": 0.5567, "recall": 0.394},
+    "defocus_blur_1": {"auroc": 0.9583, "f1": 0.85},
+    "defocus_blur_3": {"auroc": 0.9281, "f1": 0.4643, "recall": 0.303},
+    "brightness_1": {"auroc": 0.9362, "f1": 0.8404},
+    "brightness_3": {"auroc": 0.9316, "f1": 0.8191, "recall": 0.732},
+    "contrast_1": {"auroc": 0.9359, "f1": 0.8398},
+    "contrast_3": {"auroc": 0.9389, "f1": 0.8036, "recall": 0.709},
+    "jpeg_1": {"auroc": 0.9432, "f1": 0.8138},
+    "jpeg_3": {"auroc": 0.9291, "f1": 0.7658, "recall": 0.639}
+  },
+  "tta": {
+    "identity": {
+      "tent": {"auroc": 0.9391, "f1": 0.8307, "harm": 0.0111, "cov": 1.0},
+      "confidence": {"auroc": 0.9439, "f1": 0.8551, "harm": 0.0072, "cov": 0.6},
+      "utta": {"auroc": 0.9436, "f1": 0.8537, "harm": 0.0057, "cov": 0.597}
+    },
+    "gaussian_noise_3": {
+      "tent": {"auroc": 0.8713, "f1": 0.4631, "harm": 0.0805, "cov": 1.0},
+      "confidence": {"auroc": 0.8746, "f1": 0.5124, "harm": 0.0608, "cov": 0.305},
+      "utta": {"auroc": 0.8749, "f1": 0.5191, "harm": 0.057, "cov": 0.303}
+    },
+    "brightness_3": {
+      "tent": {"auroc": 0.9372, "f1": 0.8218, "harm": 0.0034, "cov": 1.0},
+      "confidence": {"auroc": 0.9374, "f1": 0.84, "harm": 0.0081, "cov": 0.538},
+      "utta": {"auroc": 0.9375, "f1": 0.8398, "harm": 0.0083, "cov": 0.534}
+    },
+    "jpeg_3": {
+      "tent": {"auroc": 0.9315, "f1": 0.7746, "harm": 0.0003, "cov": 1.0},
+      "confidence": {"auroc": 0.9311, "f1": 0.7635, "harm": 0.0036, "cov": 0.664},
+      "utta": {"auroc": 0.9302, "f1": 0.7615, "harm": 0.0048, "cov": 0.654}
+    }
+  }
+}

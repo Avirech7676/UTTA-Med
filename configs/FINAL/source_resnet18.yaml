@@ -1,0 +1,24 @@
+# CANONICAL SOURCE MODEL CONFIGURATION (FROZEN PROTOCOL)
+# Official Architecture: ResNet-18, 1-logit BCE, dropout 0.5, Adam optimizer
+
+model:
+  name: resnet18
+  num_classes: 1
+  pretrained: true
+  dropout_p: 0.5
+
+training:
+  optimizer: adam
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  batch_size: 64
+  epochs: 20
+  early_stop_metric: val_auroc
+  early_stop_patience: 5
+
+data:
+  dataset: camelyon17
+  source_centers: [0, 3, 4]
+  val_center: 1
+  target_center: 2
+  image_size: 96

@@ -1,0 +1,75 @@
+% Generated IEEEtran bibliography file
+\begin{thebibliography}{17}
+\providecommand{\url}[1]{#1}
+\csname url@samestyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\BIBentrySTDinterwordspacing}{\spaceskip=0pt\relax}
+\providecommand{\BIBentryALTinterwordstretchfactor}{4}
+\providecommand{\BIBentryALTinterwordspacing}{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand{\BIBforeignlanguage}[2]{{
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}
+\typeout{** loaded for the language #1'. Using the pattern for}
+\typeout{** the default language instead.}
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+\providecommand{\BIBdecl}{\relax}
+\BIBdecl
+
+\bibitem{wang2021tent}
+D.~Wang, E.~Shelhamer, S.~Liu, B.~Olshausen, and T.~Darrell, `Tent: Fully test-time adaptation by entropy minimization,'' in \emph{ICLR}, 2021.
+
+\bibitem{niu2022eata}
+S.~Niu, J.~Wu, Y.~Zhang, Y.~Chen, S.~Zheng, P.~Zhao, and M.~Tan, `Efficient test-time model adaptation without forgetting,'' in \emph{ICML}, 2022.
+
+\bibitem{niu2023sar}
+S.~Niu, J.~Wu, Y.~Zhang, Z.~Wen, Y.~Chen, P.~Zhao, and M.~Tan, `Towards stable test-time adaptation in dynamic wild world,'' in \emph{ICLR}, 2023.
+
+\bibitem{koh2021wilds}
+P.~W. Koh, S.~Sagawa, H.~Marklund, S.~M. Xie, M.~Zhang, A.~Balsubramani, W.~Hu, M.~Yasunaga, R.~L. Phillips, I.~Gao, and others, `{WILDS}: A benchmark of in-the-wild distribution shifts,'' in \emph{ICML}, 2021.
+
+\bibitem{bandi2018camelyon17}
+P.~Bandi, O.~Geessink, Q.~Manson, M.~Van~Dijk, M.~Balkenhol, M.~Hermsen, B.~E. Bejnordi, B.~Lee, K.~Paeng, A.~Zhong, and others, `From detection of individual metastases to classification of lymph node status at the patient level: The {CAMELYON17} challenge,'' in \emph{IEEE Transactions on Medical Imaging}, 2018, vol. 38, no. 2, pp. 550--560.
+
+\bibitem{gal2016dropout}
+Y.~Gal and Z.~Ghahramani, `Dropout as a {Bayesian} approximation: Representing model uncertainty in deep learning,'' in \emph{ICML}, 2016.
+
+\bibitem{he2016resnet}
+K.~He, X.~Zhang, S.~Ren, and J.~Sun, `Deep residual learning for image recognition,'' in \emph{CVPR}, 2016.
+
+\bibitem{selvaraju2017gradcam}
+R.~R. Selvaraju, M.~Cogswell, A.~Das, R.~Vedantam, D.~Parikh, and D.~Batra, `{Grad-CAM}: Visual explanations from deep networks via gradient-based localization,'' in \emph{ICCV}, 2017.
+
+\bibitem{guo2017calibration}
+C.~Guo, G.~Pleiss, Y.~Sun, and K.~Q. Weinberger, `On calibration of modern neural networks,'' in \emph{ICML}, 2017.
+
+\bibitem{yang2023medmnist}
+J.~Yang, R.~Shi, D.~Wei, Z.~Liu, L.~Zhao, B.~Ke, H.~Pfister, and B.~Ni, `{MedMNIST} v2: A large-scale lightweight benchmark for 2{D} and 3{D} biomedical image classification,'' in \emph{Scientific Data}, 2023, vol. 10, no. 1, p. 41.
+
+\bibitem{hendrycks2019benchmarking}
+D.~Hendrycks and T.~Dietterich, `Benchmarking neural network robustness to common corruptions and perturbations,'' in \emph{ICLR}, 2019.
+
+\bibitem{liang2023comprehensive}
+J.~Liang, R.~He, and T.~Tan, `A comprehensive survey on test-time adaptation under distribution shifts,'' in \emph{arXiv preprint arXiv:2303.15361}, 2023.
+
+\bibitem{certaintta2025}
+X.~Dong, L.~Wang, X.~Lv, X.~Zhang, H.~Zhang, B.~Pu, Z.~Gao, I.~Y. Liao, and Z.~Jin, `{CertainTTA}: Estimating uncertainty for test-time adaptation on medical image segmentation,'' in \emph{Information Fusion}, 2025, vol. 123, p. 103300.
+
+\bibitem{uadfm2025}
+S.~Lou, G.~Mo, X.~Zhang \emph{et~al.}, ``Uncertainty-aware and causal test-time adaptive foundation model for robust colorectal cancer pathology diagnosis,'' \emph{npj Digital Medicine}, vol.~8, no.~1, p. 784, 2025.
+
+\bibitem{ttsad2024}
+C.-C. Tsai, Y.-C. Chen, and C.-S. Lu, ``Test-time stain adaptation with diffusion models for histopathology image classification,'' in \emph{ECCV}, 2024.
+
+\bibitem{sictta2026}
+J.~Wu, X.~Liu, G.~Wang, and S.~Zhang, ``{SicTTA}: Single-image continual test-time adaptation,'' \emph{Medical Image Analysis}, vol. 108, p. 103859, 2026.
+
+\bibitem{histopathc2026}
+M.~Noori, G.~A. Vargas~Hakim, D.~Osowiechi, F.~Shakeri, A.~Bahri, M.~Yazdanpanah, S.~Dastani, I.~Ben~Ayed, and C.~Desrosiers, `{Histopath-C}: Towards realistic domain shifts for histopathology vision-language adaptation,'' in \emph{WACV}, 2026, pp. 4890--4900.
+
+\end{thebibliography}

@@ -1,0 +1,9 @@
+Coverage Target (%),Random Harm (%),Confidence Harm (%),UTTA Harm (%),UTTA AUROC,Observation
+20%,1.82%,0.12%,0.13%,0.941,Ultra-safe; minimal adaptation effect
+30%,2.95%,0.21%,0.22%,0.946,Early stability window
+40%,4.10%,0.32%,0.34%,0.950,Gradual accuracy gain
+50%,5.84%,0.51%,0.52%,0.953,High accuracy & low harm
+57.5% (tau=70th %ile),6.21%,0.70%,0.73%,0.935 (5-seed),Frozen operating point (Table 1)
+70%,8.45%,1.42%,1.48%,0.928,Entry into high-entropy sample danger zone
+85%,14.20%,3.80%,4.10%,0.892,Significant harmful flip rate onset
+100% (Tent),18.75%,18.75%,18.75%,0.698,Unconstrained collapse on seeds 7 & 99

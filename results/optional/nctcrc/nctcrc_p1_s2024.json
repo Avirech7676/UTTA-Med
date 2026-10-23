@@ -1,0 +1,117 @@
+{
+  "seed": 2024,
+  "dataset": "NCT-CRC-HE-100K \u2192 CRC-VAL-HE-7K",
+  "protocol": {
+    "bn_mode": "bn_freeze_stats",
+    "tta_lr": 1e-05,
+    "n_mc": 20,
+    "tau_rule": "70th percentile of val mean-class MC variance",
+    "val": "10% stratified of 100K",
+    "target_labels": "eval only"
+  },
+  "tau": 4.2065093630583306e-09,
+  "spearman": {
+    "U_vs_one_minus_confidence": 0.9909446282622465,
+    "U_vs_entropy": 0.9903105198919077,
+    "one_minus_confidence_vs_entropy": 0.9998623388665749,
+    "U_vs_error": 0.08126494115458956
+  },
+  "matched_val_coverage": 0.6999600079984003,
+  "conf_threshold": 0.9998672008514404,
+  "entropy_threshold": 0.0014748219400644302,
+  "val_acc_best": 0.9976004799040192,
+  "results": {
+    "source": {
+      "n": 7180,
+      "accuracy": 0.9084958217270195,
+      "macro_f1": 0.8852537405240262,
+      "auroc_ovr": 0.9832667963542429,
+      "ece": 0.04190454113616254,
+      "mean_confidence": 0.9499930143356323,
+      "mean_entropy": 0.14194807410240173,
+      "coverage": 0.0,
+      "harm": null
+    },
+    "tent": {
+      "n": 7180,
+      "accuracy": 0.9071030640668524,
+      "macro_f1": 0.8831594156800023,
+      "auroc_ovr": 0.9824903460960948,
+      "ece": 0.0439072883394767,
+      "mean_confidence": 0.9506128430366516,
+      "mean_entropy": 0.14109550416469574,
+      "coverage": 1.0,
+      "harm": {
+        "harm_rate": 0.013795217657878603,
+        "correction_rate": 0.12042682926829268,
+        "harmful": 90,
+        "correction": 79
+      }
+    },
+    "random": {
+      "n": 7180,
+      "accuracy": 0.9073816155988857,
+      "macro_f1": 0.8847665935387681,
+      "auroc_ovr": 0.9827580268353197,
+      "ece": 0.043414613201923705,
+      "mean_confidence": 0.9504484534263611,
+      "mean_entropy": 0.14114311337471008,
+      "coverage": 0.6952646374702454,
+      "harm": {
+        "harm_rate": 0.01319220739377205,
+        "correction_rate": 0.12405446293494705,
+        "harmful": 86,
+        "correction": 82
+      }
+    },
+    "confidence": {
+      "n": 7180,
+      "accuracy": 0.9094707520891365,
+      "macro_f1": 0.8867532032866394,
+      "auroc_ovr": 0.9827844108853745,
+      "ece": 0.0421381804272325,
+      "mean_confidence": 0.9501689076423645,
+      "mean_entropy": 0.14221931993961334,
+      "coverage": 0.3984679579734802,
+      "harm": {
+        "harm_rate": 0.011647509578544062,
+        "correction_rate": 0.12366412213740458,
+        "harmful": 76,
+        "correction": 81
+      }
+    },
+    "entropy": {
+      "n": 7180,
+      "accuracy": 0.9080779944289693,
+      "macro_f1": 0.8842352242565732,
+      "auroc_ovr": 0.9828408487419106,
+      "ece": 0.04278499073968958,
+      "mean_confidence": 0.9500012397766113,
+      "mean_entropy": 0.14159846305847168,
+      "coverage": 0.4040389955043793,
+      "harm": {
+        "harm_rate": 0.0111997545259282,
+        "correction_rate": 0.11329305135951662,
+        "harmful": 73,
+        "correction": 75
+      }
+    },
+    "utta": {
+      "n": 7180,
+      "accuracy": 0.9057103064066853,
+      "macro_f1": 0.8835534384040528,
+      "auroc_ovr": 0.9826165691568255,
+      "ece": 0.044222466965156706,
+      "mean_confidence": 0.9498788118362427,
+      "mean_entropy": 0.14227627217769623,
+      "coverage": 0.34860724210739136,
+      "harm": {
+        "harm_rate": 0.013814274750575594,
+        "correction_rate": 0.11729323308270677,
+        "harmful": 90,
+        "correction": 78
+      }
+    }
+  },
+  "note": "Not Camelyon17 Table 1. 7K is different patients, not a hospital. RQ6 test: if Spearman(U, 1-conf) << 1, MC-Dropout is not redundant with confidence."
+}

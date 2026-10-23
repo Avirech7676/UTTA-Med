@@ -1,0 +1,48 @@
+{
+  "seed": 123,
+  "epochs": 5,
+  "best_val_f1": 0.0,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.9335,
+      "val_f1": 0.0,
+      "val_precision": 0.0,
+      "val_recall": 0.0,
+      "epoch_duration_sec": 3.98
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.3336,
+      "val_f1": 0.0,
+      "val_precision": 0.0,
+      "val_recall": 0.0,
+      "epoch_duration_sec": 4.0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.243,
+      "val_f1": 0.0,
+      "val_precision": 0.0,
+      "val_recall": 0.0,
+      "epoch_duration_sec": 4.04
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.2164,
+      "val_f1": 0.0,
+      "val_precision": 0.0,
+      "val_recall": 0.0,
+      "epoch_duration_sec": 4.11
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.162,
+      "val_f1": 0.0,
+      "val_precision": 0.0,
+      "val_recall": 0.0,
+      "epoch_duration_sec": 4.18
+    }
+  ],
+  "checkpoint_sha256": "b0edc4e3e4437a5847cd653507903c918196b1e8f27ea442d0edde5a274f007a"
+}

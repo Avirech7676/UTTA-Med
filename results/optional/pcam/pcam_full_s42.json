@@ -1,0 +1,136 @@
+{
+  "dataset": "PCam / Camelyon16 patches",
+  "seed": 42,
+  "tau": 0.0002159557625418529,
+  "spearman_U_vs_1minus_conf": 0.991265919179788,
+  "best_val_auroc": 0.9558968509614151,
+  "results": {
+    "source_test": {
+      "n": 32768,
+      "accuracy": 0.831268310546875,
+      "precision": 0.9569502948601879,
+      "recall": 0.6935946754590623,
+      "specificity": 0.9688243548282783,
+      "f1": 0.8042623946735769,
+      "auroc": 0.934134324165366,
+      "auprc": 0.9431849896372053,
+      "ece": 0.09647267540276519,
+      "brier": 0.13388841470392832
+    },
+    "tent": {
+      "n": 32768,
+      "accuracy": 0.5023193359375,
+      "precision": 0.9726027395927942,
+      "recall": 0.004335348354396815,
+      "specificity": 0.999877981818681,
+      "f1": 0.008632218756614369,
+      "auroc": NaN,
+      "auprc": NaN,
+      "ece": 0.0009084854627872121,
+      "brier": NaN,
+      "coverage": 1.0,
+      "harm": {
+        "harm_rate": 0.001455957291919437,
+        "correction_rate": 0.0,
+        "harmful": 24,
+        "correction": 0
+      }
+    },
+    "eata": {
+      "n": 32768,
+      "accuracy": 0.5023193359375,
+      "precision": 0.9726027395927942,
+      "recall": 0.004335348354396815,
+      "specificity": 0.999877981818681,
+      "f1": 0.008632218756614369,
+      "auroc": NaN,
+      "auprc": NaN,
+      "ece": 0.0009082662472792434,
+      "brier": NaN,
+      "coverage": 0.006439208984375,
+      "harm": {
+        "harm_rate": 0.001455957291919437,
+        "correction_rate": 0.0,
+        "harmful": 24,
+        "correction": 0
+      }
+    },
+    "random": {
+      "n": 32768,
+      "accuracy": 0.5023193359375,
+      "precision": 0.9726027395927942,
+      "recall": 0.004335348354396815,
+      "specificity": 0.999877981818681,
+      "f1": 0.008632218756614369,
+      "auroc": NaN,
+      "auprc": NaN,
+      "ece": 0.0009083020449907055,
+      "brier": NaN,
+      "coverage": 0.702362060546875,
+      "harm": {
+        "harm_rate": 0.001455957291919437,
+        "correction_rate": 0.0,
+        "harmful": 24,
+        "correction": 0
+      }
+    },
+    "confidence": {
+      "n": 32768,
+      "accuracy": 0.5023193359375,
+      "precision": 0.9726027395927942,
+      "recall": 0.004335348354396815,
+      "specificity": 0.999877981818681,
+      "f1": 0.008632218756614369,
+      "auroc": NaN,
+      "auprc": NaN,
+      "ece": 0.0009081476709980054,
+      "brier": NaN,
+      "coverage": 0.005279541015625,
+      "harm": {
+        "harm_rate": 0.001455957291919437,
+        "correction_rate": 0.0,
+        "harmful": 24,
+        "correction": 0
+      }
+    },
+    "entropy": {
+      "n": 32768,
+      "accuracy": 0.831268310546875,
+      "precision": 0.9569502948601879,
+      "recall": 0.6935946754590623,
+      "specificity": 0.9688243548282783,
+      "f1": 0.8042623946735769,
+      "auroc": 0.934134324165366,
+      "auprc": 0.9431849896372053,
+      "ece": 0.09647267540276519,
+      "brier": 0.13388841470392832,
+      "coverage": 0.0,
+      "harm": {
+        "harm_rate": 0.0,
+        "correction_rate": 0.0,
+        "harmful": 0,
+        "correction": 0
+      }
+    },
+    "utta": {
+      "n": 32768,
+      "accuracy": 0.5023193359375,
+      "precision": 0.9726027395927942,
+      "recall": 0.004335348354396815,
+      "specificity": 0.999877981818681,
+      "f1": 0.008632218756614369,
+      "auroc": NaN,
+      "auprc": NaN,
+      "ece": 0.0009320065164502014,
+      "brier": NaN,
+      "coverage": 0.671844482421875,
+      "harm": {
+        "harm_rate": 0.001455957291919437,
+        "correction_rate": 0.0,
+        "harmful": 24,
+        "correction": 0
+      }
+    }
+  },
+  "note": "Camelyon16 track at patch level. WSI-disjoint. Binary \u2192 U\u2248confidence expected."
+}

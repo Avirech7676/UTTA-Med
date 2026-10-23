@@ -1,0 +1,20 @@
+{
+  "architecture_audit": {
+    "torchvision_resnet18_has_dropout": false,
+    "utta_resnet18_has_dropout": true,
+    "dropout_location": "classifier head: Linear(512,512) -> ReLU -> Dropout(0.5) -> Linear(512,1)",
+    "backbone_has_dropout": false
+  },
+  "empirical_variance": {
+    "vanilla_eval_var": 0.0,
+    "utta_eval_var": 0.0,
+    "utta_mc_active_var": 0.02328621782362461,
+    "real_patch_mean_var": 8.1329453678336e-06,
+    "real_patch_max_var": 0.00047161150723695755
+  },
+  "error_detection_auroc": {
+    "confidence_uncertainty": 0.994949494949495,
+    "mc_dropout_variance": 0.9949494949494949
+  },
+  "scientific_conclusion": "1. When evaluate_dropout() is enabled, the ResNet18Classifier architecture produces real stochastic variance. Previous claims that ResNet-18 has NO dropout applied to the official implementation are corrected: standard torchvision ResNet-18 lacks dropout, but the UTTA-Med classifier head includes Dropout(p=0.5). 2. However, because dropout is restricted strictly to the final classification head (and absent from the 4 residual stages), it only perturbs the linear mapping over fixed representation vectors. It cannot capture spatial representation uncertainty. 3. Consequently, deterministic confidence uncertainty achieves superior or equivalent error detection without the 20x latency penalty."
+}

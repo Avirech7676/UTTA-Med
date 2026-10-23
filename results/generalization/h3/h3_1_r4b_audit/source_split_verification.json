@@ -1,0 +1,10 @@
+{
+  "status": "VERIFIED_SOURCE_TRAINING_SPLIT_MANIFEST",
+  "manifest_path": "/kaggle/input/datasets/avinashreddy2424/utta-med-h3-1-repaired-checkpoints/source_split_manifest.json",
+  "sha256": "5a721e616e1a5466073f7387a9b807e43e03e5804972f79fa3e0e93217b8d573",
+  "train_cases_count": 80,
+  "val_cases_count": 20,
+  "disjointness_verified": true,
+  "scanner3_strictly_excluded": true,
+  "val_matches_canonical": true
+}

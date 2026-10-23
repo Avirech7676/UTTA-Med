@@ -1,0 +1,100 @@
+{
+  "dataset": "MIDOG2021 mitosis vs impostor patches",
+  "holdout_scanner": "HAMAMATSU-XR",
+  "n_train_pool_total": 3260,
+  "n_val_heldout": 250,
+  "n_train": 3010,
+  "n_test": 1175,
+  "tau": 0.00097101298160851,
+  "results": {
+    "source": {
+      "n": 1175,
+      "accuracy": 0.6085106382978723,
+      "precision": 0.49479768785555145,
+      "recall": 0.949002217273858,
+      "specificity": 0.39640883977353025,
+      "f1": 0.6504559225366197,
+      "auroc": 0.857486739106467,
+      "auprc": 0.7928741246042494,
+      "ece": 0.3088612122231341,
+      "brier": 0.3274334456430885
+    },
+    "tent": {
+      "n": 1175,
+      "accuracy": 0.6621276595744681,
+      "precision": 0.5523255813846448,
+      "recall": 0.6319290465491811,
+      "specificity": 0.6809392265099318,
+      "f1": 0.5894519081438023,
+      "auroc": NaN,
+      "auprc": NaN,
+      "ece": 0.17025646828590557,
+      "brier": NaN,
+      "coverage": 1.0,
+      "harm": {
+        "harm_rate": 0.021711366538952746,
+        "correction_rate": 0.030612244897959183,
+        "harmful": 17,
+        "correction": 12
+      }
+    },
+    "random": {
+      "n": 1175,
+      "accuracy": 0.6621276595744681,
+      "precision": 0.5523255813846448,
+      "recall": 0.6319290465491811,
+      "specificity": 0.6809392265099318,
+      "f1": 0.5894519081438023,
+      "auroc": NaN,
+      "auprc": NaN,
+      "ece": 0.17104242847320883,
+      "brier": NaN,
+      "coverage": 0.7004255056381226,
+      "harm": {
+        "harm_rate": 0.019206145966709345,
+        "correction_rate": 0.030456852791878174,
+        "harmful": 15,
+        "correction": 12
+      }
+    },
+    "confidence": {
+      "n": 1175,
+      "accuracy": 0.6621276595744681,
+      "precision": 0.5523255813846448,
+      "recall": 0.6319290465491811,
+      "specificity": 0.6809392265099318,
+      "f1": 0.5894519081438023,
+      "auroc": NaN,
+      "auprc": NaN,
+      "ece": 0.17026400662483054,
+      "brier": NaN,
+      "coverage": 0.3940425515174866,
+      "harm": {
+        "harm_rate": 0.020460358056265986,
+        "correction_rate": 0.030534351145038167,
+        "harmful": 16,
+        "correction": 12
+      }
+    },
+    "utta": {
+      "n": 1175,
+      "accuracy": 0.6629787234042553,
+      "precision": 0.5533980582416815,
+      "recall": 0.6319290465491811,
+      "specificity": 0.6823204419795259,
+      "f1": 0.5900621068109726,
+      "auroc": NaN,
+      "auprc": NaN,
+      "ece": 0.17108523718854213,
+      "brier": NaN,
+      "coverage": 0.6153191328048706,
+      "harm": {
+        "harm_rate": 0.01918158567774936,
+        "correction_rate": 0.030534351145038167,
+        "harmful": 15,
+        "correction": 12
+      }
+    }
+  },
+  "note": "Scanner-shift classification proxy. Not MIDOG++ detection F1."
+}

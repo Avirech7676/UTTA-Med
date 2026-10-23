@@ -1,0 +1,50 @@
+{
+  "seed_42": {
+    "filename": "source_fasterrcnn_s42.pt",
+    "expected_sha256": "af9c34437e37cb13e38a6179c247ea8069ce74869fbd180201590b6137347003",
+    "actual_sha256": "af9c34437e37cb13e38a6179c247ea8069ce74869fbd180201590b6137347003",
+    "found_path": "/kaggle/input/datasets/avinashreddy2424/utta-med-h3-1-repaired-checkpoints/checkpoints/source_fasterrcnn_s42.pt",
+    "status": "AUTHENTICATED",
+    "training_provenance": {
+      "training_script": "notebooks/official/kaggle_midog_source_train_repaired.py",
+      "training_platform": "Kaggle Tesla T4 GPU",
+      "training_timestamp_utc": "2026-10-15T03:27:00Z to 2026-10-15T03:43:00Z",
+      "training_split": "80 Train Cases (Scanners 1 & 2) / 20 Disjoint Val Cases; Scanner 3 Strictly Excluded",
+      "training_epochs": 8,
+      "optimizer": "SGD(lr=0.005, momentum=0.9, weight_decay=0.0005, CosineAnnealingLR)",
+      "weights_lineage": "ImageNet pre-trained ResNet-50 backbone initialization (Zero connection to f3651669/bf0f9df2/6da69214 drafts)"
+    }
+  },
+  "seed_7": {
+    "filename": "source_fasterrcnn_s7.pt",
+    "expected_sha256": "3f1ed8e0e3997eac411cd41bf663a3eafe36fc6f37ec44ec03ba2b880a4fa58e",
+    "actual_sha256": "3f1ed8e0e3997eac411cd41bf663a3eafe36fc6f37ec44ec03ba2b880a4fa58e",
+    "found_path": "/kaggle/input/datasets/avinashreddy2424/utta-med-h3-1-repaired-checkpoints/checkpoints/source_fasterrcnn_s7.pt",
+    "status": "AUTHENTICATED",
+    "training_provenance": {
+      "training_script": "notebooks/official/kaggle_midog_source_train_repaired.py",
+      "training_platform": "Kaggle Tesla T4 GPU",
+      "training_timestamp_utc": "2026-10-15T03:27:00Z to 2026-10-15T03:43:00Z",
+      "training_split": "80 Train Cases (Scanners 1 & 2) / 20 Disjoint Val Cases; Scanner 3 Strictly Excluded",
+      "training_epochs": 8,
+      "optimizer": "SGD(lr=0.005, momentum=0.9, weight_decay=0.0005, CosineAnnealingLR)",
+      "weights_lineage": "ImageNet pre-trained ResNet-50 backbone initialization (Zero connection to f3651669/bf0f9df2/6da69214 drafts)"
+    }
+  },
+  "seed_123": {
+    "filename": "source_fasterrcnn_s123.pt",
+    "expected_sha256": "44584d70480a7913eeff93e9ac6a8e4217c5ea90298d3de3623356817afd9348",
+    "actual_sha256": "44584d70480a7913eeff93e9ac6a8e4217c5ea90298d3de3623356817afd9348",
+    "found_path": "/kaggle/input/datasets/avinashreddy2424/utta-med-h3-1-repaired-checkpoints/checkpoints/source_fasterrcnn_s123.pt",
+    "status": "AUTHENTICATED",
+    "training_provenance": {
+      "training_script": "notebooks/official/kaggle_midog_source_train_repaired.py",
+      "training_platform": "Kaggle Tesla T4 GPU",
+      "training_timestamp_utc": "2026-10-15T03:27:00Z to 2026-10-15T03:43:00Z",
+      "training_split": "80 Train Cases (Scanners 1 & 2) / 20 Disjoint Val Cases; Scanner 3 Strictly Excluded",
+      "training_epochs": 8,
+      "optimizer": "SGD(lr=0.005, momentum=0.9, weight_decay=0.0005, CosineAnnealingLR)",
+      "weights_lineage": "ImageNet pre-trained ResNet-50 backbone initialization (Zero connection to f3651669/bf0f9df2/6da69214 drafts)"
+    }
+  }
+}

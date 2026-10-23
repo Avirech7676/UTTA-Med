@@ -1,0 +1,22 @@
+{
+  "status": "COMPLETED",
+  "device": "cuda",
+  "device_name": "Tesla T4",
+  "batch_size": 2,
+  "image_dimensions": [
+    3,
+    512,
+    512
+  ],
+  "warmup_iterations": 5,
+  "measured_iterations": 20,
+  "peak_vram_allocated_mb": 1598.63,
+  "mean_latency_sec": 0.2188,
+  "steady_state_patches_per_second": 9.11,
+  "decomposed_loss_means": {
+    "loss_classifier": 0.0904,
+    "loss_box_reg": 0.022,
+    "loss_objectness": 0.0694,
+    "loss_rpn_box_reg": 0.004
+  }
+}
