@@ -61,9 +61,6 @@ def test_dltta_coverage_one():
     assert ad.coverage == 1.0
 
 
-import pytest
-
-@pytest.mark.skip(reason="ResNet-50 replacement architecture archived to archive/unrequested-research-extensions per charter")
 def test_resnet50_forward():
     from src.models.resnet50 import build_resnet50
 

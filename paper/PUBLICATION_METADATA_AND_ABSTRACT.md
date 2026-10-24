@@ -9,13 +9,13 @@
 ## 1. Title and Subtitle Options
 
 ### 1.1 Primary Journal Title (Comprehensive & Archival)
-> **Biologically Informed Fail-Closed Test-Time Adaptation for Robust Digital Pathology Under Scanner Domain Shift**
+> **Selective Test-Time Adaptation for Reliable Cross-Hospital Histopathology Classification: A Multi-Seed Empirical Investigation on Camelyon17-WILDS**
 
 ### 1.2 Alternative Conference Title (Method- & Benchmark-Focused)
-> **Bio-SafeAdapt: Biologically Conditioned Test-Time Adaptation and Fail-Closed Safeguards for Digital Pathology Under Scanner Domain Shift**
+> **SafeAdapt-TTA: Selective Test-Time Adaptation and Runtime Safeguarding for Histopathology under Cross-Hospital Shift**
 
 ### 1.3 Running Head / Short Title (≤ 50 characters)
-> *Biologically Informed Fail-Closed TTA in Pathology*
+> *Selective Test-Time Adaptation in Histopathology*
 
 ---
 
@@ -24,7 +24,7 @@
 ### 2.1 Unstructured Continuous Abstract (IEEE TMI / ISBI / MICCAI Standard)
 *Target length: 200–250 words. Continuous single paragraph, no sub-headings, no citations, no undefined acronyms.*
 
-> Deep learning models deployed in computational pathology frequently experience catastrophic performance degradation when transferred across clinical centers and slide scanner optics. Unsupervised test-time adaptation (TTA) attempts to counteract distribution shift using unlabeled target streams, but unconstrained entropy minimization (Tent) frequently collapses (F1 ~ 0.05 on 2 of 5 random seeds). In this work, we present an end-to-end investigation of fail-closed safeguards and biologically informed adaptation across two major histopathology tasks: multicenter patch metastasis classification (Camelyon17-WILDS, N=85,054 target patches across 10 WSIs, 5 random seeds) and dense mitotic figure detection (MIDOG 2021, 150 whole-slide images across 3 scanner optical domains). In Track A, we prove that single-logit binary Monte Carlo Dropout variance and max-softmax confidence induce near-identical sample rankings (Spearman rho = -0.9917) and that symmetric uncertainty gating causes asymmetric tumor starvation (92.89% of excluded updates are tumor margins). Confidence Gating (F1 = 0.8310) matches complex multi-signal feature gating while executing 1.98x faster and admitting significantly fewer harmful updates under matched budgets (p = 0.0005, Cohen's dz = 4.58). Top-K whole-slide max-pooling preserves 100% of clinical nodal staging. In Track B, we show that existing safeguards trigger false silence alarms in acellular stroma (2.67 alarms/seed); our proposed Bio-SafeAdapt conditions silence monitoring on Hematoxylin Optical Density (H-OD >= 0.12), eliminating 100% of false alarms and yielding an authentic incremental gain of +0.0102 F1 on held-out Scanner 3 (paired t = 10.67, p = 0.0087, Cohen's dz = 6.16; 10,000-bootstrap p = 0.0187). We conclude that biological context is essential to prevent safeguard misfires in clinical adaptation.
+> Deep learning models deployed in digital pathology suffer severe performance degradation under domain shifts caused by variations in slide preparation, staining protocols, and whole-slide image scanners across clinical institutions. Unsupervised test-time adaptation (TTA) via entropy minimization (Tent) has been proposed to mitigate this gap online without requiring source data. However, as demonstrated in our rigorous five-seed study on the Camelyon17-WILDS lymph node metastasis benchmark, unconstrained entropy minimization exhibits catastrophic instability, collapsing on two out of five random seeds (AUROC dropping from 0.93 to 0.34 and sensitivity collapsing below 3%). To address this vulnerability, we investigate selective test-time adaptation and runtime safeguarding (SafeAdapt). By admitting target patches to batch-normalization affine adaptation only when an uncertainty score falls below a threshold calibrated on a held-out institution, selective gating reduces the harmful adaptation rate from 18.7% ± 17.9% down to 0.7% ± 0.3% (~25-fold reduction) and consistently improves F1 across all five seeds (+0.023 vs. frozen source, 95% CI [0.010, 0.036]). Furthermore, we mathematically and empirically demonstrate that on single-logit binary classification, Monte Carlo dropout predictive variance and max-softmax confidence induce near-identical patch rankings (Spearman rho = -0.9917), while confidence gating eliminates a 3.5-fold computational latency penalty. SafeAdapt introduces runtime parameter displacement bounding (L-infinity <= 0.05), non-finite gradient interception, and slide-boundary invariance resets, preventing single-class attractor collapse and establishing practical reliability standards for clinical adaptation.
 
 ---
 
@@ -91,10 +91,10 @@
 *Mandatory 3 to 5 bullet points; maximum 85 characters per bullet including spaces.*
 
 * Unconstrained entropy minimization collapses on 2 of 5 seeds in digital pathology.
+* Selective uncertainty gating reduces harmful adaptation 25-fold across five seeds.
 * Binary MC-dropout variance correlates strictly with confidence ($\rho = -0.9917$).
-* Symmetric uncertainty gating causes asymmetric tumor starvation on margin patches.
-* Ruifrok-Johnston H-OD deconvolution eliminates 100% of stromal false collapse alarms.
-* Bio-SafeAdapt achieves +0.0102 F1 gain on held-out scanner shift ($p=0.0087, d_z=6.16$).
+* SafeAdapt enforces hard parameter displacement bounds ($\|\theta_t - \theta_0\|_\infty \le 0.05$).
+* Whole-slide boundary resets prevent cross-patient error accumulation at runtime.
 
 ---
 

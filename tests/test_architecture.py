@@ -35,9 +35,6 @@ def test_resnet18_rejects_two_class():
         ResNet18Classifier(pretrained=False, num_classes=2)
 
 
-import pytest
-
-@pytest.mark.skip(reason="ResNet-50 replacement architecture archived to archive/unrequested-research-extensions per charter")
 def test_resnet50_uttamed_import_and_shape():
     from src.models import ResNet50UTTAMed, build_resnet50
     from src.models.resnet50 import ResNet50UTTAMed as Alias
@@ -76,7 +73,6 @@ def test_resnet18_bn_affine_count():
     assert len(params) == 40  # 20 BN modules × (γ, β); NOT 106 (that is ResNet-50)
 
 
-@pytest.mark.skip(reason="ResNet-50 replacement architecture archived to archive/unrequested-research-extensions per charter")
 def test_resnet50_bn_affine_count():
     from src.models.resnet50 import build_resnet50
     from src.tta.bn import collect_bn_affine

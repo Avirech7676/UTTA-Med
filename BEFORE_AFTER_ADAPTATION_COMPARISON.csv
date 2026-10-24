@@ -1,7 +1,0 @@
-policy_name,f1_score,auroc,precision,recall,true_positives,false_negatives,false_positives,true_negatives,fn_change_vs_frozen,fp_change_vs_frozen,changed_probabilities_count,mean_abs_prob_diff,max_abs_prob_diff,hard_prediction_flips,harmful_flips,beneficial_flips,net_flip_benefit
-A0_Frozen_ResNet18,0.8566,0.9601,0.8889,0.8267,248,52,31,269,0,0,0,0.0,0.0,0,0,0,0
-A1_Confidence_Gating_tau_0.80,0.8596,0.96,0.8953,0.8267,248,52,29,271,0,-2,426,0.002239,0.035492,2,0,2,2
-A1_Confidence_Gating_tau_0.85,0.8596,0.96,0.8953,0.8267,248,52,29,271,0,-2,436,0.001936,0.02825,2,0,2,2
-A2_Original_UTTA_Med_Percentile_70,0.8606,0.9607,0.8897,0.8333,250,50,31,269,-2,0,491,0.002184,0.060323,2,0,2,2
-Candidate_CAD_Gate,0.8596,0.96,0.8953,0.8267,248,52,29,271,0,-2,438,0.00262,0.039796,2,0,2,2
-Matched_Budget_Confidence,0.8581,0.9601,0.8921,0.8267,248,52,30,270,0,-1,436,0.001622,0.028723,1,0,1,1

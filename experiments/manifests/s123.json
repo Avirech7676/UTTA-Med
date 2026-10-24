@@ -1,0 +1,27 @@
+{
+  "experiment_id": "camelyon17_resnet18_full_s123",
+  "dataset": "camelyon17",
+  "backbone": "resnet18",
+  "head": "1-logit BCE",
+  "dropout_p": 0.5,
+  "source_optimizer": "adam",
+  "tta_optimizer": "adam",
+  "tta_lr": 1e-05,
+  "bn_mode": "bn_freeze_stats",
+  "n_mc": 20,
+  "seed": 123,
+  "tau": 7.0986357059155125e-06,
+  "tau_rule": "val_70th_percentile_of_U",
+  "checkpoint_present": true,
+  "checkpoint": "checkpoints/camelyon17_resnet18_source_s123_BEST.pt",
+  "metrics_json": "results/metrics/camelyon17_resnet18_full_s123.json",
+  "wsi_json": "results/statistical/wsi_bootstrap/camelyon17_wsi_bootstrap_s123.json",
+  "auroc": {
+    "source": 0.9349245498121436,
+    "tent": 0.9410041060675884,
+    "eata": 0.9402577915131058,
+    "confidence": 0.942258019896604,
+    "utta": 0.9421061453846158
+  },
+  "git": "local tree; no anonymous GitHub URL"
+}

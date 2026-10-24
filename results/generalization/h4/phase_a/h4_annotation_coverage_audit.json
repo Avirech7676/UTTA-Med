@@ -1,0 +1,40 @@
+{
+  "dataset_name": "MIDOG 2021 (Medical Image De-Identification & Domain Generalization Challenge)",
+  "target_scanner_id": 3,
+  "target_scanner_name": "Aperio ScanScope CS2 (Scanner 3)",
+  "cases_evaluated_count": 50,
+  "case_id_range": [
+    101,
+    150
+  ],
+  "nominal_pixel_spacing_um": 0.252,
+  "declared_roi_type": "STANDARDIZED_10_HIGH_POWER_FIELDS_TUMOR_ROI",
+  "roi_total_area_mm2": 99.65,
+  "roi_average_case_area_mm2": 1.993,
+  "total_mitoses_in_target_domain": 688,
+  "total_hard_negatives_in_target_domain": 924,
+  "annotation_protocol_exhaustiveness": {
+    "is_exhaustively_annotated_within_roi": true,
+    "unannotated_tissue_within_roi_certified_mitosis_negative": true,
+    "is_full_whole_slide_image": false,
+    "scientific_boundary_statement": "Each case in MIDOG 2021 represents a standardized 10-HPF tumour ROI (approx 6475 x 4845 pixels, ~2.0 mm\u00b2). Within this declared ROI, expert pathologists performed exhaustive screening and consensus annotation. Therefore, unannotated viable tissue regions within this canvas are certified mitosis-negative. However, this is full-ROI spatial generalization, NOT full whole-slide (WSI) depth generalization."
+  },
+  "spatial_strata_mitosis_breakdown": {
+    "row_0_col_0": 36,
+    "row_0_col_1": 49,
+    "row_0_col_2": 34,
+    "row_0_col_3": 35,
+    "row_1_col_0": 46,
+    "row_1_col_1": 57,
+    "row_1_col_2": 39,
+    "row_1_col_3": 43,
+    "row_2_col_0": 27,
+    "row_2_col_1": 47,
+    "row_2_col_2": 68,
+    "row_2_col_3": 43,
+    "row_3_col_0": 45,
+    "row_3_col_1": 47,
+    "row_3_col_2": 34,
+    "row_3_col_3": 38
+  }
+}
