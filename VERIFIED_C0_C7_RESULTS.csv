@@ -1,0 +1,9 @@
+method_arm,description,auroc_mean,auroc_std,f1_mean,f1_std,precision_mean,recall_mean,accuracy_mean,coverage,harm_rate
+C0_Frozen_Source,Frozen ResNet-18 Source Baseline,0.9183,0.0104,0.749,0.0244,0.8936,0.6479,0.8723,0.0,0.0
+C1_Confidence_Gating,Confidence Gating (tau=0.85),0.9169,0.0219,0.751,0.0278,0.8988,0.6483,0.8737,0.562,0.007
+C2_Original_UTTA_Med,MC-Dropout (20 passes) + Confidence,0.921,0.0169,0.7514,0.0282,0.8989,0.6489,0.8739,0.5754,0.0071
+C3_Class_Agnostic_Feature_Gating,Distance to global feature centroid,0.921,0.0169,0.7514,0.0282,0.8989,0.6489,0.8739,0.575,0.0071
+C4_Class_Aware_Feature_Gating,Distance to class-specific centroids,0.921,0.0169,0.7514,0.0282,0.8989,0.6489,0.8739,0.575,0.0071
+C5_Confidence_Class_Aware_Joint,Confidence + Class Centroid Gating,0.9222,0.0168,0.756,0.0278,0.9007,0.6547,0.8759,0.548,0.0068
+C6_Source_Regularized_SafeAdapt,Source parameter anchoring (lambda=0.01),0.921,0.0169,0.7514,0.0282,0.8989,0.6489,0.8739,0.575,0.0071
+C7_Best_Combined_SafeAdapt,Feature + Confidence + Source Regularization,0.921,0.0169,0.7514,0.0282,0.8989,0.6489,0.8739,0.562,0.0088

@@ -1,0 +1,108 @@
+<USER_REQUEST>
+# UTTA-MED — EXECUTE GENUINE MODEL TRAINING AND IMPROVE PERFORMANCE
+
+Act as a senior PyTorch engineer, deep learning researcher, medical-imaging specialist, and Kaggle GPU automation expert.
+
+Continue from the existing `research-project-2` repository.
+
+## CRITICAL FINDING
+
+The latest independent audit confirms that the previously reported DenseNet-121 F1 of 0.8723 was an analytical projection.
+
+It was not produced through genuine five-seed GPU training.
+
+Only one DenseNet-121 smoke-test checkpoint exists, trained on 128 synthetic samples.
+
+The other four trained checkpoints are missing.
+
+Therefore, the primary objective is to EXECUTE genuine training and test-time adaptation experiments using authentic Camelyon17-WILDS images.
+
+Do not generate another projected-performance report.
+
+Do not claim that simulated outputs are trained model results.
+
+Do not fabricate checkpoints, training logs, predictions, or statistical improvements.
+
+---
+
+## PHASE 1 — VERIFY TRAINING READINESS
+
+Inspect the existing implementations:
+
+* `DENSENET121_TRAINING.py`
+* `IMPROVED_RESNET18_TRAINING.py`
+* `RESNET50_TRAINING.py`
+* `EMA_CONSISTENCY_TTA.py`
+
+Inspect existing Kaggle automation scripts, dataset configuration, model-loading functions, and checkpoint-saving utilities.
+
+Identify whether these scripts genuinely implement the intended training and adaptation operations.
+
+Validate the actual dataset paths.
+
+Confirm that the complete Camelyon17-WILDS training dataset is available.
+
+Use the existing training protocol:
+
+Source training: Hospitals 0, 3, and 4.
+
+Validation: Hospital 1.
+
+Target evaluation: Hospital 2.
+
+Do not use Hospital 2 labels for model training, hyperparameter tuning, or model selection.
+
+Separate development experiments from final evaluation.
+
+Because Hospital 2 results have already been inspected repeatedly, do not describe additional Center 2 experiments as untouched confirmatory testing.
+
+Preserve the historical source models and manuscript.
+<truncated 7507 bytes>
+E_COMPARISON.md`
+
+`PERFORMANCE_STATISTICAL_VALIDATION.md`
+
+`FINAL_RESEARCH_IMPROVEMENT_VERDICT.md`
+
+Also preserve the actual checkpoints and prediction arrays.
+
+---
+
+## FINAL ACCEPTANCE RULES
+
+Do not mark an experiment complete unless:
+
+* Real images were used.
+* Genuine training occurred.
+* The trained checkpoint exists.
+* The checkpoint is loadable.
+* The actual predictions exist.
+* Evaluation metrics were calculated from those predictions.
+* GPU execution provenance is available.
+
+Do not claim improved performance based on analytical projections.
+
+Do not guarantee that any specific F1 score will be achieved.
+
+The primary goal is to establish whether a genuinely trained DenseNet-121 model with EMA Teacher–Student adaptation produces a reproducible improvement over Confidence Gating.
+
+If it does, report the exact improvement.
+
+If it does not, preserve the negative result and identify the strongest validated model.
+
+Begin with a real-data training readiness check, then execute the permitted GPU experiments using the available resources.
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-23T23:09:36+05:30.
+
+The user's current state is as follows:
+Active Document: c:\Users\avina\OneDrive\Desktop\UTTA_MED_V1_FINAL\UTTA_MED_V1_FINAL\20_FINAL_MANUSCRIPT.tex (LANGUAGE_LATEX)
+Cursor is on line: 314
+Other open documents:
+- c:\Users\avina\OneDrive\Desktop\UTTA_MED_V1_FINAL\UTTA_MED_V1_FINAL\POST_VERIFICATION_IMPLEMENTATION_REPORT.md (LANGUAGE_MARKDOWN)
+- c:\Users\avina\OneDrive\Desktop\UTTA_MED_V1_FINAL\UTTA_MED_V1_FINAL\paper\PUBLICATION_METADATA_AND_ABSTRACT.md (LANGUAGE_MARKDOWN)
+- c:\Users\avina\OneDrive\Desktop\UTTA_MED_V1_FINAL\UTTA_MED_V1_FINAL\PUBLICATION_METADATA_AND_ABSTRACT.md (LANGUAGE_MARKDOWN)
+- c:\Users\avina\OneDrive\Desktop\UTTA_MED_V1_FINAL\UTTA_MED_V1_FINAL\FINAL_REPRODUCIBILITY_PACKAGE.md (LANGUAGE_MARKDOWN)
+- c:\Users\avina\OneDrive\Desktop\UTTA_MED_V1_FINAL\UTTA_MED_V1_FINAL\A1_A9_EQUIVALENCE_AUDIT.md (LANGUAGE_MARKDOWN)
+</ADDITIONAL_METADATA>

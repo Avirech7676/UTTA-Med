@@ -285,14 +285,13 @@ def main():
     else:
         # Load from official loader
         from src.data.camelyon17 import create_camelyon17_datasets
-        train_ds, val_ds, _ = create_camelyon17_datasets(
-            data_root=args.data_root,
+        source_train, id_val, ood_val, ood_test = create_camelyon17_datasets(
+            root=args.data_root,
             train_transform=train_tf,
             eval_transform=eval_tf,
-            source_centers=[0, 3, 4],
-            val_center=1,
-            target_center=2,
         )
+        train_ds = source_train
+        val_ds = ood_val
 
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, drop_last=False)
     val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False)

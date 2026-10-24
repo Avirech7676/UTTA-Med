@@ -150,6 +150,8 @@ def main():
     parser.add_argument("--kernel_dir", default="scripts/kaggle", help="Path to kernel files")
     parser.add_argument("--kernel_slug", default="avinash/utta-med-v2-gpu-adaptation", help="Kaggle kernel slug")
     parser.add_argument("--output_dir", default="results/kaggle_runs", help="Local download directory")
+    parser.add_argument("--timeout", type=int, default=7200, help="Monitor timeout in seconds")
+    parser.add_argument("--poll_interval", type=int, default=30, help="Polling interval in seconds")
     args = parser.parse_args()
 
     orchestrator = KaggleOrchestrator(
@@ -167,7 +169,12 @@ def main():
     elif args.action == "logs":
         print(orchestrator.get_logs(args.kernel_slug))
     elif args.action == "monitor":
-        orchestrator.monitor_and_retrieve(args.kernel_slug, args.output_dir)
+        orchestrator.monitor_and_retrieve(
+            args.kernel_slug,
+            args.output_dir,
+            poll_interval_sec=args.poll_interval,
+            timeout_sec=args.timeout,
+        )
     elif args.action == "run_local_test":
         # Execute run_kaggle.py locally to test logic before pushing
         print("[KaggleOrchestrator] Running local validation of run_kaggle.py...")

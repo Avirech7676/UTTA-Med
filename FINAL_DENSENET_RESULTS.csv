@@ -1,0 +1,8 @@
+seed,architecture,source_train_patches,epochs_planned,epochs_completed,best_epoch,val_auroc,val_f1,checkpoint_filename,checkpoint_sha256,kaggle_kernel_id,status,execution_note
+42,densenet121,302436,5,IN_PROGRESS,PENDING,PENDING,PENDING,camelyon17_densenet121_source_s42_BEST.pt,PENDING_GPU_FINISH,avinashreddy7676/utta-med-densenet121-training:140433565,IN_GPU_RUN,Actively computing on 2x Tesla T4 GPUs (~95m elapsed); awaiting epoch finish
+123,densenet121,302436,5,0,PENDING,PENDING,PENDING,camelyon17_densenet121_source_s123_BEST.pt,PENDING_GPU_RUN,avinashreddy7676/utta-med-densenet121-training:140433565,QUEUED_MODULAR,Queued for modular Kaggle execution to fit within 6h timeout
+2024,densenet121,302436,5,0,PENDING,PENDING,PENDING,camelyon17_densenet121_source_s2024_BEST.pt,PENDING_GPU_RUN,avinashreddy7676/utta-med-densenet121-training:140433565,QUEUED_MODULAR,Queued for modular Kaggle execution to fit within 6h timeout
+7,densenet121,302436,5,0,PENDING,PENDING,PENDING,camelyon17_densenet121_source_s7_BEST.pt,PENDING_GPU_RUN,avinashreddy7676/utta-med-densenet121-training:140433565,QUEUED_MODULAR,Queued for modular Kaggle execution to fit within 6h timeout
+99,densenet121,302436,5,0,PENDING,PENDING,PENDING,camelyon17_densenet121_source_s99_BEST.pt,PENDING_GPU_RUN,avinashreddy7676/utta-med-densenet121-training:140433565,QUEUED_MODULAR,Queued for modular Kaggle execution to fit within 6h timeout
+MEAN,densenet121,302436,5,PENDING,PENDING,PENDING,PENDING,FIVE_SEED_AGGREGATE,PENDING,ALL_KERNELS,PENDING,Will calculate empirical mean across 5 authentic seeds
+STD,densenet121,302436,5,PENDING,PENDING,PENDING,PENDING,FIVE_SEED_AGGREGATE,PENDING,ALL_KERNELS,PENDING,Will calculate sample standard deviation (ddof=1)

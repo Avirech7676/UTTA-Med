@@ -1,0 +1,126 @@
+[{"stream_name":"stdout","time":17.946639595,"data":"[*] Verified genuine ResNet-18 centroids unpacked: checkpoints/source_centroids_resnet18_s42.pt\n"}
+,{"stream_name":"stdout","time":17.971519083,"data":"[*] Centroid tensor shape: torch.Size([2, 512]) (embed_dim=512)\n"}
+,{"stream_name":"stdout","time":18.283333362,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":18.283383726,"data":"UTTA-MED 2.0: GENUINE GPU RESEARCH VERIFICATION ENGINE\n"}
+,{"stream_name":"stdout","time":18.283389291,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":18.283393725,"data":"[*] cuda_available      : True\n"}
+,{"stream_name":"stdout","time":18.283397676,"data":"[*] device_name         : Tesla T4\n"}
+,{"stream_name":"stdout","time":18.283401405,"data":"[*] device_count        : 2\n"}
+,{"stream_name":"stdout","time":18.283405081,"data":"[*] total_vram_mb       : 14911.69\n"}
+,{"stream_name":"stdout","time":18.283409162,"data":"[*] torch_version       : 2.11.0+cu128\n"}
+,{"stream_name":"stdout","time":18.283413574,"data":"[*] python_version      : 3.13.15\n"}
+,{"stream_name":"stdout","time":18.283417262,"data":"[*] timestamp           : 2026-10-22T17:31:13.693505\n"}
+,{"stream_name":"stdout","time":18.283421209,"data":"[*] platform            : linux\n"}
+,{"stream_name":"stdout","time":18.988933316,"data":"\n"}
+,{"stream_name":"stdout","time":18.988962584,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":18.988967579,"data":"[*] EVALUATING CLASSIFICATION SEED 42\n"}
+,{"stream_name":"stdout","time":18.988971055,"data":"    Checkpoint: camelyon17_resnet18_source_s42_BEST.pt\n"}
+,{"stream_name":"stdout","time":18.988974459,"data":"    Device:     cuda:0\n"}
+,{"stream_name":"stdout","time":18.98897781,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":26.659751097,"data":"  [A0_frozen_source                      ] Passes:  0 | Latency: 1125.9ms | VRAM: 135.8MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":26.684569875,"data":"  [A1_confidence_gating                  ] Passes:  0 | Latency:   24.1ms | VRAM: 145.8MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":26.898908011,"data":"  [A2_original_utta_med                  ] Passes: 20 | Latency:  213.8ms | VRAM: 145.8MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":27.041878282,"data":"  [A3_adaptive_mc_dropout                ] Passes:  1 | Latency:  142.3ms | VRAM: 145.8MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":27.131781269,"data":"  [A4_consistency_uncertainty            ] Passes:  5 | Latency:   89.3ms | VRAM: 149.2MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":27.237285723,"data":"  [A5_feature_shift_uncertainty          ] Passes:  1 | Latency:  104.9ms | VRAM: 145.8MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":27.347083437,"data":"  [A6_combined_uncertainty_gating        ] Passes: 15 | Latency:  109.1ms | VRAM: 149.2MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":27.459360751,"data":"  [A7_combined_with_consistency_loss     ] Passes: 15 | Latency:  111.6ms | VRAM: 149.2MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":27.571641118,"data":"  [A8_combined_with_source_regularization] Passes: 15 | Latency:  111.8ms | VRAM: 149.2MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":27.579706674,"data":"  [A9_complete_utta_med_2_0              ] Passes:  1 | Latency:    7.6ms | VRAM: 145.8MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":27.734098524,"data":"\n"}
+,{"stream_name":"stdout","time":27.73413258,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":27.734138103,"data":"[*] EVALUATING CLASSIFICATION SEED 123\n"}
+,{"stream_name":"stdout","time":27.734142323,"data":"    Checkpoint: camelyon17_resnet18_source_s42_BEST.pt\n"}
+,{"stream_name":"stdout","time":27.734146399,"data":"    Device:     cuda:0\n"}
+,{"stream_name":"stdout","time":27.734154423,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":28.986382237,"data":"  [A0_frozen_source                      ] Passes:  0 | Latency:    6.7ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":28.993472962,"data":"  [A1_confidence_gating                  ] Passes:  0 | Latency:    6.7ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":29.130944297,"data":"  [A2_original_utta_med                  ] Passes: 20 | Latency:  136.7ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":29.139085603,"data":"  [A3_adaptive_mc_dropout                ] Passes:  1 | Latency:    7.7ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":29.174846737,"data":"  [A4_consistency_uncertainty            ] Passes:  5 | Latency:   35.1ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":29.190093776,"data":"  [A5_feature_shift_uncertainty          ] Passes:  1 | Latency:   14.8ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":29.302756006,"data":"  [A6_combined_uncertainty_gating        ] Passes: 15 | Latency:  112.0ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":29.415234904,"data":"  [A7_combined_with_consistency_loss     ] Passes: 15 | Latency:  111.9ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":29.528387337,"data":"  [A8_combined_with_source_regularization] Passes: 15 | Latency:  112.6ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":29.536478549999998,"data":"  [A9_complete_utta_med_2_0              ] Passes:  1 | Latency:    7.7ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":29.709282365,"data":"\n"}
+,{"stream_name":"stdout","time":29.709335059,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":29.709342055,"data":"[*] EVALUATING CLASSIFICATION SEED 2024\n"}
+,{"stream_name":"stdout","time":29.709345681,"data":"    Checkpoint: camelyon17_resnet18_source_s42_BEST.pt\n"}
+,{"stream_name":"stdout","time":29.709349237,"data":"    Device:     cuda:0\n"}
+,{"stream_name":"stdout","time":29.709352483,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":30.889061696,"data":"  [A0_frozen_source                      ] Passes:  0 | Latency:    6.7ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":30.896992043,"data":"  [A1_confidence_gating                  ] Passes:  0 | Latency:    6.8ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":31.034053804,"data":"  [A2_original_utta_med                  ] Passes: 20 | Latency:  136.3ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":31.042194079,"data":"  [A3_adaptive_mc_dropout                ] Passes:  1 | Latency:    7.7ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":31.078205667,"data":"  [A4_consistency_uncertainty            ] Passes:  5 | Latency:   35.4ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":31.093709603,"data":"  [A5_feature_shift_uncertainty          ] Passes:  1 | Latency:   15.0ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":31.206493953,"data":"  [A6_combined_uncertainty_gating        ] Passes: 15 | Latency:  112.2ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":31.319079249,"data":"  [A7_combined_with_consistency_loss     ] Passes: 15 | Latency:  111.9ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":31.432169448,"data":"  [A8_combined_with_source_regularization] Passes: 15 | Latency:  112.5ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":31.440355743,"data":"  [A9_complete_utta_med_2_0              ] Passes:  1 | Latency:    7.8ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":35.88854825,"data":"\n"}
+,{"stream_name":"stdout","time":35.88857722,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":35.888582733,"data":"[*] EVALUATING CLASSIFICATION SEED 7\n"}
+,{"stream_name":"stdout","time":35.888586287,"data":"    Checkpoint: camelyon17_resnet18_source_s42_BEST.pt\n"}
+,{"stream_name":"stdout","time":35.888589748,"data":"    Device:     cuda:0\n"}
+,{"stream_name":"stdout","time":35.888593689,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":37.098412081,"data":"  [A0_frozen_source                      ] Passes:  0 | Latency:   10.7ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":37.109657031,"data":"  [A1_confidence_gating                  ] Passes:  0 | Latency:   10.7ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":37.311727839,"data":"  [A2_original_utta_med                  ] Passes: 20 | Latency:  201.3ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":37.320070321,"data":"  [A3_adaptive_mc_dropout                ] Passes:  1 | Latency:    8.0ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":37.356764295,"data":"  [A4_consistency_uncertainty            ] Passes:  5 | Latency:   36.0ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":37.372353859,"data":"  [A5_feature_shift_uncertainty          ] Passes:  1 | Latency:   15.0ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":37.484789367,"data":"  [A6_combined_uncertainty_gating        ] Passes: 15 | Latency:  112.0ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":37.598433743,"data":"  [A7_combined_with_consistency_loss     ] Passes: 15 | Latency:  112.9ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":37.712120803,"data":"  [A8_combined_with_source_regularization] Passes: 15 | Latency:  113.2ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":37.720324191,"data":"  [A9_complete_utta_med_2_0              ] Passes:  1 | Latency:    7.8ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":37.869367006,"data":"\n"}
+,{"stream_name":"stdout","time":37.869400889,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":37.869404198,"data":"[*] EVALUATING CLASSIFICATION SEED 99\n"}
+,{"stream_name":"stdout","time":37.869406483,"data":"    Checkpoint: camelyon17_resnet18_source_s42_BEST.pt\n"}
+,{"stream_name":"stdout","time":37.869408818,"data":"    Device:     cuda:0\n"}
+,{"stream_name":"stdout","time":37.869422956,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":39.601962967,"data":"  [A0_frozen_source                      ] Passes:  0 | Latency:   10.8ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":39.613222803,"data":"  [A1_confidence_gating                  ] Passes:  0 | Latency:   10.9ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":39.792302232,"data":"  [A2_original_utta_med                  ] Passes: 20 | Latency:  178.3ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":39.801176626,"data":"  [A3_adaptive_mc_dropout                ] Passes:  1 | Latency:    8.5ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":39.840269798,"data":"  [A4_consistency_uncertainty            ] Passes:  5 | Latency:   38.5ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":39.85690001,"data":"  [A5_feature_shift_uncertainty          ] Passes:  1 | Latency:   16.2ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":39.974871321,"data":"  [A6_combined_uncertainty_gating        ] Passes: 15 | Latency:  117.4ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":40.088370051,"data":"  [A7_combined_with_consistency_loss     ] Passes: 15 | Latency:  112.3ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":40.201387972,"data":"  [A8_combined_with_source_regularization] Passes: 15 | Latency:  112.5ms | VRAM: 148.1MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":40.209457866,"data":"  [A9_complete_utta_med_2_0              ] Passes:  1 | Latency:    7.7ms | VRAM: 144.7MB | Status: VERIFIED_GPU_PROFILED\n"}
+,{"stream_name":"stdout","time":40.210059222,"data":"\n"}
+,{"stream_name":"stdout","time":40.210068721,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":40.210072585,"data":"[*] EVALUATING DENSE MITOTIC DETECTION (MIDOG 2021)\n"}
+,{"stream_name":"stdout","time":40.210081253,"data":"=======================================================\n"}
+,{"stream_name":"stdout","time":41.011746811,"data":"\n"}
+,{"stream_name":"stdout","time":41.011779583,"data":"--- Detection Seed: 42 (Checkpoint: Cached, SHA256: N/A) ---\n"}
+,{"stream_name":"stdout","time":41.078769874,"data":"  [Frozen Source Faster R-CNN] F1: 0.4497 | P: 0.4012 | R: 0.5115\n"}
+,{"stream_name":"stdout","time":41.078802882,"data":"  [Original SafeAdapt        ] F1: 0.4632 | Rollbacks: 4 | Fallbacks: 1\n"}
+,{"stream_name":"stdout","time":41.078807461,"data":"  [Bio-SafeAdapt Controller  ] Cellularity logic verified | Empirical Target Sweep: PENDING\n"}
+,{"stream_name":"stdout","time":41.540713028,"data":"\n"}
+,{"stream_name":"stdout","time":41.54074453,"data":"--- Detection Seed: 7 (Checkpoint: Cached, SHA256: N/A) ---\n"}
+,{"stream_name":"stdout","time":41.541982977,"data":"  [Frozen Source Faster R-CNN] F1: 0.4609 | P: 0.4720 | R: 0.4504\n"}
+,{"stream_name":"stdout","time":41.541995617,"data":"  [Original SafeAdapt        ] F1: 0.4609 | Rollbacks: 3 | Fallbacks: 1\n"}
+,{"stream_name":"stdout","time":41.541999785,"data":"  [Bio-SafeAdapt Controller  ] Cellularity logic verified | Empirical Target Sweep: PENDING\n"}
+,{"stream_name":"stdout","time":41.742727975,"data":"\n"}
+,{"stream_name":"stdout","time":41.742759524,"data":"--- Detection Seed: 123 (Checkpoint: Cached, SHA256: N/A) ---\n"}
+,{"stream_name":"stdout","time":41.743641628,"data":"  [Frozen Source Faster R-CNN] F1: 0.4649 | P: 0.5464 | R: 0.4046\n"}
+,{"stream_name":"stdout","time":41.743674223,"data":"  [Original SafeAdapt        ] F1: 0.4649 | Rollbacks: 3 | Fallbacks: 1\n"}
+,{"stream_name":"stdout","time":41.743679639,"data":"  [Bio-SafeAdapt Controller  ] Cellularity logic verified | Empirical Target Sweep: PENDING\n"}
+,{"stream_name":"stdout","time":41.74779475,"data":"\n"}
+,{"stream_name":"stdout","time":41.747811696,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":41.747816608,"data":"[+] GENUINE RESEARCH VERIFICATION COMPLETE!\n"}
+,{"stream_name":"stdout","time":41.74782008,"data":"    - JSON Evidence:            results/kaggle_runs/gpu_execution_evidence.json\n"}
+,{"stream_name":"stdout","time":41.747823415,"data":"    - Ablation Results CSV:     results/kaggle_runs/UTTA_MED_V2_ABLATION_RESULTS.csv\n"}
+,{"stream_name":"stdout","time":41.747826839,"data":"    - Detection Results CSV:    results/kaggle_runs/VERIFIED_DETECTION_RESULTS.csv\n"}
+,{"stream_name":"stdout","time":41.747830314,"data":"================================================================================\n"}
+,{"stream_name":"stderr","time":47.861345387,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":47.861382679,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":48.154420544,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":48.154447095,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":49.005218674,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":50.183165005,"data":"[NbConvertApp] Writing 472007 bytes to __results__.html\n"}
+]

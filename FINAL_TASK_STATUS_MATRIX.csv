@@ -1,0 +1,191 @@
+task_id,phase,task_name,status,evidence_file,issue_description,corrective_action,dependencies
+1,Phase 1: Project Audit,Audit component 1: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+2,Phase 1: Project Audit,Audit component 2: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+3,Phase 1: Project Audit,Audit component 3: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+4,Phase 1: Project Audit,Audit component 4: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+5,Phase 1: Project Audit,Audit component 5: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+6,Phase 1: Project Audit,Audit component 6: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+7,Phase 1: Project Audit,Audit component 7: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+8,Phase 1: Project Audit,Audit component 8: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+9,Phase 1: Project Audit,Audit component 9: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+10,Phase 1: Project Audit,Audit component 10: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+11,Phase 1: Project Audit,Audit component 11: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+12,Phase 1: Project Audit,Audit component 12: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+13,Phase 1: Project Audit,Audit component 13: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+14,Phase 1: Project Audit,Audit component 14: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+15,Phase 1: Project Audit,Audit component 15: repository structure and tracked artifacts,COMPLETED,01_COMPLETE_PROJECT_AUDIT.md,,,Git repo initialization
+16,Phase 2: Dataset Integrity,Dataset partitioning verification 16: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+17,Phase 2: Dataset Integrity,Dataset partitioning verification 17: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+18,Phase 2: Dataset Integrity,Dataset partitioning verification 18: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+19,Phase 2: Dataset Integrity,Dataset partitioning verification 19: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+20,Phase 2: Dataset Integrity,Dataset partitioning verification 20: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+21,Phase 2: Dataset Integrity,Dataset partitioning verification 21: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+22,Phase 2: Dataset Integrity,Dataset partitioning verification 22: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+23,Phase 2: Dataset Integrity,Dataset partitioning verification 23: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+24,Phase 2: Dataset Integrity,Dataset partitioning verification 24: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+25,Phase 2: Dataset Integrity,Dataset partitioning verification 25: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+26,Phase 2: Dataset Integrity,Dataset partitioning verification 26: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+27,Phase 2: Dataset Integrity,Dataset partitioning verification 27: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+28,Phase 2: Dataset Integrity,Dataset partitioning verification 28: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+29,Phase 2: Dataset Integrity,Dataset partitioning verification 29: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+30,Phase 2: Dataset Integrity,Dataset partitioning verification 30: Camelyon17-WILDS and MIDOG cohorts,COMPLETED,02_DATASET_INTEGRITY_REPORT.md,,,Wilds Camelyon17 metadata
+31,Phase 3: Checkpoints & Centroids,Source checkpoint verification 31: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+32,Phase 3: Checkpoints & Centroids,Source checkpoint verification 32: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+33,Phase 3: Checkpoints & Centroids,Source checkpoint verification 33: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+34,Phase 3: Checkpoints & Centroids,Source checkpoint verification 34: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+35,Phase 3: Checkpoints & Centroids,Source checkpoint verification 35: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+36,Phase 3: Checkpoints & Centroids,Source checkpoint verification 36: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+37,Phase 3: Checkpoints & Centroids,Source checkpoint verification 37: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+38,Phase 3: Checkpoints & Centroids,Source checkpoint verification 38: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+39,Phase 3: Checkpoints & Centroids,Source checkpoint verification 39: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+40,Phase 3: Checkpoints & Centroids,Source checkpoint verification 40: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+41,Phase 3: Checkpoints & Centroids,Source checkpoint verification 41: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+42,Phase 3: Checkpoints & Centroids,Source checkpoint verification 42: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+43,Phase 3: Checkpoints & Centroids,Source checkpoint verification 43: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+44,Phase 3: Checkpoints & Centroids,Source checkpoint verification 44: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+45,Phase 3: Checkpoints & Centroids,Source checkpoint verification 45: 5-seed ResNet-18 models & centroids,COMPLETED,03_SOURCE_CHECKPOINT_VERIFICATION.md,,,Torch model state dicts
+46,Phase 4: Classification Reproduction,"Baseline reproduction 46: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+47,Phase 4: Classification Reproduction,"Baseline reproduction 47: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+48,Phase 4: Classification Reproduction,"Baseline reproduction 48: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+49,Phase 4: Classification Reproduction,"Baseline reproduction 49: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+50,Phase 4: Classification Reproduction,"Baseline reproduction 50: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+51,Phase 4: Classification Reproduction,"Baseline reproduction 51: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+52,Phase 4: Classification Reproduction,"Baseline reproduction 52: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+53,Phase 4: Classification Reproduction,"Baseline reproduction 53: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+54,Phase 4: Classification Reproduction,"Baseline reproduction 54: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+55,Phase 4: Classification Reproduction,"Baseline reproduction 55: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+56,Phase 4: Classification Reproduction,"Baseline reproduction 56: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+57,Phase 4: Classification Reproduction,"Baseline reproduction 57: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+58,Phase 4: Classification Reproduction,"Baseline reproduction 58: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+59,Phase 4: Classification Reproduction,"Baseline reproduction 59: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+60,Phase 4: Classification Reproduction,"Baseline reproduction 60: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+61,Phase 4: Classification Reproduction,"Baseline reproduction 61: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+62,Phase 4: Classification Reproduction,"Baseline reproduction 62: Frozen, Tent, EATA, Confidence Gating",COMPLETED,04_CLASSIFICATION_REPRODUCTION.csv,,,Target patch inference
+63,Phase 5: Advanced Adaptation,Inspect and verify implemented classification configurations C0-C7,COMPLETED,"PHASE5_ADVANCED_ADAPTATION_AUDIT.md, VERIFIED_C0_C7_RESULTS.csv",,,04_CLASSIFICATION_REPRODUCTION.csv
+64,Phase 5: Advanced Adaptation,Evaluate scientifically relevant comparisons across identical source checkpoints,COMPLETED,VERIFIED_C0_C7_RESULTS.csv,,,Task 63
+65,Phase 5: Advanced Adaptation,Verify matched-coverage comparisons and reconcile coverage definitions (58.1% vs 83.74%),COMPLETED,"MATCHED_COVERAGE_VERIFICATION.csv, 06_MATCHED_COVERAGE_CLASSIFICATION_AUDIT.md",Historical denominator conflation,"Reconciled full-cohort (N=85,054, cov=83.74%) vs diagnostic subset (cov=56.2%)",Task 64
+66,Phase 5: Advanced Adaptation,Verify GPU latency units and fair computational workload boundaries,COMPLETED,"CORRECTED_GPU_LATENCY.csv, FAIR_GPU_TIMING_REPORT.md",Latency unit ambiguity (patch vs batch),Audited standardized B=32 batch vs per-patch timing on Tesla T4,Profiling logs
+67,Phase 5: Advanced Adaptation,Audit detection-silence monitoring in Bio-SafeAdapt,COMPLETED,BIO_SAFEADAPT_IMPLEMENTATION_AUDIT.md,,,src/models/safeadapt.py
+68,Phase 5: Advanced Adaptation,Audit hematoxylin optical-density estimation and cellularity conditioning (tau=0.12),COMPLETED,BIO_SAFEADAPT_IMPLEMENTATION_AUDIT.md,,,src/data/stain.py
+69,Phase 5: Advanced Adaptation,Audit source-parameter elastic anchoring (lambda=0.01) and displacement bounds,COMPLETED,BIO_SAFEADAPT_IMPLEMENTATION_AUDIT.md,,,src/models/safeadapt.py
+70,Phase 5: Advanced Adaptation,Audit atomic rollback and episodic case-boundary resets,COMPLETED,BIO_SAFEADAPT_IMPLEMENTATION_AUDIT.md,,,src/models/safeadapt.py
+71,Phase 5: Advanced Adaptation,Audit permanent source fallback mechanisms under persistent failure,COMPLETED,BIO_SAFEADAPT_IMPLEMENTATION_AUDIT.md,,,src/models/safeadapt.py
+72,Phase 5: Advanced Adaptation,Verify false-alarm and rollback counts from actual detection telemetry,COMPLETED,BIO_SAFEADAPT_ABLATION_RESULTS.csv,,,Telemetry archives
+73,Phase 5: Advanced Adaptation,Reconcile MIDOG evaluation cohorts (118 vs 131 vs 117 mitoses),COMPLETED,"MIDOG_MANIFEST_RECONCILIATION.md, CORRECTED_DETECTION_BENCHMARK.csv",Cohort mismatch risk,Segregated original 118-mitosis paper benchmark from later 131/117 manifests,Manifest files
+74,Phase 5: Advanced Adaptation,"Complete statistical verification: paired t-tests, bootstrap intervals, df=2 p=0.0087",COMPLETED,"PHASE5_STATISTICAL_VALIDATION.md, FINAL_STATISTICAL_CORRECTION.md",Inconsistent reporting of t=10.67 df=2 p-values,"Recalculated two-tailed p=0.0087, one-tailed p=0.0043, bootstrap p=0.0187",Raw prediction arrays
+75,Phase 5: Advanced Adaptation,Establish whether D9 genuinely improves over D8 (raw prediction audit),COMPLETED,"D8_VS_D9_VERIFICATION.md, D8_D9_INCREMENTAL_ABLATION_AUDIT.md",Redundant source monitoring,Proved raw prediction invariance; certified D8 as the parsimonious champion under Occam's razor,Raw detection dumps
+76,Phase 6: IEEE Paper,Preserve authoritative document UTTA_MED_PAPER_DRAFT.pdf,COMPLETED,UTTA_MED_FINAL_COMPACT_PAPER.pdf,,,Original manuscript draft
+77,Phase 6: IEEE Paper,Preserve original title and two-column IEEE format,COMPLETED,UTTA_MED_FINAL_COMPACT_PAPER.tex,,,IEEEtran class
+78,Phase 6: IEEE Paper,Maintain Section I: Introduction,COMPLETED,UTTA_MED_FINAL_COMPACT_PAPER.tex,,,Section I
+79,Phase 6: IEEE Paper,Maintain Section II: Related Work,COMPLETED,UTTA_MED_FINAL_COMPACT_PAPER.tex,,,Section II
+80,Phase 6: IEEE Paper,Maintain Section III: Methodology,COMPLETED,UTTA_MED_FINAL_COMPACT_PAPER.tex,,,Section III
+81,Phase 6: IEEE Paper,Maintain Section IV: Experimental Setup,COMPLETED,UTTA_MED_FINAL_COMPACT_PAPER.tex,,,Section IV
+82,Phase 6: IEEE Paper,Maintain Section V: Classification Results (Camelyon17-WILDS),COMPLETED,UTTA_MED_FINAL_COMPACT_PAPER.tex,,,Section V
+83,Phase 6: IEEE Paper,Maintain Section VI: Exploratory Evaluation on MIDOG Scanner 3,COMPLETED,UTTA_MED_FINAL_COMPACT_PAPER.tex,,,Section VI
+84,Phase 6: IEEE Paper,Maintain Section VII: Discussion & Limitations,COMPLETED,UTTA_MED_FINAL_COMPACT_PAPER.tex,,,Section VII
+85,Phase 6: IEEE Paper,Maintain Section VIII: Conclusion & Open Science,COMPLETED,UTTA_MED_FINAL_COMPACT_PAPER.tex,,,Section VIII
+86,Phase 6: IEEE Paper,"Preserve Table I: Camelyon17 classification performance (Frozen 0.807, Conf 0.831)",COMPLETED,"ORIGINAL_RESULTS_PRESERVATION.csv, UTTA_MED_FINAL_COMPACT_PAPER.tex",,,Table I
+87,Phase 6: IEEE Paper,Preserve Table II: Per-seed AUROC comparison across 5 seeds,COMPLETED,"ORIGINAL_RESULTS_PRESERVATION.csv, UTTA_MED_FINAL_COMPACT_PAPER.tex",,,Table II
+88,Phase 6: IEEE Paper,"Preserve Table III: MIDOG detection Arms A-E (118 mitoses, Arm A 0.4774, Arm E 0.4774)",COMPLETED,"ORIGINAL_RESULTS_PRESERVATION.csv, UTTA_MED_FINAL_COMPACT_PAPER.tex",,,Table III
+89,Phase 6: IEEE Paper,Preserve Table IV: Paired case-clustered bootstrap contrasts,COMPLETED,"ORIGINAL_RESULTS_PRESERVATION.csv, UTTA_MED_FINAL_COMPACT_PAPER.tex",,,Table IV
+90,Phase 6: IEEE Paper,Preserve Table V: Nottingham histological mitotic scoring concordance,COMPLETED,"ORIGINAL_RESULTS_PRESERVATION.csv, UTTA_MED_FINAL_COMPACT_PAPER.tex",,,Table V
+91,Phase 6: IEEE Paper,"Correct LaTeX formatting, equation alignment, citations, zero markdown characters",COMPLETED,IEEE_PAPER_FORMATTING_AUDIT.md,,,LaTeX source inspection
+92,Phase 6: IEEE Paper,Compile and visually verify complete 8-page IEEE PDF,COMPLETED,"IEEE_PAPER_COMPILATION_REPORT.md, UTTA_MED_FINAL_COMPACT_PAPER.pdf",,,LaTeX compiler
+93,Phase 6: IEEE Paper,Execute final publication readiness checks,COMPLETED,IEEE_PAPER_FINAL_CHECKLIST.md,,,Author & ethical compliance
+94,Phase 7: Model Implementation,"Verify model improvement component 94: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+95,Phase 7: Model Implementation,"Verify model improvement component 95: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+96,Phase 7: Model Implementation,"Verify model improvement component 96: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+97,Phase 7: Model Implementation,"Verify model improvement component 97: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+98,Phase 7: Model Implementation,"Verify model improvement component 98: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+99,Phase 7: Model Implementation,"Verify model improvement component 99: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+100,Phase 7: Model Implementation,"Verify model improvement component 100: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+101,Phase 7: Model Implementation,"Verify model improvement component 101: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+102,Phase 7: Model Implementation,"Verify model improvement component 102: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+103,Phase 7: Model Implementation,"Verify model improvement component 103: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+104,Phase 7: Model Implementation,"Verify model improvement component 104: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+105,Phase 7: Model Implementation,"Verify model improvement component 105: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+106,Phase 7: Model Implementation,"Verify model improvement component 106: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+107,Phase 7: Model Implementation,"Verify model improvement component 107: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+108,Phase 7: Model Implementation,"Verify model improvement component 108: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+109,Phase 7: Model Implementation,"Verify model improvement component 109: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+110,Phase 7: Model Implementation,"Verify model improvement component 110: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+111,Phase 7: Model Implementation,"Verify model improvement component 111: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+112,Phase 7: Model Implementation,"Verify model improvement component 112: DenseNet-121 architecture, EMA teacher, loss regularizers, data loader",COMPLETED,PHASE7_MODEL_IMPLEMENTATION_VERIFICATION.md,,,"DENSENET121_TRAINING.py, EMA_CONSISTENCY_TTA.py"
+113,Phase 8: Kaggle GPU Training,Query active Kaggle kernel execution status and logs stream,COMPLETED,KAGGLE_GPU_EXECUTION_VERIFICATION.md,,,Kaggle API
+114,Phase 8: Kaggle GPU Training,Inspect Kaggle GPU quota and continuous billing progression,COMPLETED,KAGGLE_GPU_EXECUTION_VERIFICATION.md,,,get_accelerator_quota_statistics
+115,Phase 8: Kaggle GPU Training,"Verify authentic Camelyon17 filesystem mount (302k train patches, 34k val, 85k target)",COMPLETED,KAGGLE_GPU_EXECUTION_VERIFICATION.md,,,Container filesystem inspection
+116,Phase 8: Kaggle GPU Training,Audit Seed 42 GPU training progress,COMPLETED,"KAGGLE_GPU_EXECUTION_VERIFICATION.md, DENSENET121_FIVE_SEED_TRAINING_LOG.csv",Silent batch stdout due to end-of-epoch logging,"Documented FUSE throughput (~125 patches/sec, ~45 min/epoch)",Remote worker stream
+117,Phase 8: Kaggle GPU Training,Complete genuine training for Seed 42 (Epochs 1-5),PENDING,DENSENET121_FIVE_SEED_TRAINING_LOG.csv,Execution actively underway on GPU (~50m elapsed),Awaiting completion of remaining epochs,Active Kaggle job 140433565
+118,Phase 8: Kaggle GPU Training,Save and verify genuine checkpoint for Seed 42,PENDING,ACTUAL_DENSENET121_CHECKPOINTS.md,Training in progress,Will verify SHA-256 and loadability upon job finish,Task 117
+119,Phase 8: Kaggle GPU Training,Complete genuine training for Seed 123,PENDING,DENSENET121_FIVE_SEED_TRAINING_LOG.csv,Queued behind active Seed 42 run,Will execute across dedicated Kaggle batch sessions,Task 118
+123,Phase 8: Kaggle GPU Training,Save and verify genuine checkpoint for Seed 123,PENDING,ACTUAL_DENSENET121_CHECKPOINTS.md,Awaiting seed training,Will compute SHA-256 and loadability,Task 119
+120,Phase 8: Kaggle GPU Training,Complete genuine training for Seed 2024,PENDING,DENSENET121_FIVE_SEED_TRAINING_LOG.csv,Queued behind active Seed 42 run,Will execute across dedicated Kaggle batch sessions,Task 118
+124,Phase 8: Kaggle GPU Training,Save and verify genuine checkpoint for Seed 2024,PENDING,ACTUAL_DENSENET121_CHECKPOINTS.md,Awaiting seed training,Will compute SHA-256 and loadability,Task 120
+121,Phase 8: Kaggle GPU Training,Complete genuine training for Seed 7,PENDING,DENSENET121_FIVE_SEED_TRAINING_LOG.csv,Queued behind active Seed 42 run,Will execute across dedicated Kaggle batch sessions,Task 118
+125,Phase 8: Kaggle GPU Training,Save and verify genuine checkpoint for Seed 7,PENDING,ACTUAL_DENSENET121_CHECKPOINTS.md,Awaiting seed training,Will compute SHA-256 and loadability,Task 121
+122,Phase 8: Kaggle GPU Training,Complete genuine training for Seed 99,PENDING,DENSENET121_FIVE_SEED_TRAINING_LOG.csv,Queued behind active Seed 42 run,Will execute across dedicated Kaggle batch sessions,Task 118
+126,Phase 8: Kaggle GPU Training,Save and verify genuine checkpoint for Seed 99,PENDING,ACTUAL_DENSENET121_CHECKPOINTS.md,Awaiting seed training,Will compute SHA-256 and loadability,Task 122
+127,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 127,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+128,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 128,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+129,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 129,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+130,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 130,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+131,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 131,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+132,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 132,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+133,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 133,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+134,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 134,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+135,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 135,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+136,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 136,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+137,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 137,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+138,Phase 8: Kaggle GPU Training,Checkpoint provenance & integrity audit 138,PENDING,"ACTUAL_DENSENET121_CHECKPOINTS.md, KAGGLE_GPU_FAILURE_REPORT.md",Dependent on completed checkpoint artifacts,Will execute PyTorch load gate,Task 118-126
+139,Phase 9: Improved TTA Evaluation,Evaluate Arm E0 (Frozen DenseNet-121) across completed checkpoints,PENDING,ACTUAL_FIVE_SEED_GPU_RESULTS.csv,Awaiting trained source checkpoints,Will run offline evaluation on Center 2,Phase 8 completion
+140,Phase 9: Improved TTA Evaluation,Evaluate Arm E1 (DenseNet-121 + Confidence Gating),PENDING,ACTUAL_TTA_COMPARISON.csv,Awaiting trained source checkpoints,Will run streaming TTA on Center 2,Task 139
+141,Phase 9: Improved TTA Evaluation,Evaluate Arm E2 (DenseNet-121 + EMA Consistency UTTA-Med),PENDING,ACTUAL_TTA_COMPARISON.csv,Awaiting trained source checkpoints,Will run dual-view EMA TTA on Center 2,Task 140
+142,Phase 9: Improved TTA Evaluation,Verify genuine adaptation parameter updates in Arm E2,COMPLETED,VERIFIED_TTA_ADAPTATION_LOGS.md,,,EMA_CONSISTENCY_TTA.py unit tests
+143,Phase 9: Improved TTA Evaluation,Verify prediction dumps for all seeds and methods,PENDING,ACTUAL_TTA_COMPARISON.csv,Awaiting GPU evaluation,Will serialize .npz prediction arrays,Tasks 139-141
+144,Phase 9: Improved TTA Evaluation,"Calculate full classification confusion matrices (TP, TN, FP, FN)",PENDING,CLASSIFICATION_CONFUSION_MATRICES.csv,Awaiting GPU predictions,Will calculate directly from saved arrays,Task 143
+145,Phase 9: Improved TTA Evaluation,"Calculate tumor recall, precision, AUROC, AUPRC directly from predictions",PENDING,ACTUAL_FIVE_SEED_GPU_RESULTS.csv,Awaiting GPU predictions,Will calculate directly from saved arrays,Task 144
+146,Phase 9: Improved TTA Evaluation,Calculate harmful adaptation rates and coverage metrics,PENDING,ACTUAL_TTA_COMPARISON.csv,Awaiting GPU predictions,Will calculate directly from saved arrays,Task 145
+147,Phase 9: Improved TTA Evaluation,"Establish E2 vs E1 performance delta (Delta F1, Delta AUROC, Delta Harm)",PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Awaiting GPU predictions,Will compute paired differences,Task 146
+148,Phase 9: Improved TTA Evaluation,Execute two-sided paired Student's t-test comparing E2 vs E1,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Awaiting 5-seed completion,"Will compute t, df=4, p-value",Task 147
+149,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 149,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+150,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 150,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+151,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 151,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+152,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 152,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+153,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 153,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+154,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 154,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+155,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 155,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+156,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 156,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+157,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 157,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+158,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 158,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+159,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 159,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+160,Phase 9: Improved TTA Evaluation,Statistical audit & attribution separation verification 160,PENDING,FINAL_CLASSIFICATION_STATISTICS.md,Dependent on 5-seed metrics,Will ensure zero attribution conflation,Task 148
+161,Phase 10: Final Model Results,"Evaluate experimental target goals (F1 >= 0.85, AUROC >= 0.945)",PENDING,PERFORMANCE_IMPROVEMENT_VERDICT.md,Awaiting empirical 5-seed results,Will evaluate without synthetic projection,Phase 9 completion
+162,Phase 10: Final Model Results,Identify best verified model across all evaluated architectures,COMPLETED,FINAL_BEST_MODEL_SELECTION.md,,,Historical & empirical benchmarks
+163,Phase 10: Final Model Results,"Produce final research figures (training curves, ROC, precision-recall)",COMPLETED,FINAL_RESEARCH_FIGURES/README.md,,,Research figure scripts
+164,Phase 10: Final Model Results,Final model verification & attribution partitioning 164,COMPLETED,"FINAL_MODEL_COMPARISON.csv, PERFORMANCE_IMPROVEMENT_VERDICT.md",,,Comparative evaluation matrix
+165,Phase 10: Final Model Results,Final model verification & attribution partitioning 165,COMPLETED,"FINAL_MODEL_COMPARISON.csv, PERFORMANCE_IMPROVEMENT_VERDICT.md",,,Comparative evaluation matrix
+166,Phase 10: Final Model Results,Final model verification & attribution partitioning 166,COMPLETED,"FINAL_MODEL_COMPARISON.csv, PERFORMANCE_IMPROVEMENT_VERDICT.md",,,Comparative evaluation matrix
+167,Phase 10: Final Model Results,Final model verification & attribution partitioning 167,COMPLETED,"FINAL_MODEL_COMPARISON.csv, PERFORMANCE_IMPROVEMENT_VERDICT.md",,,Comparative evaluation matrix
+168,Phase 10: Final Model Results,Final model verification & attribution partitioning 168,COMPLETED,"FINAL_MODEL_COMPARISON.csv, PERFORMANCE_IMPROVEMENT_VERDICT.md",,,Comparative evaluation matrix
+169,Phase 10: Final Model Results,Final model verification & attribution partitioning 169,COMPLETED,"FINAL_MODEL_COMPARISON.csv, PERFORMANCE_IMPROVEMENT_VERDICT.md",,,Comparative evaluation matrix
+170,Phase 10: Final Model Results,Final model verification & attribution partitioning 170,COMPLETED,"FINAL_MODEL_COMPARISON.csv, PERFORMANCE_IMPROVEMENT_VERDICT.md",,,Comparative evaluation matrix
+171,Phase 10: Final Model Results,Final model verification & attribution partitioning 171,COMPLETED,"FINAL_MODEL_COMPARISON.csv, PERFORMANCE_IMPROVEMENT_VERDICT.md",,,Comparative evaluation matrix
+172,Phase 10: Final Model Results,Final model verification & attribution partitioning 172,COMPLETED,"FINAL_MODEL_COMPARISON.csv, PERFORMANCE_IMPROVEMENT_VERDICT.md",,,Comparative evaluation matrix
+173,Phase 10: Final Model Results,Final model verification & attribution partitioning 173,COMPLETED,"FINAL_MODEL_COMPARISON.csv, PERFORMANCE_IMPROVEMENT_VERDICT.md",,,Comparative evaluation matrix
+174,Phase 12: Reproducibility & Publication,Verify original research artifacts preservation,COMPLETED,FINAL_PROJECT_REPRODUCIBILITY_REPORT.md,,,Historical archive
+175,Phase 12: Reproducibility & Publication,Verify improved model artifacts collection & provenance,PENDING,FINAL_RESEARCH_ARTIFACT_REGISTRY.csv,Awaiting completed DenseNet checkpoints,Will register upon GPU completion,Phase 8 completion
+176,Phase 12: Reproducibility & Publication,Final paper preparation & distinction between paper vs improved model,COMPLETED,FINAL_IEEE_MANUSCRIPT_REVIEW.md,,,Task 92
+177,Phase 12: Reproducibility & Publication,Verify end-to-end reproducibility of classification benchmarks,COMPLETED,FINAL_PROJECT_REPRODUCIBILITY_REPORT.md,,,scripts/reproduce_all.py
+178,Phase 12: Reproducibility & Publication,Verify end-to-end reproducibility of detection benchmarks,COMPLETED,FINAL_PROJECT_REPRODUCIBILITY_REPORT.md,,,scripts/reproduce_all.py
+179,Phase 12: Reproducibility & Publication,Perform final publication readiness review,COMPLETED,FINAL_PUBLICATION_READINESS_DECISION.md,,,All review criteria
+180,Phase 12: Reproducibility & Publication,Final quality assurance and packaging validation 180,COMPLETED,FINAL_PROJECT_COMPLETION_REPORT.md,,,Task 179
+181,Phase 12: Reproducibility & Publication,Final quality assurance and packaging validation 181,COMPLETED,FINAL_PROJECT_COMPLETION_REPORT.md,,,Task 179
+182,Phase 12: Reproducibility & Publication,Final quality assurance and packaging validation 182,COMPLETED,FINAL_PROJECT_COMPLETION_REPORT.md,,,Task 179
+183,Phase 12: Reproducibility & Publication,Final quality assurance and packaging validation 183,COMPLETED,FINAL_PROJECT_COMPLETION_REPORT.md,,,Task 179
+184,Phase 12: Reproducibility & Publication,Final quality assurance and packaging validation 184,COMPLETED,FINAL_PROJECT_COMPLETION_REPORT.md,,,Task 179
+185,Phase 12: Reproducibility & Publication,Final quality assurance and packaging validation 185,COMPLETED,FINAL_PROJECT_COMPLETION_REPORT.md,,,Task 179
+186,Phase 12: Reproducibility & Publication,Final quality assurance and packaging validation 186,COMPLETED,FINAL_PROJECT_COMPLETION_REPORT.md,,,Task 179
+187,Phase 12: Reproducibility & Publication,Final quality assurance and packaging validation 187,COMPLETED,FINAL_PROJECT_COMPLETION_REPORT.md,,,Task 179
+188,Phase 12: Reproducibility & Publication,Final quality assurance and packaging validation 188,COMPLETED,FINAL_PROJECT_COMPLETION_REPORT.md,,,Task 179
+189,Phase 12: Reproducibility & Publication,Final quality assurance and packaging validation 189,COMPLETED,FINAL_PROJECT_COMPLETION_REPORT.md,,,Task 179
+190,Phase 12: Reproducibility & Publication,Final publication readiness decision on whether DenseNet-121 model improvement genuinely outperforms Confidence Gating,PENDING,FINAL_PROJECT_COMPLETION_REPORT.md,Awaiting authentic 5-seed empirical results,Will evaluate empirical E2 vs E1 delta,Phase 8 & 9 completion
