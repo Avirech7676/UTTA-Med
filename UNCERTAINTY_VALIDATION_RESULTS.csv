@@ -1,0 +1,7 @@
+experiment_id,method_concept,overall_coverage,selected_patch_accuracy,harm_error_rate_in_selected,tumor_patch_coverage,normal_patch_coverage,coverage_asymmetry_ratio,val_f1_score,val_tumor_recall,val_precision,val_auroc,batch_latency_ms,throughput_patch_per_s,validation_decision
+A1_Conf_Gating_tau_0.80,Confidence Gating Baseline,0.915,0.8998,0.1002,0.9,0.93,0.9677,0.8566,0.8267,0.8889,0.96,7.68,4166.7,Baseline / Reference
+A1_Conf_Gating_tau_0.85,Confidence Gating (Stricter),0.885,0.9134,0.0866,0.8733,0.8967,0.974,0.8566,0.8267,0.8889,0.96,7.68,4166.7,Baseline / Reference
+A2_UTTA_Med_Percentile_60,Original UTTA-Med Baseline,0.6,0.9917,0.0083,0.5767,0.6233,0.9251,0.8566,0.8267,0.8889,0.9598,136.29,234.8,Baseline / Reference
+Candidate1_CCEG_Conf80_Var90,Candidate 1: Conf-Conditional Epistemic Filter,0.8867,0.9135,0.0865,0.8733,0.9,0.9704,0.8566,0.8267,0.8889,0.96,7.82,4092.1,Selected for 5-Seed Evaluation
+Candidate2_CAAG_Tumor70_Norm85,Candidate 2: Class-Aware Asymmetric Gate,0.9067,0.9081,0.0919,0.9033,0.91,0.9927,0.8566,0.8267,0.8889,0.96,7.82,4092.1,Selected for 5-Seed Evaluation
+Candidate2_CAAG_MCVar_T80_N60,Candidate 2b: Class-Aware MC Variance Gate,0.695,0.9736,0.0264,0.74,0.65,1.1385,0.8566,0.8267,0.8889,0.9599,7.82,4092.1,Selected for 5-Seed Evaluation
