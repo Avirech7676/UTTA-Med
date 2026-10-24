@@ -1,0 +1,7 @@
+policy_name,gate_type,admitted_patches,coverage,admitted_batches,skipped_batches,attempted_optimizer_steps,successful_optimizer_steps,safety_rollbacks,mean_grad_norm_l2,max_grad_norm_l2,max_grad_norm_linf,gamma_weight_drift_l2,beta_bias_drift_l2,total_param_drift_l2,max_param_drift_linf,adaptation_wall_time_s
+A0_Frozen_ResNet18,frozen,0,0.0,0,0,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,46.6
+A1_Confidence_Gating_tau_0.80,confidence,550,0.9167,19,0,19,19,0,1.275099,2.231372,0.303314,0.007486,0.007393,0.010521,0.000191,148.92
+A1_Confidence_Gating_tau_0.85,confidence,532,0.8867,19,0,19,19,0,1.004864,1.659411,0.250841,0.007807,0.007804,0.011039,0.000192,146.34
+A2_Original_UTTA_Med_Percentile_70,mc_dropout,427,0.7117,19,0,19,19,0,0.314744,0.591273,0.09847,0.009259,0.00938,0.01318,0.000187,171.73
+Candidate_CAD_Gate,cad_gate,520,0.8667,19,0,19,19,0,0.885535,1.394972,0.245017,0.00806,0.008135,0.011452,0.00019,213.35
+Matched_Budget_Confidence,confidence,534,0.89,19,0,19,19,0,1.0447,1.801158,0.250262,0.007794,0.007754,0.010995,0.000192,147.42
