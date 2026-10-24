@@ -1,9 +1,0 @@
-risk_id,phase,issue,severity,status,mitigation
-R01,Phase 8,Kaggle 6-Hour Container Timeout,HIGH,ACTIVE_MONITORING,Harvest Seed 42 immediately upon completion; modularize remaining seeds across separate Kaggle sessions
-R02,Phase 8,FUSE I/O Bottleneck on 302k Patches,MEDIUM,DOCUMENTED,DataLoader throughput calibrated to ~125 patches/sec (~45 min/epoch on Tesla T4)
-R03,Phase 5,Conflation of Harm Denominators (H/N vs H/k),HIGH,RESOLVED,"Separated full-cohort (N=85,054) vs accepted update (k=719) harm accounting in VERIFIED_HARM_ACCOUNTING.csv"
-R04,Phase 5,Latency Unit Inconsistencies (Patch vs Batch),HIGH,RESOLVED,Standardized B=32 batch vs amortized per-patch latency in CORRECTED_GPU_LATENCY.csv
-R05,Phase 5,Detection Manifest Cohort Contamination,CRITICAL,RESOLVED,"Strictly segregated 118-mitosis paper benchmark, 131-mitosis unfiltered, and 117-mitosis boundary-filtered manifests"
-R06,Phase 5,D8 vs D9 Claim of Superiority,HIGH,RESOLVED,Raw prediction inspection proved exact prediction equivalence; D8 established as parsimonious champion under Occam's razor
-R07,Phase 6,Preservation of Original IEEE Manuscript,CRITICAL,RESOLVED,Authoritative UTTA_MED_FINAL_COMPACT_PAPER.tex and 8-page PDF certified with original Arms A-E and 5 tables
-R08,Phase 11,Analytical Projection F1=0.8723,CRITICAL,RESOLVED,Rejected synthetic CPU smoke-test checkpoint; committed to zero fabrication and genuine GPU execution
