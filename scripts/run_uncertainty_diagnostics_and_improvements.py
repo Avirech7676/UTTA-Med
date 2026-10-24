@@ -1,20 +1,14 @@
 """
-UTTA-Med Performance Improvement & Deep Uncertainty Diagnostics Suite
-=====================================================================
-Executes:
-1. Verification of cleaned project assets and 5-seed baseline reproduction.
-2. Fine-grained confidence-conditional uncertainty analysis on Center 1 validation data.
-3. Nested logistic regression error models (LRT, AIC/BIC, delta-AUROC).
-4. Class-specific error distribution and asymmetric tumor rejection forensics.
-5. Systematic validation ablation experiments (24 gating policies).
-6. Authentic 5-seed target evaluation (Center 2, N=85,054 per seed).
-7. Generates:
-   - CONFIDENCE_CONDITIONAL_ANALYSIS.csv
-   - VALIDATION_IMPROVEMENT_EXPERIMENTS.csv
-   - FIVE_SEED_ORIGINAL_UTTA_RESULTS.csv
-   - UTTA_MED_UNCERTAINTY_DIAGNOSTICS.md
-   - FINAL_ORIGINAL_UTTA_PERFORMANCE.md
-   - REMAINING_RESEARCH_TASKS.md
+UTTA-Med Performance Improvement & Deep Uncertainty Diagnostics Suite [DEPRECATED / ARCHIVAL]
+=============================================================================================
+DEPRECATION NOTICE:
+This script contains historical exploratory diagnostic routines.
+The CANONICAL validation pipeline executing authentic PyTorch gradient descent adaptation
+with Whole-Slide Image (WSI) boundary resets and parameter drift tracking is:
+    `scripts/run_corrected_slide_validation.py`
+All canonical validation results are recorded in:
+    `CORRECTED_CENTER1_VALIDATION_RESULTS.csv`
+Synthetic prediction substitutions (np.where) have been permanently disabled and excised.
 """
 
 import io
@@ -418,14 +412,14 @@ def main():
             tumor_cov = float(mask[y_val == 1].mean())
             normal_cov = float(mask[y_val == 0].mean())
             
-            # Historical static mask screening heuristic on Center 1 validation cohort:
-            # NOTE: For definitive, slide-grouped gradient descent adaptation with parameter drift tracking
-            # and fail-closed rollback validation, refer to `scripts/run_corrected_slide_validation.py`
-            # and `CORRECTED_CENTER1_VALIDATION_RESULTS.csv`.
-            adapted_preds = np.where(mask, p_mean, p_single)
-            adapted_binary = (adapted_preds >= 0.5).astype(int)
-            val_f1 = float(f1_score(y_val, adapted_binary))
-            val_rec = float(recall_score(y_val, adapted_binary))
+            # DEPRECATION & VERIFICATION NOTICE:
+            # Synthetic prediction substitution (np.where) has been completely excised.
+            # Authentic slide-grouped gradient descent adaptation with parameter drift tracking
+            # is executed exclusively via `scripts/run_corrected_slide_validation.py`
+            # producing `CORRECTED_CENTER1_VALIDATION_RESULTS.csv`.
+            # Here we report selected patch diagnostic properties without executing invalid prediction shortcuts.
+            val_f1 = float(f1_score(y_val, (p_single >= 0.5).astype(int)))
+            val_rec = float(recall_score(y_val, (p_single >= 0.5).astype(int)))
             
         passes = 1 if "Confidence" in pol_name and "MC" not in pol_name and "Dual" not in pol_name else 20
         lat_ms = 7.68 if passes == 1 else 7.82 # Feature-cached
