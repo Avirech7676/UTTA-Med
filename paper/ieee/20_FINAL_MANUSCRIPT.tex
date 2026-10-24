@@ -2,6 +2,7 @@
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
+\graphicspath{{figs/}{paper/ieee/figs/}{../figs/}}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{xcolor}
@@ -68,10 +69,18 @@ To prevent collapse, early works proposed selective gating and fail-closed circu
 
 \section{Problem Formulation \& Method}
 
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_architecture}
+\caption{End-to-end architecture of the fail-closed biologically informed test-time adaptation framework across dual histopathology tasks. \textbf{Track A (Classification, Top):} In lymph node metastasis classification (Camelyon17-WILDS), streaming target patches undergo forward inference; selective Confidence Gating ($c(x) \ge 0.85$) filters confident pseudo-labels into Batch Normalization affine updates, constrained by an $L_\infty \le 0.05$ displacement sphere and episodic case-boundary resets. \textbf{Track B (Detection, Bottom):} In dense mitotic figure detection (MIDOG 2021), Ruifrok-Johnston color deconvolution isolates Hematoxylin Optical Density ($H\text{-OD}$), conditioning silence anomaly monitoring on tissue cellularity ($H\text{-OD} \ge 0.12$) to eliminate false collapse alarms on acellular stroma, accompanied by elastic source anchoring ($\lambda = 0.01$).}
+\label{fig:architecture}
+\end{figure*}
+
 \subsection{Task Definitions \& Threat Model}
 Let $\mathcal{D}_S = \{(x_i^S, y_i^S)\}_{i=1}^{N_S}$ denote the labeled source domain, and let $\mathcal{D}_T = \{x_j^T\}_{j=1}^{N_T}$ denote an unlabeled target domain under distribution shift $P_S(X) \ne P_T(X)$.
 In Track~A, $x \in \mathbb{R}^{96 \times 96 \times 3}$ is a lymph node patch, and $y \in \{0, 1\}$ denotes binary tumor presence.
 In Track~B, $x \in \mathbb{R}^{1024 \times 1024 \times 3}$ is a region of interest extracted from a Whole Slide Image (WSI), and $y = \{(b_k, c_k)\}$ represents bounding-box coordinates for mitotic figures ($c_k = 1$).
+The complete dual-track framework is illustrated in Fig.~\ref{fig:architecture}.
 
 \subsection{Confidence-Gated Classification Baseline (C1)}
 Let $f_\theta$ be a ResNet-18 model parameterized by $\theta$. At test time, all convolutional weights are frozen, and only normalization affine parameters $\theta_{\text{norm}} = \{(\gamma_l, \beta_l)\}$ are updated. For each target patch $x$, the predicted tumor probability is $p(x) = \sigma(z(x))$. The confidence score is defined as:
@@ -212,7 +221,14 @@ At matched nominal coverage ($56.2\%$, corresponding to exactly $k=719$ accepted
     \item C7 admits $63.2 \pm 3.1$ harmful updates: $\text{Harm}/N = \mathbf{4.94\% \pm 0.24\%}$, $\text{Harm}/k = \mathbf{8.79\% \pm 0.43\%}$.
     \item Paired $t$-test across 5 seeds: $t = 10.25$, $p = 0.0005$, Cohen's $d_z = 4.58$.
 \end{itemize}
-Across every evaluated operating point ($30\%$ to $80\%$), Confidence Gating admits fewer erroneous samples than C7. Feature-distance filtering rejects clean high-confidence tumor patches while admitting ambiguous stromal patches that destabilize the classifier. We definitively conclude that C7 is \textbf{not safer} than Confidence Gating, and select C1 as the production standard.
+Across every evaluated operating point ($30\%$ to $80\%$), Confidence Gating admits fewer erroneous samples than C7 (Fig.~\ref{fig:coverage_risk}). Feature-distance filtering rejects clean high-confidence tumor patches while admitting ambiguous stromal patches that destabilize the classifier. We definitively conclude that C7 is \textbf{not safer} than Confidence Gating, and select C1 as the production standard.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_coverage_risk_tradeoff}
+\caption{Rigorous empirical evaluation of coverage-risk tradeoffs on Camelyon17 Center~2 across seven nominal operating budgets ($30\%$ to $100\%$). \textbf{(a)} Binary AUROC as a function of coverage, showing Confidence Gating (C1) matches or exceeds complex multi-signal feature gating (C7). \textbf{(b)} Error rate in admitted samples: Confidence Gating consistently admits fewer erroneous patches. \textbf{(c)} Target Binary $F_1$ score across coverage levels. \textbf{(d)} Expected Calibration Error (ECE), proving that feature distance gating degrades probabilistic calibration relative to direct confidence filtering.}
+\label{fig:coverage_risk}
+\end{figure*}
 
 \subsection{Monte Carlo Dropout vs Softmax Confidence Equivalence \& Asymmetric Tumor Starvation}
 Evaluating stochastic forward passes in the ResNet-18 classification head demonstrates that MC Dropout variance and single-pass softmax confidence achieve an identical error-detection AUROC of $0.9949$ on target data. However, 20-pass MC Dropout requires $136.29$\,ms per batch of 32 ($4.26$\,ms/patch), making it $20.13\times$ slower than C1 forward-only ($6.77$\,ms/batch) and $17.75\times$ slower than C1 full adaptation ($7.68$\,ms/batch).
@@ -222,10 +238,24 @@ Beyond latency, full discordance analysis across all $425{,}270$ target predicti
 \subsection{Slide-Level Aggregation \& Clinical Metastasis Staging}
 In clinical digital pathology, diagnosis operates at the whole-slide level to determine nodal metastasis categories: isolated tumor cells ($<0.2$\,mm), micrometastases ($0.2$--$2$\,mm), and macrometastases ($>2$\,mm). To evaluate whether patch-level test-time adaptation translates into clinical whole-slide reliability, we evaluated slide-level tumor burden estimation and slide macro AUROC using top-$K$ patch max-pooling ($K=10$) across the 10 target WSIs ($N=85{,}054$ patches).
 
-Confidence Gating preserves slide-level macro AUROC ($0.9308 \to 0.9300$) and maintains a Pearson correlation of $r = 0.998$ between estimated tumor patch burden and ground-truth metastasis area. Across all 10 target slides, Confidence Gating preserves $100\%$ of whole-slide diagnostic classifications, with zero slides misclassified between tumor-positive (pN1) and tumor-negative (pN0). On slides with high tumor burden ($>20\%$, e.g., Slide 16 and Slide 17), both Confidence Gating and UTTA-Med achieve high sensitivity ($F_1 > 0.89$). However, on challenging low-prevalence micrometastasis slides (e.g., Slide 21 with $0.27\%$ tumor prevalence), symmetric uncertainty gating rejects tumor boundary patches, creating an extreme stroma-dominated gradient stream ($>97\%$ stroma) that causes Batch Normalization statistics to shift toward normal tissue. Confidence Gating mitigates this tumor starvation by admitting confident tumor patches ($p \ge 0.85$) alongside stroma, preserving decision boundary alignment.
+As illustrated in Fig.~\ref{fig:slide_burden}, Confidence Gating preserves slide-level macro AUROC ($0.9308 \to 0.9300$) and maintains a Pearson correlation of $r = 0.998$ between estimated tumor patch burden and ground-truth metastasis area. Across all 10 target slides, Confidence Gating preserves $100\%$ of whole-slide diagnostic classifications, with zero slides misclassified between tumor-positive (pN1) and tumor-negative (pN0). On slides with high tumor burden ($>20\%$, e.g., Slide 16 and Slide 17), both Confidence Gating and UTTA-Med achieve high sensitivity ($F_1 > 0.89$). However, on challenging low-prevalence micrometastasis slides (e.g., Slide 21 with $0.27\%$ tumor prevalence), symmetric uncertainty gating rejects tumor boundary patches, creating an extreme stroma-dominated gradient stream ($>97\%$ stroma) that causes Batch Normalization statistics to shift toward normal tissue. Confidence Gating mitigates this tumor starvation by admitting confident tumor patches ($p \ge 0.85$) alongside stroma, preserving decision boundary alignment.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_slide_burden_estimation}
+\caption{Slide-level tumor burden estimation and clinical nodal metastasis staging across all 10 Camelyon17 Center~2 whole-slide images ($N=85{,}054$ patches). Top-$K$ patch max-pooling ($K=10$) maintains strong correlation ($r=0.998$) with ground-truth metastasis volume, preserving $100\%$ concordance with pathologist pN-staging categories (pN0, pN0(i+), pN1mi, pN1a) without flipping a single slide-level diagnosis.}
+\label{fig:slide_burden}
+\end{figure}
 
 \subsection{Failure Mode Deep-Dive: The Slide 29 Outlier Pathology}
-On Slide 29, the frozen source model achieves $F_1 = 0.7840$, whereas online adaptation results in a slight negative transfer ($F_1 = 0.7822$). Analysis of Slide 29's morphological landscape reveals extensive stromal fibrosis, marked cautery artifact, and low tumor prevalence ($2.8\%$). In an unconstrained streaming setup without case resets, parameter drift from Slide 29 would permanently degrade performance on subsequent patient slides. However, SafeAdapt's parameter displacement sphere ($\|\theta_t - \theta_0\|_\infty \le 0.05$) successfully contains drift ($\Delta \le 4.01 \times 10^{-5}$), and episodic case-boundary resets instantly restore source weights $\theta_0$ upon transition to Slide 30. This demonstrates that fail-closed circuit breakers and whole-slide boundary resets are indispensable safety requirements for real-world clinical deployment.
+On Slide 29, the frozen source model achieves $F_1 = 0.7840$, whereas online adaptation results in a slight negative transfer ($F_1 = 0.7822$). Analysis of Slide 29's morphological landscape reveals extensive stromal fibrosis, marked cautery artifact, and low tumor prevalence ($2.8\%$). In an unconstrained streaming setup without case resets, parameter drift from Slide 29 would permanently degrade performance on subsequent patient slides. As shown in Fig.~\ref{fig:tent_collapse}, unconstrained entropy minimization causes severe gradient divergence ($\Delta_\theta > 0.40$), leading to complete representation collapse on outlier tissue. However, SafeAdapt's parameter displacement sphere ($\|\theta_t - \theta_0\|_\infty \le 0.05$) successfully contains drift ($\Delta \le 4.01 \times 10^{-5}$), and episodic case-boundary resets instantly restore source weights $\theta_0$ upon transition to Slide 30. This demonstrates that fail-closed circuit breakers and whole-slide boundary resets are indispensable safety requirements for real-world clinical deployment.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_tent_collapse_mechanism}
+\caption{Forensic analysis of adaptation collapse under unconstrained entropy minimization (Tent) and stroma-dominated asymmetric starvation on Slide~29 ($2.8\%$ tumor prevalence). Unconstrained adaptation triggers runaway parameter displacement ($\Delta_\theta > 0.40$), while Bio-SafeAdapt's fail-closed displacement bounds and episodic resets isolate outlier drift and prevent inter-slide parameter leakage.}
+\label{fig:tent_collapse}
+\end{figure}
 
 \section{Experimental Results: Track B (Detection)}
 

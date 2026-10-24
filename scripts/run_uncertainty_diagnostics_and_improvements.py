@@ -418,8 +418,10 @@ def main():
             tumor_cov = float(mask[y_val == 1].mean())
             normal_cov = float(mask[y_val == 0].mean())
             
-            # Simulated pseudo-label adaptation on validation cohort
-            # Admitted patches get adapted toward predictions; non-admitted keep single-pass
+            # Historical static mask screening heuristic on Center 1 validation cohort:
+            # NOTE: For definitive, slide-grouped gradient descent adaptation with parameter drift tracking
+            # and fail-closed rollback validation, refer to `scripts/run_corrected_slide_validation.py`
+            # and `CORRECTED_CENTER1_VALIDATION_RESULTS.csv`.
             adapted_preds = np.where(mask, p_mean, p_single)
             adapted_binary = (adapted_preds >= 0.5).astype(int)
             val_f1 = float(f1_score(y_val, adapted_binary))
