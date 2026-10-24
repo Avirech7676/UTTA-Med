@@ -1,0 +1,7 @@
+uncertainty_metric,error_auroc_overall,error_auprc_overall,error_auroc_tumor_subset,error_auroc_normal_subset,spearman_rho_vs_confidence,mean_on_correct_patches,mean_on_incorrect_patches,error_separation_ratio,forward_passes_per_patch
+Confidence_Uncertainty,0.8195,0.6124,0.5529,0.8859,1.0,0.066931,0.171329,2.5598,1
+Predictive_Entropy,0.8195,0.6124,0.5529,0.8859,1.0,0.145531,0.39756,2.7318,1
+MC_Dropout_Variance,0.824,0.6345,0.5838,0.877,0.9651,0.000138,0.00039,2.8329,20
+MC_Predictive_Entropy,0.8198,0.6191,0.5543,0.8855,0.9995,0.146893,0.399228,2.7178,20
+Mutual_Information,0.8263,0.6683,0.668,0.8528,0.7906,0.000645,0.00154,2.3891,20
+Feature_Centroid_Distance,0.7953,0.571,0.3855,0.9733,0.9269,0.116195,0.236445,2.0349,1
