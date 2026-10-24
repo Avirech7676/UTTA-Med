@@ -36,6 +36,7 @@
 - **Failed archive operations:** 0
 - **Remaining cleanup issues:** 0
 - **Pre-Cleanup Snapshot Commit:** `0fe5147` (tagged `PRE_EXTERNAL_ARCHIVE_CLEANUP_20261024`)
+- **Final Cleanup Git Commit:** `e75a68c` (`e75a68c0908bb173a2c8c54f9539246f5064f9ed`)
 - **External Archive Location:** `C:\Users\avina\Documents\UTTA_MED_RESEARCH_ARCHIVE`
 
 ---
