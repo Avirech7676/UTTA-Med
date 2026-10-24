@@ -1,9 +1,0 @@
-method_code,method_name,workload_type,batch_size,latency_per_batch_ms,amortized_latency_per_patch_ms,throughput_patches_per_sec,peak_vram_mb,speedup_vs_mc_dropout
-C0,Frozen Source ResNet-18,Forward-Only Inference,32,6.74,0.211,4747.8,144.7,20.22
-C1,Confidence Gating (Forward),Forward + Gating Eval,32,6.77,0.212,4726.7,144.7,20.13
-C1_Full,Confidence Gating (Full Update),Forward + Backward + Adam Step,32,7.68,0.24,4166.7,144.7,17.75
-C7_Fwd,C7 SafeAdapt (Forward),Forward + Centroid Distance,32,8.45,0.264,3787.0,144.7,16.13
-C7_Full,C7 SafeAdapt (Full Update),Forward + Anchor Loss + Backward + Bounds,32,15.2,0.475,2105.3,144.7,8.97
-C2,Original UTTA-Med (MC-Dropout),20 Stochastic Forward Passes,32,136.29,4.259,234.8,144.7,1.0
-E0,Frozen DenseNet-121,Forward-Only Inference,32,14.8,0.463,2162.2,312.4,9.21
-E2,DenseNet-121 + EMA Consistency TTA,Teacher Fwd + Student Fwd/Bwd + EMA Step,32,32.5,1.016,984.6,384.2,4.19

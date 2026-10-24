@@ -1,9 +1,0 @@
-method_code,method_name,stochastic_passes,batch_size,batch_latency_ms,per_patch_latency_ms,throughput_patches_per_sec,peak_vram_mb,gpus_available,gpus_utilized,device_id,speedup_vs_20pass_mc,latency_overhead_vs_c1,profiling_status
-C0,Frozen_Source_ResNet18,0,32,6.74,0.2106,4747.8,144.70,2,1,cuda:0,20.22x,-0.4%,VERIFIED_GPU_PROFILED
-C1,Confidence_Gating_tau085,0,32,6.77,0.2116,4726.7,144.71,2,1,cuda:0,20.13x,1.00x_BASELINE,VERIFIED_GPU_PROFILED
-C2_1p,MC_Dropout_1_Pass,1,32,7.68,0.2400,4166.7,144.70,2,1,cuda:0,17.75x,+13.4%,VERIFIED_GPU_PROFILED
-C2_5p,MC_Dropout_5_Passes,5,32,34.12,1.0663,937.9,148.10,2,1,cuda:0,3.99x,+403.9%,VERIFIED_GPU_PROFILED
-C2_10p,MC_Dropout_10_Passes,10,32,68.21,2.1316,469.1,148.10,2,1,cuda:0,2.00x,+907.5%,VERIFIED_GPU_PROFILED
-C2_20p,Original_UTTA_Med_MC20,20,32,136.29,4.2591,234.8,144.71,2,1,cuda:0,1.00x_REF,+1913.1%,VERIFIED_GPU_PROFILED
-C7_fwd,SafeAdapt_Forward_Only,1,32,8.45,0.2641,3787.0,144.70,2,1,cuda:0,16.13x,+24.8%,VERIFIED_GPU_PROFILED
-C7_full,Best_Combined_SafeAdapt_Full,1,32,15.20,0.4750,2105.3,144.71,2,1,cuda:0,8.97x,+124.5%,VERIFIED_GPU_PROFILED

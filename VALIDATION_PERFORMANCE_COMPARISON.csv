@@ -1,5 +1,0 @@
-method,seed,cohort,f1_binary,auroc,precision,recall,accuracy,coverage,harm_rate,batch_latency_ms,passes_per_patch,status
-Frozen_Source,42,Camelyon17_Center1_Validation,0.4746,0.8616,0.7368,0.35,0.6125,0.0,0.0,6.74,1,VALIDATION_PILOT
-Confidence_Gating_A1,42,Camelyon17_Center1_Validation,0.8952,0.9614,0.971,0.83,0.9025,0.735,0.005,7.68,1,VALIDATION_PILOT
-Original_UTTA_Med_A2,42,Camelyon17_Center1_Validation,0.8941,0.9608,0.9705,0.8285,0.9018,0.7,0.0052,136.29,20,VALIDATION_PILOT
-Improved_UTTA_Med_DualGated,42,Camelyon17_Center1_Validation,0.8965,0.9622,0.9725,0.8315,0.9038,0.6775,0.0042,7.82,1,VALIDATION_PILOT
