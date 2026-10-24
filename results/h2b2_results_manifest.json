@@ -1,0 +1,131 @@
+{
+  "benchmark": "CheXpert-5-Pathologies",
+  "labels": [
+    "Atelectasis",
+    "Cardiomegaly",
+    "Consolidation",
+    "Edema",
+    "Pleural Effusion"
+  ],
+  "uncertainty_policy": {
+    "Atelectasis": 1.0,
+    "Cardiomegaly": 0.0,
+    "Consolidation": 0.0,
+    "Edema": 1.0,
+    "Pleural Effusion": 1.0
+  },
+  "architecture": "DenseNet-121",
+  "training_patients": 51627,
+  "development_patients": 12907,
+  "training_images": 152115,
+  "development_images": 38912,
+  "results_by_seed": {
+    "42": {
+      "macro_auroc": 0.8965618915242797,
+      "mean_average_precision": 0.9598570209867946,
+      "multilabel_brier": 0.08886834233999252,
+      "per_label_auroc": {
+        "Atelectasis": 0.7672249384808463,
+        "Cardiomegaly": 0.9381455997281686,
+        "Consolidation": 0.9295440093395204,
+        "Edema": 0.8950601300036037,
+        "Pleural Effusion": 0.9528347800692591
+      },
+      "per_label_ap": {
+        "Atelectasis": 0.9876962951212467,
+        "Cardiomegaly": 0.9784824179542896,
+        "Consolidation": 0.8952647787453565,
+        "Edema": 0.9580916848809997,
+        "Pleural Effusion": 0.9797499282320805
+      },
+      "sha256": "11c71a1b53f44be240bb2dacbec89112dbfef0827715ed568db29c2e15eb0493",
+      "training_time_seconds": 5807.3512489795685
+    },
+    "7": {
+      "macro_auroc": 0.8963626635589035,
+      "mean_average_precision": 0.9620507787795575,
+      "multilabel_brier": 0.08739969879388809,
+      "per_label_auroc": {
+        "Atelectasis": 0.7585625831081736,
+        "Cardiomegaly": 0.936184346008505,
+        "Consolidation": 0.9383932245166346,
+        "Edema": 0.896509048790652,
+        "Pleural Effusion": 0.9521641153705525
+      },
+      "per_label_ap": {
+        "Atelectasis": 0.9849603932402757,
+        "Cardiomegaly": 0.977599705158455,
+        "Consolidation": 0.9085656876345987,
+        "Edema": 0.9598699391112795,
+        "Pleural Effusion": 0.9792581687531778
+      },
+      "sha256": "4aadf57ea3e62fba5c8735c02ba5fb0b9439862bb4db0c952303d446d2294f05",
+      "training_time_seconds": 4676.12935590744
+    },
+    "123": {
+      "macro_auroc": 0.8981194165212425,
+      "mean_average_precision": 0.9642363431660611,
+      "multilabel_brier": 0.08593415468931198,
+      "per_label_auroc": {
+        "Atelectasis": 0.7634692557073981,
+        "Cardiomegaly": 0.9370002265262204,
+        "Consolidation": 0.9390026360914188,
+        "Edema": 0.8994778648324382,
+        "Pleural Effusion": 0.9516470994487373
+      },
+      "per_label_ap": {
+        "Atelectasis": 0.985672249017286,
+        "Cardiomegaly": 0.978307422877303,
+        "Consolidation": 0.9173965440500136,
+        "Edema": 0.9609381307916167,
+        "Pleural Effusion": 0.9788673690940862
+      },
+      "sha256": "2ba7feea3948a69d2cd77955fd09c4bb3629b19e9b64342f275c9f84b682c160",
+      "training_time_seconds": 5662.742668390274
+    }
+  },
+  "calibrations_by_seed": {
+    "42": {
+      "calibrated_tau_median_p50": 0.6841551065444946,
+      "observed_coverage_p50": 0.5,
+      "calibrated_tau_p70": 0.7373341917991638,
+      "observed_coverage_p70": 0.30001027960526316,
+      "calibrated_tau_p80": 0.7727604508399963,
+      "observed_coverage_p80": 0.20001541940789475,
+      "calibrated_entropy_p50": 0.34442204236984253,
+      "calibrated_entropy_p80": 0.4073566794395447,
+      "monitor_window_size": 32,
+      "monitor_saturation_threshold": 0.9,
+      "monitor_extinction_threshold": 0.01,
+      "monitor_max_drift": 0.35
+    },
+    "7": {
+      "calibrated_tau_median_p50": 0.6588459610939026,
+      "observed_coverage_p50": 0.5,
+      "calibrated_tau_p70": 0.7080667018890381,
+      "observed_coverage_p70": 0.30001027960526316,
+      "calibrated_tau_p80": 0.7382429242134094,
+      "observed_coverage_p80": 0.20001541940789475,
+      "calibrated_entropy_p50": 0.36880233883857727,
+      "calibrated_entropy_p80": 0.4288654923439026,
+      "monitor_window_size": 32,
+      "monitor_saturation_threshold": 0.9,
+      "monitor_extinction_threshold": 0.01,
+      "monitor_max_drift": 0.35
+    },
+    "123": {
+      "calibrated_tau_median_p50": 0.6861991882324219,
+      "observed_coverage_p50": 0.5,
+      "calibrated_tau_p70": 0.741157591342926,
+      "observed_coverage_p70": 0.30001027960526316,
+      "calibrated_tau_p80": 0.7714800834655762,
+      "observed_coverage_p80": 0.20001541940789475,
+      "calibrated_entropy_p50": 0.3458295464515686,
+      "calibrated_entropy_p80": 0.4098893702030182,
+      "monitor_window_size": 32,
+      "monitor_saturation_threshold": 0.9,
+      "monitor_extinction_threshold": 0.01,
+      "monitor_max_drift": 0.35
+    }
+  }
+}

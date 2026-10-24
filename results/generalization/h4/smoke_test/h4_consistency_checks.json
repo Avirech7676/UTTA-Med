@@ -1,0 +1,11 @@
+{
+  "check_manifest_authenticated": true,
+  "check_evaluation_gt_authenticated": true,
+  "check_zero_leaked_annotations_in_manifest": true,
+  "check_all_patches_tissue_eligible": true,
+  "check_primary_matching_radius_30px": true,
+  "check_sensitivity_matching_radius_25px": true,
+  "check_bootstrap_replicates_sufficient": true,
+  "check_zero_parameter_updates_arm_a": true,
+  "check_displacement_bound_respected": true
+}

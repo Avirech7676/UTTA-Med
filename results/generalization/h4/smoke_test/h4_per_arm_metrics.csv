@@ -1,0 +1,6 @@
+seed,arm,precision,recall,f1,tp,fp,fn,n_pred,n_gt,time_sec,updates,alarms,alarms_silence,alarms_prolif_abs,alarms_prolif_rel,skipped_updates,actual_parameter_restorations,rollbacks,fallbacks,in_global_fallback,max_displacement
+42,Arm_A,0.0,0.0,0.0,0,0,0,0,0,44.22,0,0,0,0,0,0,0,0,0,False,0.0
+42,Arm_B,0.0,0.0,0.0,0,0,0,0,0,40.05,0,0,0,0,0,10,0,0,0,False,0.0
+42,Arm_C,0.0,0.0,0.0,0,0,0,0,0,43.31,0,0,0,0,0,10,0,0,0,False,0.0
+42,Arm_D,0.0,0.0,0.0,0,0,0,0,0,40.36,0,8,8,0,0,10,0,0,0,False,0.0
+42,Arm_E,0.0,0.0,0.0,0,0,0,0,0,36.24,0,3,3,0,0,5,1,1,1,True,0.0

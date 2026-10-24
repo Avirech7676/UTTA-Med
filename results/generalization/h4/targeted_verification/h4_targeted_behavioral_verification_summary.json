@@ -1,0 +1,133 @@
+{
+  "test_1_nonzero_adaptation": {
+    "Arm_B": {
+      "admitted_proposals": 1000,
+      "loss": 0.0005044257850386202,
+      "nonzero_grads": 106,
+      "updated_params": 105,
+      "max_displacement_linf": 4.887580871582031e-06,
+      "cumulative_l2_displacement": 8.515702110223344e-05,
+      "status": "PASS"
+    },
+    "Arm_C": {
+      "admitted_proposals": 1000,
+      "loss": 0.0005044257850386202,
+      "nonzero_grads": 106,
+      "updated_params": 105,
+      "max_displacement_linf": 4.887580871582031e-06,
+      "cumulative_l2_displacement": 8.515702110223344e-05,
+      "status": "PASS"
+    },
+    "Arm_D": {
+      "admitted_proposals": 1000,
+      "loss": 0.0005044257850386202,
+      "nonzero_grads": 106,
+      "updated_params": 105,
+      "max_displacement_linf": 4.887580871582031e-06,
+      "cumulative_l2_displacement": 8.515702110223344e-05,
+      "status": "PASS"
+    },
+    "Arm_E": {
+      "admitted_proposals": 1000,
+      "loss": 0.0005044257850386202,
+      "nonzero_grads": 106,
+      "updated_params": 105,
+      "max_displacement_linf": 4.887580871582031e-06,
+      "cumulative_l2_displacement": 8.515702110223344e-05,
+      "status": "PASS"
+    }
+  },
+  "test_2_arm_c_bound": {
+    "standard_displacement": 2.384185791015625e-07,
+    "unconstrained_displacement": 0.10000038146972656,
+    "clamped_displacement": 0.05000019073486328,
+    "saturated_modules": 106,
+    "bound_violations": 0,
+    "status": "PASS"
+  },
+  "test_3_arm_d_rollback": {
+    "step1_displacement_from_source": 4.887580871582031e-06,
+    "consecutive_alarms_evaluated": 3,
+    "alarm_records": [
+      {
+        "streak": 1,
+        "action": "ATOMIC_ROLLBACK_TO_STABLE",
+        "post_rb_w1_diff": 0.0,
+        "post_rb_src_diff": 4.887580871582031e-06,
+        "in_global_fallback": false
+      },
+      {
+        "streak": 2,
+        "action": "ATOMIC_ROLLBACK_TO_STABLE",
+        "post_rb_w1_diff": 0.0,
+        "post_rb_src_diff": 4.887580871582031e-06,
+        "in_global_fallback": false
+      },
+      {
+        "streak": 3,
+        "action": "ATOMIC_ROLLBACK_TO_STABLE",
+        "post_rb_w1_diff": 0.0,
+        "post_rb_src_diff": 4.887580871582031e-06,
+        "in_global_fallback": false
+      }
+    ],
+    "arm_d_total_fallbacks": 0,
+    "arm_d_in_global_fallback": false,
+    "actual_parameter_restorations": 3,
+    "post_alarm_adaptation_verified": true,
+    "step5_parameter_change": 1.6689300537109375e-05,
+    "status": "PASS"
+  },
+  "test_4_arm_e_recovery": {
+    "step1_update_disp": 4.887580871582031e-06,
+    "single_alarm_rollback_pre": 4.887580871582031e-06,
+    "single_alarm_rollback_post": 0.0,
+    "adapted_state_w1_disp": 4.887580871582031e-06,
+    "tentative_state_w2_disp": 9.179115295410156e-06,
+    "streak_records": [
+      {
+        "alarm_index": 1,
+        "streak": 1,
+        "action": "ATOMIC_ROLLBACK_TO_STABLE",
+        "pre_diff": 1.4066696166992188e-05,
+        "post_diff": 4.887580871582031e-06
+      },
+      {
+        "alarm_index": 2,
+        "streak": 2,
+        "action": "SKIPPED_ONLY",
+        "pre_diff": 4.887580871582031e-06,
+        "post_diff": 4.887580871582031e-06
+      },
+      {
+        "alarm_index": 3,
+        "streak": 3,
+        "action": "GLOBAL_FALLBACK_TO_SOURCE",
+        "pre_diff": 4.887580871582031e-06,
+        "post_diff": 0.0
+      }
+    ],
+    "in_global_fallback_latched": true,
+    "total_fallbacks": 1,
+    "actual_restorations": 3,
+    "status": "PASS"
+  },
+  "test_5_aligned_proliferation_counts": {
+    "unaligned_source_count": 2,
+    "aligned_source_count": 1,
+    "aligned_adapted_count": 1,
+    "alarm_under_aligned_counts": false,
+    "status": "PASS"
+  },
+  "test_6_silence_boundary_and_source_relative": {
+    "silence_at_29_alarm": false,
+    "silence_at_30_alarm": true,
+    "silence_30_type": "SILENCE_ALARM",
+    "source_zero_pred_3_alarm": false,
+    "source_zero_pred_5_alarm": true,
+    "source_one_pred_4_alarm": true,
+    "status": "PASS"
+  },
+  "total_elapsed_seconds": 140.59291553497314,
+  "verdict": "ALL_TARGETED_BEHAVIORAL_TESTS_CERTIFIED_PASS"
+}

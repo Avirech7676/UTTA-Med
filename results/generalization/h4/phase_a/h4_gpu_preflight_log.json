@@ -1,0 +1,267 @@
+{
+  "timestamp": "2026-10-17T15:57:15Z",
+  "preflight_verdict": "GENUINE_KAGGLE_T4_PREFLIGHT_CERTIFIED",
+  "provenance": {
+    "execution_platform": "Kaggle Container (Linux)",
+    "os": "Linux 6.18.48+ (x86_64)",
+    "python_version": "3.13.15",
+    "torch_version": "2.11.0+cu128",
+    "cuda_available": true,
+    "cuda_version": "12.8",
+    "cuda_device_name": "Tesla T4",
+    "cuda_device_count": 2
+  },
+  "wsi_source": {
+    "case_id": 101,
+    "scanner": "Scanner 3 (Held-out Target Domain)",
+    "file_path": "/kaggle/input/datasets/joshiharshit5088/midog-challenge/images/101.tiff",
+    "file_size_bytes": 125356206,
+    "sha256": "83840e3a9f6c3db06e946eb327ac8d0c13cf8adba2e50bb5519efee909f93b92"
+  },
+  "patches_audited": {
+    "count": 10,
+    "patch_size_px": 512,
+    "manifest_file": "h4_frozen_patch_manifest.csv",
+    "manifest_sha256": "e5a8345a68ba7f0c15162c0865ae37aa9730fcc7051525abfa9ff9f5ca08d1c8",
+    "patch_records": [
+      {
+        "case_id": 101,
+        "patch_index": 0,
+        "global_patch_index": 0,
+        "origin_x": 1024,
+        "origin_y": 0,
+        "crop_sha256": "16886950bd3cece24633a70d627b759bd12114cad50165023b0d189c6be4ef36"
+      },
+      {
+        "case_id": 101,
+        "patch_index": 1,
+        "global_patch_index": 1,
+        "origin_x": 4096,
+        "origin_y": 0,
+        "crop_sha256": "232872883f4bbaf1c11d433a97a1b277970b4e910c5aecf22303ac4e358501af"
+      },
+      {
+        "case_id": 101,
+        "patch_index": 2,
+        "global_patch_index": 2,
+        "origin_x": 5632,
+        "origin_y": 0,
+        "crop_sha256": "243c874dee88d4b29c246e508a40a2ffed25cacfbc3c35d091c5f414bc52749f"
+      },
+      {
+        "case_id": 101,
+        "patch_index": 3,
+        "global_patch_index": 3,
+        "origin_x": 1536,
+        "origin_y": 512,
+        "crop_sha256": "e0010f85d5a3ead6b31aa636597010da42fcd5870e1819957fa11e5c445a1b89"
+      },
+      {
+        "case_id": 101,
+        "patch_index": 4,
+        "global_patch_index": 4,
+        "origin_x": 2560,
+        "origin_y": 512,
+        "crop_sha256": "21f82b6690434a40ee00170ff7aab3904a4c0bc7ba1d81713cc67aad9352acfe"
+      },
+      {
+        "case_id": 101,
+        "patch_index": 5,
+        "global_patch_index": 5,
+        "origin_x": 5632,
+        "origin_y": 512,
+        "crop_sha256": "456049134f6b6d419de6b21e4a3a9aac947babe85db0cf07264198ab41285b84"
+      },
+      {
+        "case_id": 101,
+        "patch_index": 6,
+        "global_patch_index": 6,
+        "origin_x": 1536,
+        "origin_y": 1024,
+        "crop_sha256": "010cbb2e674804b1b2f1d3fd96a5b6bfa2b250b693c4775315ed8bd2b21e087b"
+      },
+      {
+        "case_id": 101,
+        "patch_index": 7,
+        "global_patch_index": 7,
+        "origin_x": 512,
+        "origin_y": 2048,
+        "crop_sha256": "369faca429cc18c37ea4284fc527db0415251623817f8713172a8b9d1132c94a"
+      },
+      {
+        "case_id": 101,
+        "patch_index": 8,
+        "global_patch_index": 8,
+        "origin_x": 3584,
+        "origin_y": 2048,
+        "crop_sha256": "4d6d3466e58d8e1aad7c84ea46a6b0d898098c4de1b4b215e5ddb94ea6ec8e75"
+      },
+      {
+        "case_id": 101,
+        "patch_index": 9,
+        "global_patch_index": 9,
+        "origin_x": 5120,
+        "origin_y": 2048,
+        "crop_sha256": "d78481c74042109dddfcac2cd1597a4569845a6d785bd890f97c99181a13e148"
+      }
+    ]
+  },
+  "checkpoint_audit": {
+    "seed": 42,
+    "file_path": "/kaggle/input/datasets/avinashreddy7676/utta-med-h4-s42/source_fasterrcnn_s42.pt",
+    "sha256": "af9c34437e37cb13e38a6179c247ea8069ce74869fbd180201590b6137347003",
+    "expected_sha256": "af9c34437e37cb13e38a6179c247ea8069ce74869fbd180201590b6137347003",
+    "status": "AUTHENTICATED"
+  },
+  "hyperparameters": {
+    "operating_threshold_tau": 0.2,
+    "learning_rate": 0.00025,
+    "momentum": 0.9,
+    "l_inf_bound": 0.05,
+    "silence_window": 30,
+    "proliferation_max_abs": 4,
+    "proliferation_source_ratio": 3.0,
+    "box_height_filter_min_px": 1.0
+  },
+  "measured_hardware_performance": {
+    "peak_vram_allocated_mb": 2140.18,
+    "peak_vram_allocated_gb": 2.09,
+    "peak_vram_reserved_mb": 2318.0,
+    "total_vram_available_gb": 14.56,
+    "vram_headroom_gb": 12.47,
+    "forward_latency_ms_per_patch": 67.12,
+    "adaptation_latency_ms_per_patch": 80.78
+  },
+  "per_arm_results": {
+    "Arm_A": {
+      "total_updates": 0,
+      "total_alarms": 0,
+      "alarms_silence": 0,
+      "alarms_prolif_abs": 0,
+      "alarms_prolif_rel": 0,
+      "skipped_updates": 0,
+      "actual_parameter_restorations": 0,
+      "total_fallbacks": 0,
+      "in_global_fallback": false,
+      "detections_per_patch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "avg_forward_ms": 182.13,
+      "avg_adaptation_ms": 0.0,
+      "total_elapsed_seconds": 1.87
+    },
+    "Arm_B": {
+      "total_updates": 3,
+      "total_alarms": 0,
+      "alarms_silence": 0,
+      "alarms_prolif_abs": 0,
+      "alarms_prolif_rel": 0,
+      "skipped_updates": 7,
+      "actual_parameter_restorations": 0,
+      "total_fallbacks": 0,
+      "in_global_fallback": false,
+      "detections_per_patch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "avg_forward_ms": 37.23,
+      "avg_adaptation_ms": 93.01,
+      "total_elapsed_seconds": 1.876
+    },
+    "Arm_C": {
+      "total_updates": 3,
+      "total_alarms": 0,
+      "alarms_silence": 0,
+      "alarms_prolif_abs": 0,
+      "alarms_prolif_rel": 0,
+      "skipped_updates": 7,
+      "actual_parameter_restorations": 0,
+      "total_fallbacks": 0,
+      "in_global_fallback": false,
+      "detections_per_patch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "avg_forward_ms": 37.97,
+      "avg_adaptation_ms": 65.49,
+      "total_elapsed_seconds": 1.61
+    },
+    "Arm_D": {
+      "total_updates": 3,
+      "total_alarms": 0,
+      "alarms_silence": 0,
+      "alarms_prolif_abs": 0,
+      "alarms_prolif_rel": 0,
+      "skipped_updates": 7,
+      "actual_parameter_restorations": 0,
+      "total_fallbacks": 0,
+      "in_global_fallback": false,
+      "detections_per_patch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "avg_forward_ms": 38.14,
+      "avg_adaptation_ms": 65.94,
+      "total_elapsed_seconds": 1.623
+    },
+    "Arm_E": {
+      "total_updates": 3,
+      "total_alarms": 0,
+      "alarms_silence": 0,
+      "alarms_prolif_abs": 0,
+      "alarms_prolif_rel": 0,
+      "skipped_updates": 7,
+      "actual_parameter_restorations": 0,
+      "total_fallbacks": 0,
+      "in_global_fallback": false,
+      "detections_per_patch": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "avg_forward_ms": 40.1,
+      "avg_adaptation_ms": 98.68,
+      "total_elapsed_seconds": 1.991
+    }
+  }
+}

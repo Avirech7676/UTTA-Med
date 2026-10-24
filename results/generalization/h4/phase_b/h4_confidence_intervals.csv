@@ -1,0 +1,3 @@
+estimand,contrast,bootstrap_replicates,mean_delta_f1,median_delta_f1,ci_95_lower,ci_95_upper,bootstrap_tail_leq_0,scientific_determination
+Seed-Macro Averaged (Primary),Arm_E_minus_Arm_A,10000,0.0,0.0,0.0,0.0,1.0,EQUIVALENT_STRICT_MARGIN
+Micro-Pooled (Secondary),Arm_E_minus_Arm_A,10000,0.0,0.0,0.0,0.0,1.0,EQUIVALENT_STRICT_MARGIN

@@ -1,0 +1,6 @@
+contrast,mean_delta,ci_95_lower,ci_95_upper,bootstrap_tail_leq_0,tost_strict_03,tost_standard_05,determination
+Delta_Arm_E_vs_Arm_A_Primary_Macro,0.0,0.0,0.0,1.0,True,True,EQUIVALENT_STRICT_MARGIN
+Delta_Arm_E_vs_Arm_A_Secondary_Micro,0.0,0.0,0.0,1.0,True,True,EQUIVALENT_STRICT_MARGIN
+Delta_Arm_E_vs_Arm_D_Macro,0.00697,-0.026181,0.041173,0.3443,False,True,EQUIVALENT_STANDARD_MARGIN
+Delta_Arm_B_vs_Arm_A_Macro,-0.007617,-0.041694,0.025454,0.6721,False,True,EQUIVALENT_STANDARD_MARGIN
+Delta_Arm_D_vs_Arm_A_Macro,-0.00697,-0.041173,0.026181,0.6557,False,True,EQUIVALENT_STANDARD_MARGIN

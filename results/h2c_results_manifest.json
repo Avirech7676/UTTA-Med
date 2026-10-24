@@ -1,0 +1,451 @@
+{
+  "benchmark": "UTTA-Med Stage H2C External Generalization",
+  "timestamp": "2026-10-12T09:06:31Z",
+  "architecture": "DenseNet-121",
+  "target_results": {
+    "nih": {
+      "status": "COMPLETED",
+      "results_by_seed": {
+        "42": {
+          "Arm_A": {
+            "arm": "Arm_A",
+            "seed": 42,
+            "macro_auroc": 0.7894925122412007,
+            "mean_average_precision": 0.1803650517578676,
+            "multilabel_brier": 0.2989538013935089,
+            "per_label_auroc": {
+              "Atelectasis": 0.7170780434608977,
+              "Cardiomegaly": 0.7330868143891283,
+              "Consolidation": 0.7714435953203143,
+              "Edema": 0.8635721039736612,
+              "Pleural Effusion": 0.8622820040620021
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.19280845267038577,
+              "Cardiomegaly": 0.06272609727789173,
+              "Consolidation": 0.10185535653781808,
+              "Edema": 0.09690729786212626,
+              "Pleural Effusion": 0.44752805444111615
+            },
+            "target_coverage": 0.0,
+            "total_samples": 112120,
+            "selected_samples": 0,
+            "attempted_updates": 0,
+            "accepted_updates": 0,
+            "rejected_updates": 0,
+            "rollbacks": 0,
+            "max_displacement": 0.0,
+            "runtime_seconds": 1121.2644546031952
+          },
+          "Arm_B": {
+            "arm": "Arm_B",
+            "seed": 42,
+            "macro_auroc": 0.6742277428417481,
+            "mean_average_precision": 0.10848772627860626,
+            "multilabel_brier": 0.22092145681381226,
+            "per_label_auroc": {
+              "Atelectasis": 0.6159762488387891,
+              "Cardiomegaly": 0.6485139251192755,
+              "Consolidation": 0.6860400948944344,
+              "Edema": 0.6908402120417035,
+              "Pleural Effusion": 0.7297682333145382
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.141628392745233,
+              "Cardiomegaly": 0.053059907377837875,
+              "Consolidation": 0.0713198617128554,
+              "Edema": 0.040831821043716764,
+              "Pleural Effusion": 0.23559864851338827
+            },
+            "target_coverage": 0.9977613271494827,
+            "total_samples": 112120,
+            "selected_samples": 111869,
+            "attempted_updates": 1752,
+            "accepted_updates": 1752,
+            "rejected_updates": 0,
+            "rollbacks": 0,
+            "max_displacement": 0.04722995683550835,
+            "runtime_seconds": 1871.890613079071
+          },
+          "Arm_C": {
+            "arm": "Arm_C",
+            "seed": 42,
+            "macro_auroc": 0.6742277428417481,
+            "mean_average_precision": 0.10848772627860626,
+            "multilabel_brier": 0.22092145681381226,
+            "per_label_auroc": {
+              "Atelectasis": 0.6159762488387891,
+              "Cardiomegaly": 0.6485139251192755,
+              "Consolidation": 0.6860400948944344,
+              "Edema": 0.6908402120417035,
+              "Pleural Effusion": 0.7297682333145382
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.141628392745233,
+              "Cardiomegaly": 0.053059907377837875,
+              "Consolidation": 0.0713198617128554,
+              "Edema": 0.040831821043716764,
+              "Pleural Effusion": 0.23559864851338827
+            },
+            "target_coverage": 0.9977613271494827,
+            "total_samples": 112120,
+            "selected_samples": 111869,
+            "attempted_updates": 1752,
+            "accepted_updates": 1752,
+            "rejected_updates": 0,
+            "rollbacks": 0,
+            "max_displacement": 0.04722995683550835,
+            "runtime_seconds": 1901.6872916221619
+          },
+          "Arm_D": {
+            "arm": "Arm_D",
+            "seed": 42,
+            "macro_auroc": 0.7807949084365028,
+            "mean_average_precision": 0.1774033525284509,
+            "multilabel_brier": 0.27221590280532837,
+            "per_label_auroc": {
+              "Atelectasis": 0.7156983834917447,
+              "Cardiomegaly": 0.7178620562770357,
+              "Consolidation": 0.7716408920785456,
+              "Edema": 0.838939055880321,
+              "Pleural Effusion": 0.8598341544548667
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.18724044072097182,
+              "Cardiomegaly": 0.06415137429727404,
+              "Consolidation": 0.10424338832419189,
+              "Edema": 0.08706291324851667,
+              "Pleural Effusion": 0.4443186460513001
+            },
+            "target_coverage": 0.7119336425258651,
+            "total_samples": 112120,
+            "selected_samples": 79822,
+            "attempted_updates": 1752,
+            "accepted_updates": 11,
+            "rejected_updates": 1741,
+            "rollbacks": 1741,
+            "max_displacement": 0.001222766935825348,
+            "runtime_seconds": 2264.707104921341
+          },
+          "paired_clustered_bootstrap": {
+            "bootstrap_replicates": 1000,
+            "delta_Arm_B_vs_Arm_A": {
+              "mean": -0.11535644707573724,
+              "ci_lower": -0.12105197975215291,
+              "ci_upper": -0.10956706997292212
+            },
+            "delta_Arm_C_vs_Arm_B": {
+              "mean": 0.0,
+              "ci_lower": 0.0,
+              "ci_upper": 0.0
+            },
+            "delta_Arm_D_vs_Arm_C": {
+              "mean": 0.10663493182802464,
+              "ci_lower": 0.1014991893387814,
+              "ci_upper": 0.1116226614576524
+            },
+            "delta_Arm_D_vs_Arm_A": {
+              "mean": -0.008721515247712617,
+              "ci_lower": -0.01043882614164976,
+              "ci_upper": -0.007141118666122576
+            }
+          }
+        },
+        "7": {
+          "Arm_A": {
+            "arm": "Arm_A",
+            "seed": 7,
+            "macro_auroc": 0.7884058184427768,
+            "mean_average_precision": 0.18068717756564032,
+            "multilabel_brier": 0.3142390549182892,
+            "per_label_auroc": {
+              "Atelectasis": 0.7212785924910554,
+              "Cardiomegaly": 0.7414305015833488,
+              "Consolidation": 0.762057205188136,
+              "Edema": 0.8589404812176556,
+              "Pleural Effusion": 0.8583223117336884
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.20362651880681323,
+              "Cardiomegaly": 0.06897403130964462,
+              "Consolidation": 0.0974103601678368,
+              "Edema": 0.09389431252482441,
+              "Pleural Effusion": 0.4395306650190825
+            },
+            "target_coverage": 0.0,
+            "total_samples": 112120,
+            "selected_samples": 0,
+            "attempted_updates": 0,
+            "accepted_updates": 0,
+            "rejected_updates": 0,
+            "rollbacks": 0,
+            "max_displacement": 0.0,
+            "runtime_seconds": 1156.4628465175629
+          },
+          "Arm_B": {
+            "arm": "Arm_B",
+            "seed": 7,
+            "macro_auroc": 0.6630251260125986,
+            "mean_average_precision": 0.10143483015943713,
+            "multilabel_brier": 0.2209530770778656,
+            "per_label_auroc": {
+              "Atelectasis": 0.583390745699307,
+              "Cardiomegaly": 0.6107465488843501,
+              "Consolidation": 0.6878485395015793,
+              "Edema": 0.71574529917733,
+              "Pleural Effusion": 0.7173944968004264
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.12974763329081776,
+              "Cardiomegaly": 0.043298870842632134,
+              "Consolidation": 0.07271224332410808,
+              "Edema": 0.04143909537001156,
+              "Pleural Effusion": 0.21997630796961604
+            },
+            "target_coverage": 0.9968783446307528,
+            "total_samples": 112120,
+            "selected_samples": 111770,
+            "attempted_updates": 1752,
+            "accepted_updates": 1752,
+            "rejected_updates": 0,
+            "rollbacks": 0,
+            "max_displacement": 0.03568572551012039,
+            "runtime_seconds": 1870.1089842319489
+          },
+          "Arm_C": {
+            "arm": "Arm_C",
+            "seed": 7,
+            "macro_auroc": 0.6630251260125986,
+            "mean_average_precision": 0.10143483015943713,
+            "multilabel_brier": 0.2209530770778656,
+            "per_label_auroc": {
+              "Atelectasis": 0.583390745699307,
+              "Cardiomegaly": 0.6107465488843501,
+              "Consolidation": 0.6878485395015793,
+              "Edema": 0.71574529917733,
+              "Pleural Effusion": 0.7173944968004264
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.12974763329081776,
+              "Cardiomegaly": 0.043298870842632134,
+              "Consolidation": 0.07271224332410808,
+              "Edema": 0.04143909537001156,
+              "Pleural Effusion": 0.21997630796961604
+            },
+            "target_coverage": 0.9968783446307528,
+            "total_samples": 112120,
+            "selected_samples": 111770,
+            "attempted_updates": 1752,
+            "accepted_updates": 1752,
+            "rejected_updates": 0,
+            "rollbacks": 0,
+            "max_displacement": 0.03568572551012039,
+            "runtime_seconds": 1900.189539194107
+          },
+          "Arm_D": {
+            "arm": "Arm_D",
+            "seed": 7,
+            "macro_auroc": 0.6630011474134296,
+            "mean_average_precision": 0.09862143222966033,
+            "multilabel_brier": 0.06999922543764114,
+            "per_label_auroc": {
+              "Atelectasis": 0.6174437338703934,
+              "Cardiomegaly": 0.6333791011014389,
+              "Consolidation": 0.6371129216662357,
+              "Edema": 0.720964938824864,
+              "Pleural Effusion": 0.7061050416042165
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.1338146380366059,
+              "Cardiomegaly": 0.04963779873364945,
+              "Consolidation": 0.06140074984230718,
+              "Edema": 0.04039133035219076,
+              "Pleural Effusion": 0.2078626441835484
+            },
+            "target_coverage": 0.9829379236532286,
+            "total_samples": 112120,
+            "selected_samples": 110207,
+            "attempted_updates": 1752,
+            "accepted_updates": 294,
+            "rejected_updates": 1458,
+            "rollbacks": 1458,
+            "max_displacement": 0.01993163675069809,
+            "runtime_seconds": 2459.1283802986145
+          },
+          "paired_clustered_bootstrap": {
+            "bootstrap_replicates": 1000,
+            "delta_Arm_B_vs_Arm_A": {
+              "mean": -0.1253841659760892,
+              "ci_lower": -0.13049576401984725,
+              "ci_upper": -0.11993128292382177
+            },
+            "delta_Arm_C_vs_Arm_B": {
+              "mean": 0.0,
+              "ci_lower": 0.0,
+              "ci_upper": 0.0
+            },
+            "delta_Arm_D_vs_Arm_C": {
+              "mean": -8.604268828831973e-05,
+              "ci_lower": -0.0041362271447132224,
+              "ci_upper": 0.003931740437903949
+            },
+            "delta_Arm_D_vs_Arm_A": {
+              "mean": -0.1254702086643775,
+              "ci_lower": -0.13161882317328102,
+              "ci_upper": -0.11950103609624389
+            }
+          }
+        },
+        "123": {
+          "Arm_A": {
+            "arm": "Arm_A",
+            "seed": 123,
+            "macro_auroc": 0.7980599379964187,
+            "mean_average_precision": 0.18551167201398583,
+            "multilabel_brier": 0.2878805696964264,
+            "per_label_auroc": {
+              "Atelectasis": 0.7210932222614556,
+              "Cardiomegaly": 0.7604849923310006,
+              "Consolidation": 0.7791887767730805,
+              "Edema": 0.8678384425206722,
+              "Pleural Effusion": 0.8616942560958845
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.18879348063633541,
+              "Cardiomegaly": 0.07162155869981565,
+              "Consolidation": 0.1087522380202223,
+              "Edema": 0.11225894146581442,
+              "Pleural Effusion": 0.4461321412477414
+            },
+            "target_coverage": 0.0,
+            "total_samples": 112120,
+            "selected_samples": 0,
+            "attempted_updates": 0,
+            "accepted_updates": 0,
+            "rejected_updates": 0,
+            "rollbacks": 0,
+            "max_displacement": 0.0,
+            "runtime_seconds": 1198.3896119594574
+          },
+          "Arm_B": {
+            "arm": "Arm_B",
+            "seed": 123,
+            "macro_auroc": 0.6483928031399598,
+            "mean_average_precision": 0.10113948292306674,
+            "multilabel_brier": 0.221257746219635,
+            "per_label_auroc": {
+              "Atelectasis": 0.6451033961952897,
+              "Cardiomegaly": 0.6303413689809766,
+              "Consolidation": 0.6134762282372275,
+              "Edema": 0.673303177479357,
+              "Pleural Effusion": 0.6797398448069483
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.15127198880684767,
+              "Cardiomegaly": 0.0497969588601503,
+              "Consolidation": 0.059293352212806454,
+              "Edema": 0.03891477513096564,
+              "Pleural Effusion": 0.2064203396045636
+            },
+            "target_coverage": 0.9974759186585801,
+            "total_samples": 112120,
+            "selected_samples": 111837,
+            "attempted_updates": 1752,
+            "accepted_updates": 1752,
+            "rejected_updates": 0,
+            "rollbacks": 0,
+            "max_displacement": 0.06572800874710083,
+            "runtime_seconds": 1858.9306991100311
+          },
+          "Arm_C": {
+            "arm": "Arm_C",
+            "seed": 123,
+            "macro_auroc": 0.6483951837480808,
+            "mean_average_precision": 0.10114055768084965,
+            "multilabel_brier": 0.221257746219635,
+            "per_label_auroc": {
+              "Atelectasis": 0.6450998719744737,
+              "Cardiomegaly": 0.6303402966309324,
+              "Consolidation": 0.6134835634786862,
+              "Edema": 0.6732898050568484,
+              "Pleural Effusion": 0.6797623815994629
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.1512592395729014,
+              "Cardiomegaly": 0.04979707855422644,
+              "Consolidation": 0.059295291902558576,
+              "Edema": 0.038913674931107076,
+              "Pleural Effusion": 0.20643750344345468
+            },
+            "target_coverage": 0.9974759186585801,
+            "total_samples": 112120,
+            "selected_samples": 111837,
+            "attempted_updates": 1752,
+            "accepted_updates": 1752,
+            "rejected_updates": 0,
+            "rollbacks": 0,
+            "max_displacement": 0.05000000074505806,
+            "runtime_seconds": 1898.3169629573822
+          },
+          "Arm_D": {
+            "arm": "Arm_D",
+            "seed": 123,
+            "macro_auroc": 0.7809782139938786,
+            "mean_average_precision": 0.1770363899486919,
+            "multilabel_brier": 0.20443442463874817,
+            "per_label_auroc": {
+              "Atelectasis": 0.7174923435130613,
+              "Cardiomegaly": 0.7361043645852573,
+              "Consolidation": 0.7675612914061792,
+              "Edema": 0.8277053253924974,
+              "Pleural Effusion": 0.8560277450723974
+            },
+            "per_label_ap": {
+              "Atelectasis": 0.19267256401976762,
+              "Cardiomegaly": 0.06596492066295724,
+              "Consolidation": 0.10869436159382438,
+              "Edema": 0.08432239302254714,
+              "Pleural Effusion": 0.433527710444363
+            },
+            "target_coverage": 0.9353638958259008,
+            "total_samples": 112120,
+            "selected_samples": 104873,
+            "attempted_updates": 1752,
+            "accepted_updates": 20,
+            "rejected_updates": 1732,
+            "rollbacks": 1732,
+            "max_displacement": 0.0022014081478118896,
+            "runtime_seconds": 2417.176544904709
+          },
+          "paired_clustered_bootstrap": {
+            "bootstrap_replicates": 1000,
+            "delta_Arm_B_vs_Arm_A": {
+              "mean": -0.14971161375122805,
+              "ci_lower": -0.15597884456757286,
+              "ci_upper": -0.14388555881554915
+            },
+            "delta_Arm_C_vs_Arm_B": {
+              "mean": 2.2211749523360914e-06,
+              "ci_lower": -1.1399157125505099e-05,
+              "ci_upper": 1.4694738098974811e-05
+            },
+            "delta_Arm_D_vs_Arm_C": {
+              "mean": 0.1326364725249837,
+              "ci_lower": 0.12775993681163172,
+              "ci_upper": 0.1378816753146604
+            },
+            "delta_Arm_D_vs_Arm_A": {
+              "mean": -0.017072920051291997,
+              "ci_lower": -0.018728305877987718,
+              "ci_upper": -0.015436136247062136
+            }
+          }
+        }
+      }
+    },
+    "mimic": {
+      "status": "BLOCKED",
+      "reason": "Real physical MIMIC dataset not discovered on filesystem."
+    }
+  }
+}

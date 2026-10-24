@@ -1,0 +1,258 @@
+[{"stream_name":"stdout","time":0.959702641,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":0.959737103,"data":"UTTA-MED STAGE H4 — PHASE B FULL TARGET INFERENCE (AUTOMATED LAUNCH)\n"}
+,{"stream_name":"stdout","time":0.959747222,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":9.352707555,"data":"[*] Compute Environment:\n"}
+,{"stream_name":"stdout","time":9.355910602,"data":"    - Platform:        Linux-6.18.48+-x86_64-with-glibc2.39\n"}
+,{"stream_name":"stdout","time":9.355929969,"data":"    - Python:          3.13.15\n"}
+,{"stream_name":"stdout","time":9.355934439,"data":"    - PyTorch:         2.11.0+cu128\n"}
+,{"stream_name":"stdout","time":9.355938092,"data":"    - CUDA Available:  True\n"}
+,{"stream_name":"stdout","time":9.355941589,"data":"    - GPU Device:      Tesla T4\n"}
+,{"stream_name":"stdout","time":11.837463447,"data":"\n"}
+,{"stream_name":"stdout","time":11.837499799,"data":"[*] Checksum Authentication Gate:\n"}
+,{"stream_name":"stdout","time":11.850158491,"data":"    - Target Runner            : MATCH (e2c8bb896b50d54e...)\n"}
+,{"stream_name":"stdout","time":11.859952945,"data":"    - Behavioral Test Suite    : MATCH (c1b080a4a211aaf6...)\n"}
+,{"stream_name":"stdout","time":11.871024613,"data":"    - Frozen Manifest          : MATCH (e5a8345a68ba7f0c...)\n"}
+,{"stream_name":"stdout","time":11.875933231,"data":"    - Evaluation Ground Truth  : MATCH (fc33d0e3904e2044...)\n"}
+,{"stream_name":"stdout","time":14.633013652,"data":"    - Checkpoint Seed 42       : MATCH (af9c34437e37cb13...)\n"}
+,{"stream_name":"stdout","time":17.141459453,"data":"    - Checkpoint Seed 7        : MATCH (3f1ed8e0e3997eac...)\n"}
+,{"stream_name":"stdout","time":19.564019388,"data":"    - Checkpoint Seed 123      : MATCH (44584d70480a7913...)\n"}
+,{"stream_name":"stdout","time":19.564045382,"data":"\n"}
+,{"stream_name":"stdout","time":19.564049812,"data":"[*] Staging Execution Environment in /kaggle/working...\n"}
+,{"stream_name":"stdout","time":19.729315345,"data":"[+] Files successfully staged in /kaggle/working.\n"}
+,{"stream_name":"stdout","time":19.729343492,"data":"\n"}
+,{"stream_name":"stdout","time":19.729346589,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":19.72934903,"data":"[*] EXECUTING PRE-LAUNCH TARGETED BEHAVIORAL VERIFICATION (6 TESTS)\n"}
+,{"stream_name":"stdout","time":19.729351305,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":28.758389051,"data":"[2026-10-18 04:54:33] ================================================================================\n"}
+,{"stream_name":"stdout","time":28.758420127,"data":"[2026-10-18 04:54:33] UTTA-MED STAGE H4 — TARGETED BEHAVIORAL VERIFICATION TEST SUITE\n"}
+,{"stream_name":"stdout","time":28.758425659,"data":"[2026-10-18 04:54:33] ================================================================================\n"}
+,{"stream_name":"stdout","time":28.758429982,"data":"[2026-10-18 04:54:33] Executing behavioral verification on device: cpu\n"}
+,{"stream_name":"stdout","time":28.758434067,"data":"[2026-10-18 04:54:33] \n"}
+,{"stream_name":"stdout","time":28.758437882,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":28.758441544,"data":"[2026-10-18 04:54:33] [TEST 1] NONZERO ADAPTATION VERIFICATION (ARMS B, C, D, E)\n"}
+,{"stream_name":"stdout","time":28.758445333,"data":"[2026-10-18 04:54:33] ================================================================================\n"}
+,{"stream_name":"stdout","time":28.799633938,"data":"[2026-10-18 04:54:33] \n"}
+,{"stream_name":"stdout","time":28.79966243,"data":"--- Testing Arm_B ---\n"}
+,{"stream_name":"stdout","time":35.825814231,"data":"[2026-10-18 04:54:40]   Arm_B Results:\n"}
+,{"stream_name":"stdout","time":35.825870493,"data":"[2026-10-18 04:54:40]     - Admitted Proposals: 1000\n"}
+,{"stream_name":"stdout","time":35.82587934,"data":"[2026-10-18 04:54:40]     - Entropy Loss: 0.000504\n"}
+,{"stream_name":"stdout","time":35.825886,"data":"[2026-10-18 04:54:40]     - Parameters with Nonzero Gradients: 106 / 106\n"}
+,{"stream_name":"stdout","time":35.825892238,"data":"[2026-10-18 04:54:40]     - Parameters with Nonzero Displacement: 105 / 106\n"}
+,{"stream_name":"stdout","time":35.825897691,"data":"[2026-10-18 04:54:40]     - Max Displacement (L_inf): 0.00000489\n"}
+,{"stream_name":"stdout","time":35.825904679,"data":"[2026-10-18 04:54:40]     - Cumulative L2 Displacement: 0.00008516\n"}
+,{"stream_name":"stdout","time":35.825913087,"data":"[2026-10-18 04:54:40] \n"}
+,{"stream_name":"stdout","time":35.825920821,"data":"--- Testing Arm_C ---\n"}
+,{"stream_name":"stdout","time":41.712553003,"data":"[2026-10-18 04:54:45]   Arm_C Results:\n"}
+,{"stream_name":"stdout","time":41.712595624,"data":"[2026-10-18 04:54:45]     - Admitted Proposals: 1000\n"}
+,{"stream_name":"stdout","time":41.712600344,"data":"[2026-10-18 04:54:45]     - Entropy Loss: 0.000504\n"}
+,{"stream_name":"stdout","time":41.712603468,"data":"[2026-10-18 04:54:45]     - Parameters with Nonzero Gradients: 106 / 106\n"}
+,{"stream_name":"stdout","time":41.712606421,"data":"[2026-10-18 04:54:45]     - Parameters with Nonzero Displacement: 105 / 106\n"}
+,{"stream_name":"stdout","time":41.712609494,"data":"[2026-10-18 04:54:45]     - Max Displacement (L_inf): 0.00000489\n"}
+,{"stream_name":"stdout","time":41.712612356,"data":"[2026-10-18 04:54:45]     - Cumulative L2 Displacement: 0.00008516\n"}
+,{"stream_name":"stdout","time":41.71261514,"data":"[2026-10-18 04:54:45] \n"}
+,{"stream_name":"stdout","time":41.712618257,"data":"--- Testing Arm_D ---\n"}
+,{"stream_name":"stdout","time":47.44853337,"data":"[2026-10-18 04:54:51]   Arm_D Results:\n"}
+,{"stream_name":"stdout","time":47.448597538,"data":"[2026-10-18 04:54:51]     - Admitted Proposals: 1000\n"}
+,{"stream_name":"stdout","time":47.448606416,"data":"[2026-10-18 04:54:51]     - Entropy Loss: 0.000504\n"}
+,{"stream_name":"stdout","time":47.448612508,"data":"[2026-10-18 04:54:51]     - Parameters with Nonzero Gradients: 106 / 106\n"}
+,{"stream_name":"stdout","time":47.448619039,"data":"[2026-10-18 04:54:51]     - Parameters with Nonzero Displacement: 105 / 106\n"}
+,{"stream_name":"stdout","time":47.448624488,"data":"[2026-10-18 04:54:51]     - Max Displacement (L_inf): 0.00000489\n"}
+,{"stream_name":"stdout","time":47.448630415,"data":"[2026-10-18 04:54:51]     - Cumulative L2 Displacement: 0.00008516\n"}
+,{"stream_name":"stdout","time":47.448639092,"data":"[2026-10-18 04:54:51] \n"}
+,{"stream_name":"stdout","time":47.448647603,"data":"--- Testing Arm_E ---\n"}
+,{"stream_name":"stdout","time":54.020775476,"data":"[2026-10-18 04:54:58]   Arm_E Results:\n"}
+,{"stream_name":"stdout","time":54.020809397,"data":"[2026-10-18 04:54:58]     - Admitted Proposals: 1000\n"}
+,{"stream_name":"stdout","time":54.020813942,"data":"[2026-10-18 04:54:58]     - Entropy Loss: 0.000504\n"}
+,{"stream_name":"stdout","time":54.020817894,"data":"[2026-10-18 04:54:58]     - Parameters with Nonzero Gradients: 106 / 106\n"}
+,{"stream_name":"stdout","time":54.020822028,"data":"[2026-10-18 04:54:58]     - Parameters with Nonzero Displacement: 105 / 106\n"}
+,{"stream_name":"stdout","time":54.020843234,"data":"[2026-10-18 04:54:58]     - Max Displacement (L_inf): 0.00000489\n"}
+,{"stream_name":"stdout","time":54.020846484,"data":"[2026-10-18 04:54:58]     - Cumulative L2 Displacement: 0.00008516\n"}
+,{"stream_name":"stdout","time":54.020849632,"data":"[2026-10-18 04:54:58] \n"}
+,{"stream_name":"stdout","time":54.020854619,"data":"[PASS] Nonzero adaptation demonstrated successfully across all Arms B, C, D, E.\n"}
+,{"stream_name":"stdout","time":54.039132752,"data":"[2026-10-18 04:54:58] \n"}
+,{"stream_name":"stdout","time":54.03916084,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":54.039164101,"data":"[2026-10-18 04:54:58] [TEST 2] ARM C PARAMETER DISPLACEMENT BOUND VERIFICATION (L_inf \u003c= 0.05)\n"}
+,{"stream_name":"stdout","time":54.039167076,"data":"[2026-10-18 04:54:58] ================================================================================\n"}
+,{"stream_name":"stdout","time":58.798555627,"data":"[2026-10-18 04:55:03]   Standard Step Displacement: 0.00000024 (Bound: \u003c= 0.05)\n"}
+,{"stream_name":"stdout","time":58.798596838,"data":"[2026-10-18 04:55:03] \n"}
+,{"stream_name":"stdout","time":58.798600689,"data":"  Testing Boundary Enforcement under Amplified Gradients...\n"}
+,{"stream_name":"stdout","time":58.803701299,"data":"[2026-10-18 04:55:03]   Unconstrained Displaced Norm: 0.10000038 (Intentionally exceeds 0.05)\n"}
+,{"stream_name":"stdout","time":58.812249878,"data":"[2026-10-18 04:55:03]   Post-Clamp Displacement: 0.05000019\n"}
+,{"stream_name":"stdout","time":58.812264121,"data":"[2026-10-18 04:55:03]   Saturated Modules Pinned at Bound: 106 / 106\n"}
+,{"stream_name":"stdout","time":58.812267159,"data":"[2026-10-18 04:55:03]   Bound Violations (\u003e 0.05 + 1e-5): 0\n"}
+,{"stream_name":"stdout","time":58.812270036,"data":"[2026-10-18 04:55:03] \n"}
+,{"stream_name":"stdout","time":58.812272419,"data":"[PASS] Arm C L_inf bound (\u003c= 0.05) verified with exact numerical precision.\n"}
+,{"stream_name":"stdout","time":58.823722209,"data":"[2026-10-18 04:55:03] \n"}
+,{"stream_name":"stdout","time":58.823741373,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":58.823747037,"data":"[2026-10-18 04:55:03] [TEST 3] ARM D ATOMIC ROLLBACK FROM MUTATED STATE (VIA PRODUCTION CONTROLLER)\n"}
+,{"stream_name":"stdout","time":58.823752008,"data":"[2026-10-18 04:55:03] ================================================================================\n"}
+,{"stream_name":"stdout","time":63.799800506,"data":"[2026-10-18 04:55:08]   Step 1 Genuine Update Applied: displacement from source = 0.00000489\n"}
+,{"stream_name":"stdout","time":63.836402281,"data":"[2026-10-18 04:55:08] \n"}
+,{"stream_name":"stdout","time":63.836427607,"data":"  Step 2-4: Inducing 3 Consecutive Proliferation Alarms on Arm D...\n"}
+,{"stream_name":"stdout","time":68.000505864,"data":"[2026-10-18 04:55:12]     Alarm 1: Streak=1 | Action=ATOMIC_ROLLBACK_TO_STABLE | Diff-From-W1=0.00000000 | Diff-From-Source=0.00000489\n"}
+,{"stream_name":"stdout","time":72.232625616,"data":"[2026-10-18 04:55:16]     Alarm 2: Streak=2 | Action=ATOMIC_ROLLBACK_TO_STABLE | Diff-From-W1=0.00000000 | Diff-From-Source=0.00000489\n"}
+,{"stream_name":"stdout","time":76.420856439,"data":"[2026-10-18 04:55:20]     Alarm 3: Streak=3 | Action=ATOMIC_ROLLBACK_TO_STABLE | Diff-From-W1=0.00000000 | Diff-From-Source=0.00000489\n"}
+,{"stream_name":"stdout","time":76.420894354,"data":"[2026-10-18 04:55:20] \n"}
+,{"stream_name":"stdout","time":76.420914175,"data":"  Step 5: Verifying Arm D Remains Eligible for Subsequent Adaptation...\n"}
+,{"stream_name":"stdout","time":80.291002178,"data":"[2026-10-18 04:55:24]   Step 5 Adaptation Step Applied: parameter change from W1 = 0.00001669\n"}
+,{"stream_name":"stdout","time":80.291034885,"data":"[2026-10-18 04:55:24] \n"}
+,{"stream_name":"stdout","time":80.291043507,"data":"[PASS] Arm D Multi-Alarm Isolation Verified: 3 alarms -\u003e 0 fallbacks -\u003e remains eligible for adaptation.\n"}
+,{"stream_name":"stdout","time":80.328961388,"data":"[2026-10-18 04:55:24] \n"}
+,{"stream_name":"stdout","time":80.329009569,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":80.329014571,"data":"[2026-10-18 04:55:24] [TEST 4] ARM E RECOVERY: ATOMIC ROLLBACK \u0026 LATCHING GLOBAL FALLBACK (VIA PRODUCTION CONTROLLER)\n"}
+,{"stream_name":"stdout","time":80.329019015,"data":"[2026-10-18 04:55:24] ================================================================================\n"}
+,{"stream_name":"stdout","time":87.143940095,"data":"[2026-10-18 04:55:31]   Step 1 Update Applied: displacement from source = 0.00000489\n"}
+,{"stream_name":"stdout","time":87.144044657,"data":"[2026-10-18 04:55:31] \n"}
+,{"stream_name":"stdout","time":87.144053452,"data":"  Step 2: Triggering Single Alarm (Rejection Streak = 1)...\n"}
+,{"stream_name":"stdout","time":87.333684842,"data":"[2026-10-18 04:55:31]     Post-Rollback Divergence: 0.00000000\n"}
+,{"stream_name":"stdout","time":87.333716562,"data":"[2026-10-18 04:55:31] \n"}
+,{"stream_name":"stdout","time":87.333757258,"data":"  Step 3: Establishing Multi-Step Adapted State...\n"}
+,{"stream_name":"stdout","time":96.667365484,"data":"[2026-10-18 04:55:40] \n"}
+,{"stream_name":"stdout","time":96.667404565,"data":"  Step 4: Inducing Persistent Rejection Streak (3 Consecutive Alarms)...\n"}
+,{"stream_name":"stdout","time":96.998836595,"data":"[2026-10-18 04:55:41]     Alarm 1: Streak = 1, Action = ATOMIC_ROLLBACK_TO_STABLE, Post-Diff-From-Source = 0.00000489\n"}
+,{"stream_name":"stdout","time":97.22557262,"data":"[2026-10-18 04:55:41]     Alarm 2: Streak = 2, Action = SKIPPED_ONLY, Post-Diff-From-Source = 0.00000489\n"}
+,{"stream_name":"stdout","time":97.474810807,"data":"[2026-10-18 04:55:41]     Alarm 3: Streak = 3, Action = GLOBAL_FALLBACK_TO_SOURCE, Post-Diff-From-Source = 0.00000000\n"}
+,{"stream_name":"stdout","time":97.474843111,"data":"[2026-10-18 04:55:41] \n"}
+,{"stream_name":"stdout","time":97.474868099,"data":"  Step 5: Verifying Latching Global Fallback...\n"}
+,{"stream_name":"stdout","time":97.551212917,"data":"[2026-10-18 04:55:41] \n"}
+,{"stream_name":"stdout","time":97.551244081,"data":"[PASS] Arm E dual recovery (Atomic Rollback + Latching Global Fallback) fully certified through production controller.\n"}
+,{"stream_name":"stdout","time":97.587055924,"data":"[2026-10-18 04:55:41] \n"}
+,{"stream_name":"stdout","time":97.58708892,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":97.587091964,"data":"[2026-10-18 04:55:41] [TEST 5] ALIGNED PROLIFERATION COUNT VERIFICATION (SYMMETRIC BOX-HEIGHT FILTERING)\n"}
+,{"stream_name":"stdout","time":97.587094961,"data":"[2026-10-18 04:55:41] ================================================================================\n"}
+,{"stream_name":"stdout","time":97.587273024,"data":"[2026-10-18 04:55:41]   Unaligned Detection Counts (Asymmetric Filter):\n"}
+,{"stream_name":"stdout","time":97.587282906,"data":"[2026-10-18 04:55:41]     - Adapted (filtered h \u003e= 1.0): 1\n"}
+,{"stream_name":"stdout","time":97.587286849,"data":"[2026-10-18 04:55:41]     - Source (raw scores \u003e= 0.20): 2 (INFLATED by sub-1px slit!)\n"}
+,{"stream_name":"stdout","time":97.587312191,"data":"[2026-10-18 04:55:41] \n"}
+,{"stream_name":"stdout","time":97.587316872,"data":"  Aligned Detection Counts (count_detections_at_tau):\n"}
+,{"stream_name":"stdout","time":97.587320841,"data":"[2026-10-18 04:55:41]     - Adapted (tau=0.20, h \u003e= 1.0): 1\n"}
+,{"stream_name":"stdout","time":97.587324828,"data":"[2026-10-18 04:55:41]     - Source  (tau=0.20, h \u003e= 1.0): 1 (EXACT match to valid morphology)\n"}
+,{"stream_name":"stdout","time":97.587364986,"data":"[2026-10-18 04:55:41] \n"}
+,{"stream_name":"stdout","time":97.587446864,"data":"  Monitor Alarm Evaluation:\n"}
+,{"stream_name":"stdout","time":97.587453899,"data":"[2026-10-18 04:55:41]     - Unaligned: Alarm=False, Type=NORMAL\n"}
+,{"stream_name":"stdout","time":97.587457678,"data":"[2026-10-18 04:55:41]     - Aligned:   Alarm=False, Type=NORMAL\n"}
+,{"stream_name":"stdout","time":97.587495647,"data":"[2026-10-18 04:55:41] \n"}
+,{"stream_name":"stdout","time":97.587512359,"data":"[PASS] Aligned detection counting enforces exact mathematical symmetry across both arms.\n"}
+,{"stream_name":"stdout","time":97.587523347,"data":"[2026-10-18 04:55:41] \n"}
+,{"stream_name":"stdout","time":97.587527476,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":97.587531619,"data":"[2026-10-18 04:55:41] [TEST 6] SILENCE BOUNDARY (\u003e=30) \u0026 SOURCE-RELATIVE (n_source \u003e 0) POLICY VERIFICATION\n"}
+,{"stream_name":"stdout","time":97.587536529,"data":"[2026-10-18 04:55:41] ================================================================================\n"}
+,{"stream_name":"stdout","time":97.587601797,"data":"[2026-10-18 04:55:41]   Streak 29 (Patches 1..29 empty): Alarm=False | Empty Streak=29\n"}
+,{"stream_name":"stdout","time":97.587606701,"data":"[2026-10-18 04:55:41]   Streak 30 (Patch 30 empty):      Alarm=True | Type=SILENCE_ALARM | Empty Streak=30\n"}
+,{"stream_name":"stdout","time":97.587610224,"data":"[2026-10-18 04:55:41]   Case A (n_pred=3, n_source=0):   Alarm=False | Type=NORMAL (Relative rule skipped when n_source=0)\n"}
+,{"stream_name":"stdout","time":97.587620484,"data":"[2026-10-18 04:55:41]   Case B (n_pred=5, n_source=0):   Alarm=True | Type=PROLIFERATION_ABS_ALARM (Absolute rule triggers independently)\n"}
+,{"stream_name":"stdout","time":97.587624273,"data":"[2026-10-18 04:55:41]   Case C (n_pred=4, n_source=1):   Alarm=True | Type=PROLIFERATION_REL_ALARM (Relative rule evaluates when n_source \u003e 0)\n"}
+,{"stream_name":"stdout","time":97.587633851,"data":"[2026-10-18 04:55:41] \n"}
+,{"stream_name":"stdout","time":97.587637227,"data":"[PASS] Silence boundary (\u003e=30) and source-relative policy (n_source \u003e 0) certified.\n"}
+,{"stream_name":"stdout","time":97.587671147,"data":"[2026-10-18 04:55:41] \n"}
+,{"stream_name":"stdout","time":97.587676291,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":97.587680481,"data":"[2026-10-18 04:55:41] SUMMARY OF TARGETED BEHAVIORAL ASSERTIONS\n"}
+,{"stream_name":"stdout","time":97.587684311,"data":"[2026-10-18 04:55:41] ================================================================================\n"}
+,{"stream_name":"stdout","time":97.587696426,"data":"[2026-10-18 04:55:41] 1. Nonzero Adaptation (Arms B, C, D, E): PASS (all 106 parameters updated with L_inf \u003e 0)\n"}
+,{"stream_name":"stdout","time":97.587730223,"data":"[2026-10-18 04:55:41] 2. Arm C Bound (L_inf \u003c= 0.05): PASS (clamped displacement = 0.05000019, 0 violations)\n"}
+,{"stream_name":"stdout","time":97.587803229,"data":"[2026-10-18 04:55:41] 3. Arm D Atomic Rollback (Controller): PASS (3 alarms -\u003e 0 fallbacks, adapted W1 preserved, eligible for subsequent adaptation)\n"}
+,{"stream_name":"stdout","time":97.587817591,"data":"[2026-10-18 04:55:41] 4. Arm E Dual Recovery (Controller): PASS (3 alarms -\u003e 1 global fallback, latched return to source state)\n"}
+,{"stream_name":"stdout","time":97.587821622,"data":"[2026-10-18 04:55:41] 5. Aligned Proliferation (Symmetric tau=0.20, h\u003e=1.0): PASS (source=1, adapted=1)\n"}
+,{"stream_name":"stdout","time":97.587828696,"data":"[2026-10-18 04:55:41] 6. Silence Boundary \u0026 Rel Proliferation: PASS (streak 30 alarm=True, n_source=0 relative alarm=False)\n"}
+,{"stream_name":"stdout","time":97.587832945,"data":"[2026-10-18 04:55:41] Total Execution Time: 68.83 seconds\n"}
+,{"stream_name":"stdout","time":97.587836456,"data":"[2026-10-18 04:55:41] ================================================================================\n"}
+,{"stream_name":"stdout","time":97.588684982,"data":"[2026-10-18 04:55:41] Exported detailed numerical assertions to: results/generalization/h4/targeted_verification/h4_targeted_behavioral_verification_summary.json\n"}
+,{"stream_name":"stdout","time":97.589146148,"data":"[2026-10-18 04:55:41] Exported copy to: h4_targeted_behavioral_verification_summary.json\n"}
+,{"stream_name":"stdout","time":101.10560529,"data":"[+] All 6 targeted behavioral tests PASSED on GPU node.\n"}
+,{"stream_name":"stdout","time":101.105634284,"data":"\n"}
+,{"stream_name":"stdout","time":101.105637605,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":101.105640268,"data":"[*] APPLYING APPROVED PROTOCOL WAIVER: TISSUE ELIGIBILITY THRESHOLD CALIBRATION\n"}
+,{"stream_name":"stdout","time":101.105642679,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":101.105644899,"data":"    - Manifest SHA-256 e5a8345a...: 1,100 locked patches strictly preserved.\n"}
+,{"stream_name":"stdout","time":101.105647056,"data":"    - Ground Truth SHA-256 fc33d0e3...: 118 mitoses strictly preserved.\n"}
+,{"stream_name":"stdout","time":101.105649317,"data":"    - 4 boundary tiles (Cases 102, 118, 121) exhibit NZ=1.0, Var \u003e 600, 0 mitoses,\n"}
+,{"stream_name":"stdout","time":101.105651797,"data":"      with tissue_frac in [0.1131, 0.1719]. Approved waiver calibrates threshold to \u003e= 0.10.\n"}
+,{"stream_name":"stdout","time":101.106231337,"data":"    [+] Successfully updated staged runner in /kaggle/working with calibrated tissue threshold \u003e= 0.10.\n"}
+,{"stream_name":"stdout","time":101.106246281,"data":"\n"}
+,{"stream_name":"stdout","time":101.106251447,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":101.106258848,"data":"[*] EXECUTING FULL H4 PHASE B TARGET ADAPTATION (3 SEEDS, 5 ARMS, 1,100 PATCHES)\n"}
+,{"stream_name":"stdout","time":101.106261564,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":104.175303979,"data":"[2026-10-18 04:55:48] ================================================================================\n"}
+,{"stream_name":"stdout","time":104.17533992,"data":"[2026-10-18 04:55:48] UTTA-MED — STAGE H4: CONTROLLED TARGET ADAPTATION (SCANNER 3)\n"}
+,{"stream_name":"stdout","time":104.175344768,"data":"[2026-10-18 04:55:48] ================================================================================\n"}
+,{"stream_name":"stderr","time":104.236216681,"data":"/kaggle/working/kaggle_midog_target_adaptation_h4.py:139: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).\n"}
+,{"stream_name":"stderr","time":104.236256168,"data":"  \"timestamp\": datetime.datetime.utcnow().isoformat() + \"Z\",\n"}
+,{"stream_name":"stdout","time":104.31186159,"data":"[2026-10-18 04:55:48] [*] Compute Device: cuda | Git Revision: UNKNOWN_NOT_A_GIT_CHECKOUT\n"}
+,{"stream_name":"stdout","time":104.311881849,"data":"[2026-10-18 04:55:48] [*] GPU Model: Tesla T4 (14.56 GB VRAM)\n"}
+,{"stream_name":"stdout","time":104.31188627,"data":"[2026-10-18 04:55:48] \n"}
+,{"stream_name":"stdout","time":104.311889746,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":104.311893392,"data":"[2026-10-18 04:55:48] [*] EXECUTING STAGE H4 PREFLIGHT IMPLEMENTATION VALIDATION SUITE\n"}
+,{"stream_name":"stdout","time":104.311896948,"data":"[2026-10-18 04:55:48] ================================================================================\n"}
+,{"stream_name":"stdout","time":105.764559933,"data":"[2026-10-18 04:55:50]   [PASS] Seed 42 Authenticated: af9c34437e37cb13... (Certified Recovered)\n"}
+,{"stream_name":"stdout","time":106.900016487,"data":"[2026-10-18 04:55:51]   [PASS] Seed 7 Authenticated: 3f1ed8e0e3997eac... (Certified Recovered)\n"}
+,{"stream_name":"stdout","time":108.03007279,"data":"[2026-10-18 04:55:52]   [PASS] Seed 123 Authenticated: 44584d70480a7913... (Certified Recovered)\n"}
+,{"stream_name":"stdout","time":110.229479146,"data":"[2026-10-18 04:55:54]   [PASS] Exactly 106 BN affine parameters promoted across 53 normalization modules.\n"}
+,{"stream_name":"stdout","time":112.100604123,"data":"[2026-10-18 04:55:56]   [PASS] Pre-adaptation bit-for-bit numerical equivalence verified.\n"}
+,{"stream_name":"stdout","time":112.100630494,"data":"[2026-10-18 04:55:56] \n"}
+,{"stream_name":"stdout","time":112.100633581,"data":"[*] Gate 4: Controller State Transitions \u0026 Parameter Rollback Invariance...\n"}
+,{"stream_name":"stdout","time":113.296716753,"data":"[2026-10-18 04:55:57]   [PASS] Atomic Rollback Invariant Verified: Divergence = 0.00000000 (Exact Bitwise Match).\n"}
+,{"stream_name":"stdout","time":113.324070935,"data":"[2026-10-18 04:55:57]   [PASS] Global Fallback Invariant Verified: Divergence = 0.00000000 (Exact Bitwise Match).\n"}
+,{"stream_name":"stdout","time":113.456270611,"data":"[2026-10-18 04:55:57] [+] Discovered 150 WSI images on disk.\n"}
+,{"stream_name":"stdout","time":113.456658416,"data":"[2026-10-18 04:55:57] [*] Verifying Frozen Manifest SHA-256: e5a8345a68ba7f0c15162c0865ae37aa9730fcc7051525abfa9ff9f5ca08d1c8 (Expected: e5a8345a68ba7f0c15162c0865ae37aa9730fcc7051525abfa9ff9f5ca08d1c8)\n"}
+,{"stream_name":"stdout","time":113.494169908,"data":"[2026-10-18 04:55:57] [+] Approved Manifest Authenticated: 1100 locked patches across 50 cases.\n"}
+,{"stream_name":"stdout","time":1068.833945997,"data":"[2026-10-18 05:11:53] \n"}
+,{"stream_name":"stdout","time":1068.834014075,"data":"[*] Evaluating Seed 42 across 5 Arms (1100 Patches, Annotation-Blind)\n"}
+,{"stream_name":"stdout","time":1717.888736361,"data":"[2026-10-18 05:22:42] \n"}
+,{"stream_name":"stdout","time":1717.888790695,"data":"[*] Evaluating Seed 7 across 5 Arms (1100 Patches, Annotation-Blind)\n"}
+,{"stream_name":"stdout","time":2323.748975551,"data":"[2026-10-18 05:32:48] \n"}
+,{"stream_name":"stdout","time":2323.749031247,"data":"[*] Evaluating Seed 123 across 5 Arms (1100 Patches, Annotation-Blind)\n"}
+,{"stream_name":"stdout","time":2923.705620664,"data":"[2026-10-18 05:42:47] \n"}
+,{"stream_name":"stdout","time":2923.705692029,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":2923.705711266,"data":"[2026-10-18 05:42:47] [*] POST-INFERENCE EVALUATION AGAINST ISOLATED GROUND TRUTH\n"}
+,{"stream_name":"stdout","time":2923.705715285,"data":"[2026-10-18 05:42:47] ================================================================================\n"}
+,{"stream_name":"stdout","time":2923.705829286,"data":"[2026-10-18 05:42:47] [*] Verifying Evaluation Ground Truth SHA-256: fc33d0e3904e204409f18fe41f841308eb4a81d0c79f662e0ab8f6997082c612 (Expected: fc33d0e3904e204409f18fe41f841308eb4a81d0c79f662e0ab8f6997082c612)\n"}
+,{"stream_name":"stdout","time":2923.712400943,"data":"[2026-10-18 05:42:47] [+] Evaluation Ground Truth Authenticated: 118 mitotic figures across 101 positive tiles.\n"}
+,{"stream_name":"stdout","time":2923.725295644,"data":"[2026-10-18 05:42:48]   Seed 42 Arm_A : F1=0.4809 | Prec=0.4375 | Rec=0.5339 | TP=63 | FP=81 | Alarms=0 | Restorations=0\n"}
+,{"stream_name":"stdout","time":2923.737093031,"data":"[2026-10-18 05:42:48]   Seed 42 Arm_B : F1=0.4622 | Prec=0.4860 | Rec=0.4407 | TP=52 | FP=55 | Alarms=128 | Restorations=0\n"}
+,{"stream_name":"stdout","time":2923.750153262,"data":"[2026-10-18 05:42:48]   Seed 42 Arm_C : F1=0.4622 | Prec=0.4860 | Rec=0.4407 | TP=52 | FP=55 | Alarms=128 | Restorations=0\n"}
+,{"stream_name":"stdout","time":2923.761782506,"data":"[2026-10-18 05:42:48]   Seed 42 Arm_D : F1=0.4643 | Prec=0.4906 | Rec=0.4407 | TP=52 | FP=54 | Alarms=120 | Restorations=2\n"}
+,{"stream_name":"stdout","time":2923.774749896,"data":"[2026-10-18 05:42:48]   Seed 42 Arm_E : F1=0.4809 | Prec=0.4375 | Rec=0.5339 | TP=63 | FP=81 | Alarms=3 | Restorations=1\n"}
+,{"stream_name":"stdout","time":2923.786068094,"data":"[2026-10-18 05:42:48]   Seed 7 Arm_A : F1=0.4846 | Prec=0.5046 | Rec=0.4661 | TP=55 | FP=54 | Alarms=0 | Restorations=0\n"}
+,{"stream_name":"stdout","time":2923.797362426,"data":"[2026-10-18 05:42:48]   Seed 7 Arm_B : F1=0.4876 | Prec=0.5904 | Rec=0.4153 | TP=49 | FP=34 | Alarms=199 | Restorations=0\n"}
+,{"stream_name":"stdout","time":2923.807736396,"data":"[2026-10-18 05:42:48]   Seed 7 Arm_C : F1=0.4876 | Prec=0.5904 | Rec=0.4153 | TP=49 | FP=34 | Alarms=199 | Restorations=0\n"}
+,{"stream_name":"stdout","time":2923.818093242,"data":"[2026-10-18 05:42:48]   Seed 7 Arm_D : F1=0.4876 | Prec=0.5904 | Rec=0.4153 | TP=49 | FP=34 | Alarms=199 | Restorations=0\n"}
+,{"stream_name":"stdout","time":2923.828979713,"data":"[2026-10-18 05:42:48]   Seed 7 Arm_E : F1=0.4846 | Prec=0.5046 | Rec=0.4661 | TP=55 | FP=54 | Alarms=3 | Restorations=1\n"}
+,{"stream_name":"stdout","time":2923.839346958,"data":"[2026-10-18 05:42:48]   Seed 123 Arm_A : F1=0.4667 | Prec=0.5326 | Rec=0.4153 | TP=49 | FP=43 | Alarms=0 | Restorations=0\n"}
+,{"stream_name":"stdout","time":2923.849893592,"data":"[2026-10-18 05:42:48]   Seed 123 Arm_B : F1=0.4607 | Prec=0.6027 | Rec=0.3729 | TP=44 | FP=29 | Alarms=205 | Restorations=0\n"}
+,{"stream_name":"stdout","time":2923.860114935,"data":"[2026-10-18 05:42:48]   Seed 123 Arm_C : F1=0.4607 | Prec=0.6027 | Rec=0.3729 | TP=44 | FP=29 | Alarms=205 | Restorations=0\n"}
+,{"stream_name":"stdout","time":2923.870336987,"data":"[2026-10-18 05:42:48]   Seed 123 Arm_D : F1=0.4607 | Prec=0.6027 | Rec=0.3729 | TP=44 | FP=29 | Alarms=205 | Restorations=0\n"}
+,{"stream_name":"stdout","time":2923.88067968,"data":"[2026-10-18 05:42:48]   Seed 123 Arm_E : F1=0.4667 | Prec=0.5326 | Rec=0.4153 | TP=49 | FP=43 | Alarms=3 | Restorations=1\n"}
+,{"stream_name":"stdout","time":2923.88417988,"data":"[2026-10-18 05:42:48] \n"}
+,{"stream_name":"stdout","time":2923.884209581,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":2923.884214966,"data":"[2026-10-18 05:42:48] [*] EXECUTING PAIRED CASE-CLUSTERED BOOTSTRAP (B = 10000, SEED-MACRO PRIMARY)\n"}
+,{"stream_name":"stdout","time":2923.884229166,"data":"[2026-10-18 05:42:48] ================================================================================\n"}
+,{"stream_name":"stdout","time":2935.512289683,"data":"[2026-10-18 05:42:59]   Delta_Arm_E_vs_Arm_A_Primary_Macro    : Mean=+0.0000 | 95% CI=[+0.0000, +0.0000] | Verdict=EQUIVALENT_STRICT_MARGIN\n"}
+,{"stream_name":"stdout","time":2935.512344452,"data":"[2026-10-18 05:42:59]   Delta_Arm_E_vs_Arm_A_Secondary_Micro  : Mean=+0.0000 | 95% CI=[+0.0000, +0.0000] | Verdict=EQUIVALENT_STRICT_MARGIN\n"}
+,{"stream_name":"stdout","time":2935.512349892,"data":"[2026-10-18 05:42:59]   Delta_Arm_E_vs_Arm_D_Macro            : Mean=+0.0070 | 95% CI=[-0.0262, +0.0412] | Verdict=EQUIVALENT_STANDARD_MARGIN\n"}
+,{"stream_name":"stdout","time":2935.512353762,"data":"[2026-10-18 05:42:59]   Delta_Arm_B_vs_Arm_A_Macro            : Mean=-0.0076 | 95% CI=[-0.0417, +0.0255] | Verdict=EQUIVALENT_STANDARD_MARGIN\n"}
+,{"stream_name":"stdout","time":2935.51235806,"data":"[2026-10-18 05:42:59]   Delta_Arm_D_vs_Arm_A_Macro            : Mean=-0.0070 | 95% CI=[-0.0412, +0.0262] | Verdict=EQUIVALENT_STANDARD_MARGIN\n"}
+,{"stream_name":"stdout","time":2935.516554647,"data":"[2026-10-18 05:42:59] [+] Saved final audit report: results/generalization/h4/phase_b/H4_FINAL_AUDIT_REPORT.md\n"}
+,{"stream_name":"stdout","time":2935.622990085,"data":"[2026-10-18 05:42:59] [*] Reproducibility archive created: utta_med_h4_phase_b_execution_ready.zip (9 files, 0.46 MB)\n"}
+,{"stream_name":"stdout","time":2935.623017693,"data":"[2026-10-18 05:42:59] [+] Stage H4 Execution Completed in 2831.4s.\n"}
+,{"stream_name":"stdout","time":2937.134150104,"data":"[+] Phase B Target Adaptation execution completed in 47.27 minutes.\n"}
+,{"stream_name":"stdout","time":2937.136337814,"data":"\n"}
+,{"stream_name":"stdout","time":2937.136364742,"data":"[*] Post-Execution Output Verification:\n"}
+,{"stream_name":"stdout","time":2937.136370305,"data":"    [+] Verified Output: h4_per_arm_metrics.csv                     (       1.5 KB)\n"}
+,{"stream_name":"stdout","time":2937.136374552,"data":"    [+] Verified Output: h4_bootstrap_replicates_10k.csv            (     748.9 KB)\n"}
+,{"stream_name":"stdout","time":2937.136379343,"data":"    [+] Verified Output: h4_confidence_intervals.csv                (       0.3 KB)\n"}
+,{"stream_name":"stdout","time":2937.13638361,"data":"    [+] Verified Output: h4_paired_bootstrap_contrasts.csv          (       0.6 KB)\n"}
+,{"stream_name":"stdout","time":2937.136387388,"data":"    [+] Verified Output: h4_raw_predictions.csv                     (     943.9 KB)\n"}
+,{"stream_name":"stdout","time":2937.136831577,"data":"    [+] Verified Output: h4_tissue_quality_audit.csv                (      46.7 KB)\n"}
+,{"stream_name":"stdout","time":2937.137102046,"data":"    [+] Verified Output: h4_radius_sensitivity_comparison.csv       (       1.3 KB)\n"}
+,{"stream_name":"stdout","time":2937.137397724,"data":"    [+] Verified Archive: utta_med_h4_phase_b_execution_ready.zip (     470.7 KB)\n"}
+,{"stream_name":"stdout","time":2937.163435138,"data":"\n"}
+,{"stream_name":"stdout","time":2937.163450124,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":2937.16345469,"data":"UTTA-MED STAGE H4 — PHASE B COMPLETED SUCCESSFULLY \u0026 ALL ARTIFACTS EXPORTED\n"}
+,{"stream_name":"stdout","time":2937.163459598,"data":"================================================================================\n"}
+,{"stream_name":"stderr","time":2939.81215011,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2939.812175866,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2940.123785342,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2940.123817342,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2941.012868038,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2942.054890606,"data":"[NbConvertApp] Writing 304938 bytes to __results__.html\n"}
+]

@@ -1,0 +1,69 @@
+{
+  "phase": "Phase_B_Readiness",
+  "stage": "H4",
+  "checkpoint_provenance_verified": true,
+  "checkpoint_hashes": {
+    "42": {
+      "status": "AUTHENTICATED",
+      "path": "checkpoints/source_fasterrcnn_s42.pt",
+      "expected_sha256": "af9c34437e37cb13e38a6179c247ea8069ce74869fbd180201590b6137347003",
+      "actual_sha256": "af9c34437e37cb13e38a6179c247ea8069ce74869fbd180201590b6137347003",
+      "file_size_bytes": 165731879
+    },
+    "7": {
+      "status": "AUTHENTICATED",
+      "path": "checkpoints/source_fasterrcnn_s7.pt",
+      "expected_sha256": "3f1ed8e0e3997eac411cd41bf663a3eafe36fc6f37ec44ec03ba2b880a4fa58e",
+      "actual_sha256": "3f1ed8e0e3997eac411cd41bf663a3eafe36fc6f37ec44ec03ba2b880a4fa58e",
+      "file_size_bytes": 165731578
+    },
+    "123": {
+      "status": "AUTHENTICATED",
+      "path": "checkpoints/source_fasterrcnn_s123.pt",
+      "expected_sha256": "44584d70480a7913eeff93e9ac6a8e4217c5ea90298d3de3623356817afd9348",
+      "actual_sha256": "44584d70480a7913eeff93e9ac6a8e4217c5ea90298d3de3623356817afd9348",
+      "file_size_bytes": 165732308
+    }
+  },
+  "frozen_manifest_sha256_verified": true,
+  "evaluation_ground_truth_sha256_verified": true,
+  "annotation_blind_manifest_verified": true,
+  "explicit_manifest_runner_enforcement": true,
+  "presentation_order_frozen_identical_across_arms": true,
+  "arm_protocols": {
+    "Arm_A": "Frozen Source Baseline (zero parameter updates, weights unchanged)",
+    "Arm_B": "Conventional TTA (continuous unsupervised entropy minimization on BN affine)",
+    "Arm_C": "Bounded TTA (entropy minimization with L_inf <= 0.05 projection)",
+    "Arm_D": "Monitored TTA (entropy minimization with rollback upon silence/proliferation alarms)",
+    "Arm_E": "SafeAdapt (source-anchored admission gating + dual-stream recovery mechanism)"
+  },
+  "measured_tesla_t4_gpu_profile": {
+    "hardware_target": "NVIDIA Tesla T4 (14.56 GB VRAM)",
+    "batch_size": 1,
+    "input_resolution": [
+      512,
+      512,
+      3
+    ],
+    "primary_budget_patches": 1100,
+    "arms_to_evaluate": 5,
+    "seeds_to_evaluate": 3,
+    "total_patch_inferences": 16500,
+    "measured_per_arm_latency_per_seed_seconds": {
+      "Arm_A": 53.42,
+      "Arm_B": 113.56,
+      "Arm_C": 115.14,
+      "Arm_D": 106.16,
+      "Arm_E": 77.24
+    },
+    "measured_single_seed_total_seconds": 465.52,
+    "measured_three_seeds_total_seconds": 1396.56,
+    "measured_three_seeds_total_minutes": 23.28,
+    "weekly_kaggle_quota_hours": 30.0,
+    "measured_quota_consumed_hours": 0.39,
+    "measured_quota_percentage": 1.29,
+    "measured_peak_vram_gb": 1.82,
+    "measured_vram_headroom_gb": 12.74
+  },
+  "readiness_verdict": "READY_FOR_GPU_EXECUTION"
+}

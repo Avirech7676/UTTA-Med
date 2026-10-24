@@ -1,0 +1,6 @@
+seed,arm,f1_primary_30px,prec_primary_30px,rec_primary_30px,tp_30px,fp_30px,f1_sens_25px,prec_sens_25px,rec_sens_25px,tp_25px,fp_25px,f1_raw_unfiltered_30px,prec_raw_unfiltered_30px
+42,Arm_A,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0,0,0.0,0.0
+42,Arm_B,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0,0,0.0,0.0
+42,Arm_C,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0,0,0.0,0.0
+42,Arm_D,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0,0,0.0,0.0
+42,Arm_E,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0,0,0.0,0.0
