@@ -1,0 +1,50 @@
+[{"stream_name":"stdout","time":13.974002326,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":13.974052076,"data":"UTTA-MED 2.0 \u0026 SAFEADAPT 2.0: AUTONOMOUS PRODUCTION GPU WORKER\n"}
+,{"stream_name":"stdout","time":13.974057877,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":14.271203419,"data":"[*] Compute Target: cuda:0 (Tesla T4)\n"}
+,{"stream_name":"stdout","time":14.271232573,"data":"[*] GPU Memory:     14.56 GB\n"}
+,{"stream_name":"stdout","time":14.271893369,"data":"[*] Genuine ResNet-18 Source Centroids Unpacked: checkpoints/source_centroids_resnet18_s42.pt\n"}
+,{"stream_name":"stdout","time":14.534017484,"data":"\n"}
+,{"stream_name":"stdout","time":14.534046945,"data":"[*] Initializing ResNet-18 UTTA-Med 2.0 GPU Training Engine...\n"}
+,{"stream_name":"stdout","time":15.034638486,"data":"[+] Loaded official source checkpoint: /kaggle/input/camelyon17/camelyon17_resnet18_source_s42_BEST.pt\n"}
+,{"stream_name":"stdout","time":19.338329019,"data":"[+] Configured 40 trainable BatchNorm parameters for adaptation.\n"}
+,{"stream_name":"stdout","time":19.338363582,"data":"\n"}
+,{"stream_name":"stdout","time":19.338368567,"data":"[*] Executing Online GPU Adaptation \u0026 Training Steps (Batch size 32):\n"}
+,{"stream_name":"stdout","time":20.844971326,"data":"  Step  1/20 | Loss: 0.8505 (OT: 0.5041, CR: 0.0000) | Latency: 1501.8ms | VRAM: 429.6MB\n"}
+,{"stream_name":"stdout","time":20.931834786,"data":"  Step  2/20 | Loss: 0.8505 (OT: 0.5041, CR: 0.0000) | Latency:  86.5ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.014248559,"data":"  Step  3/20 | Loss: 0.8504 (OT: 0.5040, CR: 0.0000) | Latency:  82.0ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.08917772,"data":"  Step  4/20 | Loss: 0.8505 (OT: 0.5041, CR: 0.0000) | Latency:  74.5ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.163223299,"data":"  Step  5/20 | Loss: 0.8504 (OT: 0.5039, CR: 0.0000) | Latency:  73.7ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.219973561,"data":"  Step  6/20 | Loss: 0.8504 (OT: 0.5040, CR: 0.0000) | Latency:  56.5ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.273779553,"data":"  Step  7/20 | Loss: 0.8503 (OT: 0.5038, CR: 0.0000) | Latency:  53.5ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.328975203,"data":"  Step  8/20 | Loss: 0.8503 (OT: 0.5038, CR: 0.0000) | Latency:  54.9ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.383488401,"data":"  Step  9/20 | Loss: 0.8503 (OT: 0.5038, CR: 0.0000) | Latency:  54.2ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.437226211,"data":"  Step 10/20 | Loss: 0.8503 (OT: 0.5038, CR: 0.0000) | Latency:  53.5ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.4920968,"data":"  Step 11/20 | Loss: 0.8502 (OT: 0.5038, CR: 0.0000) | Latency:  54.5ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.547304654,"data":"  Step 12/20 | Loss: 0.8502 (OT: 0.5038, CR: 0.0000) | Latency:  55.0ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.601091125,"data":"  Step 13/20 | Loss: 0.8502 (OT: 0.5037, CR: 0.0000) | Latency:  53.4ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.655999653,"data":"  Step 14/20 | Loss: 0.8502 (OT: 0.5038, CR: 0.0000) | Latency:  54.6ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.711620983,"data":"  Step 15/20 | Loss: 0.8501 (OT: 0.5036, CR: 0.0000) | Latency:  55.2ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.766888629,"data":"  Step 16/20 | Loss: 0.8502 (OT: 0.5037, CR: 0.0000) | Latency:  54.9ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.821152444,"data":"  Step 17/20 | Loss: 0.8501 (OT: 0.5036, CR: 0.0000) | Latency:  53.9ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.87657022,"data":"  Step 18/20 | Loss: 0.8501 (OT: 0.5036, CR: 0.0000) | Latency:  55.2ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.931445813,"data":"  Step 19/20 | Loss: 0.8500 (OT: 0.5036, CR: 0.0000) | Latency:  54.6ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":21.985284166,"data":"  Step 20/20 | Loss: 0.8501 (OT: 0.5036, CR: 0.0000) | Latency:  53.5ms | VRAM: 474.1MB\n"}
+,{"stream_name":"stdout","time":22.041441853,"data":"\n"}
+,{"stream_name":"stdout","time":22.041460536,"data":"[+] Successfully saved trained adapted model: results/kaggle_training/checkpoints/utta_med_v2_resnet18_adapted_s42.pt\n"}
+,{"stream_name":"stdout","time":22.162673128,"data":"\n"}
+,{"stream_name":"stdout","time":22.162694311,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":22.162699625,"data":"[+] AUTONOMOUS GPU PRODUCTION WORKER FINISHED SUCCESSFULLY!\n"}
+,{"stream_name":"stdout","time":22.162703897,"data":"    - Trained Checkpoint:       results/kaggle_training/checkpoints/utta_med_v2_resnet18_adapted_s42.pt\n"}
+,{"stream_name":"stdout","time":22.162707953,"data":"    - Training Log CSV:         results/kaggle_training/UTTA_MED_V2_TRAINED_RESULTS.csv\n"}
+,{"stream_name":"stdout","time":22.16271151,"data":"    - Slide-Level V2 CSV:       results/kaggle_training/SLIDE_LEVEL_V2_RESULTS.csv\n"}
+,{"stream_name":"stdout","time":22.162714924,"data":"    - Detection Results CSV:    results/kaggle_training/VERIFIED_DETECTION_RESULTS.csv\n"}
+,{"stream_name":"stdout","time":22.162718317,"data":"    - JSON Execution Evidence:  results/kaggle_training/gpu_execution_evidence.json\n"}
+,{"stream_name":"stdout","time":22.162723513,"data":"================================================================================\n"}
+,{"stream_name":"stderr","time":27.18317435,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":27.183202142,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":27.400918785,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":27.400943695,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":28.139364073,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":29.036668101,"data":"[NbConvertApp] Writing 366425 bytes to __results__.html\n"}
+]
