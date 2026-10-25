@@ -90,10 +90,10 @@ axes[1].annotate("Attractor Collapse:\n100% False Negatives", xy=(0.05, 12), xyt
                  bbox=dict(boxstyle="round,pad=0.3", fc="#ffeeee", ec="#d73027", lw=1))
 axes[1].grid(True, linestyle=':', alpha=0.5)
 
-# Panel (c): UTTA-Med v2 (OT-TTA)
+# Panel (c): UTTA-MED (OT-TTA)
 axes[2].hist(p_utta_norm, bins=bins, color='#4575b4', alpha=0.65, density=True)
 axes[2].hist(p_utta_tum, bins=bins, color='#2ca25f', alpha=0.65, label='Tumor (Recovered)', density=True)
-axes[2].set_title("(c) UTTA-Med v2 (OT-TTA)\n(AUROC = 0.9324 — Restored Geometry)")
+axes[2].set_title("(c) UTTA-MED (OT-TTA)\n(AUROC = 0.9324 — Restored Geometry)")
 axes[2].set_xlabel("Predicted Tumor Probability $p(y=1)$")
 axes[2].annotate("Sinkhorn Balance:\n$Q^T 1_B = r$", xy=(0.85, 4.5), xytext=(0.42, 6.0),
                  arrowprops=dict(facecolor='#2ca25f', shrink=0.08, width=1.5, headwidth=6),
@@ -108,7 +108,7 @@ save_fig(fig, "fig_v2_slide29_attractor_reversal")
 # Figure 2: 5-Seed Primary Benchmark Comparison (AUROC & ECE)
 # -----------------------------------------------------------------------------
 print("[*] Generating Figure 2: Primary Benchmark Comparison...")
-methods = ['Frozen Source', 'Tent (Entropy)', 'EATA', 'Confidence-Gate', 'UTTA-Med v2\n(Proposed)']
+methods = ['Frozen Source', 'Tent (Entropy)', 'EATA', 'Confidence-Gate', 'UTTA-MED']
 aurocs = [0.9297, 0.6981, 0.9210, 0.9355, 0.9495]
 auroc_stds = [0.0092, 0.3236, 0.0255, 0.0218, 0.0134]
 eces = [0.1281, 0.2843, 0.1520, 0.1304, 0.0745]

@@ -133,7 +133,7 @@ $\rho_{\text{cell}}(x)$ & Hematoxylin optical density cellular nuclear area frac
 \end{tabular}
 \end{table}
 
-\section{Method: UTTA-Med and SafeAdapt}
+\section{Method: UTTA-MED and SafeAdapt}
 
 \begin{figure*}[t]
 \centering
@@ -307,7 +307,7 @@ A spatially stratified 4x4 grid across standardized 10-HPF tumor regions ($1.96\
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.95\linewidth]{figs/fig_v2_benchmark_auroc_ece}
-\caption{Benchmark performance across five random seeds on Camelyon17-WILDS target Hospital 2: Macro AUROC and Expected Calibration Error (ECE) for Frozen Source, Unconstrained Tent (showing collapse on seeds 7 and 99), EATA, Confidence Gating, and UTTA-Med (Proposed, achieving $\mathbf{0.9495} \pm 0.0134$ AUROC and $\mathbf{0.0745} \pm 0.0051$ ECE).}
+\caption{Benchmark performance across five random seeds on Camelyon17-WILDS target Hospital 2: Macro AUROC and Expected Calibration Error (ECE) for Frozen Source, Unconstrained Tent (showing collapse on seeds 7 and 99), EATA, Confidence Gating, and UTTA-MED (achieving $\mathbf{0.9495} \pm 0.0134$ AUROC and $\mathbf{0.0745} \pm 0.0051$ ECE).}
 \label{fig:benchmark_auroc_ece}
 \end{figure*}
 
@@ -331,7 +331,7 @@ Tent (Ungated)  & $0.698 \pm 0.324$ & $0.506 \pm 0.411$ & $0.187 \pm 0.179$ & $1
 EATA~\cite{niu2022eata} & $0.921 \pm 0.026$ & $0.809 \pm 0.031$ & $0.025 \pm 0.015$ & $0.885 \pm 0.034$ \\
 Random-gated    & $0.697 \pm 0.304$ & $0.487 \pm 0.385$ & $0.194 \pm 0.170$ & $0.700 \pm 0.001$ \\
 Confidence-gate & $0.936 \pm 0.022$ & $0.831 \pm 0.032$ & $0.007 \pm 0.003$ & $0.581 \pm 0.047$ \\
-\textbf{UTTA-Med (Proposed)} & $\mathbf{0.950} \pm 0.013$ & $\mathbf{0.842} \pm 0.031$ & $\mathbf{0.002} \pm 0.000$ & $\mathbf{0.612} \pm 0.038$ \\
+\textbf{UTTA-MED} & $\mathbf{0.950} \pm 0.013$ & $\mathbf{0.842} \pm 0.031$ & $\mathbf{0.002} \pm 0.000$ & $\mathbf{0.612} \pm 0.038$ \\
 \bottomrule
 \end{tabular}%
 }
@@ -352,14 +352,14 @@ Tent (Ungated)  & 0.9294 & 0.9410 & 0.9331 & \textbf{0.3429} & \textbf{0.3443} \
 EATA            & 0.9360 & 0.9402 & 0.9321 & 0.8765 & 0.9198 \\
 Random-gated    & 0.9221 & 0.9372 & 0.8974 & \textbf{0.3541} & \textbf{0.3729} \\
 Confidence-gate & 0.9508 & 0.9423 & 0.9559 & 0.9020 & 0.9266 \\
-\textbf{UTTA-Med (Proposed)} & \textbf{0.9582} & \textbf{0.9534} & \textbf{0.9621} & \textbf{0.9284} & \textbf{0.9452} \\
+\textbf{UTTA-MED} & \textbf{0.9582} & \textbf{0.9534} & \textbf{0.9621} & \textbf{0.9284} & \textbf{0.9452} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Table~\ref{tab:perseed} demonstrates that Tent failure is driven by \textbf{catastrophic collapse on seeds 7 and 99} (AUROC $\approx 0.34$, $F_1 \approx 0.05$). On seeds 42, 123, and 2024, Tent appears deceptively stable (AUROC $0.93$--$0.94$), demonstrating that reporting single-seed TTA evaluations in medical imaging conceals catastrophic failure modes.
 
-\textbf{Selective Gating Performance.} Selective gating eliminates Tent collapse across all five seeds. UTTA-Med and confidence gating reduce the harmful adaptation rate from $0.187$ to $0.007$ ($>25\times$ reduction, paired $p=0.0313$). Furthermore, under Optimal Transport prototype alignment and stain consistency regularization (OT-TTA), UTTA-Med produces statistically significant improvements in discriminative performance across \textbf{all five seeds}:
+\textbf{Selective Gating Performance.} Selective gating eliminates Tent collapse across all five seeds. UTTA-MED and confidence gating reduce the harmful adaptation rate from $0.187$ to $0.007$ ($>25\times$ reduction, paired $p=0.0313$). Furthermore, under Optimal Transport prototype alignment and stain consistency regularization (OT-TTA), UTTA-MED produces statistically significant improvements in discriminative performance across \textbf{all five seeds}:
 \begin{itemize}
 \item $\Delta \mathrm{AUROC} = +0.0198$, 95\% CI $[+0.0124, +0.0272]$, paired Wilcoxon $p=0.0312$, lifting 5-seed macro-AUROC to $\mathbf{0.9495} \pm 0.0134$ (vs.\ $0.9297 \pm 0.0092$ for frozen source; Fig.~\ref{fig:benchmark_auroc_ece}).
 \item $\Delta F_1 = +0.0354$, 95\% CI $[+0.0210, +0.0498]$, paired $t=5.842$, $p=0.0042$, reaching $F_1 = \mathbf{0.8423} \pm 0.0311$.
@@ -405,10 +405,10 @@ Original SafeAdapt (Naive)   & 0.4632 & 0.4609 & 0.4649 & $0.4630 \pm 0.0020$ & 
 \label{fig:gpu_convergence}
 \end{figure*}
 
-To verify practical clinical deployment feasibility, UTTA-Med was trained and profiled on an NVIDIA Tesla T4 GPU container (14.56 GB VRAM) executing 20 online backpropagation steps with AdamW ($\mathrm{lr}=10^{-4}$, Table~\ref{tab:gpu_telemetry}, Fig.~\ref{fig:gpu_convergence}). Total loss converged smoothly from $0.8505 \to \mathbf{0.8501}$, with the OT prototype cost dropping from $0.5041 \to \mathbf{0.5036}$. Parameter drift remained strictly bounded by the anchor loss ($\mathcal{L}_{\text{anchor}} \le 0.000180$). Steady-state step latency stabilized at $\mathbf{53.5}$\,ms with peak VRAM footprint constrained to $\mathbf{474.1}$\,MB ($3.2\%$ of GPU capacity), confirming sub-frame execution suitable for clinical digital pathology workstations.
+To verify practical clinical deployment feasibility, UTTA-MED was trained and profiled on an NVIDIA Tesla T4 GPU container (14.56 GB VRAM) executing 20 online backpropagation steps with AdamW ($\mathrm{lr}=10^{-4}$, Table~\ref{tab:gpu_telemetry}, Fig.~\ref{fig:gpu_convergence}). Total loss converged smoothly from $0.8505 \to \mathbf{0.8501}$, with the OT prototype cost dropping from $0.5041 \to \mathbf{0.5036}$. Parameter drift remained strictly bounded by the anchor loss ($\mathcal{L}_{\text{anchor}} \le 0.000180$). Steady-state step latency stabilized at $\mathbf{53.5}$\,ms with peak VRAM footprint constrained to $\mathbf{474.1}$\,MB ($3.2\%$ of GPU capacity), confirming sub-frame execution suitable for clinical digital pathology workstations.
 
 \begin{table}[t]
-\caption{Nvidia Tesla T4 Production Online GPU Telemetry (UTTA-Med, ResNet-18, Batch Size 32, $\eta = 10^{-4}$).}
+\caption{Nvidia Tesla T4 Production Online GPU Telemetry (UTTA-MED, ResNet-18, Batch Size 32, $\eta = 10^{-4}$).}
 \label{tab:gpu_telemetry}
 \centering
 \scriptsize
@@ -453,7 +453,7 @@ SAR~\cite{niu2023sar} & $0.9215 \pm 0.0263$ & $[0.8327, 0.9764]$ & $0.8096$ & $0
 SafeAdapt (Full Interlock) & $0.9351 \pm 0.0218$ & $[0.8674, 0.9818]$ & $0.8296$ & $0.1313$ & $0.1320$ & $0.7514$ & $0.0500$ & 1.8\% \\
 \quad w/o Atomic Rollback & $0.9038 \pm 0.0266$ & $[0.8674, 0.9818]$ & $0.8296$ & $0.1301$ & $0.1317$ & $0.6522$ & $0.0500$ & 0.0\% \\
 \quad w/o Trust Region ($L_\infty$) & $0.8959 \pm 0.0269$ & $[0.8674, 0.9818]$ & $0.8296$ & $0.1293$ & $0.1314$ & $0.6283$ & $0.1800$ & 1.8\% \\
-\textbf{UTTA-Med (+ OT-TTA)} & $\mathbf{0.9495} \pm 0.0134$ & $[\mathbf{0.8812, 0.9885}]$ & $\mathbf{0.8423}$ & $\mathbf{0.0745}$ & $\mathbf{0.0812}$ & $\mathbf{0.7842}$ & $0.0500$ & 0.8\% \\
+\textbf{UTTA-MED} & $\mathbf{0.9495} \pm 0.0134$ & $[\mathbf{0.8812, 0.9885}]$ & $\mathbf{0.8423}$ & $\mathbf{0.0745}$ & $\mathbf{0.0812}$ & $\mathbf{0.7842}$ & $0.0500$ & 0.8\% \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -624,7 +624,7 @@ TUM  & Colorectal Carcinoma  & In-Distribution & 0.85 & 0.91 & 0.14 & Admitted (
 Selective test-time adaptation and fail-closed runtime monitoring provide critical safeguards against catastrophic model collapse under histopathology domain shifts. In multicenter patch classification, selective gating eliminates Tent collapse and reduces harmful adaptation by $>25\times$, while Optimal Transport Prototype Alignment (OT-TTA) reverses negative transfer on histochemical outliers ($0.9360$ on Slide~29; $0.9495 \pm 0.0134$ cohort macro-AUROC). In dense mitotic figure detection, the Cellularity Mitosis Ratio (CMR) eliminates false silence alarms on benign stroma, achieving positive transfer across the 1,100-patch benchmark ($F_1 = 0.5160 \pm 0.0050$). By unifying pre-adaptation conformal risk control, trust-region parameter projection, and atomic state rollbacks with deterministic per-WSI episodic resets, SafeAdapt establishes a verified fail-closed medical interlock that bounds parameter drift and preserves patient-level diagnostic staging under severe domain shift.
 
 \section*{Data and Code Availability}
-The Camelyon17-WILDS dataset is publicly available through the WILDS benchmark consortium (\url{https://wilds.stanford.edu}). The MIDOG 2021 challenge dataset is accessible via Grand Challenge (\url{https://midog2021.grand-challenge.org}). The NCT-CRC-HE dataset is available via Zenodo. All source code, configuration files, trained checkpoints, and evaluation manifests for UTTA-Med and SafeAdapt are permanently archived at \url{https://github.com/avinashreddy7676/UTTA_MED_V1_FINAL}.
+The Camelyon17-WILDS dataset is publicly available through the WILDS benchmark consortium (\url{https://wilds.stanford.edu}). The MIDOG 2021 challenge dataset is accessible via Grand Challenge (\url{https://midog2021.grand-challenge.org}). The NCT-CRC-HE dataset is available via Zenodo. All source code, configuration files, trained checkpoints, and evaluation manifests for UTTA-MED and SafeAdapt are permanently archived at \url{https://github.com/avinashreddy7676/UTTA_MED_V1_FINAL}.
 
 \section*{Ethical Considerations}
 All investigations were performed on publicly available, fully de-identified retrospective histopathology benchmark cohorts. No new biological specimens or direct patient interactions were involved. Data usage complied fully with the respective open-access licenses (Creative Commons CC BY 4.0 and CC0).

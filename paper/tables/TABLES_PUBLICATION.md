@@ -26,9 +26,9 @@ Do not retune. Table 8 (ResNet-50) is **empty until Phase 11 GPU finishes**.
 | Confidence-gated | 0.936 ± 0.022 | 0.831 ± 0.032 | 0.130 ± 0.030 | 0.581 ± 0.047 | 0.007 ± 0.003 |
 | Entropy-gated | 0.936 ± 0.022 | 0.831 ± 0.032 | 0.130 ± 0.030 | 0.581 ± 0.047 | 0.007 ± 0.003 |
 | UTTA-Med (v1) | 0.935 ± 0.022 | 0.830 ± 0.032 | 0.131 ± 0.030 | 0.575 ± 0.047 | 0.007 ± 0.003 |
-| **UTTA-Med v2 (Proposed)** | **0.950 ± 0.013** | **0.842 ± 0.031** | **0.075 ± 0.005** | 0.612 ± 0.038 | **0.002 ± 0.000** |
+| **UTTA-MED** | **0.950 ± 0.013** | **0.842 ± 0.031** | **0.075 ± 0.005** | 0.612 ± 0.038 | **0.002 ± 0.000** |
 
-Entropy ≡ confidence (binary). Caption: UTTA-Med v2 resolves the 1D binary Taylor trap via Sinkhorn-Knopp transport alignment and Beer-Lambert stain consistency, achieving superior AUROC (0.950 vs 0.935), cutting ECE by 43%, and slashing harm to 0.002.
+Entropy ≡ confidence (binary). Caption: UTTA-MED resolves the 1D binary Taylor trap via Sinkhorn-Knopp transport alignment and Beer-Lambert stain consistency, achieving superior AUROC (0.950 vs 0.935), cutting ECE by 43%, and slashing harm to 0.002.
 
 ## Table 2b — Per-seed AUROC
 
@@ -40,7 +40,7 @@ Entropy ≡ confidence (binary). Caption: UTTA-Med v2 resolves the 1D binary Tay
 | Random | 0.9223 | 0.9372 | 0.8967 | **0.3543** | **0.3731** | 0.6967 |
 | Confidence | 0.9508 | 0.9423 | 0.9559 | 0.9020 | 0.9267 | 0.9355 |
 | UTTA-Med (v1) | 0.9507 | 0.9421 | 0.9555 | 0.9016 | 0.9276 | 0.9355 |
-| **UTTA-Med v2 (Proposed)** | **0.9582** | **0.9534** | **0.9621** | **0.9284** | **0.9452** | **0.9495** |
+| **UTTA-MED** | **0.9582** | **0.9534** | **0.9621** | **0.9284** | **0.9452** | **0.9495** |
 
 ## Table 3 — Harmful adaptation (per seed)
 
