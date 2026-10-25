@@ -1,7 +1,7 @@
 # Reproducibility Guide: SafeAdapt-TTA
 
 **Audit Status:** 57 / 57 Automated Checks Passed (100% Bit-Exact Match)  
-**Test Suite:** 145 Passed, 2 Skipped, 0 Failed (`pytest tests/`)  
+**Test Suite:** 148 Passed, 2 Skipped, 0 Failed (`pytest tests/`)  
 **Random Seeds Audited:** 5 Seeds (42, 7, 123, 2024, 99)
 
 This document provides exact instructions to reproduce all numerical results, statistical tables, and publication figures from the SafeAdapt manuscript.
@@ -57,7 +57,9 @@ Failed: 0 / 57
 | **Table 6: MIDOG Scanner 3 (CMR)** | `python scripts/run_day6_cellularity_detection.py` | `results/tables/cmr_full_1100_summary.csv` |
 | **Table 7: NCT-CRC Evidential Logic** | `python scripts/run_evidential_nct_benchmark.py` | `results/tables/nctcrc_evidential_results.csv` |
 | **Table 8: Slide 29 OT-TTA Reversal** | `python scripts/run_ot_tta_camelyon17.py` | `results/tables/ot_tta_camelyon17_results.csv` |
+| **Table 9: Master Elevated v2 Benchmark** | `python scripts/run_elevated_benchmarks.py` | `results/tables/elevated_performance_summary.csv` |
 | **pTNM Whole-Slide Staging** | `python scripts/eval_wsi_ptnm_staging.py` | `results/tables/wsi_staging_results.csv` |
+
 
 ---
 

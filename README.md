@@ -426,7 +426,32 @@ python scripts/verify_consistency.py
 | **Mathematical Origin** | $\text{Var}_{\text{MC}} \approx [p(1-p)]^2 \sigma_z^2$ | Dirichlet Prior Dispersion | Decouples out-of-distribution debris from in-distribution ambiguity |
 | **Gating Mechanism** | Confidence Threshold $\tau = 0.90$ | Evidential Vacuity $\tau_{\text{vac}} = 0.592$ | Isolates tissue artifacts without multi-pass MC latency |
 
+### Table 10: Master Elevated Adaptation Benchmark (UTTA-Med v2 & SafeAdapt v2)
+*Sources: `results/tables/elevated_performance_summary.csv`, `results/tables/slide29_attractor_reversal.csv`, `results/tables/elevated_detection_summary.csv`, `results/tables/paired_statistical_elevation.csv`*
+
+#### Track A: Camelyon17-WILDS Classification (Hospital 2, 5 Seeds: 42, 123, 2024, 7, 99)
+| Method | Macro AUROC | Binary $F_1$ | ECE (Calibration) | Harm Rate | Slide 29 AUROC |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Frozen Source** | $0.9297 \pm 0.0092$ | $0.8069 \pm 0.0247$ | $0.1281 \pm 0.0258$ | $0.0000 \pm 0.0000$ | $0.8592 \pm 0.0116$ |
+| **Tent (Entropy Minimization)** | $0.6981 \pm 0.3236$ | $0.5057 \pm 0.4111$ | $0.2843 \pm 0.1792$ | $0.1875 \pm 0.1790$ | $0.7055 \pm 0.3304$ |
+| **Confidence-TTA ($\tau=0.90$)** | $0.9355 \pm 0.0218$ | $0.8310 \pm 0.0321$ | $0.1304 \pm 0.0305$ | $0.0070 \pm 0.0028$ | $0.8754 \pm 0.0165$ |
+| **UTTA-Med v1** | $0.9355 \pm 0.0217$ | $0.8300 \pm 0.0323$ | $0.1311 \pm 0.0307$ | $0.0073 \pm 0.0028$ | $0.8754 \pm 0.0165$ |
+| **UTTA-Med v2 (Proposed)** | **$0.9495 \pm 0.0134$** | **$0.8423 \pm 0.0311$** | **$0.0745 \pm 0.0051$** | **$0.0018 \pm 0.0003$** | **$0.9324 \pm 0.0079$** |
+
+*Key Findings: Sinkhorn-Knopp Optimal Transport prototype alignment ($Q^T \mathbf{1}_B = \mathbf{r}$) combined with Beer-Lambert stain consistency regularization eliminates class-attractor collapse on Slide 29 ($0.8592 \to 0.9324$, $+0.0732$ absolute boost) and reverses negative transfer on seeds 7 and 99, lifting overall AUROC with statistical significance ($p = 0.0312$, paired Wilcoxon signed-rank test).*
+
+#### Track B: Held-Out MIDOG 2021 Mitotic Figure Detection (Scanner 3, Seeds: 42, 7, 123)
+| Detection Policy | Mean $F_1$ Score | Precision | Recall | False Silence Alarms | Premature Fallback |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Frozen Source Detector** | $0.4585 \pm 0.0079$ | $0.4732 \pm 0.0726$ | $0.4555 \pm 0.0536$ | 0 | NO (Static) |
+| **Unconstrained RoI-TTA** | $0.3925 \pm 0.0081$ | $0.3324 \pm 0.0136$ | $0.4835 \pm 0.0542$ | 0 | NO (Unbounded FP) |
+| **SafeAdapt v1 (Naive Silence)** | $0.4630 \pm 0.0020$ | $0.4823 \pm 0.0596$ | $0.4529 \pm 0.0496$ | 14 | YES (Patch 80 $\pm$ 2) |
+| **SafeAdapt v2 (CMR-Gated)** | **$0.5160 \pm 0.0050$** | **$0.5396 \pm 0.0633$** | **$0.5013 \pm 0.0460$** | **0** | **NO (Active Standby)** |
+
+*Key Findings: Cellularity-Mitosis Ratio (CMR) gating decouples benign acellular stroma ($\rho_{\text{cell}}(x) < 0.15$) from true detector collapse, eliminating all 14 false silence alarms. Non-destructive partial recoil permits active adaptation across the entire test stream, producing a statistically significant gain over frozen source ($\Delta F_1 = +0.0575$, $p < 0.001$, 10,000 paired bootstrap replicates; 95% CI: $[+0.0529, +0.0628]$).*
+
 ---
+
 
 ## Comparison with Baselines
 
@@ -517,7 +542,7 @@ SafeAdapt-TTA/
 │   ├── tta/                 # OT-TTA, Evidential-TTA, Tent, EATA, SAR
 │   ├── uncertainty/         # Evidential Subjective Logic and Dirichlet modeling
 │   └── v2/                  # SafeAdapt controller, gates, and detection monitor
-└── tests/                   # Automated pytest verification suite (145 tests)
+└── tests/                   # Automated pytest verification suite (148 tests)
 ```
 
 ---
