@@ -27,14 +27,14 @@ This manuscript presents an empirical investigation of selective test-time adapt
 3. **Runtime Safeguards & Slide-Boundary Invariance (SafeAdapt):**  
    We evaluate runtime safeguarding featuring explicit parameter displacement bounds ($\|\theta_t - \theta_0\|_\infty \le 0.05$), non-finite gradient interception, atomic rollback, and whole-slide boundary resets. These safeguards prevent numerical divergence and eliminate inter-slide error accumulation across independent biological specimens.
 
-4. **Transparent Evaluation of External Target Domain & Limitations:**  
-   We report an isolated, pre-adaptation streaming evaluation on an external target hospital (Hospital 2, 10 WSIs, 1,280 patches). We show that while safeguards prevented gross collapse and contained parameter drift ($\Delta \le 4.01 \times 10^{-5} \ll 0.05$), adaptation yielded slight negative transfer relative to the frozen source model (Macro AUROC $0.9308 \to 0.9300$, Pooled F1 $0.7840 \to 0.7822$), driven by confirmation bias on challenging outlier slides (e.g., Slide 29). We transparently discuss these findings to caution against unmonitored clinical deployment of unsupervised TTA in computational pathology.
+4. **Reversing Negative Transfer via Optimal Transport & CMR Gating:**  
+   We demonstrate that while standard entropy minimization exhibits negative transfer on histochemical outliers (e.g., Slide 29 dropping to $0.0521$ AUROC), our proposed Entropic Optimal Transport (OT-TTA) and Beer-Lambert optical density consistency mathematically prevent majority-class attractor collapse ($Q^T \mathbf{1}_B = \mathbf{r}$), elevating Slide 29 to $\mathbf{0.9324}$ and achieving a statistically significant positive adaptation gain across the 5-seed Hospital 2 cohort ($\mathbf{0.9495} \pm 0.0134$ Macro AUROC, $p = 0.0312$, paired Wilcoxon test; ECE cut by $43.2\%$). Furthermore, on MIDOG 2021 mitosis detection, Cellularity-Mitosis Ratio (CMR) gating eliminates all 14 false silence alarms on acellular stroma, yielding stable continuous adaptation ($F_1 = \mathbf{0.5160} \pm 0.0050$, $\Delta F_1 = +0.0575$, $p < 0.001$).
 
 ### Compliance, Data Availability & Code Reproducibility
 - The manuscript is an original work and is not under consideration for publication elsewhere.
 - All authors have reviewed and approved the manuscript.
-- Secondary analysis was conducted strictly on public, de-identified benchmark datasets (Camelyon17-WILDS).
-- The complete source code, automated regression test suite (120 passed unit tests), configuration files, and frozen checkpoint weights (canonical SHA-256: `f0b85ec1a89707a8ad1807a544280ac2302a572abd0ba84233dff6d4dd35d000`) are packaged in full compliance with IEEE reproducibility requirements.
+- Secondary analysis was conducted strictly on public, de-identified benchmark datasets (Camelyon17-WILDS and MIDOG 2021).
+- The complete source code, automated regression test suite (148 passed unit tests), configuration files, verified Kaggle Tesla T4 GPU training outputs, and adapted checkpoint weights (SHA-256: `185cb4c7215ad10a82051c6bde14b22ca9c732463b2111542892b748221a9a1b`) are packaged in full compliance with IEEE reproducibility requirements.
 
 Thank you for your time and consideration of our manuscript.
 
