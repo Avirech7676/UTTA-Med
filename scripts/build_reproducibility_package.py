@@ -1,131 +1,102 @@
+#!/usr/bin/env python3
+"""Build clean, self-contained camera-ready reproducibility zip package for UTTA-Med v2."""
+
 import os
-import shutil
-import subprocess
-import platform
-import sys
+import zipfile
 from pathlib import Path
-import numpy as np
-from sklearn.metrics import roc_auc_score, f1_score
 
-repo = Path(__file__).resolve().parent.parent
-repro_dir = repo / "reproducibility"
-repro_dir.mkdir(parents=True, exist_ok=True)
+ROOT = Path(__file__).resolve().parent.parent
+OUTPUT_ZIP = ROOT / "UTTA_MED_V2_REPRODUCIBILITY_PACKAGE.zip"
 
-# 1. Copy environment.yml and requirements.txt
-shutil.copyfile(os.path.join(repo, "environment.yml"), os.path.join(repro_dir, "environment.yml"))
-shutil.copyfile(os.path.join(repo, "requirements.txt"), os.path.join(repro_dir, "requirements.txt"))
+INCLUDE_DIRS = [
+    "src",
+    "configs",
+    "tests",
+    "scripts",
+    "paper/tables",
+    "paper/figures",
+    "paper/ieee",
+    "results/tables",
+    "results/kaggle_training",
+]
 
-# 2. git_commit.txt
-commit_hash = subprocess.check_output(["git", "rev-parse", "HEAD"]).decode().strip()
-with open(os.path.join(repro_dir, "git_commit.txt"), "w") as f:
-    f.write(f"commit {commit_hash}\nDate: 2026-09-27\nTag: v1.0-official-5seed-freeze\n")
+INCLUDE_FILES = [
+    "README.md",
+    "REPRODUCIBILITY.md",
+    "INSTALL.md",
+    "pytest.ini",
+    ".gitignore",
+]
 
-# 3. hardware.txt
-hw_content = f"""# Hardware & Runtime Execution Specifications
+EXCLUDE_PATTERNS = [
+    "__pycache__",
+    ".pytest_cache",
+    ".git",
+    ".DS_Store",
+    "*.pyc",
+    "*.pt",      # exclude large binary weights from zip (provided via Kaggle / download manifest)
+    "*.pth",
+    "*.h5",
+    "*.hdf5",
+]
 
-## Local Audit Environment
-- Operating System: {platform.platform()}
-- Python Version: {sys.version}
-- Local Execution: CPU (AMD64 64-bit)
+def should_exclude(path_str: str) -> bool:
+    for pat in EXCLUDE_PATTERNS:
+        if pat.startswith("*"):
+            ext = pat[1:]
+            if path_str.endswith(ext):
+                return True
+        elif pat in path_str.split(os.sep) or pat in path_str.split("/"):
+            return True
+    return False
 
-## Official Cluster / Benchmark Hardware (Kaggle & Colab)
-- Accelerator: NVIDIA Tesla T4 (16 GB VRAM)
-- CUDA Driver / Runtime: CUDA 12.1 / cuDNN 8.9
-- System RAM: 30 GB (Kaggle High-RAM CPU instances)
-- Disk: Scratch fast NVMe SSD (/kaggle/working/)
-- Dataset Storage: HuggingFace Parquet (Camelyon17-WILDS 21 shards, zero label leakage)
-"""
-with open(os.path.join(repro_dir, "hardware.txt"), "w") as f:
-    f.write(hw_content)
+def build_package():
+    print(f"[*] Assembling UTTA-Med v2 Reproducibility Package: {OUTPUT_ZIP.name}")
+    if OUTPUT_ZIP.exists():
+        OUTPUT_ZIP.unlink()
 
-# 4. reproduction_commands.md
-commands_content = f"""# Official Reproduction Commands
+    total_files = 0
+    total_uncompressed_bytes = 0
 
-## 1. Environment Setup
-```bash
-git clone https://github.com/Avirech7676/UTTA-Med.git
-cd UTTA-Med
-git checkout {commit_hash}
-conda env create -f reproducibility/environment.yml
-# Or with pip:
-pip install -r reproducibility/requirements.txt
-```
+    with zipfile.ZipFile(OUTPUT_ZIP, "w", zipfile.ZIP_DEFLATED) as zf:
+        # 1. Add individual files
+        for rel_file in INCLUDE_FILES:
+            f = ROOT / rel_file
+            if f.exists():
+                arcname = f"UTTA_MED_V2/{rel_file}"
+                zf.write(f, arcname)
+                total_files += 1
+                total_uncompressed_bytes += f.stat().st_size
+                print(f"  [+] Added: {rel_file}")
 
-## 2. Test Suite & Leakage Guardrails
-```bash
-pytest tests/ -v
-```
+        # 2. Add directories
+        for rel_dir in INCLUDE_DIRS:
+            d = ROOT / rel_dir
+            if not d.exists():
+                continue
+            for root, dirs, files in os.walk(d):
+                for file in files:
+                    full_path = Path(root) / file
+                    rel_to_root = full_path.relative_to(ROOT)
+                    rel_str = str(rel_to_root)
 
-## 3. Source Training (Seeds 42, 123, 2024, 7, 99)
-```bash
-python scripts/train_source.py --seed 42 --config configs/camelyon17.yaml
-```
+                    if should_exclude(rel_str):
+                        continue
 
-## 4. Test-Time Adaptation on Target Hospital 2
-```bash
-# Tent (Unconstrained, bn_freeze_stats, lr=1e-5)
-python scripts/adapt.py --checkpoint checkpoints/camelyon17_resnet18_source_s42_BEST.pt --method tent --bn-mode bn_freeze_stats --lr 1e-5
+                    arcname = f"UTTA_MED_V2/{rel_str.replace(os.sep, '/')}"
+                    zf.write(full_path, arcname)
+                    total_files += 1
+                    total_uncompressed_bytes += full_path.stat().st_size
 
-# EATA (e_margin=0.4, bn_freeze_stats, lr=1e-5)
-python scripts/adapt.py --checkpoint checkpoints/camelyon17_resnet18_source_s42_BEST.pt --method eata --e-margin 0.4 --bn-mode bn_freeze_stats --lr 1e-5
+    zip_size_mb = OUTPUT_ZIP.stat().st_size / (1024 * 1024)
+    raw_size_mb = total_uncompressed_bytes / (1024 * 1024)
 
-# UTTA-Med (MC-Dropout N=20, tau resolved from configs/tau_by_seed.yaml, bn_freeze_stats, lr=1e-5)
-python scripts/adapt.py --checkpoint checkpoints/camelyon17_resnet18_source_s42_BEST.pt --method utta --seed 42 --n-passes 20 --bn-mode bn_freeze_stats --lr 1e-5
-```
+    print("\n" + "=" * 70)
+    print(f"[+] PACKAGE SUCCESSFULLY CREATED: {OUTPUT_ZIP}")
+    print(f"    - Files Included:            {total_files}")
+    print(f"    - Raw Uncompressed Size:     {raw_size_mb:.2f} MB")
+    print(f"    - Compressed ZIP Size:       {zip_size_mb:.2f} MB")
+    print("=" * 70)
 
-## 5. Statistical Master Aggregation & Table Generation
-```bash
-python scripts/build_master_dataset.py
-```
-"""
-with open(os.path.join(repro_dir, "reproduction_commands.md"), "w") as f:
-    f.write(commands_content)
-
-# 5. Verify Metric Regeneration from Saved Predictions (Smoke Reproduction)
-verification_log = []
-wsi_dir = os.path.join(repo, "results", "data", "wsi_bootstrap")
-for s in [42, 123, 2024, 7, 99]:
-    for m in ["source", "tent", "confidence", "utta"]:
-        npz_p = os.path.join(wsi_dir, f"s{s}_{m}.npz")
-        if os.path.exists(npz_p):
-            d = np.load(npz_p)
-            y = d["y"]
-            p = d["p"]
-            auc = roc_auc_score(y, p)
-            f1 = f1_score(y, (p > 0.5).astype(int))
-            verification_log.append(f"Seed {s:4d} | {m:12s} | N={len(y)} | Regenerated AUROC={auc:.4f}, F1={f1:.4f} -> VERIFIED MATCH")
-
-# 6. REPRODUCIBILITY_REPORT.md
-rep_content = """# UTTA-Med: Final Reproducibility & Artifact Freeze Report
-
-## 1. Frozen Codebase State
-- **Git Commit**: `""" + commit_hash + """`
-- **Repository Tag**: `v1.0-official-5seed-freeze`
-- **Official Model Architecture**: ResNet-18 (single-logit output, BCE loss, Dropout p=0.5 placed before the final linear layer).
-- **Adaptation Scope**: BatchNorm affine parameters only (gamma, beta); running mean and variance frozen (`bn_freeze_stats`).
-- **Optimization**: Adam (lr=1e-5), 1 gradient step per batch.
-
-## 2. Artifact Completeness Matrix
-Every experiment contains:
-- [x] Configuration YAML (`configs/`)
-- [x] Seed identification (Seeds 42, 123, 2024, 7, 99)
-- [x] Model source checkpoint (`checkpoints/camelyon17_resnet18_source_s*.pt`)
-- [x] Raw metric outputs (`results/metrics/`)
-- [x] Saved target patch predictions and uncertainty estimates (`results/data/wsi_bootstrap/`)
-- [x] Documented reproduction CLI commands (`reproducibility/reproduction_commands.md`)
-
-## 3. Clean-Environment Prediction Regeneration Verification
-All reported metrics were independently re-computed from saved patch-level predictions:
-""" + "\n".join(verification_log) + """
-
-## 4. Scientific Conclusion & Protocol Lock
-- F1 improvement: Replicated across **all 5 seeds** (mean delta F1 = +0.0231, nominal p=0.0072, Holm-adjusted p=0.0505).
-- Catastrophic collapse: Unconstrained Tent collapsed on Seeds 7 and 99 (harm rate 37.5% and 39.1%).
-- UTTA-Med and Confidence Gating prevented collapse on all seeds, cutting harm to 0.7% +- 0.3%.
-- UTTA-Med is statistically equivalent to confidence gating (delta AUROC = -0.00005, p=0.87).
-"""
-
-with open(os.path.join(repro_dir, "REPRODUCIBILITY_REPORT.md"), "w") as f:
-    f.write(rep_content)
-
-print("Reproducibility package built successfully in reproducibility/!")
+if __name__ == "__main__":
+    build_package()
