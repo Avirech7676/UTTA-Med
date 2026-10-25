@@ -11,6 +11,11 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{theorem}{Theorem}
+
 \begin{document}
 \setlength{\textfloatsep}{5pt plus 1pt minus 1pt}
 \setlength{\floatsep}{5pt plus 1pt minus 1pt}
@@ -30,7 +35,7 @@
 \maketitle
 
 \begin{abstract}
-Deep learning models trained on source pathology centers frequently degrade when deployed across unseen hospitals and optical slide scanners. Test-time adaptation (TTA) aims to mitigate distribution shift using unlabeled target streams, but unconstrained entropy minimization (Tent) is notoriously unstable: on Camelyon17-WILDS multicenter metastasis classification, Tent collapses on 2 of 5 random seeds ($F_1 \approx 0.05$, harmful adaptation rate $18.7\% \pm 17.9\%$). In this work, we demonstrate that this catastrophic failure is driven by single-class attractor collapse on histochemical outliers (documented on Slide 29, where Tent AUROC plunges from $0.8592 \to 0.0521$). We formulate \textbf{UTTA-MED}, coupling \textbf{Entropic Optimal Transport prototype alignment (OT-TTA)} with \textbf{fail-closed runtime safeguards (SafeAdapt)}. Primary evaluations are conducted across extensive patch-level streaming benchmarks (Camelyon17-WILDS, $N=85{,}054$ patches across 10 whole-slide images) and dense mitotic figure detection (MIDOG 2021, 50 held-out cases, 1,100 patches across scanner shifts), complemented by an exploratory clinical staging case study on the 9 patients of Hospital~2. On Camelyon17 Hospital~2, by strictly enforcing marginal class balance ($\mathbf{Q}^T \mathbf{1}_B = \mathbf{r}$) via Sinkhorn-Knopp iterations, OT-TTA mathematically precludes majority-class attractor collapse, reversing negative transfer on Slide 29 ($0.8592 \to \mathbf{0.9324} \pm 0.0078$ mean AUROC; $0.9360$ on seed 42) and elevating cohort performance to $\mathbf{0.9495} \pm 0.0134$ macro-AUROC across five random seeds ($p = 0.0312$, paired Wilcoxon signed-rank test), cutting Expected Calibration Error by 43.2\% ($\text{ECE} = 0.0745$), and slashing harmful adaptation to $\mathbf{0.0018} \pm 0.0003$. In exploratory clinical translation, unconstrained Tent collapses patient-level pTNM staging from $88.0\%$ to $50.0\%$, whereas UTTA-MED preserves $86.0\%$ diagnostic concordance. We analytically prove via first-order Taylor expansion (Proposition 1) that Monte Carlo Dropout predictive variance and output confidence are rank-equivalent on binary classification ($\rho = -0.9917$, $p = 9.73 \times 10^{-286}$), establishing why scalar uncertainty filtering fails to prevent confirmation bias. For dense mitotic figure detection, we introduce the Cellularity Mitosis Ratio (CMR), which conditions silence monitoring on hematoxylin optical density, eliminating all 14 false silence alarms on benign acellular stroma and enabling continuous active adaptation ($F_1 = \mathbf{0.5160} \pm 0.0050$, $\Delta F_1 = +0.0575$, $p < 0.001$). Finally, we prove a PAC $L_\infty$ drift bound (Theorem 1) guaranteeing that parameter projection ($\|\theta_t - \theta_0\|_\infty \le 0.05$) bounds maximum output probability displacement to $\le 0.0460$. These findings demonstrate that geometry-preserving transport alignment and fail-closed runtime interlocks provide essential reliability containment under severe histopathological domain shift.
+Deep learning models trained on source pathology centers frequently degrade when deployed across unseen hospitals and optical slide scanners. Test-time adaptation (TTA) aims to mitigate distribution shift using unlabeled target streams, but unconstrained entropy minimization (Tent) is notoriously unstable: on Camelyon17-WILDS multicenter metastasis classification, Tent collapses on 2 of 5 random seeds ($F_1 \approx 0.05$, harmful adaptation rate $18.7\% \pm 17.9\%$). In this work, we demonstrate that this catastrophic failure is driven by single-class attractor collapse on histochemical outliers (documented on Slide 29, where Tent AUROC plunges from $0.8592 \to 0.0521$). We formulate UTTA-MED, coupling Entropic Optimal Transport prototype alignment (OT-TTA) with fail-closed runtime safeguards (SafeAdapt). Primary evaluations are conducted across extensive patch-level streaming benchmarks (Camelyon17-WILDS, $N=85{,}054$ patches across 10 whole-slide images) and dense mitotic figure detection (MIDOG 2021, 50 held-out cases, 1,100 patches across scanner shifts), complemented by an exploratory clinical staging case study on the 9 patients of Hospital~2. On Camelyon17 Hospital~2, by strictly enforcing marginal class balance ($\mathbf{Q}^T \mathbf{1}_B = \mathbf{r}$) via Sinkhorn-Knopp iterations, OT-TTA mathematically precludes majority-class attractor collapse, reversing negative transfer on Slide 29 ($0.8592 \to 0.9324 \pm 0.0078$ mean AUROC; $0.9360$ on seed 42) and elevating cohort performance to $0.9495 \pm 0.0134$ macro-AUROC across five random seeds ($p = 0.0312$, paired Wilcoxon signed-rank test), cutting Expected Calibration Error by 43.2\% ($\text{ECE} = 0.0745$), and slashing harmful adaptation to $0.0018 \pm 0.0003$. In exploratory clinical translation, unconstrained Tent collapses patient-level pTNM staging from $88.0\%$ to $50.0\%$, whereas UTTA-MED preserves $86.0\%$ diagnostic concordance. We analytically prove via first-order Taylor expansion (Proposition 1) that Monte Carlo Dropout predictive variance and output confidence are rank-equivalent on binary classification ($\rho = -0.9917$, $p = 9.73 \times 10^{-286}$), establishing why scalar uncertainty filtering fails to prevent confirmation bias. For dense mitotic figure detection, we introduce the Cellularity Mitosis Ratio (CMR), which conditions silence monitoring on hematoxylin optical density, eliminating all 14 false silence alarms on benign acellular stroma and enabling continuous active adaptation ($F_1 = 0.5160 \pm 0.0050$, $\Delta F_1 = +0.0575$, $p < 0.001$). Finally, we prove a PAC $L_\infty$ drift bound (Theorem 1) guaranteeing that parameter projection ($\|\theta_t - \theta_0\|_\infty \le 0.05$) bounds maximum output probability displacement to $\le 0.0460$. These findings demonstrate that geometry-preserving transport alignment and fail-closed runtime interlocks provide essential reliability containment under severe histopathological domain shift.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -42,33 +47,33 @@ Test-time adaptation, clinical AI safety, digital pathology, fail-closed safegua
 
 Test-time adaptation (TTA) addresses this diagnostic gap by updating model parameters online using unlabeled target batches during clinical inference~\cite{wang2021tent,liang2023comprehensive}. Unsupervised entropy minimization (Tent)~\cite{wang2021tent} has gained widespread adoption due to its modular simplicity: optimizing prediction entropy over Batch Normalization affine scale and shift parameters ($\gamma, \beta$) without accessing source data. However, entropy minimization operates under an unverified premise: that low-entropy target predictions are predominantly correct. When histochemical or optical shifts violate this premise, high-confidence incorrect pseudo-labels act as reinforcement signals, creating a self-reinforcing feedback loop that causes catastrophic feature representation collapse~\cite{histopathc2026}.
 
-In this work, we conduct a systematic, reproducible \textbf{reliability and failure-containment investigation} across two distinct operational regimes in digital pathology:
+In this work, we conduct a systematic, reproducible reliability and failure-containment investigation across two distinct operational regimes in digital pathology:
 \begin{enumerate}
-\item \textbf{Multicenter Metastasis Classification:} High-throughput binary patch classification on Camelyon17-WILDS~\cite{koh2021wilds}, where dense tissue morphology is evaluated across five clinical centers ($N=85{,}054$ patches across 10 WSIs from 9 patients).
-\item \textbf{Dense Mitotic Figure Detection:} Spatially sparse object detection on MIDOG 2021~\cite{aubreville2023mitosis}, where rare cellular divisions (mitoses) must be localized across diverse slide-scanning hardware (50 held-out cases, 1,100 patches).
+\item \textit{Multicenter Metastasis Classification:} High-throughput binary patch classification on Camelyon17-WILDS~\cite{koh2021wilds}, where dense tissue morphology is evaluated across five clinical centers ($N=85{,}054$ patches across 10 WSIs from 9 patients).
+\item \textit{Dense Mitotic Figure Detection:} Spatially sparse object detection on MIDOG 2021~\cite{aubreville2023mitosis}, where rare cellular divisions (mitoses) must be localized across diverse slide-scanning hardware (50 held-out cases, 1,100 patches).
 \end{enumerate}
 
 We test a precise operational hypothesis: \emph{can geometry-preserving transport alignment and fail-closed runtime interlocks contain catastrophic TTA failure modes while achieving statistically verified positive adaptation?}
 
-\textbf{Contributions.}
+\subsection{Contributions}
 \begin{enumerate}
-\item \textbf{Geometry-Preserving Optimal Transport (OT-TTA):} To resolve the root cause of confirmation bias and single-class attractor collapse under stain shift, we formulate test-time adaptation as an Entropic Optimal Transport (Wasserstein-2) problem against preserved source class prototypes via Sinkhorn-Knopp iterations ($\min_{Q \in \Pi} \langle Q, C \rangle - \epsilon H(Q)$). By strictly enforcing marginal class balance ($Q^T \mathbf{1}_B = \mathbf{r}$), OT-TTA mathematically precludes majority-class collapse, reversing negative transfer on Camelyon17 outlier Slide 29 ($0.8592 \to \mathbf{0.9324}$ mean AUROC; $0.9360$ on seed 42; Hospital~2 macro-AUROC $\mathbf{0.9495} \pm 0.0134$, $p = 0.0312$).
-\item \textbf{Analytical Equivalence Proof on Binary Heads:} We provide a formal mathematical proof via first-order Taylor expansion (Proposition 1) explaining why binary MC-Dropout predictive variance is asymptotically rank-equivalent to output confidence ($\rho = -0.9917$). This establishes theoretically why scalar uncertainty filtering fails to prevent confirmation bias and motivates geometric prototype alignment.
-\item \textbf{Biologically Grounded Detection Safeguards (CMR):} On MIDOG 2021 multi-scanner mitosis detection, we decouple legitimate absence of mitoses in acellular stroma from detector collapse via the Cellularity Mitosis Ratio (CMR), eliminating all 14 false silence alarms across the 1,100-patch stream and achieving stable positive adaptation ($F_1 = \mathbf{0.5160} \pm 0.0050$, $\Delta F_1 = +0.0575$, $p < 0.001$).
-\item \textbf{PAC $L_\infty$ Drift Bound and Atomic Interlocks:} We prove that projecting parameters within an affine trust region ($\|\theta_t - \theta_0\|_\infty \le 0.05$) bounds maximum output probability shift to $\le 0.0460$ (Theorem 1). We couple this with sub-frame dual-buffer atomic state rollbacks ($1.8$\,ms) and episodic per-WSI resets ensuring patient diagnostic isolation.
-\item \textbf{Exploratory Patient-Level Staging Case Study:} Evaluating pathological nodal staging (AJCC 8th Edition) across all 10 WSIs of Hospital 2, we document that unconstrained Tent collapses staging accuracy from 88.0\% to 50.0\% by missing macrometastases on outlier slides, whereas UTTA-MED preserves 86.0\% diagnostic concordance.
+\item \textit{Geometry-Preserving Optimal Transport (OT-TTA):} To resolve the root cause of confirmation bias and single-class attractor collapse under stain shift, we formulate test-time adaptation as an Entropic Optimal Transport (Wasserstein-2) problem against preserved source class prototypes via Sinkhorn-Knopp iterations ($\min_{Q \in \Pi} \langle Q, C \rangle - \epsilon H(Q)$). By strictly enforcing marginal class balance ($Q^T \mathbf{1}_B = \mathbf{r}$), OT-TTA mathematically precludes majority-class collapse, reversing negative transfer on Camelyon17 outlier Slide 29 ($0.8592 \to 0.9324$ mean AUROC; $0.9360$ on seed 42; Hospital~2 macro-AUROC $0.9495 \pm 0.0134$, $p = 0.0312$).
+\item \textit{Analytical Equivalence Proof on Binary Heads:} We provide a formal mathematical proof via first-order Taylor expansion (Proposition 1) explaining why binary MC-Dropout predictive variance is asymptotically rank-equivalent to output confidence ($\rho = -0.9917$). This establishes theoretically why scalar uncertainty filtering fails to prevent confirmation bias and motivates geometric prototype alignment.
+\item \textit{Biologically Grounded Detection Safeguards (CMR):} On MIDOG 2021 multi-scanner mitosis detection, we decouple legitimate absence of mitoses in acellular stroma from detector collapse via the Cellularity Mitosis Ratio (CMR), eliminating all 14 false silence alarms across the 1,100-patch stream and achieving stable positive adaptation ($F_1 = 0.5160 \pm 0.0050$, $\Delta F_1 = +0.0575$, $p < 0.001$).
+\item \textit{PAC $L_\infty$ Drift Bound and Atomic Interlocks:} We prove that projecting parameters within an affine trust region ($\|\theta_t - \theta_0\|_\infty \le 0.05$) bounds maximum output probability shift to $\le 0.0460$ (Theorem 1). We couple this with sub-frame dual-buffer atomic state rollbacks ($1.8$\,ms) and episodic per-WSI resets ensuring patient diagnostic isolation.
+\item \textit{Exploratory Patient-Level Staging Case Study:} Evaluating pathological nodal staging (AJCC 8th Edition) across all 10 WSIs of Hospital 2, we document that unconstrained Tent collapses staging accuracy from 88.0\% to 50.0\% by missing macrometastases on outlier slides, whereas UTTA-MED preserves 86.0\% diagnostic concordance.
 \end{enumerate}
 
 Rather than making unverified claims of unconstrained state-of-the-art gains, we demonstrate that UTTA-MED provides a principled geometry-preserving pathway that overcomes confirmation bias, surrounded by verified fail-closed runtime bounds.
 
 \section{Related Work}
-\textbf{Test-Time Adaptation in Vision vs.\ Digital Pathology.}
+\subsection{Test-Time Adaptation in Vision vs.\ Digital Pathology}
 Tent updates BatchNorm affine parameters ($\gamma, \beta$) via prediction entropy minimization~\cite{wang2021tent}, but remains susceptible to catastrophic collapse on out-of-distribution outliers. EATA introduces sample entropy thresholding and Fisher divergence penalties to reduce forgetting~\cite{niu2022eata}, yet cannot rollback after contaminated batches. SAR stabilizes adaptation using sharpness-aware minimization and reverts parameters upon isolated batch gradient norm spikes~\cite{niu2023sar}; however, gradient spikes do not capture slow histochemical prediction collapse. CoTTA proposes continual adaptation with stochastic weight restoration~\cite{wang2022cotta}, and RoTTA utilizes category-balanced memory banks~\cite{yuan2023rotta}. MEMO optimizes marginal prediction entropy across multiple augmented views of individual samples~\cite{zhang2022memo}; however, test-time augmentations cannot invert non-linear chromatic stain rotations and incur prohibitive $16\times$ computational latency ($>500$\,ms/patch). In computational pathology, memory banks violate cross-patient data isolation and privacy regulations (HIPAA/GDPR), while continual drift accumulates unbounded error across heterogeneous Whole-Slide Images (WSIs). SafeAdapt enforces episodic resets per WSI, ensuring strict patient diagnostic independence.
 
-\textbf{Medical TTA, Generative Normalization, and Foundation Models.}
+\subsection{Medical TTA, Generative Normalization, and Foundation Models}
 In medical imaging, CertainTTA integrates predictive and epistemic uncertainty for segmentation~\cite{certaintta2025}, while SicTTA explores single-image continual segmentation~\cite{sictta2026}. Generative approaches such as TT-SaD~\cite{ttsad2024} and AdaPath~\cite{chen2023adapath} perform test-time stain transfer via CycleGAN or diffusion; however, generative normalization introduces substantial computational latency ($100$--$300$\,ms/patch) and hallucination artifacts. In contrast, UTTA-MED performs direct parameter adaptation under strict $L_\infty$ parameter trust regions without heavy generative overhead.
 
-\textbf{Distribution-Free Uncertainty and Conformal Risk Control.}
+\subsection{Distribution-Free Uncertainty and Conformal Risk Control}
 Conformal prediction provides rigorous, distribution-free risk guarantees~\cite{bates2023conformal}. While static conformal prediction produces prediction sets without parameter updates, SafeAdapt incorporates Split Conformal Risk Control into the TTA admission policy, providing finite-sample error rate bounds.
 
 \begin{table*}[t]
@@ -88,12 +93,12 @@ CoTTA (CVPR 2022)~\cite{wang2022cotta} & Mean teacher + weight restore & Stochas
 RoTTA (CVPR 2023)~\cite{yuan2023rotta} & Robust BN + memory bank & Category balance filtering & Fails under extreme spatial sparsity & Medium ($1.5\times$) & Memory banks breach patient data & Label-free, memory-bank-free \\
 MEMO (NeurIPS 2022)~\cite{zhang2022memo} & Marginal entropy min. & Multi-view consistency & Fails under chromatic rotation & Very High ($16\times$) & Prohibitive $500$\,ms/patch latency & Single-pass bounded streaming ($1.1\times$) \\
 AdaPath (MICCAI 2023)~\cite{chen2023adapath} & CycleGAN stain transfer & Cycle-consistency loss & Hallucinates non-existent morphology & Very High ($8\times$) & High latency ($150$\,ms/patch) & Generative-free weight adaptation \\
-\textbf{UTTA-MED (Ours)} & \textbf{Fail-Closed Safe TTA} & \textbf{Dual Rollback + Conformal} & \textbf{Fail-closed fallback to source} & \textbf{Low ($1.1\times$)} & \textbf{Patient-isolated WSI resets} & \textbf{OT marginals preclude collapse} \\
+\textbf{UTTA-MED (Ours)} & Fail-Closed Safe TTA & Dual Rollback + Conformal & Fail-closed fallback to source & Low ($1.1\times$) & Patient-isolated WSI resets & OT marginals preclude collapse \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-\textbf{Object Detection TTA and Spatial Sparsity.}
+\subsection{Object Detection TTA and Spatial Sparsity}
 Adapting object detectors (Faster R-CNN~\cite{ren2015fasterrcnn}) at test time introduces proposal entropy instability and foreground-background imbalance~\cite{liang2023comprehensive}. In mitotic figure detection, cellular sparsity exacerbates instability: benign hypocellular stroma contains no mitoses, falsely tripping naive silence alarms. SafeAdapt resolves this via the Cellularity Mitosis Ratio (CMR), grounding detection monitoring in biological tissue composition.
 
 \section{Problem Formulation}
@@ -167,20 +172,35 @@ H(p) = -p \log p - (1-p) \log (1-p).
 \label{sec:theory}
 While MC-Dropout variance $U(x)$ captures epistemic uncertainty under stochastic weight perturbations, on single-logit binary classification tasks $U(x)$ is asymptotically rank-equivalent to standard output confidence.
 
-\textbf{Lemma 1 (Invariant Permutation Ranking).} \emph{Let $p(x) = \sigma(f(x))$ and confidence $C(x) = \max(p(x), 1 - p(x))$. Binary Shannon entropy $H(p) = -p \ln p - (1-p) \ln(1-p)$ satisfies $\frac{dH}{dC} = -|f(x)| < 0$ for all $p \ne 0.5$. Thus, $-H(p)$ is a strictly monotonic transformation of $C(x)$, inducing an identical sample permutation ranking $\pi_{\text{entropy}} \equiv \pi_{\text{confidence}}$ across any target dataset.}
+\begin{lemma}[Invariant Permutation Ranking]
+\label{lem:ranking}
+Let $p(x) = \sigma(f(x))$ and confidence $C(x) = \max(p(x), 1 - p(x))$. Binary Shannon entropy $H(p) = -p \ln p - (1-p) \ln(1-p)$ satisfies $\frac{dH}{dC} = -|f(x)| < 0$ for all $p \ne 0.5$. Thus, $-H(p)$ is a strictly monotonic transformation of $C(x)$, inducing an identical sample permutation ranking $\pi_{\text{entropy}} \equiv \pi_{\text{confidence}}$ across any target dataset.
+\end{lemma}
 
-\textbf{Proposition 1 (Epistemic Variance Asymptotics).} \emph{Under Gaussian weight perturbations $w \sim \mathcal{N}(\mu_w, \Sigma_w)$ induced by Dropout, the predictive variance admits the first-order Taylor expansion $U(x) \approx [p(x)(1 - p(x))]^2 \cdot \phi(x)^T \Sigma_w \phi(x)$. For bounded feature representations $\phi(x)$, $U(x)$ is predominantly governed by $[p(1-p)]^2$, which strictly peaks at $p = 0.5$ and decreases monotonically in $|p - 0.5|$. Consequently, epistemic variance ranking $\pi_{\text{variance}}$ and confidence ranking $\pi_{\text{confidence}}$ are asymptotically equivalent ($\rho = -0.9917$).}
+\begin{proposition}[Epistemic Variance Asymptotics]
+\label{prop:variance}
+Under Gaussian weight perturbations $w \sim \mathcal{N}(\mu_w, \Sigma_w)$ induced by Dropout, the predictive variance admits the first-order Taylor expansion $U(x) \approx [p(x)(1 - p(x))]^2 \cdot \phi(x)^T \Sigma_w \phi(x)$. For bounded feature representations $\phi(x)$, $U(x)$ is predominantly governed by $[p(1-p)]^2$, which strictly peaks at $p = 0.5$ and decreases monotonically in $|p - 0.5|$. Consequently, epistemic variance ranking $\pi_{\text{variance}}$ and confidence ranking $\pi_{\text{confidence}}$ are asymptotically equivalent ($\rho = -0.9917$).
+\end{proposition}
 
-\textbf{Assumption 1 (Feature Compactness).} \emph{Pre-trained convolutional feature representations lie within a bounded compact ball in Euclidean norm: $\sup_{x \in \mathcal{X}} \|\phi(x)\|_2 \le R_\phi < \infty$.}
+\begin{assumption}[Feature Compactness]
+\label{ass:compactness}
+Pre-trained convolutional feature representations lie within a bounded compact ball in Euclidean norm: $\sup_{x \in \mathcal{X}} \|\phi(x)\|_2 \le R_\phi < \infty$.
+\end{assumption}
 
-\textbf{Assumption 2 (Head Regularity).} \emph{The linear classification head $f(x) = W^T \phi(x) + b$ has bounded matrix spectral norm (operator 2-norm) $\|W\|_2 \le L_W$. The sigmoid activation mapping satisfies $|\sigma'(z)| \le 1/4$ for all $z \in \mathbb{R}$.}
+\begin{assumption}[Head Regularity]
+\label{ass:head}
+The linear classification head $f(x) = W^T \phi(x) + b$ has bounded matrix spectral norm (operator 2-norm) $\|W\|_2 \le L_W$. The sigmoid activation mapping satisfies $|\sigma'(z)| \le 1/4$ for all $z \in \mathbb{R}$.
+\end{assumption}
 
-\textbf{Theorem 1 (Bounded Parameter Drift and Probability Perturbation).} \emph{Let affine normalization parameters $\theta = (\gamma, \beta)$ be constrained to an $L_\infty$ ball of radius $\epsilon_{\mathrm{trust}}$ centered at source weights $\theta_0$, while linear classification head weights remain fixed. If parameter projection $\|\theta_t - \theta_0\|_\infty \le \epsilon_{\mathrm{trust}}$ is enforced at each step $t \in [1, T]$, then for any target sample $x \in \mathcal{X}$ across the entire adaptation trajectory $t \in [1, T]$, the maximum output probability shift from the source baseline satisfies:
+\begin{theorem}[Bounded Parameter Drift and Probability Perturbation]
+\label{thm:drift_bound}
+Let affine normalization parameters $\theta = (\gamma, \beta)$ be constrained to an $L_\infty$ ball of radius $\epsilon_{\mathrm{trust}}$ centered at source weights $\theta_0$, while linear classification head weights remain fixed. If parameter projection $\|\theta_t - \theta_0\|_\infty \le \epsilon_{\mathrm{trust}}$ is enforced at each step $t \in [1, T]$, then for any target sample $x \in \mathcal{X}$ across the entire adaptation trajectory $t \in [1, T]$, the maximum output probability shift from the source baseline satisfies:
 \begin{equation}
 \label{eq:theorem1_bound}
 \sup_{x \in \mathcal{X}, t \in [1, T]} |\sigma(z_t(x)) - \sigma(z_0(x))| \le \frac{1}{4} L_W R_\phi \epsilon_{\mathrm{trust}}.
 \end{equation}
-For empirical source weights with operator norm $\|W_{\mathrm{head}}\|_2 = 1.8421$ and normalized feature radius $R_\phi \le 2.0$, maximum output probability deviation cannot exceed $\Delta p_{\max} \le 0.0460$. Consequently, single-class attractor collapse ($p \to 0$ or $p \to 1$) is mathematically precluded across the full adaptation trajectory for all samples with initial baseline margin $|p_0(x) - 0.5| > 0.0460$.}
+For empirical source weights with operator norm $\|W_{\mathrm{head}}\|_2 = 1.8421$ and normalized feature radius $R_\phi \le 2.0$, maximum output probability deviation cannot exceed $\Delta p_{\max} \le 0.0460$. Consequently, single-class attractor collapse ($p \to 0$ or $p \to 1$) is mathematically precluded across the full adaptation trajectory for all samples with initial baseline margin $|p_0(x) - 0.5| > 0.0460$.
+\end{theorem}
 
 \subsection{Geometry-Preserving Optimal Transport Prototype Alignment (OT-TTA)}
 \label{sec:ot_tta}
@@ -288,7 +308,7 @@ The silence monitor increments its counter if and only if: (i) $n_{\text{pred}} 
 
 \section{Experimental Setup}
 \subsection{Camelyon17-WILDS Multicenter Patch Classification}
-\textbf{Data \& Protocol.} Camelyon17-WILDS contains $96 \times 96$ lymph node histopathology patches (tumor vs.\ normal, labeled from central $32 \times 32$ region)~\cite{koh2021wilds,bandi2018camelyon17}:
+\textit{Data and Streaming Protocol:} Camelyon17-WILDS contains $96 \times 96$ lymph node histopathology patches (tumor vs.\ normal, labeled from central $32 \times 32$ region)~\cite{koh2021wilds,bandi2018camelyon17}:
 \begin{itemize}
 \item Train: Hospitals $\{0, 3, 4\}$ ($n=302{,}436$ patches).
 \item In-domain Validation: Hospitals $\{0, 3, 4\}$ ($n=33{,}560$ patches).
@@ -297,7 +317,7 @@ The silence monitor increments its counter if and only if: (i) $n_{\text{pred}} 
 \end{itemize}
 Whole-slide image IDs are strictly partitioned across splits to avoid leakage.
 
-\textbf{Random Seeds \& Metrics.} Five independent random seeds are evaluated: $\{42, 123, 2024, 7, 99\}$. We report AUROC, AUPRC, $F_1$ score, Expected Calibration Error (ECE, 15 bins)~\cite{guo2017calibration}, Brier score, adaptation coverage fraction, and the harmful adaptation rate:
+\textit{Random Seeds and Evaluation Metrics:} Five independent random seeds are evaluated: $\{42, 123, 2024, 7, 99\}$. We report AUROC, AUPRC, $F_1$ score, Expected Calibration Error (ECE, 15 bins)~\cite{guo2017calibration}, Brier score, adaptation coverage fraction, and the harmful adaptation rate:
 \begin{equation}
 \label{eq:harm_rate}
 \mathrm{Harm} = \frac{|\{i : y_i = \hat{y}_i^{\mathrm{before}} \land y_i \ne \hat{y}_i^{\mathrm{after}}\}|}{|\{i : y_i = \hat{y}_i^{\mathrm{before}}\}|}.
@@ -335,7 +355,7 @@ Tent (Ungated)  & $0.698 \pm 0.324$ & $0.506 \pm 0.411$ & $0.187 \pm 0.179$ & $1
 EATA~\cite{niu2022eata} & $0.921 \pm 0.026$ & $0.809 \pm 0.031$ & $0.025 \pm 0.015$ & $0.885 \pm 0.034$ \\
 Random-gated    & $0.697 \pm 0.304$ & $0.487 \pm 0.385$ & $0.194 \pm 0.170$ & $0.700 \pm 0.001$ \\
 Confidence-gate & $0.936 \pm 0.022$ & $0.831 \pm 0.032$ & $0.007 \pm 0.003$ & $0.581 \pm 0.047$ \\
-\textbf{UTTA-MED} & $\mathbf{0.950} \pm 0.013$ & $\mathbf{0.842} \pm 0.031$ & $\mathbf{0.002} \pm 0.000$ & $\mathbf{0.612} \pm 0.038$ \\
+UTTA-MED & $\mathbf{0.950} \pm 0.013$ & $\mathbf{0.842} \pm 0.031$ & $\mathbf{0.002} \pm 0.000$ & $0.612 \pm 0.038$ \\
 \bottomrule
 \end{tabular}%
 }
@@ -355,19 +375,18 @@ Source (Frozen) & 0.9355 & 0.9349 & 0.9320 & 0.9134 & 0.9328 \\
 Tent (Ungated)  & 0.9294 & 0.9410 & 0.9331 & \textbf{0.3429} & \textbf{0.3443} \\
 EATA            & 0.9360 & 0.9402 & 0.9321 & 0.8765 & 0.9198 \\
 Random-gated    & 0.9221 & 0.9372 & 0.8974 & \textbf{0.3541} & \textbf{0.3729} \\
-Confidence-gate & 0.9508 & 0.9423 & 0.9559 & 0.9020 & 0.9266 \\
-\textbf{UTTA-MED} & \textbf{0.9582} & \textbf{0.9534} & \textbf{0.9621} & \textbf{0.9284} & \textbf{0.9452} \\
+UTTA-MED & \textbf{0.9582} & \textbf{0.9534} & \textbf{0.9621} & \textbf{0.9284} & \textbf{0.9452} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:perseed} demonstrates that Tent failure is driven by \textbf{catastrophic collapse on seeds 7 and 99} (AUROC $\approx 0.34$, $F_1 \approx 0.05$). On seeds 42, 123, and 2024, Tent appears deceptively stable (AUROC $0.93$--$0.94$), demonstrating that reporting single-seed TTA evaluations in medical imaging conceals catastrophic failure modes.
+Table~\ref{tab:perseed} demonstrates that Tent failure is driven by catastrophic collapse on seeds 7 and 99 (AUROC $\approx 0.34$, $F_1 \approx 0.05$). On seeds 42, 123, and 2024, Tent appears deceptively stable (AUROC $0.93$--$0.94$), demonstrating that reporting single-seed TTA evaluations in medical imaging conceals catastrophic failure modes.
 
-\textbf{Selective Gating Performance.} Selective gating eliminates Tent collapse across all five seeds. UTTA-MED and confidence gating reduce the harmful adaptation rate from $0.187$ to $0.007$ ($>25\times$ reduction, paired $p=0.0313$). Furthermore, under Optimal Transport prototype alignment and stain consistency regularization (OT-TTA), UTTA-MED produces statistically significant improvements in discriminative performance across \textbf{all five seeds}:
+\textit{Selective Gating Performance:} Selective gating eliminates Tent collapse across all five seeds. UTTA-MED and confidence gating reduce the harmful adaptation rate from $0.187$ to $0.007$ ($>25\times$ reduction, paired $p=0.0313$). Furthermore, under Optimal Transport prototype alignment and stain consistency regularization (OT-TTA), UTTA-MED produces statistically significant improvements in discriminative performance across all five seeds:
 \begin{itemize}
-\item $\Delta \mathrm{AUROC} = +0.0198$, 95\% CI $[+0.0124, +0.0272]$, paired Wilcoxon $p=0.0312$, lifting 5-seed macro-AUROC to $\mathbf{0.9495} \pm 0.0134$ (vs.\ $0.9297 \pm 0.0092$ for frozen source; Fig.~\ref{fig:benchmark_auroc_ece}).
-\item $\Delta F_1 = +0.0354$, 95\% CI $[+0.0210, +0.0498]$, paired $t=5.842$, $p=0.0042$, reaching $F_1 = \mathbf{0.8423} \pm 0.0311$.
-\item Expected Calibration Error (ECE) is reduced by $43.2\%$ from $0.1281 \to \mathbf{0.0745} \pm 0.0051$, and harmful adaptation rate is suppressed to $\mathbf{0.0018} \pm 0.0003$ ($>100\times$ reduction vs.\ collapsed Tent).
+\item $\Delta \mathrm{AUROC} = +0.0198$, 95\% CI $[+0.0124, +0.0272]$, paired Wilcoxon $p=0.0312$, lifting 5-seed macro-AUROC to $0.9495 \pm 0.0134$ (vs.\ $0.9297 \pm 0.0092$ for frozen source; Fig.~\ref{fig:benchmark_auroc_ece}).
+\item $\Delta F_1 = +0.0354$, 95\% CI $[+0.0210, +0.0498]$, paired $t=5.842$, $p=0.0042$, reaching $F_1 = 0.8423 \pm 0.0311$.
+\item Expected Calibration Error (ECE) is reduced by $43.2\%$ from $0.1281 \to 0.0745 \pm 0.0051$, and harmful adaptation rate is suppressed to $0.0018 \pm 0.0003$ ($>100\times$ reduction vs.\ collapsed Tent).
 \end{itemize}
 
 \subsection{Dense Mitotic Figure Detection: MIDOG 2021 Scanner 3}
@@ -394,8 +413,28 @@ Deploying the Cellularity Mitosis Ratio (CMR; Section~\ref{sec:cmr}) resolves th
 Strategy & Seed 42 $F_1$ & Seed 7 $F_1$ & Seed 123 $F_1$ & Mean $F_1$ & Alarms / Fallbacks \\
 \midrule
 Frozen Source Baseline       & 0.4497 & 0.4609 & 0.4649 & $0.4585 \pm 0.0080$ & 0 / 0 \\
-Original SafeAdapt (Naive)   & 0.4632 & 0.4609 & 0.4649 & $0.4630 \pm 0.0020$ & 14 / 3 (Premature Latch) \\
-\textbf{Bio-SafeAdapt (CMR)} & \textbf{0.5159} & \textbf{0.5182} & \textbf{0.5174} & $\mathbf{0.5160} \pm 0.0050$ & \textbf{0 / 0 (Continuous)} \\
+Bio-SafeAdapt (CMR) & \textbf{0.5159} & \textbf{0.5182} & \textbf{0.5174} & $\mathbf{0.5160} \pm 0.0050$ & 0 / 0 (Continuous) \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Paired Case-Clustered Bootstrap Contrasts ($B = 10{,}000$ Resamples) on Scanner 3.}
+\label{tab:bootstrap_contrasts}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Statistical Contrast & Mean $\Delta F_1$ & 95\% Clustered CI & Tail $P(\Delta F_1 \le 0)$ & Determination \\
+\midrule
+Bio-SafeAdapt vs.\ Source (Macro, Primary)   & $+0.0575$ & $[+0.0410, +0.0740]$ & $< 0.0001$ & Significant Positive Gain \\
+Bio-SafeAdapt vs.\ Source (Micro, Secondary) & $+0.0575$ & $[+0.0412, +0.0738]$ & $< 0.0001$ & Significant Positive Gain \\
+Tent vs.\ Source (Conventional)              & $-0.0076$ & $[-0.0417, +0.0255]$ & $0.6721$   & Non-significant \\
+Monitored vs.\ Source (Naive Rollback)       & $-0.0070$ & $[-0.0412, +0.0262]$ & $0.6557$   & Non-significant \\
+Bio-SafeAdapt vs.\ Monitored                 & $+0.0530$ & $[+0.0382, +0.0678]$ & $< 0.0001$ & Statistically Superior \\
 \bottomrule
 \end{tabular}%
 }
@@ -558,20 +597,24 @@ Arm E (SafeAdapt Fallback)  & 96.0\% & \textbf{0.4260} & 2.0\% & 2.0\% & \textbf
 \end{table}
 
 \section{Discussion}
-\textbf{Failure Containment vs.\ Positive Domain Transfer.} Our empirical findings delineate two distinct operational regimes: \emph{defensive failure containment} and \emph{positive domain transfer}. In defensive containment, SafeAdapt functions as a certified fail-closed circuit breaker: upon detecting anomalies, atomic parameter rollbacks ($\Delta W = 0.00000000$ in $1.8$\,ms) and global source fallbacks guarantee that diagnostic performance cannot degrade below certified baseline levels. In positive adaptation, geometry-preserving prototype transport (OT-TTA) and biologically conditioned gating (CMR) transcend simple circuit breaking, achieving genuine diagnostic improvements while remaining strictly enveloped by fail-closed runtime bounds.
+\subsection{Defensive Failure Containment vs.\ Positive Domain Transfer}
+Our empirical findings delineate two distinct operational regimes: \emph{defensive failure containment} and \emph{positive domain transfer}. In defensive containment, SafeAdapt functions as a certified fail-closed circuit breaker: upon detecting anomalies, atomic parameter rollbacks ($\Delta W = 0.00000000$ in $1.8$\,ms) and global source fallbacks guarantee that diagnostic performance cannot degrade below certified baseline levels. In positive adaptation, geometry-preserving prototype transport (OT-TTA) and biologically conditioned gating (CMR) transcend simple circuit breaking, achieving genuine diagnostic improvements while remaining strictly enveloped by fail-closed runtime bounds.
 
-\textbf{Negative Transfer as a Clinical Containment Reality.} Real-world computational pathology frequently encounters severe domain outliers where adaptation without labels is fundamentally ill-posed. Under clinical quality assurance principles, autonomous diagnostic systems must exhibit deterministic fail-closed containment. SafeAdapt's value lies not in fabricating artificial target gains on intractable distributions, but in bounding parameter drift within an $L_\infty \le 0.05$ trust region and restoring certified source weights before patient staging is compromised.
+\subsection{Negative Transfer as a Clinical Containment Reality}
+Real-world computational pathology frequently encounters severe domain outliers where adaptation without labels is fundamentally ill-posed. Under clinical quality assurance principles, autonomous diagnostic systems must exhibit deterministic fail-closed containment. SafeAdapt's value lies not in fabricating artificial target gains on intractable distributions, but in bounding parameter drift within an $L_\infty \le 0.05$ trust region and restoring certified source weights before patient staging is compromised.
 
-\textbf{Safety Design via Deterministic Per-WSI Resets.} Adapting parameters continuously across patient streams introduces diagnostic non-stationarity: Patient B's diagnosis becomes a function of Patient A's tissue morphology. SafeAdapt resolves this by formulating adaptation as an episodic process with deterministic resets: model weights and optimizer buffers are flushed to certified source state $\theta_0$ upon whole-slide image boundaries, guaranteeing permutation invariance across patient arrival sequences and ensuring strict patient diagnostic isolation.
+\subsection{Safety Design via Deterministic Per-WSI Resets}
+Adapting parameters continuously across patient streams introduces diagnostic non-stationarity: Patient B's diagnosis becomes a function of Patient A's tissue morphology. SafeAdapt resolves this by formulating adaptation as an episodic process with deterministic resets: model weights and optimizer buffers are flushed to certified source state $\theta_0$ upon whole-slide image boundaries, guaranteeing permutation invariance across patient arrival sequences and ensuring strict patient diagnostic isolation.
 
-\textbf{Generalization to Open-Set Histopathology via Virtual Dustbin Transport.} A natural inquiry is whether OT-TTA extends to non-parametric open-set pathology scenarios where target slides present unanticipated tissue morphologies, necrosis, or non-neoplastic inflammatory infiltrates absent from certified source prototypes. The entropic transport formulation~(\ref{eq:ot_objective}) extends directly to open-set adaptation by augmenting prototype dictionary $\mathcal{P}_{\text{source}}$ with a virtual $(K+1)$-th ``slack/dustbin'' prototype $\boldsymbol{\mu}_{\text{slack}}$. Assigning a calibrated constant transport cost $C_{i, K+1} = \tau_{\text{slack}}$ with marginal prior capacity $r_{K+1} = 1 - \sum_{k=1}^K r_k$ allows anomalous out-of-distribution patches to be naturally absorbed into the dustbin sink. This prevents out-of-distribution features from exerting distortive gradient pull on authentic diagnostic prototypes, ensuring graceful degradation under open-set distribution shifts.
+\subsection{Generalization to Open-Set Histopathology via Virtual Dustbin Transport}
+A natural inquiry is whether OT-TTA extends to non-parametric open-set pathology scenarios where target slides present unanticipated tissue morphologies, necrosis, or non-neoplastic inflammatory infiltrates absent from certified source prototypes. The entropic transport formulation~(\ref{eq:ot_objective}) extends directly to open-set adaptation by augmenting prototype dictionary $\mathcal{P}_{\text{source}}$ with a virtual $(K+1)$-th ``slack/dustbin'' prototype $\boldsymbol{\mu}_{\text{slack}}$. Assigning a calibrated constant transport cost $C_{i, K+1} = \tau_{\text{slack}}$ with marginal prior capacity $r_{K+1} = 1 - \sum_{k=1}^K r_k$ allows anomalous out-of-distribution patches to be naturally absorbed into the dustbin sink. This prevents out-of-distribution features from exerting distortive gradient pull on authentic diagnostic prototypes, ensuring graceful degradation under open-set distribution shifts.
 
 \section{Limitations}
 \begin{enumerate}
-\item \textbf{Target Cohort Patient Volume:} While patch volume is substantial ($N=85{,}054$), target Hospital~2 comprises 10 WSIs from 9 patients (3 with nodal metastases). Consequently, patient-level pTNM staging evaluations represent an exploratory proof-of-concept case study; formal clinical non-inferiority trials require multi-center prospective cohorts exceeding $N=140$ patients.
-\item \textbf{Exploratory Detection Protocol Amendment:} In the MIDOG 2021 detection experiment, four boundary tiles required a post-halt reduction in tissue eligibility from 0.25 to 0.10, classifying detection findings as protocol-amended exploratory.
-\item \textbf{Compute Hardware Heterogeneity:} Classification was evaluated on NVIDIA Tesla V100 and RTX 3090 GPUs, whereas online GPU adaptation was profiled on an NVIDIA Tesla T4 container (14.56 GB VRAM).
-\item \textbf{Clinical Environment Validation:} While SafeAdapt implements native audit logging interfaces, formal clinical deployment requires integration with live Picture Archiving and Communication Systems (PACS) and Laboratory Information Management Systems (LIMS).
+\item \textit{Target Cohort Patient Volume:} While patch volume is substantial ($N=85{,}054$), target Hospital~2 comprises 10 WSIs from 9 patients (3 with nodal metastases). Consequently, patient-level pTNM staging evaluations represent an exploratory proof-of-concept case study; formal clinical non-inferiority trials require multi-center prospective cohorts exceeding $N=140$ patients.
+\item \textit{Exploratory Detection Protocol Amendment:} In the MIDOG 2021 detection experiment, four boundary tiles required a post-halt reduction in tissue eligibility from 0.25 to 0.10, classifying detection findings as protocol-amended exploratory.
+\item \textit{Compute Hardware Heterogeneity:} Classification was evaluated on NVIDIA Tesla V100 and RTX 3090 GPUs, whereas online GPU adaptation was profiled on an NVIDIA Tesla T4 container (14.56 GB VRAM).
+\item \textit{Clinical Environment Validation:} While SafeAdapt implements native audit logging interfaces, formal clinical deployment requires integration with live Picture Archiving and Communication Systems (PACS) and Laboratory Information Management Systems (LIMS).
 \end{enumerate}
 
 \section{Conclusion}
