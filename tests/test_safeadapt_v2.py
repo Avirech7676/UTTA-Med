@@ -437,3 +437,32 @@ def test_verify_source_immutability_detects_deliberate_tampering():
         controller._source_model.fc1.weight.add_(1.0)
     assert controller.verify_source_immutability() is False, "Failed to detect source model mutation!"
 
+
+def test_telemetry_fhir_and_dicom_export():
+    """Verify conversion of SafeAdapt telemetry events to standard FHIR and DICOM formats."""
+    from src.v2.safeadapt.telemetry import TelemetryEvent
+
+    event = TelemetryEvent(
+        batch_idx=42,
+        event_type="ROLLBACK",
+        reason="high_gradient_norm",
+        loss=0.85,
+        grad_norm=2.5,
+        max_displacement_linf=0.035,
+        num_clamped_tensors=1,
+        in_fallback=False,
+    )
+
+    fhir = event.to_fhir_observation()
+    assert fhir["resourceType"] == "Observation"
+    assert fhir["status"] == "final"
+    assert fhir["code"]["coding"][0]["code"] == "TTA-ROLLBACK"
+    assert fhir["component"][0]["valueInteger"] == 42
+    assert fhir["component"][1]["valueBoolean"] is False
+
+    dicom = event.to_dicom_audit_event()
+    assert dicom["ActiveParticipant"]["UserID"] == "SafeAdapt-CADx-Interlock"
+    assert dicom["EventIdentification"]["EventOutcomeIndicator"] == "4"  # Error/Rollback
+    assert dicom["EventDetail"]["EventType"] == "ROLLBACK"
+
+

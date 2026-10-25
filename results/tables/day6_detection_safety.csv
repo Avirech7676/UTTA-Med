@@ -1,0 +1,6 @@
+Detection Policy,Mean F1 Score,False Silence Alarms,Premature Fallback,Fallback Latch Step,Adaptation Stability
+Frozen Source Detector,0.4446,0,NO,N/A,Static (Zero Drift)
+Unconstrained RoI-TTA,0.3920,0,NO,Never (Unbounded),Unstable (FP Proliferation)
+SafeAdapt (Naive Silence),0.4446,14,YES (Acellular Stroma),Patch 80 ± 22,Early Freeze to Source
+SafeAdapt (Cellularity-Aware CMR),0.4582,0,NO,Never,Controlled Adaptation (Full Stream)
+SafeAdapt (CMR + Source Fallback Interlock),0.4582,0,NO,Active Standby,Fully Safeguarded

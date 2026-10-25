@@ -109,6 +109,9 @@ class FoundationModelLoRAAdapter(nn.Module):
         self.anchor_params: Dict[str, torch.Tensor] = {}
         self.snapshot_anchor()
 
+        # Dedicated optimizer over trainable parameters (LoRA + head)
+        self.optimizer = torch.optim.SGD(self.get_trainable_parameters(), lr=self.lr)
+
     def _inject_lora(self, module: nn.Module, prefix: str = "") -> None:
         for name, child in module.named_children():
             full_name = f"{prefix}.{name}" if prefix else name
@@ -178,9 +181,8 @@ class FoundationModelLoRAAdapter(nn.Module):
 
         total_loss = loss_entropy + self.anchor_weight * loss_anchor
 
-        # Gradient update
-        optimizer = torch.optim.SGD(self.get_trainable_parameters(), lr=self.lr)
-        optimizer.zero_grad()
+        # Gradient update using dedicated persistent optimizer
+        self.optimizer.zero_grad()
         total_loss.backward()
 
         # Check for NaN / Inf in gradients
@@ -191,7 +193,7 @@ class FoundationModelLoRAAdapter(nn.Module):
                 break
 
         if not has_invalid:
-            optimizer.step()
+            self.optimizer.step()
             # Trust-Region Bounded Projection
             with torch.no_grad():
                 for name, p in self.named_parameters():

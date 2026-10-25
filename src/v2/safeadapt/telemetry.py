@@ -41,6 +41,60 @@ class TelemetryEvent:
             "timestamp": self.timestamp,
         }
 
+    def to_fhir_observation(self) -> Dict[str, Any]:
+        """Convert telemetry event to an HL7 FHIR R4 Observation resource."""
+        return {
+            "resourceType": "Observation",
+            "status": "final",
+            "code": {
+                "coding": [
+                    {
+                        "system": "http://safeadapt.digitalpathology.org/codes",
+                        "code": f"TTA-{self.event_type}",
+                        "display": f"SafeAdapt Test-Time Adaptation {self.event_type} Event",
+                    }
+                ]
+            },
+            "effectiveDateTime": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(self.timestamp)),
+            "component": [
+                {
+                    "code": {"coding": [{"code": "batch-idx", "display": "Target Batch Index"}]},
+                    "valueInteger": self.batch_idx,
+                },
+                {
+                    "code": {"coding": [{"code": "fallback-status", "display": "Latching Fallback Active"}]},
+                    "valueBoolean": self.in_fallback,
+                },
+                {
+                    "code": {"coding": [{"code": "linf-displacement", "display": "Max Parameter Displacement L_inf"}]},
+                    "valueQuantity": {"value": self.max_displacement_linf or 0.0, "unit": "norm"},
+                },
+            ],
+        }
+
+    def to_dicom_audit_event(self) -> Dict[str, Any]:
+        """Convert telemetry event to a DICOM Part 18 / IHE ATNA Audit Record."""
+        return {
+            "EventIdentification": {
+                "EventID": {"code": "110113", "displayName": "Security Alert"},
+                "EventActionCode": "E",
+                "EventDateTime": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(self.timestamp)),
+                "EventOutcomeIndicator": "0" if self.event_type in ("ACCEPTED", "RESET") else "4",
+            },
+            "ActiveParticipant": {
+                "UserID": "SafeAdapt-CADx-Interlock",
+                "UserIsRequestor": False,
+                "RoleIDCode": {"code": "110150", "displayName": "Application"},
+            },
+            "AuditEnterpriseSiteID": "Clinical-Digital-Pathology-Laboratory",
+            "EventDetail": {
+                "EventType": self.event_type,
+                "Reason": self.reason or "None",
+                "InFallback": self.in_fallback,
+            },
+        }
+
+
 
 class SafeAdaptTelemetry:
     """Telemetry aggregator for SafeAdapt controller."""

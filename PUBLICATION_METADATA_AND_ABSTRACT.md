@@ -250,10 +250,10 @@ $$\text{Seeds} \in \{7, 42, 99, 123, 2024\}$$
 
 ```text
 FIELD: Title
-Selective Test-Time Adaptation for Reliable Cross-Hospital Histopathology Classification: A Multi-Seed Empirical Investigation on Camelyon17-WILDS
+Fail-Closed Test-Time Adaptation and Runtime Safeguards for Digital Pathology: Multicenter Classification and Dense Detection Under Severe Domain Shift
 
 FIELD: Short Title / Running Header
-Selective Test-Time Adaptation in Histopathology
+Fail-Closed Test-Time Adaptation in Pathology
 
 FIELD: Authors
 Avinash Reddy Cheerapareddy (Department of Computer Science and Engineering, Medical Imaging and Machine Learning Laboratory)

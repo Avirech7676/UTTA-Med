@@ -20,9 +20,9 @@ METHODS: List[str] = [
 GATED = ["confidence", "entropy", "utta"]
 COLLAPSE_SEEDS = [7, 99]
 
-# Resolve project root: scripts/upgrade/ -> repo root
+# Resolve project root: scripts/ -> repo root
 SCRIPT_DIR = Path(__file__).resolve().parent
-ROOT = SCRIPT_DIR.parent.parent
+ROOT = SCRIPT_DIR.parent if SCRIPT_DIR.name == "scripts" else SCRIPT_DIR.parent.parent
 NPZ_DIR = ROOT / "results" / "data" / "wsi_bootstrap"
 OUT_STAT = ROOT / "results" / "statistical"
 OUT_TABLES = ROOT / "results" / "tables"

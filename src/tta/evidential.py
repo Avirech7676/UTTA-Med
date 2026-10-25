@@ -41,6 +41,7 @@ class EvidentialTTA(nn.Module):
         loss_type: str = "dirichlet_entropy",
         bn_mode: str = "bn_freeze_stats",
         num_classes: int = 9,
+        max_displacement: float = 0.05,
     ):
         super().__init__()
         self.model = model
@@ -52,6 +53,7 @@ class EvidentialTTA(nn.Module):
         self.loss_type = loss_type
         self.bn_mode = bn_mode
         self.num_classes = num_classes
+        self.max_displacement = max_displacement
 
         # Freeze all backbone and linear head weights
         for p in self.model.parameters():
@@ -63,6 +65,11 @@ class EvidentialTTA(nn.Module):
             p.requires_grad_(True)
 
         configure_tta_mode(self.model, bn_mode=self.bn_mode)
+
+        # Snapshot initial anchor weights for trust-region bounding
+        self.anchor_params: Dict[str, torch.Tensor] = {
+            name: p.data.clone().detach() for name, p in self.model.named_parameters() if p.requires_grad
+        }
 
         # Standard TTA optimizer is Adam
         self.optimizer = torch.optim.Adam(self.adaptable_params, lr=self.lr)
@@ -183,17 +190,34 @@ class EvidentialTTA(nn.Module):
         )
         masked_loss = per_sample_loss[mask].mean()
 
-        # 5. Gradient update
+        # 5. Gradient update with non-finite interception and trust region projection
         self.optimizer.zero_grad()
         masked_loss.backward()
-        self.optimizer.step()
 
-        self.n_batches_adapted += 1
-        self.n_samples_adapted += n_accepted
+        has_invalid = False
+        for p in self.adaptable_params:
+            if p.grad is not None and (torch.isnan(p.grad).any() or torch.isinf(p.grad).any()):
+                has_invalid = True
+                break
+
+        if not has_invalid:
+            self.optimizer.step()
+            with torch.no_grad():
+                for name, p in self.model.named_parameters():
+                    if p.requires_grad and name in self.anchor_params:
+                        anchor = self.anchor_params[name].to(p.device)
+                        diff = p.data - anchor
+                        clipped = torch.clamp(diff, -self.max_displacement, self.max_displacement)
+                        p.data.copy_(anchor + clipped)
+
+            self.n_batches_adapted += 1
+            self.n_samples_adapted += n_accepted
+        else:
+            self.n_batches_skipped += 1
 
         info = {
-            "adapted": True,
-            "n_accepted": n_accepted,
+            "adapted": not has_invalid,
+            "n_accepted": n_accepted if not has_invalid else 0,
             "coverage": coverage,
             "loss": float(masked_loss.item()),
             "mean_vacuity": float(ev_dict["vacuity"].mean().item()),

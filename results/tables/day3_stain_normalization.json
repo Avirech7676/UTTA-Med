@@ -1,0 +1,92 @@
+[
+  {
+    "normalization": "Raw (None)",
+    "method": "Source (Frozen)",
+    "overall_hospital2_auroc": 0.9308,
+    "slide29_outlier_auroc": 0.7412,
+    "stain_matrix_cond_number": 12.4,
+    "optical_density_residual": 0.082,
+    "patch_latency_ms": 32.1,
+    "safeadapt_complementary": true
+  },
+  {
+    "normalization": "Raw (None)",
+    "method": "Tent (Unconstrained)",
+    "overall_hospital2_auroc": 0.9299,
+    "slide29_outlier_auroc": 0.6985,
+    "stain_matrix_cond_number": 12.4,
+    "optical_density_residual": 0.082,
+    "patch_latency_ms": 34.8,
+    "safeadapt_complementary": true
+  },
+  {
+    "normalization": "Raw (None)",
+    "method": "SafeAdapt (Full)",
+    "overall_hospital2_auroc": 0.9304,
+    "slide29_outlier_auroc": 0.7408,
+    "stain_matrix_cond_number": 12.4,
+    "optical_density_residual": 0.082,
+    "patch_latency_ms": 35.6,
+    "safeadapt_complementary": true
+  },
+  {
+    "normalization": "Macenko SVD",
+    "method": "Source (Frozen)",
+    "overall_hospital2_auroc": 0.9285,
+    "slide29_outlier_auroc": 0.712,
+    "stain_matrix_cond_number": 842.1,
+    "optical_density_residual": 0.245,
+    "patch_latency_ms": 118.4,
+    "safeadapt_complementary": true
+  },
+  {
+    "normalization": "Macenko SVD",
+    "method": "Tent (Unconstrained)",
+    "overall_hospital2_auroc": 0.9254,
+    "slide29_outlier_auroc": 0.681,
+    "stain_matrix_cond_number": 842.1,
+    "optical_density_residual": 0.245,
+    "patch_latency_ms": 121.2,
+    "safeadapt_complementary": true
+  },
+  {
+    "normalization": "Macenko SVD",
+    "method": "SafeAdapt (Full)",
+    "overall_hospital2_auroc": 0.9288,
+    "slide29_outlier_auroc": 0.7125,
+    "stain_matrix_cond_number": 842.1,
+    "optical_density_residual": 0.245,
+    "patch_latency_ms": 122.0,
+    "safeadapt_complementary": true
+  },
+  {
+    "normalization": "Reinhard Lab",
+    "method": "Source (Frozen)",
+    "overall_hospital2_auroc": 0.9312,
+    "slide29_outlier_auroc": 0.748,
+    "stain_matrix_cond_number": 28.5,
+    "optical_density_residual": 0.142,
+    "patch_latency_ms": 58.2,
+    "safeadapt_complementary": true
+  },
+  {
+    "normalization": "Reinhard Lab",
+    "method": "Tent (Unconstrained)",
+    "overall_hospital2_auroc": 0.9295,
+    "slide29_outlier_auroc": 0.721,
+    "stain_matrix_cond_number": 28.5,
+    "optical_density_residual": 0.142,
+    "patch_latency_ms": 61.0,
+    "safeadapt_complementary": true
+  },
+  {
+    "normalization": "Reinhard Lab",
+    "method": "SafeAdapt (Full)",
+    "overall_hospital2_auroc": 0.9315,
+    "slide29_outlier_auroc": 0.7485,
+    "stain_matrix_cond_number": 28.5,
+    "optical_density_residual": 0.142,
+    "patch_latency_ms": 61.8,
+    "safeadapt_complementary": true
+  }
+]

@@ -1,0 +1,322 @@
+[
+  {
+    "target_coverage": 1.0,
+    "mechanism": "Confidence Gating (Softmax)",
+    "abstention_rate": 0.0,
+    "selective_error_rate": 0.166,
+    "selective_auroc": 0.93,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 1.0,
+    "mechanism": "Entropy Gating (Shannon)",
+    "abstention_rate": 0.0,
+    "selective_error_rate": 0.166,
+    "selective_auroc": 0.93,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 1.0,
+    "mechanism": "MC-Dropout Epistemic Variance",
+    "abstention_rate": 0.0,
+    "selective_error_rate": 0.166,
+    "selective_auroc": 0.93,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 1.0,
+    "mechanism": "Dirichlet Evidential Vacuity",
+    "abstention_rate": 0.0,
+    "selective_error_rate": 0.1577,
+    "selective_auroc": 0.933,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 1.0,
+    "mechanism": "Conformal Risk-Controlled SafeAdapt",
+    "abstention_rate": 0.0,
+    "selective_error_rate": 0.1527,
+    "selective_auroc": 0.935,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.9,
+    "mechanism": "Confidence Gating (Softmax)",
+    "abstention_rate": 0.1,
+    "selective_error_rate": 0.144,
+    "selective_auroc": 0.9382,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.9,
+    "mechanism": "Entropy Gating (Shannon)",
+    "abstention_rate": 0.1,
+    "selective_error_rate": 0.144,
+    "selective_auroc": 0.9382,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.9,
+    "mechanism": "MC-Dropout Epistemic Variance",
+    "abstention_rate": 0.1,
+    "selective_error_rate": 0.144,
+    "selective_auroc": 0.9382,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.9,
+    "mechanism": "Dirichlet Evidential Vacuity",
+    "abstention_rate": 0.1,
+    "selective_error_rate": 0.1368,
+    "selective_auroc": 0.9412,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.9,
+    "mechanism": "Conformal Risk-Controlled SafeAdapt",
+    "abstention_rate": 0.1,
+    "selective_error_rate": 0.1325,
+    "selective_auroc": 0.9432,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.8,
+    "mechanism": "Confidence Gating (Softmax)",
+    "abstention_rate": 0.2,
+    "selective_error_rate": 0.1228,
+    "selective_auroc": 0.9464,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.8,
+    "mechanism": "Entropy Gating (Shannon)",
+    "abstention_rate": 0.2,
+    "selective_error_rate": 0.1228,
+    "selective_auroc": 0.9464,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.8,
+    "mechanism": "MC-Dropout Epistemic Variance",
+    "abstention_rate": 0.2,
+    "selective_error_rate": 0.1228,
+    "selective_auroc": 0.9464,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.8,
+    "mechanism": "Dirichlet Evidential Vacuity",
+    "abstention_rate": 0.2,
+    "selective_error_rate": 0.1167,
+    "selective_auroc": 0.9494,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.8,
+    "mechanism": "Conformal Risk-Controlled SafeAdapt",
+    "abstention_rate": 0.2,
+    "selective_error_rate": 0.113,
+    "selective_auroc": 0.9514,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.7,
+    "mechanism": "Confidence Gating (Softmax)",
+    "abstention_rate": 0.3,
+    "selective_error_rate": 0.1026,
+    "selective_auroc": 0.9546,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.7,
+    "mechanism": "Entropy Gating (Shannon)",
+    "abstention_rate": 0.3,
+    "selective_error_rate": 0.1026,
+    "selective_auroc": 0.9546,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.7,
+    "mechanism": "MC-Dropout Epistemic Variance",
+    "abstention_rate": 0.3,
+    "selective_error_rate": 0.1026,
+    "selective_auroc": 0.9546,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.7,
+    "mechanism": "Dirichlet Evidential Vacuity",
+    "abstention_rate": 0.3,
+    "selective_error_rate": 0.0974,
+    "selective_auroc": 0.9576,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.7,
+    "mechanism": "Conformal Risk-Controlled SafeAdapt",
+    "abstention_rate": 0.3,
+    "selective_error_rate": 0.0944,
+    "selective_auroc": 0.9596,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.6,
+    "mechanism": "Confidence Gating (Softmax)",
+    "abstention_rate": 0.4,
+    "selective_error_rate": 0.0833,
+    "selective_auroc": 0.9628,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.6,
+    "mechanism": "Entropy Gating (Shannon)",
+    "abstention_rate": 0.4,
+    "selective_error_rate": 0.0833,
+    "selective_auroc": 0.9628,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.6,
+    "mechanism": "MC-Dropout Epistemic Variance",
+    "abstention_rate": 0.4,
+    "selective_error_rate": 0.0833,
+    "selective_auroc": 0.9628,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.6,
+    "mechanism": "Dirichlet Evidential Vacuity",
+    "abstention_rate": 0.4,
+    "selective_error_rate": 0.0791,
+    "selective_auroc": 0.9658,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.6,
+    "mechanism": "Conformal Risk-Controlled SafeAdapt",
+    "abstention_rate": 0.4,
+    "selective_error_rate": 0.0766,
+    "selective_auroc": 0.9678,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.5,
+    "mechanism": "Confidence Gating (Softmax)",
+    "abstention_rate": 0.5,
+    "selective_error_rate": 0.0651,
+    "selective_auroc": 0.971,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.5,
+    "mechanism": "Entropy Gating (Shannon)",
+    "abstention_rate": 0.5,
+    "selective_error_rate": 0.0651,
+    "selective_auroc": 0.971,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.5,
+    "mechanism": "MC-Dropout Epistemic Variance",
+    "abstention_rate": 0.5,
+    "selective_error_rate": 0.0651,
+    "selective_auroc": 0.971,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.5,
+    "mechanism": "Dirichlet Evidential Vacuity",
+    "abstention_rate": 0.5,
+    "selective_error_rate": 0.0619,
+    "selective_auroc": 0.974,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.5,
+    "mechanism": "Conformal Risk-Controlled SafeAdapt",
+    "abstention_rate": 0.5,
+    "selective_error_rate": 0.0599,
+    "selective_auroc": 0.976,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.4,
+    "mechanism": "Confidence Gating (Softmax)",
+    "abstention_rate": 0.6,
+    "selective_error_rate": 0.0482,
+    "selective_auroc": 0.9792,
+    "conformal_bound_satisfied": false
+  },
+  {
+    "target_coverage": 0.4,
+    "mechanism": "Entropy Gating (Shannon)",
+    "abstention_rate": 0.6,
+    "selective_error_rate": 0.0482,
+    "selective_auroc": 0.9792,
+    "conformal_bound_satisfied": false
+  },
+  {
+    "target_coverage": 0.4,
+    "mechanism": "MC-Dropout Epistemic Variance",
+    "abstention_rate": 0.6,
+    "selective_error_rate": 0.0482,
+    "selective_auroc": 0.9792,
+    "conformal_bound_satisfied": false
+  },
+  {
+    "target_coverage": 0.4,
+    "mechanism": "Dirichlet Evidential Vacuity",
+    "abstention_rate": 0.6,
+    "selective_error_rate": 0.0458,
+    "selective_auroc": 0.9822,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.4,
+    "mechanism": "Conformal Risk-Controlled SafeAdapt",
+    "abstention_rate": 0.6,
+    "selective_error_rate": 0.0443,
+    "selective_auroc": 0.9842,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.3,
+    "mechanism": "Confidence Gating (Softmax)",
+    "abstention_rate": 0.7,
+    "selective_error_rate": 0.0327,
+    "selective_auroc": 0.9874,
+    "conformal_bound_satisfied": false
+  },
+  {
+    "target_coverage": 0.3,
+    "mechanism": "Entropy Gating (Shannon)",
+    "abstention_rate": 0.7,
+    "selective_error_rate": 0.0327,
+    "selective_auroc": 0.9874,
+    "conformal_bound_satisfied": false
+  },
+  {
+    "target_coverage": 0.3,
+    "mechanism": "MC-Dropout Epistemic Variance",
+    "abstention_rate": 0.7,
+    "selective_error_rate": 0.0327,
+    "selective_auroc": 0.9874,
+    "conformal_bound_satisfied": false
+  },
+  {
+    "target_coverage": 0.3,
+    "mechanism": "Dirichlet Evidential Vacuity",
+    "abstention_rate": 0.7,
+    "selective_error_rate": 0.031,
+    "selective_auroc": 0.9904,
+    "conformal_bound_satisfied": true
+  },
+  {
+    "target_coverage": 0.3,
+    "mechanism": "Conformal Risk-Controlled SafeAdapt",
+    "abstention_rate": 0.7,
+    "selective_error_rate": 0.0301,
+    "selective_auroc": 0.992,
+    "conformal_bound_satisfied": true
+  }
+]

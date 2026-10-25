@@ -1,0 +1,10 @@
+patient_id,slides,ground_truth,source,tent,eata,sar,safeadapt
+patient_040,slide_021,pN0,pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%)
+patient_041,slide_022,pN0,pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%)
+patient_042,slide_029,pN1a (Macro),pN1a (100%),pN0 (40% Collapse),pN1a (80%),pN1a (80%),pN1a (80%)
+patient_044,slide_023,pN0,pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%)
+patient_045,slide_024,pN1mi (Micro),pN1mi (100%),pN0 (60% Miss),pN1mi (80%),pN1mi (80%),pN1mi (80%)
+patient_046,"slide_025,026",pN1a,pN1a (100%),pN1a (80%),pN1a (100%),pN1a (100%),pN1a (100%)
+patient_048,slide_027,pN0,pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%)
+patient_051,slide_028,pN0,pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%)
+patient_052,slide_030,pN0,pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%),pN0 (100%)

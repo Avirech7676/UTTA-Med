@@ -3,6 +3,10 @@
 from src.v2.safeadapt.adapter import SafeAdaptTTA
 from src.v2.safeadapt.config import SafeAdaptConfig
 from src.v2.safeadapt.controller import SafeAdaptController
+from src.v2.safeadapt.detection_monitor import (
+    DetectionSafetyMonitor,
+    DetectionSafetyMonitorConfig,
+)
 from src.v2.safeadapt.monitor import (
     AlarmLevel,
     CollapseMonitor,
@@ -21,6 +25,8 @@ __all__ = [
     "SafeAdaptTTA",
     "CollapseMonitor",
     "CollapseMonitorConfig",
+    "DetectionSafetyMonitor",
+    "DetectionSafetyMonitorConfig",
     "AlarmLevel",
     "MonitorMode",
     "SlideState",

@@ -1,0 +1,47 @@
+[
+  {
+    "policy": "Frozen Source Detector",
+    "f1_score": 0.4446,
+    "false_silence_alarms": 0,
+    "premature_fallback": "NO",
+    "fallback_latch_step": "N/A",
+    "cmr_separation_confirmed": true,
+    "adaptation_stability": "Static (Zero Drift)"
+  },
+  {
+    "policy": "Unconstrained RoI-TTA",
+    "f1_score": 0.392,
+    "false_silence_alarms": 0,
+    "premature_fallback": "NO",
+    "fallback_latch_step": "Never (Unbounded)",
+    "cmr_separation_confirmed": false,
+    "adaptation_stability": "Unstable (FP Proliferation)"
+  },
+  {
+    "policy": "SafeAdapt (Naive Silence)",
+    "f1_score": 0.4446,
+    "false_silence_alarms": 14,
+    "premature_fallback": "YES (Acellular Stroma)",
+    "fallback_latch_step": "Patch 80 \u00b1 22",
+    "cmr_separation_confirmed": false,
+    "adaptation_stability": "Early Freeze to Source"
+  },
+  {
+    "policy": "SafeAdapt (Cellularity-Aware CMR)",
+    "f1_score": 0.4582,
+    "false_silence_alarms": 0,
+    "premature_fallback": "NO",
+    "fallback_latch_step": "Never",
+    "cmr_separation_confirmed": true,
+    "adaptation_stability": "Controlled Adaptation (Full Stream)"
+  },
+  {
+    "policy": "SafeAdapt (CMR + Source Fallback Interlock)",
+    "f1_score": 0.4582,
+    "false_silence_alarms": 0,
+    "premature_fallback": "NO",
+    "fallback_latch_step": "Active Standby",
+    "cmr_separation_confirmed": true,
+    "adaptation_stability": "Fully Safeguarded"
+  }
+]

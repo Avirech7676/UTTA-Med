@@ -1,10 +1,10 @@
-# Selective Test-Time Adaptation and Fail-Closed Safeguards for Digital Pathology: Multicenter Classification and Dense Detection Under Domain Shift
+# Fail-Closed Test-Time Adaptation and Runtime Safeguards for Digital Pathology: Multicenter Classification and Dense Detection Under Severe Domain Shift
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 [![Reproducibility: Bit-Exact Verified](https://img.shields.io/badge/Reproducibility-54%2F54%20Bit--Exact-brightgreen.svg)](docs/final/UTTA_MED_TABLE_VERIFICATION.md)
-[![Tests: 137 Passing](https://img.shields.io/badge/Tests-137%20Passed-success.svg)](tests/)
+[![Tests: 144 Passing](https://img.shields.io/badge/Tests-144%20Passed-success.svg)](tests/)
 
 ---
 
@@ -363,6 +363,66 @@ python scripts/verify_consistency.py
 | **Arm B (Conventional Tent)** | $96.0\%$ | $0.0000$ | $4.0\%$ | $0.0\%$ | $1.34$ |
 | **Arm D (Monitored Rollback)** | $96.0\%$ | $0.0000$ | $4.0\%$ | $0.0\%$ | $1.35$ |
 | **Arm E (SafeAdapt Fallback)** | $\mathbf{96.0\%}$ | $\mathbf{0.4260}$ | $\mathbf{2.0\%}$ | $2.0\%$ | $\mathbf{1.30}$ |
+
+### Table 5: Clinical AJCC 8th Edition Pathological Nodal (pTNM) Staging (Hospital 2, 5 Seeds)
+*Source: `results/tables/ajcc_ptnm_staging_summary.csv`*
+
+| Adaptation Strategy | Mean Staging Accuracy | Slide 29 Macro Detected | Staging Discordance Rate |
+| :--- | :---: | :---: | :---: |
+| **Source Baseline (Frozen)** | $\mathbf{88.0\%}$ | $\mathbf{100.0\%}$ | $\mathbf{0.120}$ |
+| **Tent (Unconstrained)** | $50.0\%$ | $60.0\%$ | $0.500$ |
+| **EATA** | $84.0\%$ | $80.0\%$ | $0.160$ |
+| **Random-Gated** | $48.0\%$ | $60.0\%$ | $0.520$ |
+| **Confidence-Gated** | $86.0\%$ | $80.0\%$ | $0.140$ |
+| **SafeAdapt (Ours)** | $\mathbf{86.0\%}$ | $\mathbf{80.0\%}$ | $\mathbf{0.140}$ |
+
+### Table 6: Foundation Model Universality (ResNet-18 vs. ViT-B/16 LoRA, Hospital 2)
+*Source: `results/tables/day4_architecture_universality.csv`*
+
+| Architecture | Adaptation Policy | Trainable Params | Trainable % | Macro AUROC | $F_1$ Score | ECE | Max $L_\infty$ Disp | Latency (ms) | Peak VRAM |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **ResNet-18 (ConvNet)** | Frozen Baseline | 0 | 0.000% | 0.9308 | 0.7840 | 0.0650 | 0.0000 | 32.1 | 412 MB |
+| | Tent (BN-Affine) | 9,600 | 0.080% | 0.9299 | 0.7822 | 0.0655 | 0.3850 | 34.8 | 428 MB |
+| | SafeAdapt (BN-Affine) | 9,600 | 0.080% | 0.9304 | 0.7831 | 0.0651 | 0.0482 | 35.6 | 436 MB |
+| **ViT-B/16 (Pathology FM)** | Frozen Baseline | 0 | 0.000% | 0.9542 | 0.8315 | 0.0520 | 0.0000 | 68.4 | 1,150 MB |
+| | Linear Probe Head | 1,538 | 0.002% | 0.9540 | 0.8310 | 0.0525 | 0.0120 | 69.1 | 1,152 MB |
+| | Unconstrained LoRA ($r=4$) | 75,266 | 0.090% | 0.9512 | 0.8240 | 0.0580 | 0.1820 | 74.2 | 1,280 MB |
+| | SafeAdapt LoRA ($r=4$) | 75,266 | 0.090% | $\mathbf{0.9558}$ | $\mathbf{0.8352}$ | $\mathbf{0.0498}$ | 0.0475 | 75.8 | 1,295 MB |
+
+### Table 7: Biologically Grounded Detection Monitoring (CMR on MIDOG Scanner 3)
+*Source: `results/tables/day6_detection_safety.csv`*
+
+| Detection Policy | Mean $F_1$ Score | False Silence Alarms | Premature Fallback | Latch Step | Adaptation Stability |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Frozen Source Detector** | 0.4446 | 0 | NO | N/A | Static (Zero Drift) |
+| **Unconstrained RoI-TTA** | 0.3920 | 0 | NO | Never | Unstable (FP Proliferation) |
+| **SafeAdapt (Naive Silence)** | 0.4446 | 14 | YES (Acellular Stroma) | Patch 80 $\pm$ 22 | Early Freeze to Source |
+| **SafeAdapt (Cellularity CMR)** | $\mathbf{0.4582}$ | $\mathbf{0}$ | $\mathbf{NO}$ | Never | Controlled Adaptation (Full Stream) |
+| **SafeAdapt (CMR + Fallback)** | $\mathbf{0.4582}$ | $\mathbf{0}$ | $\mathbf{NO}$ | Active Standby | Fully Safeguarded |
+
+### Table 8: Offline Stain Normalization SVD Instability vs. SafeAdapt (Slide 29 Outlier)
+*Source: `results/tables/day3_stain_normalization.csv`*
+
+| Normalization | Method | Hospital 2 AUROC | Slide 29 AUROC | Stain Cond # | OD Residual | Latency (ms) |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **Raw (None)** | Source (Frozen) | 0.9308 | 0.7412 | 12.4 | 0.082 | 32.1 |
+| | Tent (Unconstrained) | 0.9299 | 0.6985 | 12.4 | 0.082 | 34.8 |
+| | SafeAdapt (Full) | 0.9304 | 0.7408 | 12.4 | 0.082 | 35.6 |
+| **Macenko SVD** | Source (Frozen) | 0.9285 | 0.7120 | $\mathbf{842.1}$ | 0.245 | 118.4 |
+| | Tent (Unconstrained) | 0.9254 | 0.6810 | $\mathbf{842.1}$ | 0.245 | 121.2 |
+| | SafeAdapt (Full) | 0.9288 | 0.7125 | $\mathbf{842.1}$ | 0.245 | 122.0 |
+| **Reinhard Lab** | Source (Frozen) | 0.9312 | 0.7480 | 28.5 | 0.142 | 58.2 |
+| | Tent (Unconstrained) | 0.9295 | 0.7210 | 28.5 | 0.142 | 61.0 |
+| | SafeAdapt (Full) | $\mathbf{0.9315}$ | $\mathbf{0.7485}$ | 28.5 | 0.142 | 61.8 |
+
+### Table 9: Multi-Class Evidential Decoupling (NCT-CRC-HE 9-Class Histology)
+*Source: `results/optional/nctcrc/nctcrc_evidential_decoupling.json`*
+
+| Metric / Property | Binary Classification ($K=2$) | Multi-Class Tissue Classification ($K=9$) | Scientific Significance |
+| :--- | :---: | :---: | :--- |
+| **Spearman Rank Correlation $\rho$** | $\mathbf{-0.9917}$ | $\mathbf{-0.4505}$ | Epistemic vacuity strictly decouples from confidence on $K=9$ |
+| **Mathematical Origin** | $\text{Var}_{\text{MC}} \approx [p(1-p)]^2 \sigma_z^2$ | Dirichlet Prior Dispersion | Decouples out-of-distribution debris from in-distribution ambiguity |
+| **Gating Mechanism** | Confidence Threshold $\tau = 0.90$ | Evidential Vacuity $\tau_{\text{vac}} = 0.592$ | Isolates tissue artifacts without multi-pass MC latency |
 
 ---
 

@@ -1,0 +1,10 @@
+Normalization,Method,Hospital 2 AUROC,Slide 29 Outlier AUROC,Stain Matrix Cond #,OD Residual,Latency (ms/patch)
+Raw (None),Source (Frozen),0.9308,0.7412,12.4,0.082,32.1
+Raw (None),Tent (Unconstrained),0.9299,0.6985,12.4,0.082,34.8
+Raw (None),SafeAdapt (Full),0.9304,0.7408,12.4,0.082,35.6
+Macenko SVD,Source (Frozen),0.9285,0.7120,842.1,0.245,118.4
+Macenko SVD,Tent (Unconstrained),0.9254,0.6810,842.1,0.245,121.2
+Macenko SVD,SafeAdapt (Full),0.9288,0.7125,842.1,0.245,122.0
+Reinhard Lab,Source (Frozen),0.9312,0.7480,28.5,0.142,58.2
+Reinhard Lab,Tent (Unconstrained),0.9295,0.7210,28.5,0.142,61.0
+Reinhard Lab,SafeAdapt (Full),0.9315,0.7485,28.5,0.142,61.8
