@@ -24,5 +24,3 @@ dependencies:
       - pytest>=7.4
       - tensorboard>=2.14
       - huggingface_hub>=0.20
-      - datasets>=2.16
-      - fpdf2>=2.7

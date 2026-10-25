@@ -1,6 +1,11 @@
 # UTTA-Med — Optional Tooling Dependencies
-# Install if working with raw WILDS PNG loader, MedMNIST ablations, or legacy PDF report generators
+# Install if working with raw WILDS PNG loader, MedMNIST ablations, or optional tooling
 wilds>=2.0.0
 medmnist>=3.0.0
 reportlab>=4.0.0
 pytorch-grad-cam>=1.4.8
+python-docx>=1.0.0
+h5py>=3.8.0
+datasets>=2.16.0
+tifffile>=2023.1.0
+timm>=0.9.0
