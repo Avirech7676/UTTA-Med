@@ -81,8 +81,8 @@ Conformal prediction provides rigorous, distribution-free risk guarantees~\cite{
 \caption{2021--2026 Literature-Gap Matrix: Positioning SafeAdapt Against Baseline, Continual, and Pathology TTA Paradigms.}
 \label{tab:lit_gap}
 \scriptsize
-\setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{@{}lllllll@{}}
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}p{2.0cm}p{2.2cm}p{2.3cm}p{2.3cm}p{1.6cm}p{2.6cm}p{3.0cm}@{}}
 \toprule
 Method / Venue / Year & Core Mechanism & Safety / Uncertainty Gate & Failure Mode & Latency / Compute & Clinical Limitation & SafeAdapt Distinction \\
 \midrule
@@ -111,12 +111,13 @@ During deployment, the model receives an unlabeled sequential target stream $\ma
 \item Backpropagation through large feature backbones is restricted to preserve clinical inference latency.
 \end{enumerate}
 
-\begin{table}[t]
+\begin{table}[b]
 \centering
 \caption{Mathematical Notation Utilized in This Paper.}
 \label{tab:notation}
 \scriptsize
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{3pt}
+\resizebox{0.94\columnwidth}{!}{%
 \begin{tabular}{@{}ll@{}}
 \toprule
 Symbol & Definition and Mathematical Role \\
@@ -134,7 +135,8 @@ $\epsilon_{\text{trust}}$ & $L_\infty$ parameter trust-region radius ($\|\theta_
 $\text{CMR}(x)$ & Cellularity Mitosis Ratio for biological detection monitoring \\
 $\rho_{\text{cell}}(x)$ & Hematoxylin optical density cellular nuclear area fraction \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \section{Method: UTTA-MED and SafeAdapt}
@@ -153,8 +155,10 @@ For patch classification, let $f_\theta$ be a ResNet-18~\cite{he2016resnet} para
 Dropout ($p=0.5$) in the classification head remains active at test time. For each target patch $x$, $N=20$ stochastic forward passes are computed:
 \begin{equation}
 \label{eq:mc_dropout}
-\bar{p}(x) = \frac{1}{N} \sum_{j=1}^N p_j(x), \quad
-U(x) = \frac{1}{N} \sum_{j=1}^N \bigl(p_j(x) - \bar{p}(x)\bigr)^2.
+\begin{aligned}
+\bar{p}(x) &= \frac{1}{N} \sum_{j=1}^N p_j(x), \\
+U(x) &= \frac{1}{N} \sum_{j=1}^N \bigl(p_j(x) - \bar{p}(x)\bigr)^2.
+\end{aligned}
 \end{equation}
 The number of passes $N=20$ was chosen based on validation experiments ($N \in \{5, 10, 20, 30, 50\}$), where the correlation between $U(x)$ and prediction error plateaued at $N=20$ ($r=0.425$ vs.\ $0.437$ at $N=50$) while saving $2.5\times$ computational overhead. A binary hard gate decides whether patch $x$ is admitted to adaptation:
 \begin{equation}
@@ -164,8 +168,10 @@ w(x) = \mathbf{1}\bigl[U(x) < \tau\bigr],
 where $\tau$ is set to the 70th percentile of $U$ computed on held-out validation Hospital~1. Target hospital labels are strictly quarantined and never used for threshold selection, learning rate tuning, or model selection. If an entire mini-batch is rejected ($\sum_i w_i = 0$), the optimization step is skipped entirely. Otherwise, the model updates via entropy minimization over admitted patches:
 \begin{equation}
 \label{eq:entropy_loss}
-\mathcal{L} = \frac{\sum_i w_i H(p_i)}{\sum_i w_i}, \quad
-H(p) = -p \log p - (1-p) \log (1-p).
+\begin{aligned}
+\mathcal{L} &= \frac{\sum_i w_i H(p_i)}{\sum_i w_i}, \\
+H(p) &= -p \log p - (1-p) \log (1-p).
+\end{aligned}
 \end{equation}
 
 \subsection{Theoretical Equivalence in Binary Classification and PAC Drift Bounds}
@@ -233,7 +239,10 @@ converging deterministically within $T_{\text{sinkhorn}} \le 3$ scaling iteratio
 The total adaptation objective combines the OT prototype transport loss, an anti-attractor Kullback-Leibler diversity penalty against class priors, and an $L_2$ parameter anchor:
 \begin{equation}
 \label{eq:ot_total_loss}
-\mathcal{L}_{\text{total}} = \lambda_{\text{ot}} \sum_{i=1}^B \sum_{k=1}^K Q^*_{ik} C_{ik} + \lambda_{\text{div}} D_{\text{KL}}(\bar{\mathbf{p}} \,\|\, \mathbf{r}) + \lambda_{\text{anchor}} \|\theta - \theta_0\|_2^2,
+\begin{aligned}
+\mathcal{L}_{\text{total}} = \lambda_{\text{ot}} \sum_{i=1}^B \sum_{k=1}^K Q^*_{ik} C_{ik} &+ \lambda_{\text{div}} D_{\text{KL}}(\bar{\mathbf{p}} \,\|\, \mathbf{r}) \\
+&+ \lambda_{\text{anchor}} \|\theta - \theta_0\|_2^2,
+\end{aligned}
 \end{equation}
 where $\bar{\mathbf{p}} = \frac{1}{B} \sum_{i=1}^B \mathbf{p}(x_i)$, $\lambda_{\text{ot}} = 1.0$, $\lambda_{\text{div}} = 0.5$, and $\lambda_{\text{anchor}} = 0.01$. Because constraint~(\ref{eq:ot_marginals}) enforces $\mathbf{Q}^{*T} \mathbf{1}_B = \mathbf{r}$, the target batch is mathematically prohibited from assigning all samples to a single dominant class, precluding attractor collapse and preserving class geometry under chromatic drift.
 
@@ -260,7 +269,10 @@ Standard split conformal prediction guarantees $1-\alpha$ coverage under sample 
 To prevent variance explosion in low-density calibration regions, importance weights are truncated at $B_w = 5.0$: $w_\beta(x) = \min(w(x), B_w)$. For non-conformity score $s(x, y) = 1 - f_{\hat{\theta}}(x)_y$, the shift-calibrated threshold $\hat{\lambda}_w$ satisfies:
 \begin{equation}
 \label{eq:weighted_conformal}
-\hat{\lambda}_w = \inf \left\{ \lambda \in \mathbb{R} : \sum_{i=1}^n \frac{w_\beta(x_i)}{\sum_{j=1}^n w_\beta(x_j) + w_\beta(x)} \mathbf{1}_{\{s(x_i, y_i) \le \lambda\}} \ge 1 - \alpha \right\}.
+\begin{aligned}
+\hat{\lambda}_w = \inf \Biggl\{ \lambda \in \mathbb{R} : \sum_{i=1}^n &\frac{w_\beta(x_i)}{\sum_{j=1}^n w_\beta(x_j) + w_\beta(x)} \\
+&\times \mathbf{1}_{\{s(x_i, y_i) \le \lambda\}} \ge 1 - \alpha \Biggr\}.
+\end{aligned}
 \end{equation}
 An adaptation step is admitted if and only if $|\mathcal{C}_{\hat{\lambda}_w}(x)| = 1$ (unambiguous singleton set). Because $w_\beta(x) \le B_w < \infty$, the estimator variance satisfies $\mathrm{Var}(\hat{\lambda}_w) \le \frac{B_w^2}{4n}$.
 
@@ -269,13 +281,17 @@ An adaptation step is admitted if and only if $|\mathcal{C}_{\hat{\lambda}_w}(x)
 In dense object detection, mitotic figures are biologically rare. Evaluating silence over acellular stroma falsely trips naive counters. We define the Cellularity Mitosis Ratio (CMR):
 \begin{equation}
 \label{eq:cmr}
-\text{CMR}(x) = \frac{n_{\text{mitoses}}(x)}{\max(\rho_{\text{cell}}(x), \epsilon)}, \quad \rho_{\text{cell}}(x) = \frac{1}{|x|} \sum_{u,v} \mathbf{1}_{\{V_{\text{hem}}(u,v) > \tau_{\text{nuc}}\}}.
+\begin{aligned}
+\text{CMR}(x) &= \frac{n_{\text{mitoses}}(x)}{\max(\rho_{\text{cell}}(x), \epsilon)}, \\
+\rho_{\text{cell}}(x) &= \frac{1}{|x|} \sum_{u,v} \mathbf{1}_{\{V_{\text{hem}}(u,v) > \tau_{\text{nuc}}\}}.
+\end{aligned}
 \end{equation}
 The silence monitor increments its counter if and only if: (i) $n_{\text{pred}} = 0$, (ii) nuclear cellularity fraction $\rho_{\text{cell}}(x) \ge 0.15$ (hypercellular tumor), and (iii) source detector predicted mitosis ($n_{\text{source}} > 0$). This biological conditioning eliminates false silence alarms on benign stroma while capturing true detector collapse. Vectorized computation of the Beer-Lambert optical density deconvolution on GPU tensor batches ($3 \times 64 \times 64$) requires only $0.62$\,ms per patch ($<1.2\%$ of total $53.5$\,ms inference latency), verifying real-time clinical suitability.
 
 \begin{algorithm}[t]
 \caption{SafeAdapt Runtime Safeguards with OT-TTA and CMR}
 \label{alg:safeadapt}
+\footnotesize
 \begin{algorithmic}[1]
 \REQUIRE Certified source weights $\theta_0$, target stream $\{x_t\}_{t=1}^T$, class prototypes $\mathcal{P}_{\text{source}}$, trust radius $\epsilon_{\text{trust}} = 0.05$.
 \STATE Initialize active weights $\theta \leftarrow \theta_0$, dual ring buffers $\mathcal{B}_{\text{CPU}}, \mathcal{B}_{\text{GPU}} \leftarrow \theta_0$.
@@ -345,7 +361,7 @@ On in-domain validation data, source models achieve AUROC $\approx 0.999$. On un
 \centering
 \scriptsize
 \setlength{\tabcolsep}{3.5pt}
-\resizebox{\columnwidth}{!}{%
+\resizebox{0.92\columnwidth}{!}{%
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 Method & AUROC & $F_1$ Score & Harm Rate & Coverage \\
@@ -367,6 +383,7 @@ UTTA-MED & $\mathbf{0.950} \pm 0.013$ & $\mathbf{0.842} \pm 0.031$ & $\mathbf{0.
 \centering
 \scriptsize
 \setlength{\tabcolsep}{3.5pt}
+\resizebox{0.92\columnwidth}{!}{%
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 Method & Seed 42 & Seed 123 & Seed 2024 & Seed 7 & Seed 99 \\
@@ -377,7 +394,8 @@ EATA            & 0.9360 & 0.9402 & 0.9321 & 0.8765 & 0.9198 \\
 Random-gated    & 0.9221 & 0.9372 & 0.8974 & \textbf{0.3541} & \textbf{0.3729} \\
 UTTA-MED & \textbf{0.9582} & \textbf{0.9534} & \textbf{0.9621} & \textbf{0.9284} & \textbf{0.9452} \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 Table~\ref{tab:perseed} demonstrates that Tent failure is driven by catastrophic collapse on seeds 7 and 99 (AUROC $\approx 0.34$, $F_1 \approx 0.05$). On seeds 42, 123, and 2024, Tent appears deceptively stable (AUROC $0.93$--$0.94$), demonstrating that reporting single-seed TTA evaluations in medical imaging conceals catastrophic failure modes.
@@ -407,7 +425,7 @@ Deploying the Cellularity Mitosis Ratio (CMR; Section~\ref{sec:cmr}) resolves th
 \label{tab:detection_verified}
 \scriptsize
 \setlength{\tabcolsep}{3pt}
-\resizebox{\columnwidth}{!}{%
+\resizebox{0.92\columnwidth}{!}{%
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 Strategy & Seed 42 $F_1$ & Seed 7 $F_1$ & Seed 123 $F_1$ & Mean $F_1$ & Alarms / Fallbacks \\
@@ -425,7 +443,7 @@ Bio-SafeAdapt (CMR) & \textbf{0.5159} & \textbf{0.5182} & \textbf{0.5174} & $\ma
 \label{tab:bootstrap_contrasts}
 \scriptsize
 \setlength{\tabcolsep}{3pt}
-\resizebox{\columnwidth}{!}{%
+\resizebox{0.92\columnwidth}{!}{%
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 Statistical Contrast & Mean $\Delta F_1$ & 95\% Clustered CI & Tail $P(\Delta F_1 \le 0)$ & Determination \\
@@ -455,8 +473,8 @@ To verify practical clinical deployment feasibility, UTTA-MED was trained and pr
 \label{tab:gpu_telemetry}
 \centering
 \scriptsize
-\setlength{\tabcolsep}{4pt}
-\resizebox{\columnwidth}{!}{%
+\setlength{\tabcolsep}{3pt}
+\resizebox{0.92\columnwidth}{!}{%
 \begin{tabular}{@{}ccccccc@{}}
 \toprule
 Step & Total Loss & $\mathcal{L}_{\text{OT}}$ & $\mathcal{L}_{\text{div}}$ & $\mathcal{L}_{\text{anchor}}$ & Latency (ms) & Peak VRAM (MB) \\
@@ -484,6 +502,7 @@ Table~\ref{tab:baseline_parity} summarizes comparative performance against test-
 \label{tab:baseline_parity}
 \scriptsize
 \setlength{\tabcolsep}{4.5pt}
+\resizebox{0.96\textwidth}{!}{%
 \begin{tabular}{@{}lcccccccc@{}}
 \toprule
 Method & Macro AUROC & 95\% Bootstrap CI & $F_1$ Score & ECE & Brier & Worst-Slide AUROC & Max $L_\infty$ Disp & Rollback Rate \\
@@ -501,7 +520,8 @@ SafeAdapt (Selective Gate) & $0.9351 \pm 0.0218$ & $[0.8674, 0.9818]$ & $0.8296$
 \quad $k=2$ Steps & $0.9312 \pm 0.0245$ & $[0.8601, 0.9790]$ & $0.8241$ & $0.1342$ & $0.1350$ & $0.7240$ & $0.0820$ & 2.4\% \\
 \quad $k=5$ Steps (Unstable Drift) & $0.7420 \pm 0.1850$ & $[0.7205, 0.9120]$ & $0.5840$ & $0.2450$ & $0.2410$ & $0.3410$ & $0.3120$ & 12.8\% \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table*}
 
 \subsection{Offline Stain Normalization SVD Instability vs.\ SafeAdapt}
@@ -513,7 +533,7 @@ Table~\ref{tab:stain_norm} compares raw inference, Macenko SVD decomposition, an
 \label{tab:stain_norm}
 \scriptsize
 \setlength{\tabcolsep}{3pt}
-\resizebox{\columnwidth}{!}{%
+\resizebox{0.92\columnwidth}{!}{%
 \begin{tabular}{@{}llccccc@{}}
 \toprule
 Stain Normalization & Adaptation Policy & Hospital 2 AUROC & Slide 29 AUROC & Cond \# & OD Residual & Latency (ms) \\
@@ -545,13 +565,13 @@ To evaluate the numerical robustness of the Optimal Transport prototype alignmen
 \subsection{Exploratory Clinical Translation: AJCC 8th Edition pTNM Staging Concordance}
 According to the AJCC Cancer Staging Manual (8th Edition), nodal status is staged into: pN0 (no metastasis), pN0(i+) (isolated tumor cells $\le 0.2$\,mm), pN1mi (micrometastasis $>0.2$\,mm to $2.0$\,mm), and pN1a ($1$--$3$ lymph nodes with macrometastasis $>2.0$\,mm). To evaluate how patch-level adaptation errors propagate to patient diagnosis, we conducted an exploratory case study evaluating pathological nodal staging across all 10 WSIs from the 9 patients of Hospital~2 (Table~\ref{tab:patient_staging_ledger}). While the sample size is small (3 cancer cases), it reveals an acute clinical failure mode: under unconstrained Tent, staging accuracy collapses from $88.0\%$ down to $\mathbf{50.0\%}$; on outlier Slide~29, Tent fails to detect the macrometastasis in 40\% of seeds, erroneously classifying a cancer patient as cancer-free. In contrast, UTTA-MED preserves $86.0\%$ macro staging accuracy with discordance restricted to $0.140$. Power calculation indicates that a prospective non-inferiority clinical trial demonstrating narrow diagnostic equivalence within margin $\delta = \pm 0.02$ ($\alpha = 0.05, 1 - \beta = 0.80$) requires a minimum sample size of $N_{\text{req}} = 142$ patients; therefore, this 9-patient analysis serves as an exploratory proof-of-concept illustrating failure mechanisms rather than a definitive clinical validation trial.
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
 \caption{Exploratory Per-Patient Pathological Nodal Staging (AJCC 8th Edition) Across All 9 Patients in Camelyon17 Hospital 2 (Mean Over 5 Random Seeds).}
 \label{tab:patient_staging_ledger}
 \scriptsize
-\setlength{\tabcolsep}{3.5pt}
-\resizebox{\columnwidth}{!}{%
+\setlength{\tabcolsep}{5pt}
+\resizebox{0.96\textwidth}{!}{%
 \begin{tabular}{@{}cclccccc@{}}
 \toprule
 Patient ID & Slides & Ground Truth & Source (Frozen) & Tent (Ungated) & EATA & Confidence-Gate & UTTA-MED \\
@@ -571,7 +591,7 @@ patient\_052 & slide\_030 & pN0       & pN0 (100\%)     & pN0 (100\%)    & pN0 (
 \bottomrule
 \end{tabular}%
 }
-\end{table}
+\end{table*}
 
 \subsection{Clinical Translation: Nottingham Histological Mitotic Scoring}
 In clinical oncology, breast carcinomas are graded using the Nottingham Combined Histologic Grade across standardized 10-HPF regions ($1.96\,\mathrm{mm}^2$): Tier 1 ($\le 7$ mitoses), Tier 2 ($8$--$14$), and Tier 3 ($\ge 15$). Mapping patch detections across all 50 Scanner~3 cases to Nottingham tiers (Table~\ref{tab:nottingham}) shows that unconstrained Tent collapses quadratic weighted Cohen's $\kappa_w$ to $0.0000$ and doubles the under-grading rate to 4.0\%. In contrast, SafeAdapt preserves source prognostic concordance ($\kappa_w = 0.4260$, under-grading 2.0\%), preventing clinical under-staging.
@@ -582,7 +602,7 @@ In clinical oncology, breast carcinomas are graded using the Nottingham Combined
 \label{tab:nottingham}
 \scriptsize
 \setlength{\tabcolsep}{3.5pt}
-\resizebox{\columnwidth}{!}{%
+\resizebox{0.92\columnwidth}{!}{%
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 Adaptation Strategy & Tier Acc. & Cohen's $\kappa_w$ & Under-Grade & Over-Grade & Count MAE \\
