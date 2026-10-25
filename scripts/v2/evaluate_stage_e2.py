@@ -31,7 +31,7 @@ from sklearn.metrics import (
     roc_auc_score,
 )
 
-ROOT = Path("c:/Users/avina/OneDrive/Desktop/UTTA-Med")
+ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
 from scripts.v2.calibrate_stage_c2 import (
@@ -377,7 +377,13 @@ def run_stage_e2_evaluation() -> Dict[str, Any]:
     # DATASET PREPARATION: CAMELYON17-WILDS CENTER 2 (TEST WSIS 20-29)
     # ==========================================================================
     print("Loading Center-2 Test Parquet Metadata ...", flush=True)
-    data_dir = find_parquet_data_dir("C:/Users/avina/OneDrive/Desktop/Camelyon17-Data/data")
+    default_data_root = os.environ.get(
+        "CAMELYON17_ROOT",
+        str(Path.home() / "OneDrive" / "Desktop" / "Camelyon17-Data" / "data")
+        if (Path.home() / "OneDrive" / "Desktop" / "Camelyon17-Data" / "data").exists()
+        else "data/camelyon17_v1.0",
+    )
+    data_dir = find_parquet_data_dir(default_data_root)
     camelyon = ParquetCamelyon17(data_dir)
     test_subset = camelyon.get_subset("test", transform=get_camelyon17_eval_transform())
 

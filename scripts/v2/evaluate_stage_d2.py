@@ -14,6 +14,7 @@ import argparse
 import copy
 import json
 import math
+import os
 import sys
 import time
 from pathlib import Path
@@ -495,7 +496,13 @@ def run_stage_d2_benchmark(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-root", default=r"C:\Users\avina\OneDrive\Desktop\Camelyon17-Data")
+    default_data_root = os.environ.get(
+        "CAMELYON17_ROOT",
+        str(Path.home() / "OneDrive" / "Desktop" / "Camelyon17-Data")
+        if (Path.home() / "OneDrive" / "Desktop" / "Camelyon17-Data").exists()
+        else "data/camelyon17_v1.0",
+    )
+    parser.add_argument("--data-root", default=default_data_root)
     parser.add_argument("--checkpoint", default="checkpoints/camelyon17_resnet18_source_s42_BEST.pt")
     parser.add_argument("--output-dir", default="results/v2/stage_d2")
     parser.add_argument("--patches-per-slide", type=int, default=64)

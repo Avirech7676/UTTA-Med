@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software or benchmark suite in your research, please cite our paper."
+title: "SafeAdapt-TTA: Clinically Safe Test-Time Adaptation with Evidential Decoupling, Optimal Transport Prototype Alignment, and Closed-Form Parameter Regularization for Digital Pathology"
+authors:
+  - family-names: "Cheerapareddy"
+    given-names: "Avinash Reddy"
+    email: "avinashreddych7@gmail.com"
+version: "1.0.0"
+date-released: "2026-10-25"
+license: "MIT"
+keywords:
+  - "computational pathology"
+  - "test-time adaptation"
+  - "deep learning"
+  - "domain generalization"
+  - "evidential deep learning"
+  - "optimal transport"
+  - "whole-slide imaging"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Cheerapareddy"
+      given-names: "Avinash Reddy"
+  title: "SafeAdapt-TTA: Clinically Safe Test-Time Adaptation with Evidential Decoupling, Optimal Transport Prototype Alignment, and Closed-Form Parameter Regularization for Digital Pathology"
+  journal: "IEEE Transactions on Medical Imaging"
+  year: 2026

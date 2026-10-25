@@ -100,7 +100,7 @@ def main() -> None:
     print(f"[*] Total Locked Evaluation Windows: {len(manifest_df)} across {manifest_df['case_id'].nunique()} cases")
 
     # Discover image files once
-    search_dirs = [Path("data"), Path("C:/Users/avina/Downloads"), Path("/kaggle/input"), Path(".")]
+    search_dirs = [Path("data"), Path("str(Path.home() / "Downloads")"), Path("/kaggle/input"), Path(".")]
     if args.image_dir:
         search_dirs.insert(0, Path(args.image_dir))
     image_map = discover_all_images(search_dirs)

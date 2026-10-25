@@ -85,8 +85,8 @@ def compute_sha256(file_path: Path) -> str:
 
 def find_midog_coco_json() -> Path:
     candidates = [
-        Path("C:/Users/avina/Downloads/MIDOG.json"),
-        Path("C:/Users/avina/Downloads/MIDOG (1).json"),
+        Path("str(Path.home() / "Downloads")/MIDOG.json"),
+        Path("str(Path.home() / "Downloads")/MIDOG (1).json"),
         Path("MIDOG.json"),
         Path("data/MIDOG.json"),
         Path("/kaggle/input/midog-challenge/MIDOG.json"),

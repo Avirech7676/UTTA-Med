@@ -3,6 +3,7 @@
 
 import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Dict, Any, List
@@ -18,7 +19,7 @@ from sklearn.metrics import (
     roc_auc_score,
 )
 
-ROOT = Path("c:/Users/avina/OneDrive/Desktop/UTTA-Med")
+ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
 from scripts.v2.calibrate_stage_c2 import (
@@ -52,7 +53,13 @@ def main():
 
     # 2. Load Canonical Assessment Data
     print(f"\n[2] Loading Canonical Assessment Data (Hospital 1 WSIs [11, 13, 15, 17, 19])...", flush=True)
-    data_dir = find_parquet_data_dir("C:/Users/avina/OneDrive/Desktop/Camelyon17-Data/data")
+    default_data_root = os.environ.get(
+        "CAMELYON17_ROOT",
+        str(Path.home() / "OneDrive" / "Desktop" / "Camelyon17-Data" / "data")
+        if (Path.home() / "OneDrive" / "Desktop" / "Camelyon17-Data" / "data").exists()
+        else "data/camelyon17_v1.0",
+    )
+    data_dir = find_parquet_data_dir(default_data_root)
     camelyon = ParquetCamelyon17(data_dir)
     val_subset = camelyon.get_subset("val", transform=get_camelyon17_eval_transform())
 

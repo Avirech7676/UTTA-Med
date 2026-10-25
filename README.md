@@ -1,10 +1,12 @@
-# Fail-Closed Test-Time Adaptation and Runtime Safeguards for Digital Pathology: Multicenter Classification and Dense Detection Under Severe Domain Shift
+# SafeAdapt-TTA: Clinically Safe Test-Time Adaptation with Evidential Decoupling, Optimal Transport Prototype Alignment, and Closed-Form Parameter Regularization for Digital Pathology
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](INSTALL.md)
 [![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
-[![Reproducibility: Bit-Exact Verified](https://img.shields.io/badge/Reproducibility-54%2F54%20Bit--Exact-brightgreen.svg)](docs/final/UTTA_MED_TABLE_VERIFICATION.md)
-[![Tests: 144 Passing](https://img.shields.io/badge/Tests-144%20Passed-success.svg)](tests/)
+[![Reproducibility: 57/57 Bit-Exact](https://img.shields.io/badge/Reproducibility-57%2F57%20Bit--Exact-brightgreen.svg)](REPRODUCIBILITY.md)
+[![Tests: 145 Passed](https://img.shields.io/badge/Tests-145%20Passed-success.svg)](tests/)
+
+[Installation & Setup](INSTALL.md) • [Reproducibility Guide](REPRODUCIBILITY.md) • [Data Acquisition](docs/DATA_ACQUISITION.md) • [Citation](CITATION.cff)
 
 ---
 
@@ -479,34 +481,43 @@ python scripts/verify_consistency.py
 ## Project Structure
 
 ```text
-UTTA-Med/
+SafeAdapt-TTA/
+├── .github/                 # Automated CI workflows (pytest & table verification)
+├── CITATION.cff             # Machine-readable citation metadata
+├── INSTALL.md               # Complete environment and hardware setup guide
+├── LICENSE                  # MIT License
+├── README.md                # Primary repository documentation
+├── REPRODUCIBILITY.md       # One-line commands for bit-exact reproduction (57/57 passed)
+├── environment.yml          # Conda environment definition
+├── requirements.txt         # Primary Python package dependencies
 ├── checkpoints/             # Verified source model checkpoints (SHA-256 audited)
-├── configs/                 # YAML configuration files (camelyon17.yaml, v2/ configs)
-├── data/                    # Dataset metadata and COCO annotation files (MIDOG.json)
-├── docs/                    # Exhaustive audit reports, clinical protocols, and claims ledgers
-│   ├── final/               # Finalized publication dossiers (SUBMISSION_READINESS.md)
-│   └── v2/                  # Stage B through E2 execution specifications
-├── figs/                    # Synchronized high-resolution publication figures (300 DPI)
-├── notebooks/               # Standalone Kaggle runners and verification notebooks
-│   └── official/            # Official qualified Kaggle workers
-├── paper/                   # Manuscript drafts, IEEE LaTeX sources, and BibTeX files
-│   ├── ieee/                # IEEE conference submission package (utta_med_h5_manuscript_draft.tex)
-│   └── tables/              # Canonical publication tables in CSV and Markdown
-├── reproducibility/         # Environment manifests, requirements lockfiles, and SHA-256 digests
-├── results/                 # Authoritative machine-readable JSON and CSV experimental artifacts
-│   ├── figures/             # Evaluation plots, reliability overlays, and AUROC curves
-│   ├── generalization/      # MIDOG Stage H4 Phase A & Phase B detection benchmarks
-│   ├── metrics/             # Headline frozen multi-seed metrics (full_s*.json)
-│   ├── predictions/         # Serialized patch-level prediction arrays (s42_*.npz)
-│   └── tables/              # Bit-exact CSV summary tables (table_main_results_final.csv)
-├── scripts/                 # Execution, calibration, adaptation, and table verification scripts
-│   └── v2/                  # Stage C2, D2, E1, E2 evaluation and audit scripts
-├── src/                     # Core Python library
-│   ├── evaluation/          # Metrics, coverage-risk, slide aggregation, and tent collapse
-│   ├── models/              # ResNet-18 and ResNet-50 architectures
-│   ├── tta/                 # Gating routers, Tent, EATA, and uncertainty scoring
-│   └── v2/                  # SafeAdapt controller, boundary monitors, and telemetry
-└── tests/                   # Pytest verification suite (137 unit and integration tests)
+├── configs/                 # YAML experiment configurations (Camelyon17, NCT-CRC, MIDOG)
+├── data/                    # Dataset metadata and annotations (MIDOG.json)
+├── docs/                    # Architecture specifications, protocols, and audit ledgers
+│   ├── DATA_ACQUISITION.md  # Step-by-step dataset acquisition instructions
+│   ├── final/               # Finalized publication dossiers and claims ledgers
+│   └── protocols/           # Pre-registered protocols (H4, leakage rules)
+├── figures/                 # Single canonical publication figures and Grad-CAM maps
+├── notebooks/               # Standalone demonstration and Kaggle runners
+├── paper/                   # IEEE Transactions LaTeX source, BibTeX, and tables
+│   ├── ieee/                # Manuscript draft (utta_med_h5_manuscript_draft.tex)
+│   └── tables/              # Canonical publication tables (CSV)
+├── reproducibility/         # Environment lockfiles and hardware specs
+├── results/                 # Authoritative machine-readable experimental artifacts
+│   └── tables/              # Frozen bit-exact summary metrics and CSV tables
+├── scripts/                 # Benchmarks, evaluation pipelines, and auditors
+│   ├── download_checkpoints.py # Automated checkpoint downloader with SHA-256 check
+│   ├── verify_manuscript_tables.py # 57-check automated table auditor
+│   └── v2/                  # Portable evaluation and calibration runners
+├── src/                     # Core Python research package
+│   ├── calibration/         # Temperature scaling and post-hoc calibration
+│   ├── data/                # Dataset loaders, RandStainNA, path resolvers
+│   ├── evaluation/          # AJCC pTNM staging, Nottingham grading, risk curves
+│   ├── models/              # ResNet-18/50, Attn-MIL, Evidential, LoRA backbones
+│   ├── tta/                 # OT-TTA, Evidential-TTA, Tent, EATA, SAR
+│   ├── uncertainty/         # Evidential Subjective Logic and Dirichlet modeling
+│   └── v2/                  # SafeAdapt controller, gates, and detection monitor
+└── tests/                   # Automated pytest verification suite (145 tests)
 ```
 
 ---

@@ -511,12 +511,12 @@ def build_report():
         title="SUBMISSION VERDICT", border_color="15803D", fill_color="F0FDF4"
     )
 
-    out_path_1 = "c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/UTTA_Med_Post_Verification_Implementation_Report.docx"
+    out_path_1 = "./UTTA_Med_Post_Verification_Implementation_Report.docx"
     doc.save(out_path_1)
     print(f"Successfully generated: {out_path_1}")
 
     # Copy to Downloads as well
-    out_path_2 = "C:/Users/avina/Downloads/UTTA_Med_Post_Verification_Implementation_Report.docx"
+    out_path_2 = "str(Path.home() / "Downloads")/UTTA_Med_Post_Verification_Implementation_Report.docx"
     try:
         shutil.copyfile(out_path_1, out_path_2)
         print(f"Successfully copied to: {out_path_2}")

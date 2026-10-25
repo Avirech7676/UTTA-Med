@@ -120,7 +120,7 @@ def run_diagnostic():
     log(f"   Manifest SHA-256 Status: VERIFIED BIT-FOR-BIT MATCH")
 
     # Discover WSI images once
-    search_dirs = [Path("data"), Path("C:/Users/avina/Downloads"), Path("/kaggle/input"), Path(".")]
+    search_dirs = [Path("data"), Path("str(Path.home() / "Downloads")"), Path("/kaggle/input"), Path(".")]
     if args.image_dir is not None:
         search_dirs.insert(0, Path(args.image_dir))
     image_map = discover_all_images(search_dirs)
@@ -160,8 +160,8 @@ def run_diagnostic():
         search_paths = [
             Path(f"/kaggle/input/midog-challenge/{cid:03d}.tiff"),
             Path(f"/kaggle/input/datasets/joshiharshit5088/midog-challenge/{cid:03d}.tiff"),
-            Path(f"C:/Users/avina/Downloads/{cid:03d}.tiff"),
-            Path(f"C:/Users/avina/Downloads/001.tiff"),
+            Path(f"str(Path.home() / "Downloads")/{cid:03d}.tiff"),
+            Path(f"str(Path.home() / "Downloads")/001.tiff"),
         ]
         for sp in search_paths:
             if sp.is_file():

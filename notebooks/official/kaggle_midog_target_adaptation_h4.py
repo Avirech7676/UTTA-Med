@@ -1285,7 +1285,7 @@ def main() -> None:
 
     # Locate Dataset & Annotation Assets
     coco_json_candidates = [
-        Path("c:/Users/avina/Downloads/MIDOG.json"),
+        Path("str(Path.home() / "Downloads")/MIDOG.json"),
         Path("MIDOG.json"),
         Path("/kaggle/input/midog-challenge/MIDOG.json"),
         Path("/kaggle/input/datasets/joshiharshit5088/midog-challenge/MIDOG.json"),
@@ -1317,7 +1317,7 @@ def main() -> None:
     search_roots = [
         Path("/kaggle/input"),
         Path("."),
-        Path("C:/Users/avina/Downloads"),
+        Path("str(Path.home() / "Downloads")"),
     ]
     for root_dir in search_roots:
         if not root_dir.exists():

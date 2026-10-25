@@ -475,11 +475,11 @@ def generate_urop_monograph():
         "These findings underscore the critical necessity of multi-seed reporting, slide-level inferential units, and rigorous safeguarding before considering test-time adaptation for clinical deployment."
     )
 
-    out_1 = "c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/UROP_Research_Draft_UTTA_Med.docx"
+    out_1 = "./UROP_Research_Draft_UTTA_Med.docx"
     doc.save(out_1)
     print(f"Successfully generated: {out_1}")
 
-    out_2 = "C:/Users/avina/Downloads/UROP_Research_Draft_UTTA_Med.docx"
+    out_2 = "str(Path.home() / "Downloads")/UROP_Research_Draft_UTTA_Med.docx"
     try:
         shutil.copyfile(out_1, out_2)
         print(f"Successfully copied to: {out_2}")

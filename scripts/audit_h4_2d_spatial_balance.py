@@ -28,8 +28,8 @@ def find_midog_coco_json() -> Path:
         Path("data/midog_scanner3_coco_metadata.json"),
         Path("data/MIDOG.json"),
         Path("MIDOG.json"),
-        Path("C:/Users/avina/Downloads/MIDOG.json"),
-        Path("C:/Users/avina/Downloads/MIDOG (1).json"),
+        Path("str(Path.home() / "Downloads")/MIDOG.json"),
+        Path("str(Path.home() / "Downloads")/MIDOG (1).json"),
         Path("/kaggle/input/midog-challenge/MIDOG.json"),
     ]
     for c in candidates:

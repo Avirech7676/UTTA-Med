@@ -179,7 +179,7 @@ def main() -> None:
     crops = []
 
     # Check for available image files or generate synthetic histological test crops
-    sample_img_path = Path("C:/Users/avina/Downloads/001.tiff")
+    sample_img_path = Path("str(Path.home() / "Downloads")/001.tiff")
     for _, row in sample_patches.iterrows():
         ox, oy = int(row["origin_x"]), int(row["origin_y"])
         if sample_img_path.is_file():
