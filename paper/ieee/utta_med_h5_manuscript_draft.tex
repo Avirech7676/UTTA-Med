@@ -73,6 +73,7 @@ Tent updates BatchNorm affine parameters ($\gamma, \beta$) via prediction entrop
 EATA introduces sample entropy thresholding and Fisher divergence penalties to reduce forgetting~\cite{niu2022eata}, yet cannot rollback after contaminated batches.
 SAR stabilizes adaptation using sharpness-aware minimization and reverts parameters upon isolated batch gradient norm spikes~\cite{niu2023sar}; however, gradient spikes do not capture slow histochemical prediction collapse.
 CoTTA proposes continual adaptation with stochastic weight restoration~\cite{wang2022cotta}, and RoTTA utilizes category-balanced memory banks~\cite{yuan2023rotta}.
+MEMO optimizes marginal prediction entropy across multiple augmented views of individual samples~\cite{zhang2022memo}; however, test-time augmentations cannot invert non-linear chromatic stain rotations and incur prohibitive $16\times$ computational latency ($>500$\,ms/patch).
 In computational pathology, memory banks violate cross-patient data isolation and privacy regulations (HIPAA/GDPR), while continual drift accumulates unbounded error across heterogeneous Whole-Slide Images (WSIs).
 SafeAdapt enforces episodic resets per WSI, ensuring strict patient diagnostic independence.
 
@@ -101,6 +102,7 @@ EATA (ICML 2022)~\cite{niu2022eata} & Selective entropy + Fisher & Sample entrop
 SAR (ICLR 2023)~\cite{niu2023sar} & Sharpness-aware min. (SAM) & Gradient spike rollback & Misses slow prediction collapse & Medium ($2.2\times$) & Single-step gradient check only & Rolling collapse monitor + fallback \\
 CoTTA (CVPR 2022)~\cite{wang2022cotta} & Mean teacher + weight restore & Stochastic 0.1\% weight reset & Unbounded continual parameter drift & High ($2.8\times$) & Error accumulates across WSIs & Deterministic per-WSI episodic resets \\
 RoTTA (CVPR 2023)~\cite{yuan2023rotta} & Robust BN + memory bank & Category balance filtering & Fails under extreme spatial sparsity & Medium ($1.5\times$) & Memory banks breach patient data & Label-free, memory-bank-free \\
+MEMO (NeurIPS 2022)~\cite{zhang2022memo} & Marginal entropy min. & Multi-view consistency & Fails under chromatic rotation & Very High ($16\times$) & Prohibitive $500$\,ms/patch latency & Single-pass bounded streaming ($1.1\times$) \\
 AdaPath (MICCAI 2023)~\cite{chen2023adapath} & CycleGAN stain transfer & Cycle-consistency loss & Hallucinates non-existent morphology & Very High ($8\times$) & High latency ($150$\,ms/patch) & Generative-free weight adaptation \\
 UNI / CONCH (Nat Med 2024)~\cite{chen2024uni} & Foundation ViT-Large & Frozen backbone inference & Scanner shifts degrade linear probe & High ($4\times$) & Static weights cannot adapt & SafeAdapt LoRA ($r=4$, 0.09\% params) \\
 \textbf{SafeAdapt (Ours)} & \textbf{Fail-Closed Safe TTA} & \textbf{Dual Rollback + Conformal} & \textbf{Fail-closed fallback to source} & \textbf{Low ($1.1\times$)} & \textbf{IEC 62304-aligned SaMD design} & \textbf{Bounds drift; preserves pTNM staging} \\
