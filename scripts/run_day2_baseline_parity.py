@@ -65,16 +65,14 @@ def run_day2_baseline_parity() -> Dict[str, Any]:
     print("DAY 2: BASELINE PARITY BENCHMARK & CLUSTERED BOOTSTRAP")
     print("=" * 80)
 
-    # Core comparison methods
+    # Core comparison methods directly evaluated from authentic benchmark data
     methods = [
         "source",
         "tent",
         "eata",
-        "sar",
-        "safeadapt_full",
-        "safeadapt_no_rollback",
-        "safeadapt_no_trust_region",
-        "safeadapt_no_monitor",
+        "random",
+        "confidence",
+        "utta",
     ]
 
     results = {}
@@ -82,8 +80,7 @@ def run_day2_baseline_parity() -> Dict[str, Any]:
 
     # Load and evaluate baseline npz arrays
     for m in methods:
-        # Map to available npz or simulate controlled ablation on raw data
-        load_key = "utta" if "safeadapt" in m else ("eata" if m == "sar" else m)
+        load_key = m
         all_auroc = []
         all_f1 = []
         all_ece = []
@@ -95,17 +92,6 @@ def run_day2_baseline_parity() -> Dict[str, Any]:
             y = data["y"]
             p = data["p"].copy()
             slides = data["slide"]
-
-            # Component ablation behavior adjustments
-            if m == "tent":
-                # Tent collapses on Slide 29 (extreme over-staining)
-                pass
-            elif m == "safeadapt_no_trust_region":
-                # Drift slightly larger
-                p = np.clip(p + (rng := np.random.RandomState(seed)).normal(0, 0.015, len(p)), 1e-6, 1-1e-6)
-            elif m == "safeadapt_no_rollback":
-                # Slightly degraded on noisy outlier
-                p = np.clip(p + np.random.RandomState(seed).normal(0, 0.008, len(p)), 1e-6, 1-1e-6)
 
             all_auroc.append(auroc(y, p))
             all_f1.append(f1_score(y, p))

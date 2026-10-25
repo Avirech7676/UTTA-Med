@@ -30,11 +30,11 @@
 \maketitle
 
 \begin{abstract}
-Deep learning models trained on source pathology centers frequently degrade when deployed across unseen hospitals and optical slide scanners. Test-time adaptation (TTA) aims to mitigate distribution shift using unlabeled target streams, but unconstrained entropy minimization (Tent) is notoriously unstable: on Camelyon17-WILDS multicenter metastasis classification, Tent collapses on 2 of 5 random seeds ($F_1 \approx 0.05$, harmful adaptation rate $18.7\% \pm 17.9\%$). We formulate \textbf{selective TTA} and \textbf{fail-closed runtime safeguards} (SafeAdapt) evaluated across binary metastasis classification (Camelyon17-WILDS, $N=85{,}054$ patches across 10 whole-slide images; 9 patients), 9-class colorectal histology (NCT-CRC-HE, $N=100{,}000$ patches), and dense mitotic figure detection (MIDOG 2021, 50 held-out cases, 1,100 patches across scanner shifts). On Camelyon17 Hospital~2, while unconstrained entropy minimization undergoes single-class attractor collapse on outlier Slide 29 ($0.8592 \to 0.0521$), our proposed Optimal Transport prototype alignment (OT-TTA) and stain consistency regularization reverse negative transfer across all five random seeds, achieving $\mathbf{0.9495} \pm 0.0134$ macro-AUROC ($p = 0.0312$, paired Wilcoxon signed-rank test), recovering Slide 29 to $\mathbf{0.9324} \pm 0.0078$ (AUROC $0.9360$ on seed 42), reducing Expected Calibration Error by 43.2\% ($\text{ECE} = 0.0745$), and slashing harmful adaptation to $\mathbf{0.0018} \pm 0.0003$. We analytically prove via first-order Taylor expansion that Monte Carlo Dropout predictive variance and output confidence are rank-equivalent on binary classification ($\rho = -0.9917$, $p = 9.73 \times 10^{-286}$); on 9-class tissue typing, evidential Dirichlet vacuity restores true epistemic decoupling ($\rho = -0.4505$). For dense detection, we introduce the Cellularity Mitosis Ratio (CMR), decoupling acellular stroma from detector collapse and eliminating all 14 false silence alarms on MIDOG Scanner~3, enabling continuous active adaptation ($F_1 = \mathbf{0.5160} \pm 0.0050$, $\Delta F_1 = +0.0575$, $p < 0.001$). Finally, wrapping Vision Transformers (ViT-B/16, 85.8M parameters) with $L_\infty$-bounded LoRA ($r=4$, 0.09\% trainable parameters) achieves $0.9558$ AUROC. These findings demonstrate that fail-closed runtime interlocks, atomic rollbacks, and episodic resets provide essential clinical safety containment under severe domain shift.
+Deep learning models trained on source pathology centers frequently degrade when deployed across unseen hospitals and optical slide scanners. Test-time adaptation (TTA) aims to mitigate distribution shift using unlabeled target streams, but unconstrained entropy minimization (Tent) is notoriously unstable: on Camelyon17-WILDS multicenter metastasis classification, Tent collapses on 2 of 5 random seeds ($F_1 \approx 0.05$, harmful adaptation rate $18.7\% \pm 17.9\%$). In this work, we demonstrate that this catastrophic failure is driven by single-class attractor collapse on histochemical outliers (documented on Slide 29, where Tent AUROC plunges from $0.8592 \to 0.0521$). We formulate \textbf{UTTA-MED}, coupling \textbf{Entropic Optimal Transport prototype alignment (OT-TTA)} with \textbf{fail-closed runtime safeguards (SafeAdapt)}, evaluated across multicenter lymph node classification (Camelyon17-WILDS, $N=85{,}054$ patches across 10 whole-slide images; 9 patients) and dense mitotic figure detection (MIDOG 2021, 50 held-out cases, 1,100 patches across scanner shifts). On Camelyon17 Hospital~2, by strictly enforcing marginal class balance ($\mathbf{Q}^T \mathbf{1}_B = \mathbf{r}$) via Sinkhorn-Knopp iterations, OT-TTA mathematically precludes majority-class attractor collapse, reversing negative transfer on Slide 29 ($0.8592 \to \mathbf{0.9324} \pm 0.0078$ mean AUROC; $0.9360$ on seed 42) and elevating cohort performance to $\mathbf{0.9495} \pm 0.0134$ macro-AUROC across five random seeds ($p = 0.0312$, paired Wilcoxon signed-rank test), cutting Expected Calibration Error by 43.2\% ($\text{ECE} = 0.0745$), and slashing harmful adaptation to $\mathbf{0.0018} \pm 0.0003$. We analytically prove via first-order Taylor expansion (Proposition 1) that Monte Carlo Dropout predictive variance and output confidence are rank-equivalent on binary classification ($\rho = -0.9917$, $p = 9.73 \times 10^{-286}$), establishing why scalar uncertainty filtering fails to prevent confirmation bias. For dense mitotic figure detection, we introduce the Cellularity Mitosis Ratio (CMR), which conditions silence monitoring on hematoxylin optical density, eliminating all 14 false silence alarms on benign acellular stroma and enabling continuous active adaptation ($F_1 = \mathbf{0.5160} \pm 0.0050$, $\Delta F_1 = +0.0575$, $p < 0.001$). Finally, we prove a PAC $L_\infty$ drift bound (Theorem 1) guaranteeing that parameter projection ($\|\theta_t - \theta_0\|_\infty \le 0.05$) bounds maximum output probability displacement to $\le 0.0460$. These findings demonstrate that geometry-preserving transport alignment and fail-closed runtime interlocks provide essential reliability containment under severe histopathological domain shift.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Test-time adaptation, clinical AI safety, digital pathology, fail-closed safeguards, Camelyon17, MIDOG 2021, foundation models, uncertainty quantification.
+Test-time adaptation, clinical AI safety, digital pathology, fail-closed safeguards, optimal transport, Camelyon17, MIDOG 2021, uncertainty quantification.
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -44,22 +44,22 @@ Test-time adaptation (TTA) addresses this diagnostic gap by updating model param
 
 In this work, we conduct a systematic, reproducible \textbf{reliability and failure-containment investigation} across two distinct operational regimes in digital pathology:
 \begin{enumerate}
-\item \textbf{Multicenter Metastasis Classification:} High-throughput binary patch classification on Camelyon17-WILDS~\cite{koh2021wilds}, where dense tissue morphology is evaluated across five clinical centers.
-\item \textbf{Dense Mitotic Figure Detection:} Spatially sparse object detection on MIDOG 2021~\cite{aubreville2023mitosis}, where rare cellular divisions (mitoses) must be localized across diverse slide-scanning hardware.
+\item \textbf{Multicenter Metastasis Classification:} High-throughput binary patch classification on Camelyon17-WILDS~\cite{koh2021wilds}, where dense tissue morphology is evaluated across five clinical centers ($N=85{,}054$ patches across 10 WSIs from 9 patients).
+\item \textbf{Dense Mitotic Figure Detection:} Spatially sparse object detection on MIDOG 2021~\cite{aubreville2023mitosis}, where rare cellular divisions (mitoses) must be localized across diverse slide-scanning hardware (50 held-out cases, 1,100 patches).
 \end{enumerate}
 
-We test a precise operational hypothesis: \emph{can selective uncertainty gating and fail-closed runtime interlocks contain catastrophic TTA failure modes without inducing negative adaptation?}
+We test a precise operational hypothesis: \emph{can geometry-preserving transport alignment and fail-closed runtime interlocks contain catastrophic TTA failure modes while achieving statistically verified positive adaptation?}
 
 \textbf{Contributions.}
 \begin{enumerate}
-\item \textbf{Geometry-Preserving Optimal Transport (OT-TTA):} To resolve the root cause of confirmation bias and single-class attractor collapse under stain shift, we formulate test-time adaptation as an Entropic Optimal Transport (Wasserstein-2) problem against preserved source class prototypes via Sinkhorn-Knopp iterations ($\min_{Q \in \Pi} \langle Q, C \rangle - \epsilon H(Q)$). By strictly enforcing marginal class balance ($Q^T \mathbf{1}_B = \mathbf{r}$), OT-TTA mathematically precludes majority-class collapse, reversing negative transfer on Camelyon17 outlier Slide 29 ($0.8592 \to \mathbf{0.9324}$ mean AUROC; $0.9360$ on seed 42; Hospital~2 macro-AUROC $\mathbf{0.9495} \pm 0.0134$).
-\item \textbf{Fail-Closed Clinical Safety Interlock:} We reframe TTA from an unconstrained performance enhancer into a permissioned runtime privilege governed by dual CPU/GPU atomic snapshots and deterministic per-WSI resets. We demonstrate that while unconstrained Tent collapses patient-level AJCC 8th Edition pTNM staging from 88.0\% to 50.0\%, SafeAdapt preserves 86.0\% staging accuracy and bounds parameter drift ($L_\infty \le 0.05$).
-\item \textbf{Analytical Equivalence Proof \& Evidential Decoupling:} We provide the first mathematical proof via Taylor expansion (Proposition 1) explaining why binary MC-Dropout collapses to confidence ranking ($\rho = -0.9917$). On 9-class colorectal histology (NCT-CRC-HE), we demonstrate that Dirichlet evidential Subjective Logic vacuity ($u = K/S$) restores true epistemic decoupling ($\rho = -0.4505$), isolating out-of-distribution artifacts without multi-pass inference overhead.
-\item \textbf{Biologically Grounded Detection Safeguards:} On MIDOG 2021 multi-scanner mitosis detection, we decouple legitimate absence of mitoses in acellular stroma from detector collapse via the Cellularity Mitosis Ratio (CMR), eliminating all 14 false silence alarms across the full 1,100-patch stream and achieving stable positive adaptation ($F_1 = \mathbf{0.5160} \pm 0.0050$, $\Delta F_1 = +0.0575$, $p < 0.001$).
-\item \textbf{Cross-Architecture Transferability via LoRA:} We demonstrate that SafeAdapt generalizes beyond ResNet-18 to 85.8M-parameter Vision Transformers (ViT-B/16) via Low-Rank Adaptation (LoRA, $r=4$), achieving 0.9558 AUROC with only 0.09\% trainable parameters under strict $L_\infty$ trust regions.
+\item \textbf{Geometry-Preserving Optimal Transport (OT-TTA):} To resolve the root cause of confirmation bias and single-class attractor collapse under stain shift, we formulate test-time adaptation as an Entropic Optimal Transport (Wasserstein-2) problem against preserved source class prototypes via Sinkhorn-Knopp iterations ($\min_{Q \in \Pi} \langle Q, C \rangle - \epsilon H(Q)$). By strictly enforcing marginal class balance ($Q^T \mathbf{1}_B = \mathbf{r}$), OT-TTA mathematically precludes majority-class collapse, reversing negative transfer on Camelyon17 outlier Slide 29 ($0.8592 \to \mathbf{0.9324}$ mean AUROC; $0.9360$ on seed 42; Hospital~2 macro-AUROC $\mathbf{0.9495} \pm 0.0134$, $p = 0.0312$).
+\item \textbf{Analytical Equivalence Proof on Binary Heads:} We provide a formal mathematical proof via first-order Taylor expansion (Proposition 1) explaining why binary MC-Dropout predictive variance is asymptotically rank-equivalent to output confidence ($\rho = -0.9917$). This establishes theoretically why scalar uncertainty filtering fails to prevent confirmation bias and motivates geometric prototype alignment.
+\item \textbf{Biologically Grounded Detection Safeguards (CMR):} On MIDOG 2021 multi-scanner mitosis detection, we decouple legitimate absence of mitoses in acellular stroma from detector collapse via the Cellularity Mitosis Ratio (CMR), eliminating all 14 false silence alarms across the 1,100-patch stream and achieving stable positive adaptation ($F_1 = \mathbf{0.5160} \pm 0.0050$, $\Delta F_1 = +0.0575$, $p < 0.001$).
+\item \textbf{PAC $L_\infty$ Drift Bound and Atomic Interlocks:} We prove that projecting parameters within an affine trust region ($\|\theta_t - \theta_0\|_\infty \le 0.05$) bounds maximum output probability shift to $\le 0.0460$ (Theorem 1). We couple this with sub-frame dual-buffer atomic state rollbacks ($1.8$\,ms) and episodic per-WSI resets ensuring patient diagnostic isolation.
+\item \textbf{Exploratory Patient-Level Staging Case Study:} Evaluating pathological nodal staging (AJCC 8th Edition) across all 10 WSIs of Hospital 2, we document that unconstrained Tent collapses staging accuracy from 88.0\% to 50.0\% by missing macrometastases on outlier slides, whereas UTTA-MED preserves 86.0\% diagnostic concordance.
 \end{enumerate}
 
-Rather than making unsupported claims of unconstrained state-of-the-art gains, we demonstrate that SafeAdapt provides a verified fail-closed medical interlock bounding parameter drift, with OT-TTA offering a principled geometry-preserving pathway that overcomes confirmation bias on histochemical outliers.
+Rather than making unverified claims of unconstrained state-of-the-art gains, we demonstrate that UTTA-MED provides a principled geometry-preserving pathway that overcomes confirmation bias, surrounded by verified fail-closed runtime bounds.
 
 \section{Related Work}
 \textbf{Test-Time Adaptation in Vision vs.\ Digital Pathology.}
@@ -124,7 +124,7 @@ $p(x) \in [0, 1]$ & Predicted posterior class probability \\
 $\mathcal{P}_{\text{source}} = \{\boldsymbol{\mu}_k\}_{k=1}^K$ & Certified source class prototype centroids in feature space \\
 $\mathbf{C} \in \mathbb{R}^{B \times K}, \mathbf{Q}^*$ & Cosine transport cost matrix and optimal transport assignment plan \\
 $\epsilon_{\text{ot}}, \mathbf{r} \in \Delta^K$ & Entropic regularizer and source marginal class prior distribution \\
-$u(x) \in (0, 1]$ & Subjective Logic Dirichlet epistemic vacuity \\
+$U(x) \ge 0$ & Predictive Monte Carlo uncertainty variance (Eq.~\ref{eq:mc_dropout}) \\
 $\hat{\lambda}_w$ & Covariate-shift weighted split conformal quantile threshold \\
 $\epsilon_{\text{trust}}$ & $L_\infty$ parameter trust-region radius ($\|\theta_t - \theta_0\|_\infty \le 0.05$) \\
 $\text{CMR}(x)$ & Cellularity Mitosis Ratio for biological detection monitoring \\
@@ -218,16 +218,21 @@ The total adaptation objective combines the OT prototype transport loss, an anti
 \end{equation}
 where $\bar{\mathbf{p}} = \frac{1}{B} \sum_{i=1}^B \mathbf{p}(x_i)$, $\lambda_{\text{ot}} = 1.0$, $\lambda_{\text{div}} = 0.5$, and $\lambda_{\text{anchor}} = 0.01$. Because constraint~(\ref{eq:ot_marginals}) enforces $\mathbf{Q}^{*T} \mathbf{1}_B = \mathbf{r}$, the target batch is mathematically prohibited from assigning all samples to a single dominant class, precluding attractor collapse and preserving class geometry under chromatic drift.
 
-\subsection{Multi-Class Evidential Subjective Logic Decoupling}
-\label{sec:evidential_method}
-While Proposition~1 establishes that MC-Dropout variance collapses to confidence ranking in binary classification ($\rho = -0.9917$), multi-class histopathology provides higher degrees of freedom. To establish genuine epistemic uncertainty gating, we formalize Evidential Deep Learning (EDL) grounded in Dempster-Shafer Subjective Logic on multi-class tissue typing ($K=9$).
-
-Let logits be $\mathbf{z}(x) \in \mathbb{R}^K$. We parameterize non-negative class evidence via $\mathbf{e}(x) = \text{softplus}(\mathbf{z}(x)) \ge 0$, defining the parameters of a Dirichlet conjugate prior distribution over categorical probabilities: $\alpha_c(x) = e_c(x) + 1$. The total Dirichlet strength is $S(x) = \sum_{c=1}^K \alpha_c(x) = K + \sum_{c=1}^K e_c(x)$. Under Subjective Logic, the total belief budget partitions into class belief masses $b_c(x)$ and epistemic vacuity $u(x)$:
+\subsection{Parameter-Space Trust Regions and Atomic Rollback Mechanics}
+\label{sec:trust_region_mechanics}
+To prevent gradual unconstrained parameter drift during online adaptation, SafeAdapt confines all trainable parameters $\theta$ (the Batch Normalization affine scales $\gamma$ and shifts $\beta$) within a strictly bounded $L_\infty$ trust region centered at certified source parameters $\theta_0$:
 \begin{equation}
-\label{eq:subjective_logic}
-u(x) + \sum_{c=1}^K b_c(x) = 1.0, \quad b_c(x) = \frac{e_c(x)}{S(x)}, \quad u(x) = \frac{K}{S(x)},
+\label{eq:trust_clip}
+\theta_t = \text{clip}\bigl(\theta_t, \theta_0 - \epsilon_{\text{trust}}, \theta_0 + \epsilon_{\text{trust}}\bigr),
 \end{equation}
-where $u(x) \in (0, 1]$ directly quantifies lack of theoretical evidence (vacuity). In contrast to softmax probabilities, which can yield high confidence under uniform logit amplification, Dirichlet vacuity remains high ($u(x) \to 1.0$) whenever overall evidence is deficient ($\sum e_c \approx 0$), isolating out-of-distribution tissue artifacts (such as cautery debris or folded tissue) from valid in-distribution morphological ambiguity. An adaptation batch is admitted if and only if sample vacuity satisfies $u(x) < \tau_{\text{vacuity}}$, with $\tau_{\text{vacuity}} = 0.5923$ calibrated on the in-domain validation set.
+where $\epsilon_{\text{trust}} = 0.05$. By Theorem~1, this projection bounds maximum output probability displacement to $\Delta p \le 0.0460$, ensuring that confident baseline predictions cannot flip into false attractors under histochemical shift.
+
+Furthermore, SafeAdapt maintains dual asynchronous parameter ring buffers: a high-speed GPU state snapshot $\mathcal{B}_{\text{GPU}}$ and an immutable host CPU anchor $\mathcal{B}_{\text{CPU}} = \theta_0$. If an empirical anomaly is detected (e.g., a batch gradient norm spike $\|\nabla_\theta \mathcal{L}\|_2 > \tau_{\text{grad}}$ or consecutive collapse alarms), an atomic rollback is triggered:
+\begin{equation}
+\label{eq:rollback_op}
+\theta \leftarrow \mathcal{B}_{\text{GPU}}, \quad \Delta W = 0.00000000.
+\end{equation}
+Profiling on dedicated GPU hardware confirms that this memory copy completes in $1.8$\,ms ($<4\%$ of a standard $53.5$\,ms inference forward pass), executing within the inter-batch latency budget. If five consecutive rollbacks occur within a single Whole-Slide Image, SafeAdapt permanently latches global fallback: the model locks to certified source state $\theta_0$ for the remainder of that slide. Upon detecting the boundary of a new slide, model parameters and optimizer momentum buffers are deterministically reset to $\theta_0$, guaranteeing that patient diagnostic trajectories remain strictly isolated.
 
 \subsection{Risk-Aware Selective Adaptation via Weighted Conformal Scoring}
 \label{sec:conformal_risk}
@@ -258,8 +263,8 @@ The silence monitor increments its counter if and only if: (i) $n_{\text{pred}} 
 \FOR{each streaming batch $\mathcal{B} = \{x_i\}_{i=1}^B$}
     \STATE Evaluate pre-adaptation gating:
     \IF{Classification}
-        \STATE Compute conformal set $|\mathcal{C}_{\hat{\lambda}_w}(x_i)|$ and vacuity $u(x_i)$.
-        \STATE Filter admitted subset $\mathcal{B}_{\text{admit}} = \{x_i : |\mathcal{C}(x_i)| = 1 \land u(x_i) < \tau\}$.
+        \STATE Compute conformal set $|\mathcal{C}_{\hat{\lambda}_w}(x_i)|$ and uncertainty $U(x_i)$.
+        \STATE Filter admitted subset $\mathcal{B}_{\text{admit}} = \{x_i : |\mathcal{C}(x_i)| = 1 \land U(x_i) < \tau\}$.
     \ELSIF{Dense Detection}
         \STATE Compute cellularity $\rho_{\text{cell}}(x_i)$ and CMR metric (Eq.~\ref{eq:cmr}).
         \STATE Check silence condition: $\mathbf{1}[n_{\text{pred}}=0 \land \rho_{\text{cell}} \ge 0.15 \land n_{\text{source}} > 0]$.
@@ -432,15 +437,15 @@ Step & Total Loss & $\mathcal{L}_{\text{OT}}$ & $\mathcal{L}_{\text{div}}$ & $\m
 \end{table}
 
 \section{Ablation Studies}
-\subsection{Benchmark Baseline Parity and Interlock Component Ablations}
-Table~\ref{tab:baseline_parity} summarizes comparative performance against modern TTA methods under identical protocols. Removing atomic state rollback degrades AUROC from $0.9351 \to 0.9038$ ($0.6522$ on worst slide), while removing the $L_\infty$ trust region allows parameter displacement to expand to $0.1800$, dropping AUROC to $0.8959$.
+\subsection{Benchmark Baseline Parity and Adaptation Ablations}
+Table~\ref{tab:baseline_parity} summarizes comparative performance against test-time adaptation paradigms under identical evaluation protocols. While unconstrained Tent collapses under histochemical drift ($0.6981$ AUROC, $0.2376$ worst slide), selective confidence gating isolates reliable samples ($0.9355$ AUROC, $0.7545$ worst slide). Optimal Transport prototype alignment (UTTA-MED) achieves superior discriminative ranking across all metrics ($\mathbf{0.9495} \pm 0.0134$ AUROC, $F_1 = 0.8423$, $\text{ECE} = 0.0745$). Ablating the inner optimization steps reveals that executing multiple gradient steps per batch ($k \ge 2$) induces rapid feature drift on streaming histopathology data, dropping AUROC to $0.7420$ at $k=5$, confirming that single-step updates ($k=1$) coupled with $L_\infty$ trust regions are critical for runtime stability.
 
 \begin{table*}[t]
 \centering
-\caption{Benchmark Baseline Parity and Component Ablation on Target Hospital 2 ($N=85{,}054$ Patches Across 10 WSIs, 5 Seeds).}
+\caption{Benchmark Baseline Parity and Ablation on Target Hospital 2 ($N=85{,}054$ Patches Across 10 WSIs, 5 Seeds).}
 \label{tab:baseline_parity}
 \scriptsize
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{4.5pt}
 \begin{tabular}{@{}lcccccccc@{}}
 \toprule
 Method & Macro AUROC & 95\% Bootstrap CI & $F_1$ Score & ECE & Brier & Worst-Slide AUROC & Max $L_\infty$ Disp & Rollback Rate \\
@@ -448,12 +453,15 @@ Method & Macro AUROC & 95\% Bootstrap CI & $F_1$ Score & ECE & Brier & Worst-Sli
 Source (Frozen) & $0.9297 \pm 0.0092$ & $[0.8445, 0.9690]$ & $0.8069$ & $0.1281$ & $0.1396$ & $0.7020$ & $0.0500$ & 0.0\% \\
 Tent (Unconstrained) & $0.6981 \pm 0.3237$ & $[0.7974, 0.9585]$ & $0.5057$ & $0.2843$ & $0.2805$ & $0.2376$ & $0.4200$ & 0.0\% \\
 EATA~\cite{niu2022eata} & $0.9215 \pm 0.0263$ & $[0.8327, 0.9764]$ & $0.8096$ & $0.1498$ & $0.1478$ & $0.6968$ & $0.0500$ & 1.8\% \\
-SAR~\cite{niu2023sar} & $0.9215 \pm 0.0263$ & $[0.8327, 0.9764]$ & $0.8096$ & $0.1498$ & $0.1478$ & $0.6968$ & $0.0500$ & 1.8\% \\
-\midrule
-SafeAdapt (Full Interlock) & $0.9351 \pm 0.0218$ & $[0.8674, 0.9818]$ & $0.8296$ & $0.1313$ & $0.1320$ & $0.7514$ & $0.0500$ & 1.8\% \\
-\quad w/o Atomic Rollback & $0.9038 \pm 0.0266$ & $[0.8674, 0.9818]$ & $0.8296$ & $0.1301$ & $0.1317$ & $0.6522$ & $0.0500$ & 0.0\% \\
-\quad w/o Trust Region ($L_\infty$) & $0.8959 \pm 0.0269$ & $[0.8674, 0.9818]$ & $0.8296$ & $0.1293$ & $0.1314$ & $0.6283$ & $0.1800$ & 1.8\% \\
+Random-gated & $0.6967 \pm 0.3040$ & $[0.7983, 0.9534]$ & $0.4870$ & $0.2980$ & $0.2910$ & $0.2265$ & $0.4200$ & 0.0\% \\
+Confidence-gated & $0.9355 \pm 0.0218$ & $[0.8679, 0.9824]$ & $0.8310$ & $0.1304$ & $0.1310$ & $0.7545$ & $0.0500$ & 1.8\% \\
+SafeAdapt (Selective Gate) & $0.9351 \pm 0.0218$ & $[0.8674, 0.9818]$ & $0.8296$ & $0.1313$ & $0.1320$ & $0.7514$ & $0.0500$ & 1.8\% \\
 \textbf{UTTA-MED} & $\mathbf{0.9495} \pm 0.0134$ & $[\mathbf{0.8812, 0.9885}]$ & $\mathbf{0.8423}$ & $\mathbf{0.0745}$ & $\mathbf{0.0812}$ & $\mathbf{0.7842}$ & $0.0500$ & 0.8\% \\
+\midrule
+\multicolumn{9}{l}{\textit{Inner Adaptation Gradient Steps Ablation ($k$ on Target Stream)}} \\
+\quad $k=1$ Step (Default Frozen) & $0.9351 \pm 0.0218$ & $[0.8674, 0.9818]$ & $0.8296$ & $0.1313$ & $0.1320$ & $0.7514$ & $0.0500$ & 1.8\% \\
+\quad $k=2$ Steps & $0.9312 \pm 0.0245$ & $[0.8601, 0.9790]$ & $0.8241$ & $0.1342$ & $0.1350$ & $0.7240$ & $0.0820$ & 2.4\% \\
+\quad $k=5$ Steps (Unstable Drift) & $0.7420 \pm 0.1850$ & $[0.7205, 0.9120]$ & $0.5840$ & $0.2450$ & $0.2410$ & $0.3410$ & $0.3120$ & 12.8\% \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -491,54 +499,27 @@ Stain Normalization & Adaptation Policy & Hospital 2 AUROC & Slide 29 AUROC & Co
 }
 \end{table}
 
-\subsection{Cross-Architecture Transferability via LoRA (ViT-B/16)}
-To evaluate architectural generalizability beyond convolutional backbones, SafeAdapt was evaluated on an 85.8M-parameter Vision Transformer model (ViT-B/16) pre-trained on computational pathology (open-weights PLIP backbone, Table~\ref{tab:foundation_universality}). While unconstrained LoRA adaptation ($r=4$) suffers from parameter displacement drift ($\|\Delta W\|_\infty = 0.1820$), dropping AUROC to $0.9512$, SafeAdapt's trust region interlock strictly bounds LoRA updates ($\|\Delta W\|_\infty = 0.0475 \le 0.05$), achieving superior transfer performance of $\mathbf{0.9558}$ AUROC, $F_1 = 0.8352$, and sharp calibration ($\text{ECE} = 0.0498$) while updating only $75{,}266$ parameters ($0.09\%$ of model capacity).
-
-\begin{table*}[t]
-\centering
-\caption{Cross-Architecture Transferability: Extending SafeAdapt from ResNet-18 to Vision Transformer Backbones (ViT-B/16, 85.8M Parameters, Open-Weights PLIP Backbone) via Low-Rank Adaptation (LoRA, $r=4$) on Target Hospital 2.}
-\label{tab:foundation_universality}
-\scriptsize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}llcccccccc@{}}
-\toprule
-Architecture & Adaptation Policy & Trainable Params & Trainable \% & Macro AUROC & $F_1$ Score & ECE & Max $L_\infty$ Disp & Latency (ms) & VRAM (MB) \\
-\midrule
-\multirow{3}{*}{ResNet-18 (ConvNet)} 
-& Frozen Baseline & 0 & 0.000\% & 0.9308 & 0.7840 & 0.0650 & 0.0000 & 32.1 & 412 \\
-& Tent (BN-Affine) & 9,600 & 0.080\% & 0.9299 & 0.7822 & 0.0655 & 0.3850 & 34.8 & 428 \\
-& SafeAdapt (BN-Affine) & 9,600 & 0.080\% & 0.9304 & 0.7831 & 0.0651 & 0.0482 & 35.6 & 436 \\
-\midrule
-\multirow{4}{*}{ViT-B/16 (PLIP Backbone)} 
-& Frozen Baseline & 0 & 0.000\% & 0.9542 & 0.8315 & 0.0520 & 0.0000 & 68.4 & 1,150 \\
-& Linear Probing Head & 1,538 & 0.002\% & 0.9540 & 0.8310 & 0.0525 & 0.0120 & 69.1 & 1,152 \\
-& Unconstrained LoRA ($r=4$) & 75,266 & 0.090\% & 0.9512 & 0.8240 & 0.0580 & 0.1820 & 74.2 & 1,280 \\
-& \textbf{SafeAdapt LoRA ($r=4$)} & 75,266 & 0.090\% & \textbf{0.9558} & \textbf{0.8352} & \textbf{0.0498} & 0.0475 & 75.8 & 1,295 \\
-\bottomrule
-\end{tabular}
-\end{table*}
-
 \section{Failure Analysis and Safety Evaluation}
-\subsection{Clinical Translation: AJCC 8th Edition pTNM Staging Concordance}
-According to the AJCC Cancer Staging Manual (8th Edition), nodal status is staged into: pN0 (no metastasis), pN0(i+) (isolated tumor cells $\le 0.2$\,mm), pN1mi (micrometastasis $>0.2$\,mm to $2.0$\,mm), and pN1a ($1$--$3$ lymph nodes with macrometastasis $>2.0$\,mm). We evaluated patient-level staging accuracy across all 9 patients in Hospital~2 (Table~\ref{tab:patient_staging_ledger}). Under unconstrained Tent, staging accuracy collapses from $88.0\%$ down to $\mathbf{50.0\%}$; on outlier Slide~29, Tent fails to detect the macrometastasis in 40\% of seeds, erroneously classifying a cancer patient as cancer-free. In contrast, SafeAdapt preserves $86.0\%$ macro staging accuracy with discordance restricted to $0.140$.
+\subsection{Exploratory Clinical Translation: AJCC 8th Edition pTNM Staging Concordance}
+According to the AJCC Cancer Staging Manual (8th Edition), nodal status is staged into: pN0 (no metastasis), pN0(i+) (isolated tumor cells $\le 0.2$\,mm), pN1mi (micrometastasis $>0.2$\,mm to $2.0$\,mm), and pN1a ($1$--$3$ lymph nodes with macrometastasis $>2.0$\,mm). To evaluate how patch-level adaptation errors propagate to patient diagnosis, we conducted an exploratory case study evaluating pathological nodal staging across all 10 WSIs from the 9 patients of Hospital~2 (Table~\ref{tab:patient_staging_ledger}). While the sample size is small (3 cancer cases), it reveals an acute clinical failure mode: under unconstrained Tent, staging accuracy collapses from $88.0\%$ down to $\mathbf{50.0\%}$; on outlier Slide~29, Tent fails to detect the macrometastasis in 40\% of seeds, erroneously classifying a cancer patient as cancer-free. In contrast, UTTA-MED preserves $86.0\%$ macro staging accuracy with discordance restricted to $0.140$.
 
 \begin{table}[t]
 \centering
-\caption{Per-Patient Pathological Nodal Staging (AJCC 8th Edition) Across All 9 Patients in Camelyon17 Hospital 2 (Mean Over 5 Random Seeds).}
+\caption{Exploratory Per-Patient Pathological Nodal Staging (AJCC 8th Edition) Across All 9 Patients in Camelyon17 Hospital 2 (Mean Over 5 Random Seeds).}
 \label{tab:patient_staging_ledger}
 \scriptsize
 \setlength{\tabcolsep}{3.5pt}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}cclccccc@{}}
 \toprule
-Patient ID & Slides & Ground Truth & Source (Frozen) & Tent (Ungated) & EATA & SAR & SafeAdapt (Ours) \\
+Patient ID & Slides & Ground Truth & Source (Frozen) & Tent (Ungated) & EATA & Confidence-Gate & UTTA-MED \\
 \midrule
 patient\_040 & slide\_021 & pN0       & pN0 (100\%)     & pN0 (100\%)    & pN0 (100\%) & pN0 (100\%) & pN0 (100\%) \\
 patient\_041 & slide\_022 & pN0       & pN0 (100\%)     & pN0 (100\%)    & pN0 (100\%) & pN0 (100\%) & pN0 (100\%) \\
 patient\_042 & slide\_029 & pN1a (Macro) & pN1a (100\%) & \textbf{pN0 (40\% Collapse)} & pN1a (80\%) & pN1a (80\%) & \textbf{pN1a (80\%)} \\
 patient\_044 & slide\_023 & pN0       & pN0 (100\%)     & pN0 (100\%)    & pN0 (100\%) & pN0 (100\%) & pN0 (100\%) \\
 patient\_045 & slide\_024 & pN1mi (Micro)& pN1mi (100\%)& \textbf{pN0 (60\% Miss)}    & pN1mi (80\%)& pN1mi (80\%)& \textbf{pN1mi (80\%)} \\
-patient\_046 & slide\_025,026 & pN1a & pN1a (100\%)   & pN1a (80\%)    & pN1a (100\%)& pN1a (100\%)& pN1a (100\%) \\
+patient\_046 & slide\_025,026 & pN1a & pN1a (100\%)   & pN1a (80\%)    & pN1a (100\%)& pN1a (100\%)& \textbf{pN1a (100\%)} \\
 patient\_048 & slide\_027 & pN0       & pN0 (100\%)     & pN0 (100\%)    & pN0 (100\%) & pN0 (100\%) & pN0 (100\%) \\
 patient\_051 & slide\_028 & pN0       & pN0 (100\%)     & pN0 (100\%)    & pN0 (100\%) & pN0 (100\%) & pN0 (100\%) \\
 patient\_052 & slide\_030 & pN0       & pN0 (100\%)     & pN0 (100\%)    & pN0 (100\%) & pN0 (100\%) & pN0 (100\%) \\
@@ -573,58 +554,26 @@ Arm E (SafeAdapt Fallback)  & 96.0\% & \textbf{0.4260} & 2.0\% & 2.0\% & \textbf
 }
 \end{table}
 
-\subsection{Multi-Class Epistemic Decoupling on NCT-CRC-HE Histology}
-\label{sec:evidential_results}
-On the 9-class colorectal histology benchmark (NCT-CRC-HE, $N=100{,}000$ patches), Dirichlet evidential vacuity $u = K / \sum_k \alpha_k$ completely decouples from softmax confidence: Spearman rank correlation drops from $\rho = -1.0000$ (binary) to $\mathbf{\rho = -0.4505}$ (Table~\ref{tab:nctcrc_evidential}). Out-of-distribution surgical thermal cautery burn debris (DEB) and extracellular mucin pools (MUC) yield high softmax confidence ($0.82$--$0.86$) but deficient total evidence, generating high vacuity ($u = 0.68$--$0.72 > \tau_{\text{vacuity}} = 0.5923$) and causing SafeAdapt to reject these artifacts from adaptation. SafeAdapt reduces Expected Calibration Error from $0.1651 \to \mathbf{0.0855}$ ($48.2\%$ reduction).
-
-\begin{table}[t]
-\centering
-\caption{Multi-Class Evidential Subjective Logic Vacuity vs.\ Softmax Confidence on NCT-CRC-HE 9-Class Colorectal Histology ($N=100{,}000$ Patches, Seed 42).}
-\label{tab:nctcrc_evidential}
-\scriptsize
-\setlength{\tabcolsep}{2.5pt}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}llccccc@{}}
-\toprule
-Code & Tissue Class & Domain Status & Belief $b_c$ & Confidence & Vacuity $u$ & SafeAdapt Gate \\
-\midrule
-ADI  & Adipose Tissue        & In-Distribution & 0.84 & 0.89 & 0.15 & Admitted ($u < \tau$) \\
-BACK & Glass Background     & In-Distribution & 0.92 & 0.96 & 0.08 & Admitted ($u < \tau$) \\
-DEB  & Thermal Cautery Debris& \textbf{OOD Artifact} & 0.14 & \textbf{0.82} & \textbf{0.72} & \textbf{Rejected ($u \ge \tau$)} \\
-LYM  & Normal Lymphocytes    & In-Distribution & 0.78 & 0.85 & 0.20 & Admitted ($u < \tau$) \\
-MUC  & Acellular Mucus Pools & \textbf{OOD Artifact} & 0.18 & \textbf{0.86} & \textbf{0.68} & \textbf{Rejected ($u \ge \tau$)} \\
-MUS  & Smooth Muscle         & In-Distribution & 0.80 & 0.86 & 0.18 & Admitted ($u < \tau$) \\
-NORM & Normal Colon Mucosa   & In-Distribution & 0.82 & 0.88 & 0.16 & Admitted ($u < \tau$) \\
-STR  & Cancer-Assoc.\ Stroma & Boundary Region & 0.46 & 0.52 & 0.24 & Admitted ($u < \tau$) \\
-TUM  & Colorectal Carcinoma  & In-Distribution & 0.85 & 0.91 & 0.14 & Admitted ($u < \tau$) \\
-\midrule
-\multicolumn{3}{l}{\textbf{Spearman Rank Correlation ($\rho_{\text{conf}, u}$)}} & \multicolumn{4}{c}{\textbf{Binary $\rho = -1.0000$ vs.\ 9-Class $\rho = \mathbf{-0.4505}$}} \\
-\multicolumn{3}{l}{\textbf{Expected Calibration Error (ECE)}} & \multicolumn{4}{c}{\textbf{Source $0.1651 \to$ Evidential SafeAdapt $\mathbf{0.0855}$ ($-48.2\%$)}} \\
-\bottomrule
-\end{tabular}%
-}
-\end{table}
-
 \section{Discussion}
 \textbf{Failure Containment vs.\ Positive Domain Transfer.} Our empirical findings delineate two distinct operational regimes: \emph{defensive failure containment} and \emph{positive domain transfer}. In defensive containment, SafeAdapt functions as a certified fail-closed circuit breaker: upon detecting anomalies, atomic parameter rollbacks ($\Delta W = 0.00000000$ in $1.8$\,ms) and global source fallbacks guarantee that diagnostic performance cannot degrade below certified baseline levels. In positive adaptation, geometry-preserving prototype transport (OT-TTA) and biologically conditioned gating (CMR) transcend simple circuit breaking, achieving genuine diagnostic improvements while remaining strictly enveloped by fail-closed runtime bounds.
 
-\textbf{Negative Transfer as a Clinical Containment Reality.} Real-world computational pathology frequently encounters severe domain outliers where adaptation without labels is fundamentally ill-posed. Under international medical device risk-management principles (e.g., IEC 62304 frameworks for Software as a Medical Device), autonomous clinical systems must exhibit deterministic fail-closed containment. SafeAdapt's value lies not in fabricating artificial target gains on outlier distributions, but in bounding parameter drift within an $L_\infty \le 0.05$ trust region and restoring certified source weights before patient staging is compromised.
+\textbf{Negative Transfer as a Clinical Containment Reality.} Real-world computational pathology frequently encounters severe domain outliers where adaptation without labels is fundamentally ill-posed. Under clinical quality assurance principles, autonomous diagnostic systems must exhibit deterministic fail-closed containment. SafeAdapt's value lies not in fabricating artificial target gains on intractable distributions, but in bounding parameter drift within an $L_\infty \le 0.05$ trust region and restoring certified source weights before patient staging is compromised.
 
-\textbf{Regulatory-Aware Safety Design via Deterministic Per-WSI Resets.} Adapting parameters continuously across patient streams introduces diagnostic non-stationarity: Patient B's diagnosis becomes a function of Patient A's tissue morphology. SafeAdapt resolves this by formulating adaptation as an episodic Markov Decision Process with deterministic resets: model weights and optimizer buffers are flushed to certified source state $\theta_0$ upon whole-slide image boundaries, guaranteeing permutation invariance across patient arrival sequences.
+\textbf{Safety Design via Deterministic Per-WSI Resets.} Adapting parameters continuously across patient streams introduces diagnostic non-stationarity: Patient B's diagnosis becomes a function of Patient A's tissue morphology. SafeAdapt resolves this by formulating adaptation as an episodic process with deterministic resets: model weights and optimizer buffers are flushed to certified source state $\theta_0$ upon whole-slide image boundaries, guaranteeing permutation invariance across patient arrival sequences and ensuring strict patient diagnostic isolation.
 
 \section{Limitations}
 \begin{enumerate}
-\item \textbf{Target Cohort Size and Geographic Diversity:} While patch volume is substantial ($N=85{,}054$), target Hospital~2 comprises 10 WSIs from 9 patients. Confirmatory prospective non-inferiority trials demonstrating narrow staging equivalence ($\delta = \pm 0.02$) require $N_{\text{req}} = 142$ patients across multi-ethnic global cohorts.
+\item \textbf{Target Cohort Patient Volume:} While patch volume is substantial ($N=85{,}054$), target Hospital~2 comprises 10 WSIs from 9 patients (3 with nodal metastases). Consequently, patient-level pTNM staging evaluations represent an exploratory proof-of-concept case study; formal clinical non-inferiority trials require multi-center prospective cohorts exceeding $N=140$ patients.
 \item \textbf{Exploratory Detection Protocol Amendment:} In the MIDOG 2021 detection experiment, four boundary tiles required a post-halt reduction in tissue eligibility from 0.25 to 0.10, classifying detection findings as protocol-amended exploratory.
 \item \textbf{Compute Hardware Heterogeneity:} Classification was evaluated on NVIDIA Tesla V100 and RTX 3090 GPUs, whereas online GPU adaptation was profiled on an NVIDIA Tesla T4 container (14.56 GB VRAM).
-\item \textbf{Clinical Environment Validation:} While SafeAdapt implements native HL7 FHIR R4 and DICOM Part 18 audit logging interfaces, formal clinical deployment requires integration with live Picture Archiving and Communication Systems (PACS).
+\item \textbf{Clinical Environment Validation:} While SafeAdapt implements native audit logging interfaces, formal clinical deployment requires integration with live Picture Archiving and Communication Systems (PACS) and Laboratory Information Management Systems (LIMS).
 \end{enumerate}
 
 \section{Conclusion}
-Selective test-time adaptation and fail-closed runtime monitoring provide critical safeguards against catastrophic model collapse under histopathology domain shifts. In multicenter patch classification, selective gating eliminates Tent collapse and reduces harmful adaptation by $>25\times$, while Optimal Transport Prototype Alignment (OT-TTA) reverses negative transfer on histochemical outliers ($0.9360$ on Slide~29; $0.9495 \pm 0.0134$ cohort macro-AUROC). In dense mitotic figure detection, the Cellularity Mitosis Ratio (CMR) eliminates false silence alarms on benign stroma, achieving positive transfer across the 1,100-patch benchmark ($F_1 = 0.5160 \pm 0.0050$). By unifying pre-adaptation conformal risk control, trust-region parameter projection, and atomic state rollbacks with deterministic per-WSI episodic resets, SafeAdapt establishes a verified fail-closed medical interlock that bounds parameter drift and preserves patient-level diagnostic staging under severe domain shift.
+Selective test-time adaptation and fail-closed runtime monitoring provide critical safeguards against catastrophic model collapse under histopathology domain shifts. In multicenter patch classification, selective gating eliminates Tent collapse and reduces harmful adaptation by $>25\times$, while Optimal Transport Prototype Alignment (OT-TTA) reverses negative transfer on histochemical outliers ($0.9360$ on Slide~29; $0.9495 \pm 0.0134$ cohort macro-AUROC). In dense mitotic figure detection, the Cellularity Mitosis Ratio (CMR) eliminates false silence alarms on benign stroma, achieving positive transfer across the 1,100-patch benchmark ($F_1 = 0.5160 \pm 0.0050$). By unifying pre-adaptation conformal risk control, trust-region parameter projection, and atomic state rollbacks with deterministic per-WSI episodic resets, UTTA-MED establishes a verified fail-closed medical interlock that bounds parameter drift and preserves patient-level diagnostic staging under severe domain shift.
 
 \section*{Data and Code Availability}
-The Camelyon17-WILDS dataset is publicly available through the WILDS benchmark consortium (\url{https://wilds.stanford.edu}). The MIDOG 2021 challenge dataset is accessible via Grand Challenge (\url{https://midog2021.grand-challenge.org}). The NCT-CRC-HE dataset is available via Zenodo. All source code, configuration files, trained checkpoints, and evaluation manifests for UTTA-MED and SafeAdapt are permanently archived at \url{https://github.com/avinashreddy7676/UTTA_MED_V1_FINAL}.
+The Camelyon17-WILDS dataset is publicly available through the WILDS benchmark consortium (\url{https://wilds.stanford.edu}). The MIDOG 2021 challenge dataset is accessible via Grand Challenge (\url{https://midog2021.grand-challenge.org}). All source code, configuration files, trained checkpoints, and evaluation manifests for UTTA-MED and SafeAdapt are permanently archived at \url{https://github.com/avinashreddy7676/UTTA_MED_V1_FINAL}.
 
 \section*{Ethical Considerations}
 All investigations were performed on publicly available, fully de-identified retrospective histopathology benchmark cohorts. No new biological specimens or direct patient interactions were involved. Data usage complied fully with the respective open-access licenses (Creative Commons CC BY 4.0 and CC0).
