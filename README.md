@@ -378,20 +378,8 @@ python scripts/verify_consistency.py
 | **Confidence-Gated** | $86.0\%$ | $80.0\%$ | $0.140$ |
 | **SafeAdapt (Ours)** | $\mathbf{86.0\%}$ | $\mathbf{80.0\%}$ | $\mathbf{0.140}$ |
 
-### Table 6: Foundation Model Universality (ResNet-18 vs. ViT-B/16 LoRA, Hospital 2)
-*Source: `results/tables/day4_architecture_universality.csv`*
 
-| Architecture | Adaptation Policy | Trainable Params | Trainable % | Macro AUROC | $F_1$ Score | ECE | Max $L_\infty$ Disp | Latency (ms) | Peak VRAM |
-| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **ResNet-18 (ConvNet)** | Frozen Baseline | 0 | 0.000% | 0.9308 | 0.7840 | 0.0650 | 0.0000 | 32.1 | 412 MB |
-| | Tent (BN-Affine) | 9,600 | 0.080% | 0.9299 | 0.7822 | 0.0655 | 0.3850 | 34.8 | 428 MB |
-| | SafeAdapt (BN-Affine) | 9,600 | 0.080% | 0.9304 | 0.7831 | 0.0651 | 0.0482 | 35.6 | 436 MB |
-| **ViT-B/16 (Pathology FM)** | Frozen Baseline | 0 | 0.000% | 0.9542 | 0.8315 | 0.0520 | 0.0000 | 68.4 | 1,150 MB |
-| | Linear Probe Head | 1,538 | 0.002% | 0.9540 | 0.8310 | 0.0525 | 0.0120 | 69.1 | 1,152 MB |
-| | Unconstrained LoRA ($r=4$) | 75,266 | 0.090% | 0.9512 | 0.8240 | 0.0580 | 0.1820 | 74.2 | 1,280 MB |
-| | SafeAdapt LoRA ($r=4$) | 75,266 | 0.090% | $\mathbf{0.9558}$ | $\mathbf{0.8352}$ | $\mathbf{0.0498}$ | 0.0475 | 75.8 | 1,295 MB |
-
-### Table 7: Biologically Grounded Detection Monitoring (CMR on MIDOG Scanner 3)
+### Table 6: Biologically Grounded Detection Monitoring (CMR on MIDOG Scanner 3)
 *Source: `results/tables/day6_detection_safety.csv`*
 
 | Detection Policy | Mean $F_1$ Score | False Silence Alarms | Premature Fallback | Latch Step | Adaptation Stability |
@@ -402,7 +390,7 @@ python scripts/verify_consistency.py
 | **SafeAdapt (Cellularity CMR)** | $\mathbf{0.4582}$ | $\mathbf{0}$ | $\mathbf{NO}$ | Never | Controlled Adaptation (Full Stream) |
 | **SafeAdapt (CMR + Fallback)** | $\mathbf{0.4582}$ | $\mathbf{0}$ | $\mathbf{NO}$ | Active Standby | Fully Safeguarded |
 
-### Table 8: Offline Stain Normalization SVD Instability vs. SafeAdapt (Slide 29 Outlier)
+### Table 7: Offline Stain Normalization SVD Instability vs. SafeAdapt (Slide 29 Outlier)
 *Source: `results/tables/day3_stain_normalization.csv`*
 
 | Normalization | Method | Hospital 2 AUROC | Slide 29 AUROC | Stain Cond # | OD Residual | Latency (ms) |
@@ -417,16 +405,7 @@ python scripts/verify_consistency.py
 | | Tent (Unconstrained) | 0.9295 | 0.7210 | 28.5 | 0.142 | 61.0 |
 | | SafeAdapt (Full) | $\mathbf{0.9315}$ | $\mathbf{0.7485}$ | 28.5 | 0.142 | 61.8 |
 
-### Table 9: Multi-Class Evidential Decoupling (NCT-CRC-HE 9-Class Histology)
-*Source: `results/optional/nctcrc/nctcrc_evidential_decoupling.json`*
-
-| Metric / Property | Binary Classification ($K=2$) | Multi-Class Tissue Classification ($K=9$) | Scientific Significance |
-| :--- | :---: | :---: | :--- |
-| **Spearman Rank Correlation $\rho$** | $\mathbf{-0.9917}$ | $\mathbf{-0.4505}$ | Epistemic vacuity strictly decouples from confidence on $K=9$ |
-| **Mathematical Origin** | $\text{Var}_{\text{MC}} \approx [p(1-p)]^2 \sigma_z^2$ | Dirichlet Prior Dispersion | Decouples out-of-distribution debris from in-distribution ambiguity |
-| **Gating Mechanism** | Confidence Threshold $\tau = 0.90$ | Evidential Vacuity $\tau_{\text{vac}} = 0.592$ | Isolates tissue artifacts without multi-pass MC latency |
-
-### Table 10: Master Elevated Adaptation Benchmark (UTTA-Med v2 & SafeAdapt v2)
+### Table 8: Master Elevated Adaptation Benchmark (UTTA-Med v2 & SafeAdapt v2)
 *Sources: `results/tables/elevated_performance_summary.csv`, `results/tables/slide29_attractor_reversal.csv`, `results/tables/elevated_detection_summary.csv`, `results/tables/paired_statistical_elevation.csv`*
 
 #### Track A: Camelyon17-WILDS Classification (Hospital 2, 5 Seeds: 42, 123, 2024, 7, 99)
