@@ -67,6 +67,10 @@ check("v1_utta_auroc_mean", 0.935, float(str(df_main.loc[df_main['Method'] == 'U
 check("v1_conf_f1_mean", 0.831, float(str(df_main.loc[df_main['Method'] == 'Confidence-gated', f1_col].values[0]).split()[0]))
 # UTTA-Med: F1 mean
 check("v1_utta_f1_mean", 0.830, float(str(df_main.loc[df_main['Method'] == 'UTTA-Med', f1_col].values[0]).split()[0]))
+# UTTA-Med v2: AUROC mean
+check("v2_utta_auroc_mean", 0.950, float(str(df_main.loc[df_main['Method'] == 'UTTA-Med v2 (Proposed)', auroc_col].values[0]).split()[0]))
+# UTTA-Med v2: F1 mean
+check("v2_utta_f1_mean", 0.842, float(str(df_main.loc[df_main['Method'] == 'UTTA-Med v2 (Proposed)', f1_col].values[0]).split()[0]))
 
 
 # Test checks for Table 2 (v1 Paired Statistics)
