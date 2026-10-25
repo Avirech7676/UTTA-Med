@@ -1,13 +1,15 @@
-\documentclass[journal]{IEEEtran}
+\documentclass[conference]{IEEEtran}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
 \usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{multirow}
+\usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{times}
+\usepackage{multirow}
 \usepackage{url}
 \usepackage{algorithm}
-\usepackage{algorithmic}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
@@ -22,28 +24,27 @@
 \setlength{\dbltextfloatsep}{5pt plus 1pt minus 1pt}
 \setlength{\dblfloatsep}{5pt plus 1pt minus 1pt}
 
-\title{Fail-Closed Test-Time Adaptation and Runtime Safeguards for Digital Pathology: Multicenter Classification and Dense Detection Under Severe Domain Shift}
+\title{Selective Test-Time Adaptation and Fail-Closed Safeguards for Digital Pathology: Multicenter Classification and Dense Detection Under Domain Shift}
 
 \author{
 \IEEEauthorblockN{Avinash Reddy Cheerapareddy}
-\thanks{Manuscript received October 25, 2026. This work was supported by institutional computational resources. The author is with the Department of Computational Pathology and Artificial Intelligence (email: avinashreddych7@gmail.com).}
+\IEEEauthorblockA{Department of Computer Science and Engineering,\\
+SRM University-AP, Amaravati, Andhra Pradesh, India.\\
+avinashreddy\_cheerapareddy@srmap.edu.in, avinashreddy.crp@gmail.com}
 }
-
-\markboth{IEEE Transactions on Medical Imaging,~Vol.~XX, No.~XX,~October~2026}%
-{Cheerapareddy: Fail-Closed Test-Time Adaptation and Runtime Safeguards for Digital Pathology}
 
 \maketitle
 
 \begin{abstract}
-Deep learning models trained on source pathology centers frequently degrade when deployed across unseen hospitals and optical slide scanners. Test-time adaptation (TTA) aims to mitigate distribution shift using unlabeled target streams, but unconstrained entropy minimization (Tent) is notoriously unstable: on Camelyon17-WILDS multicenter metastasis classification, Tent collapses on 2 of 5 random seeds ($F_1 \approx 0.05$, harmful adaptation rate $18.7\% \pm 17.9\%$). In this work, we demonstrate that this catastrophic failure is driven by single-class attractor collapse on histochemical outliers (documented on Slide 29, where Tent AUROC plunges from $0.8592 \to 0.0521$). We formulate UTTA-MED, coupling Entropic Optimal Transport prototype alignment (OT-TTA) with fail-closed runtime safeguards (SafeAdapt). Primary evaluations are conducted across extensive patch-level streaming benchmarks (Camelyon17-WILDS, $N=85{,}054$ patches across 10 whole-slide images) and dense mitotic figure detection (MIDOG 2021, 50 held-out cases, 1,100 patches across scanner shifts), complemented by an exploratory clinical staging case study on the 9 patients of Hospital~2. On Camelyon17 Hospital~2, by strictly enforcing marginal class balance ($\mathbf{Q}^T \mathbf{1}_B = \mathbf{r}$) via Sinkhorn-Knopp iterations, OT-TTA mathematically precludes majority-class attractor collapse, reversing negative transfer on Slide 29 ($0.8592 \to 0.9324 \pm 0.0078$ mean AUROC; $0.9360$ on seed 42) and elevating cohort performance to $0.9495 \pm 0.0134$ macro-AUROC across five random seeds ($p = 0.0312$, paired Wilcoxon signed-rank test), cutting Expected Calibration Error by 43.2\% ($\text{ECE} = 0.0745$), and slashing harmful adaptation to $0.0018 \pm 0.0003$. In exploratory clinical translation, unconstrained Tent collapses patient-level pTNM staging from $88.0\%$ to $50.0\%$, whereas UTTA-MED preserves $86.0\%$ diagnostic concordance. We analytically prove via first-order Taylor expansion (Proposition 1) that Monte Carlo Dropout predictive variance and output confidence are rank-equivalent on binary classification ($\rho = -0.9917$, $p = 9.73 \times 10^{-286}$), establishing why scalar uncertainty filtering fails to prevent confirmation bias. For dense mitotic figure detection, we introduce the Cellularity Mitosis Ratio (CMR), which conditions silence monitoring on hematoxylin optical density, eliminating all 14 false silence alarms on benign acellular stroma and enabling continuous active adaptation ($F_1 = 0.5160 \pm 0.0050$, $\Delta F_1 = +0.0575$, $p < 0.001$). Finally, we prove a PAC $L_\infty$ drift bound (Theorem 1) guaranteeing that parameter projection ($\|\theta_t - \theta_0\|_\infty \le 0.05$) bounds maximum output probability displacement to $\le 0.0460$. These findings demonstrate that geometry-preserving transport alignment and fail-closed runtime interlocks provide essential reliability containment under severe histopathological domain shift.
+Deep learning models trained on source pathology centers frequently degrade when deployed across unseen hospitals and optical scanners. Test-time adaptation (TTA) aims to mitigate distribution shift using unlabeled target data, but unconstrained entropy minimization is unstable: under a fair BatchNorm-affine protocol on Camelyon17-WILDS patch metastasis classification, Tent collapses on 2 of 5 random seeds ($F_1 \approx 0.05$). We investigate selective TTA and fail-closed safeguards across two distinct histopathology tasks: binary metastasis classification and dense mitotic figure detection. For patch classification on Camelyon17-WILDS (ResNet-18, target Hospital~2, $N=85{,}054$ patches across 10 whole-slide images), a hard uncertainty gate admits target patches to adaptation only when predictive uncertainty falls below a threshold $\tau$ fixed on a held-out center. Across five random seeds, selective gating reduces the harmful adaptation rate from $0.187 \pm 0.179$ (Tent) to $0.007 \pm 0.003$ ($>25\times$ reduction) and improves $F_1$ score on every seed ($+0.023$ vs.\ frozen source, 95\% CI $[0.010, 0.036]$). However, Monte Carlo Dropout variance (UTTA-MED) achieves similar observed performance to softmax confidence gating ($p=0.869$), and AUROC gains are not statistically significant ($+0.006$, 95\% CI $[-0.012, +0.024]$). To resolve single-class attractor collapse on stain outliers, we formulate UTTA-MED coupling Entropic Optimal Transport prototype alignment (OT-TTA) with fail-closed runtime safeguards (SafeAdapt). On Camelyon17 Hospital~2, OT-TTA mathematically precludes majority-class attractor collapse, reversing negative transfer on Slide 29 ($0.8592 \to 0.9324 \pm 0.0078$ mean AUROC; $0.9360$ on seed 42) and elevating cohort performance to $0.9495 \pm 0.0134$ macro-AUROC across five random seeds ($p = 0.0312$), cutting Expected Calibration Error to $0.0745$, and slashing harmful adaptation to $0.0018 \pm 0.0003$. For dense mitotic figure detection on held-out MIDOG 2021 Scanner~3 (Faster R-CNN, 50 cases, 1,100 spatially stratified patches, 3 seeds), we introduce the Cellularity Mitosis Ratio (CMR), which conditions silence monitoring on hematoxylin optical density, eliminating all 14 false silence alarms on benign acellular stroma and enabling continuous active adaptation ($F_1 = 0.5160 \pm 0.0050$, $\Delta F_1 = +0.0575$, $p < 0.001$). Finally, we prove a PAC $L_\infty$ drift bound guaranteeing that parameter projection ($\|\theta_t - \theta_0\|_\infty \le 0.05$) bounds maximum output probability displacement to $\le 0.0460$ and enforce episodic whole-slide deterministic resets ensuring patient diagnostic isolation.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Test-time adaptation, clinical AI safety, digital pathology, fail-closed safeguards, optimal transport, Camelyon17, MIDOG 2021, uncertainty quantification.
+Test-time adaptation, uncertainty estimation, digital pathology, fail-closed safeguards, optimal transport, Camelyon17, MIDOG 2021, domain shift, reliability.
 \end{IEEEkeywords}
 
 \section{Introduction}
-\IEEEPARstart{C}{ross-center} distribution shift is an unavoidable operational impediment in clinical computational pathology: differences in whole-slide scanner optics, sensor spectral responses, histochemical staining protocols, microtomy section thickness, and patient cohorts induce substantial domain divergence~\cite{koh2021wilds,bandi2018camelyon17,aubreville2023mitosis}. A deep neural network trained to high diagnostic accuracy on source institutions frequently retains discriminative ranking in-domain while suffering severe drops in sensitivity, calibration, and patient-level staging accuracy upon deployment at an unseen hospital~\cite{histopathc2026}.
+Cross-center distribution shift is an unavoidable operational impediment in clinical computational pathology: differences in whole-slide scanner optics, sensor spectral responses, histochemical staining protocols, microtomy section thickness, and patient cohorts induce substantial domain divergence~\cite{koh2021wilds,bandi2018camelyon17,aubreville2023mitosis}. A deep neural network trained to high diagnostic accuracy on source institutions frequently retains discriminative ranking in-domain while suffering severe drops in sensitivity, calibration, and patient-level staging accuracy upon deployment at an unseen hospital~\cite{histopathc2026}.
 
 Test-time adaptation (TTA) addresses this diagnostic gap by updating model parameters online using unlabeled target batches during clinical inference~\cite{wang2021tent,liang2023comprehensive}. Unsupervised entropy minimization (Tent)~\cite{wang2021tent} has gained widespread adoption due to its modular simplicity: optimizing prediction entropy over Batch Normalization affine scale and shift parameters ($\gamma, \beta$) without accessing source data. However, entropy minimization operates under an unverified premise: that low-entropy target predictions are predominantly correct. When histochemical or optical shifts violate this premise, high-confidence incorrect pseudo-labels act as reinforcement signals, creating a self-reinforcing feedback loop that causes catastrophic feature representation collapse~\cite{histopathc2026}.
 
@@ -80,8 +81,7 @@ Conformal prediction provides rigorous, distribution-free risk guarantees~\cite{
 \centering
 \caption{2021--2026 Literature-Gap Matrix: Positioning SafeAdapt Against Baseline, Continual, and Pathology TTA Paradigms.}
 \label{tab:lit_gap}
-\scriptsize
-\setlength{\tabcolsep}{2.5pt}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}p{2.0cm}p{2.2cm}p{2.3cm}p{2.3cm}p{1.6cm}p{2.6cm}p{3.0cm}@{}}
 \toprule
 Method / Venue / Year & Core Mechanism & Safety / Uncertainty Gate & Failure Mode & Latency / Compute & Clinical Limitation & SafeAdapt Distinction \\
@@ -93,9 +93,10 @@ CoTTA (CVPR 2022)~\cite{wang2022cotta} & Mean teacher + weight restore & Stochas
 RoTTA (CVPR 2023)~\cite{yuan2023rotta} & Robust BN + memory bank & Category balance filtering & Fails under extreme spatial sparsity & Medium ($1.5\times$) & Memory banks breach patient data & Label-free, memory-bank-free \\
 MEMO (NeurIPS 2022)~\cite{zhang2022memo} & Marginal entropy min. & Multi-view consistency & Fails under chromatic rotation & Very High ($16\times$) & Prohibitive $500$\,ms/patch latency & Single-pass bounded streaming ($1.1\times$) \\
 AdaPath (MICCAI 2023)~\cite{chen2023adapath} & CycleGAN stain transfer & Cycle-consistency loss & Hallucinates non-existent morphology & Very High ($8\times$) & High latency ($150$\,ms/patch) & Generative-free weight adaptation \\
-\textbf{UTTA-MED (Ours)} & Fail-Closed Safe TTA & Dual Rollback + Conformal & Fail-closed fallback to source & Low ($1.1\times$) & Patient-isolated WSI resets & OT marginals preclude collapse \\
+\textbf{UTTA-MED} & Fail-Closed Safe TTA & Dual Rollback + Conformal & Fail-closed fallback to source & Low ($1.1\times$) & Patient-isolated WSI resets & OT marginals preclude collapse \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table*}
 
 \subsection{Object Detection TTA and Spatial Sparsity}
@@ -203,7 +204,10 @@ The linear classification head $f(x) = W^T \phi(x) + b$ has bounded matrix spect
 Let affine normalization parameters $\theta = (\gamma, \beta)$ be constrained to an $L_\infty$ ball of radius $\epsilon_{\mathrm{trust}}$ centered at source weights $\theta_0$, while linear classification head weights remain fixed. If parameter projection $\|\theta_t - \theta_0\|_\infty \le \epsilon_{\mathrm{trust}}$ is enforced at each step $t \in [1, T]$, then for any target sample $x \in \mathcal{X}$ across the entire adaptation trajectory $t \in [1, T]$, the maximum output probability shift from the source baseline satisfies:
 \begin{equation}
 \label{eq:theorem1_bound}
-\sup_{x \in \mathcal{X}, t \in [1, T]} |\sigma(z_t(x)) - \sigma(z_0(x))| \le \frac{1}{4} L_W R_\phi \epsilon_{\mathrm{trust}}.
+\begin{aligned}
+\sup_{x \in \mathcal{X}, t \in [1, T]} &|\sigma(z_t(x)) - \sigma(z_0(x))| \\
+&\le \frac{1}{4} L_W R_\phi \epsilon_{\mathrm{trust}}.
+\end{aligned}
 \end{equation}
 For empirical source weights with operator norm $\|W_{\mathrm{head}}\|_2 = 1.8421$ and normalized feature radius $R_\phi \le 2.0$, maximum output probability deviation cannot exceed $\Delta p_{\max} \le 0.0460$. Consequently, single-class attractor collapse ($p \to 0$ or $p \to 1$) is mathematically precluded across the full adaptation trajectory for all samples with initial baseline margin $|p_0(x) - 0.5| > 0.0460$.
 \end{theorem}
@@ -225,14 +229,20 @@ The optimal soft assignment coupling $\mathbf{Q}^* \in \mathbb{R}_+^{B \times K}
 subject to the exact marginal constraints:
 \begin{equation}
 \label{eq:ot_marginals}
-\mathbf{Q} \mathbf{1}_K = \mathbf{u} = \frac{1}{B} \mathbf{1}_B, \quad \mathbf{Q}^T \mathbf{1}_B = \mathbf{v} = \mathbf{r},
+\begin{aligned}
+\mathbf{Q} \mathbf{1}_K &= \mathbf{u} = \frac{1}{B} \mathbf{1}_B, \\
+\mathbf{Q}^T \mathbf{1}_B &= \mathbf{v} = \mathbf{r},
+\end{aligned}
 \end{equation}
 where $\mathbf{r} \in \Delta^K$ denotes the certified source class prior distribution ($\sum_k r_k = 1.0$), and $H(\mathbf{Q}) = -\sum_{i, k} Q_{ik} (\ln Q_{ik} - 1)$.
 
 By the Sinkhorn-Knopp theorem, the unique optimal transport coupling takes the scaling form $\mathbf{Q}^* = \text{diag}(\mathbf{u}^*) \mathbf{K} \text{diag}(\mathbf{v}^*)$, where kernel $\mathbf{K} = \exp(-\mathbf{C} / \epsilon_{\text{ot}})$. The dual scaling vectors $\mathbf{u}^*$ and $\mathbf{v}^*$ are computed via efficient matrix-vector iterations ($O(B \cdot K)$ per step):
 \begin{equation}
 \label{eq:sinkhorn_iters}
-\mathbf{u}^{(t+1)} = \frac{\frac{1}{B} \mathbf{1}_B}{\mathbf{K} \mathbf{v}^{(t)}}, \quad \mathbf{v}^{(t+1)} = \frac{\mathbf{r}}{\mathbf{K}^T \mathbf{u}^{(t+1)}},
+\begin{aligned}
+\mathbf{u}^{(t+1)} &= \frac{\frac{1}{B} \mathbf{1}_B}{\mathbf{K} \mathbf{v}^{(t)}}, \\
+\mathbf{v}^{(t+1)} &= \frac{\mathbf{r}}{\mathbf{K}^T \mathbf{u}^{(t+1)}},
+\end{aligned}
 \end{equation}
 converging deterministically within $T_{\text{sinkhorn}} \le 3$ scaling iterations at $\epsilon_{\text{ot}} = 0.1$ with marginal constraint residual $\|\mathbf{Q} \mathbf{1}_K - \frac{1}{B}\mathbf{1}_B\|_\infty < 10^{-3}$, requiring only $3.5$\,ms per batch on GPU.
 
@@ -336,7 +346,7 @@ Whole-slide image IDs are strictly partitioned across splits to avoid leakage.
 \textit{Random Seeds and Evaluation Metrics:} Five independent random seeds are evaluated: $\{42, 123, 2024, 7, 99\}$. We report AUROC, AUPRC, $F_1$ score, Expected Calibration Error (ECE, 15 bins)~\cite{guo2017calibration}, Brier score, adaptation coverage fraction, and the harmful adaptation rate:
 \begin{equation}
 \label{eq:harm_rate}
-\mathrm{Harm} = \frac{|\{i : y_i = \hat{y}_i^{\mathrm{before}} \land y_i \ne \hat{y}_i^{\mathrm{after}}\}|}{|\{i : y_i = \hat{y}_i^{\mathrm{before}}\}|}.
+\mathrm{Harm} = \frac{\bigl|\{i : y_i = \hat{y}_i^{\mathrm{pre}} \land y_i \ne \hat{y}_i^{\mathrm{post}}\}\bigr|}{\bigl|\{i : y_i = \hat{y}_i^{\mathrm{pre}}\}\bigr|}.
 \end{equation}
 
 \subsection{MIDOG 2021 Multi-Scanner Mitosis Detection}
@@ -656,13 +666,15 @@ In accordance with IEEE and international publication integrity guidelines on ge
 Let feature extractor $\phi: \mathcal{X} \to \mathbb{R}^d$ produce representations satisfying Assumption 1: $\sup_{x \in \mathcal{X}} \|\phi(x)\|_2 \le R_\phi < \infty$. Let the linear classification head be parameterized by weight matrix $W \in \mathbb{R}^{d \times 1}$ and bias $b \in \mathbb{R}$, yielding logit $z(x) = W^T \phi(x) + b$ with operator norm $\|W\|_2 \le L_W$ (Assumption 2). Under test-time adaptation across stream $t \in [1, T]$, affine parameters $\theta = (\gamma, \beta)$ are updated. For any target input $x$, let $\phi_0(x)$ denote the feature representation under source parameters $\theta_0$, and $\phi_T(x)$ denote the representation under adapted parameters $\theta_T$. By the enforced $L_\infty$ trust region constraint, $\|\theta_T - \theta_0\|_\infty \le \epsilon_{\mathrm{trust}}$.
 
 Because BatchNorm normalizes features coordinate-wise, the parameter displacement induces a feature representation perturbation satisfying:
-\begin{equation}
-\|\phi_T(x) - \phi_0(x)\|_2 \le \|\theta_T - \theta_0\|_\infty \|\phi_0(x)\|_2 \le \epsilon_{\mathrm{trust}} R_\phi.
-\end{equation}
+\begin{align}
+\|\phi_T(x) - \phi_0(x)\|_2 &\le \|\theta_T - \theta_0\|_\infty \|\phi_0(x)\|_2 \notag \\
+&\le \epsilon_{\mathrm{trust}} R_\phi.
+\end{align}
 Applying the Cauchy-Schwarz inequality to the linear logit difference yields:
 \begin{align}
 |z_T(x) - z_0(x)| &= |W^T (\phi_T(x) - \phi_0(x))| \notag \\
-&\le \|W\|_2 \|\phi_T(x) - \phi_0(x)\|_2 \le L_W R_\phi \epsilon_{\mathrm{trust}}.
+&\le \|W\|_2 \|\phi_T(x) - \phi_0(x)\|_2 \notag \\
+&\le L_W R_\phi \epsilon_{\mathrm{trust}}.
 \end{align}
 The output probability is given by the sigmoid function $p(x) = \sigma(z(x)) = \frac{1}{1 + e^{-z(x)}}$. By the Mean Value Theorem, there exists $\xi$ between $z_0(x)$ and $z_T(x)$ such that:
 \begin{equation}
@@ -673,9 +685,10 @@ Since $\sigma'(z) = \sigma(z)(1 - \sigma(z))$, the derivative achieves its globa
 \sup_{x \in \mathcal{X}} |\sigma(z_T(x)) - \sigma(z_0(x))| \le \frac{1}{4} L_W R_\phi \epsilon_{\mathrm{trust}}.
 \end{equation}
 For empirical source weights, $\|W_{\mathrm{head}}\|_2 = 1.8421$, normalized feature ball radius $R_\phi \le 2.0$, and trust region radius $\epsilon_{\mathrm{trust}} = 0.05$. Evaluating the numerical bound yields:
-\begin{equation}
-\Delta p_{\max} \le \frac{1}{4} (1.8421) (2.0) (0.05) = 0.04605 \approx 0.0460.
-\end{equation}
+\begin{align}
+\Delta p_{\max} &\le \frac{1}{4} (1.8421) (2.0) (0.05) \notag \\
+&= 0.04605 \approx 0.0460.
+\end{align}
 For any target sample whose baseline prediction margin satisfies $|p_0(x) - 0.5| > \Delta p_{\max} = 0.0460$, the output probability cannot cross the classification threshold:
 \begin{enumerate}
 \item If $p_0(x) > 0.5460$, then $p_T(x) \ge p_0(x) - \Delta p_{\max} > 0.5000$.
