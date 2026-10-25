@@ -7,6 +7,10 @@ from src.v2.safeadapt.detection_monitor import (
     DetectionSafetyMonitor,
     DetectionSafetyMonitorConfig,
 )
+from src.v2.safeadapt.detection_v2 import (
+    SafeAdaptDetectionAdapterV2,
+    SafeAdaptDetectionConfig,
+)
 from src.v2.safeadapt.monitor import (
     AlarmLevel,
     CollapseMonitor,
@@ -27,9 +31,12 @@ __all__ = [
     "CollapseMonitorConfig",
     "DetectionSafetyMonitor",
     "DetectionSafetyMonitorConfig",
+    "SafeAdaptDetectionAdapterV2",
+    "SafeAdaptDetectionConfig",
     "AlarmLevel",
     "MonitorMode",
     "SlideState",
     "MonitorWindowStats",
 ]
+
 

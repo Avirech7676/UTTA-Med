@@ -36,8 +36,10 @@ experiments/**/metrics.json
 # Archives & Bundles
 *.zip
 archive/
+tmp/
 
 # IDE / OS
+
 .idea/
 .vscode/
 .DS_Store

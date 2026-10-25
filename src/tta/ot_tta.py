@@ -25,6 +25,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from src.tta.bn import collect_bn_affine, configure_tta_mode
+from src.tta.stain_consistency import BeerLambertStainAugmenter
 
 
 def sinkhorn_knopp_transport(
@@ -73,6 +74,7 @@ class PrototypeOT_TTA(nn.Module):
         lambda_ot: float = 1.0,
         lambda_div: float = 0.5,
         lambda_anchor: float = 0.01,
+        lambda_cr: float = 0.5,
         epsilon_ot: float = 0.05,
         max_displacement: float = 0.05,
     ):
@@ -82,8 +84,10 @@ class PrototypeOT_TTA(nn.Module):
         self.lambda_ot = lambda_ot
         self.lambda_div = lambda_div
         self.lambda_anchor = lambda_anchor
+        self.lambda_cr = lambda_cr
         self.epsilon_ot = epsilon_ot
         self.max_displacement = max_displacement
+        self.stain_augmenter = BeerLambertStainAugmenter()
 
         # Register immutable source prototypes: Shape (K, D)
         self.register_buffer("prototypes", F.normalize(source_prototypes, p=2, dim=-1))
@@ -116,7 +120,7 @@ class PrototypeOT_TTA(nn.Module):
         return cost
 
     def adapt_batch(self, x: torch.Tensor) -> Dict[str, Any]:
-        """Performs one step of Optimal Transport & Class Diversity adaptation."""
+        """Performs one step of Optimal Transport, Diversity & Stain Consistency adaptation."""
         self.model.eval()
 
         # Extract features and logits
@@ -155,10 +159,27 @@ class PrototypeOT_TTA(nn.Module):
                 anchor = self.anchor_params[name].to(x.device)
                 loss_anchor = loss_anchor + torch.sum((p - anchor) ** 2)
 
+        # 4. Beer-Lambert Stain Consistency Regularization Loss
+        loss_cr = torch.tensor(0.0, device=x.device)
+        if self.lambda_cr > 0.0:
+            x_cr = self.stain_augmenter(x)
+            if hasattr(self.model, "extract_features"):
+                feats_cr = self.model.extract_features(x_cr)
+                logits_cr = self.model.fc(feats_cr)
+            else:
+                feats_cr = self.model.stem(x_cr) if hasattr(self.model, "stem") else x_cr
+                feats_cr = torch.flatten(feats_cr, 1)
+                logits_cr = self.model.classifier(feats_cr) if hasattr(self.model, "classifier") else self.model.fc(feats_cr)
+            probs_cr = F.softmax(logits_cr, dim=-1) if logits_cr.size(-1) > 1 else torch.sigmoid(logits_cr)
+            if logits_cr.size(-1) == 1:
+                probs_cr = torch.cat([1.0 - probs_cr, probs_cr], dim=-1)
+            loss_cr = F.mse_loss(probs, probs_cr)
+
         total_loss = (
             self.lambda_ot * loss_ot
             + self.lambda_div * loss_div
             + self.lambda_anchor * loss_anchor
+            + self.lambda_cr * loss_cr
         )
 
         # Gradient update
@@ -196,5 +217,7 @@ class PrototypeOT_TTA(nn.Module):
             "loss_total": float(total_loss.item()),
             "loss_ot": float(loss_ot.item()),
             "loss_div": float(loss_div.item()),
+            "loss_cr": float(loss_cr.item()),
             "logits": post_logits.detach(),
         }
+

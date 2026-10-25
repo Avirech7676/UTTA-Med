@@ -10,6 +10,7 @@ Provides modular, faithful, and compute-efficient test-time adaptation gating:
 """
 
 from src.v2.gating.adapter import GatedSafeAdaptAdapter
+from src.v2.gating.cmr_gate import CellularityMitosisRatioGate, CMRGateConfig
 from src.v2.gating.policies import (
     BaseGatingPolicy,
     ConfidenceGatingPolicy,
@@ -30,4 +31,7 @@ __all__ = [
     "GatedSafeAdaptAdapter",
     "GatingTelemetryTracker",
     "BatchGatingRecord",
+    "CellularityMitosisRatioGate",
+    "CMRGateConfig",
 ]
+
