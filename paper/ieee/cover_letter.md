@@ -35,7 +35,7 @@ This manuscript presents an empirical investigation of selective test-time adapt
 - The manuscript is an original work and is not under consideration for publication elsewhere.
 - All authors have reviewed and approved the manuscript.
 - Secondary analysis was conducted strictly on public, de-identified benchmark datasets (Camelyon17-WILDS and MIDOG 2021).
-- The complete source code, automated regression test suite (148 passed unit tests), configuration files, verified Kaggle Tesla T4 GPU training outputs, and adapted checkpoint weights (SHA-256: `185cb4c7215ad10a82051c6bde14b22ca9c732463b2111542892b748221a9a1b`) are packaged in full compliance with IEEE reproducibility requirements.
+- The complete source code, automated regression test suite (148 passed unit tests), configuration files, verified Kaggle Tesla T4 GPU training outputs, and adapted checkpoint weights (SHA-256: `185cb4c7215ad10a82051c6bde14b22ca9c732463b2111542892b748221a9a1b`) are publicly archived under Zenodo DOI: [10.5281/zenodo.23658430](https://doi.org/10.5281/zenodo.23658430) and GitHub: [https://github.com/Avirech7676/UTTA-Med](https://github.com/Avirech7676/UTTA-Med) in full compliance with IEEE reproducibility requirements.
 
 Thank you for your time and consideration of our manuscript.
 

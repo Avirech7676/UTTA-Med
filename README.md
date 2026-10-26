@@ -1,5 +1,6 @@
 # SafeAdapt-TTA: Clinically Safe Test-Time Adaptation with Evidential Decoupling, Optimal Transport Prototype Alignment, and Closed-Form Parameter Regularization for Digital Pathology
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23658430.svg)](https://doi.org/10.5281/zenodo.23658430)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](INSTALL.md)
 [![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
@@ -525,6 +526,41 @@ SafeAdapt-TTA/
 
 ---
 
+## Citation
+
+If you use this benchmark suite, the SafeAdapt codebase, or the Zenodo dataset deposit in your research, please cite:
+
+### Zenodo Dataset & Artifact Archive (APA)
+> Cheerapareddy, A. R. (2026). SafeAdapt: Geometry-Preserving Optimal Transport and Fail-Closed Safeguards for Test-Time Adaptation in Digital Pathology [Dataset]. Zenodo. [https://doi.org/10.5281/zenodo.23658430](https://doi.org/10.5281/zenodo.23658430)
+
+### BibTeX
+```bibtex
+@dataset{cheerapareddy2026safeadapt_zenodo,
+  author       = {Cheerapareddy, Avinash Reddy},
+  title        = {{SafeAdapt: Geometry-Preserving Optimal Transport and 
+                   Fail-Closed Safeguards for Test-Time Adaptation in 
+                   Digital Pathology}},
+  month        = oct,
+  year         = 2026,
+  publisher    = {Zenodo},
+  version      = {1.0.0},
+  doi          = {10.5281/zenodo.23658430},
+  url          = {https://doi.org/10.5281/zenodo.23658430}
+}
+
+@article{cheerapareddy2026safeadapt,
+  author       = {Cheerapareddy, Avinash Reddy and Sanjana, Gunnam},
+  title        = {{SafeAdapt: Geometry-Preserving Optimal Transport and 
+                   Fail-Closed Safeguards for Test-Time Adaptation in 
+                   Digital Pathology}},
+  journal      = {IEEE Transactions on Medical Imaging},
+  year         = {2026},
+  doi          = {10.5281/zenodo.23658430}
+}
+```
+
+---
+
 ## References
 
 1. **D. Wang et al.**, *"Tent: Fully Test-Time Adaptation by Entropy Minimization,"* in *Proc. Int. Conf. Learn. Represent. (ICLR)*, 2021.
@@ -548,4 +584,8 @@ This project is licensed under the **MIT License** — see the [`LICENSE`](LICEN
 
 - **WILDS Benchmark Team:** For providing the standardized Camelyon17 multicenter histopathology dataset.
 - **MIDOG Challenge Organizers:** For the multi-scanner mitotic figure detection dataset and evaluation frameworks.
-- **Principal Author & Lead Researcher:** Avinash Reddy Cheerapareddy (`avinashreddych7@gmail.com`).
+- **Authors & Researchers:**
+  - Avinash Reddy Cheerapareddy (`avinashreddy_cheerapareddy@srmap.edu.in`)
+  - Gunnam Sanjana (`sanjana_gunnam@srmap.edu.in`)
+  - Department of Computer Science and Engineering, SRM University-AP, Amaravati, Andhra Pradesh, India.
+

@@ -1,12 +1,21 @@
 cff-version: 1.2.0
-message: "If you use this software or benchmark suite in your research, please cite our paper."
-title: "SafeAdapt-TTA: Clinically Safe Test-Time Adaptation with Evidential Decoupling, Optimal Transport Prototype Alignment, and Closed-Form Parameter Regularization for Digital Pathology"
+message: "If you use this software, dataset, or benchmark suite in your research, please cite our Zenodo archive and manuscript."
+title: "SafeAdapt: Geometry-Preserving Optimal Transport and Fail-Closed Safeguards for Test-Time Adaptation in Digital Pathology"
+doi: "10.5281/zenodo.23658430"
+url: "https://doi.org/10.5281/zenodo.23658430"
+repository-code: "https://github.com/Avirech7676/UTTA-Med"
 authors:
   - family-names: "Cheerapareddy"
     given-names: "Avinash Reddy"
-    email: "avinashreddych7@gmail.com"
+    email: "avinashreddy_cheerapareddy@srmap.edu.in"
+    affiliation: "Department of Computer Science and Engineering, SRM University-AP, Amaravati, Andhra Pradesh, India"
+    orcid: "https://orcid.org/0009-0002-3023-747X"
+  - family-names: "Sanjana"
+    given-names: "Gunnam"
+    email: "sanjana_gunnam@srmap.edu.in"
+    affiliation: "Department of Computer Science and Engineering, SRM University-AP, Amaravati, Andhra Pradesh, India"
 version: "1.0.0"
-date-released: "2026-10-25"
+date-released: "2026-10-26"
 license: "MIT"
 keywords:
   - "computational pathology"
@@ -21,6 +30,10 @@ preferred-citation:
   authors:
     - family-names: "Cheerapareddy"
       given-names: "Avinash Reddy"
-  title: "SafeAdapt-TTA: Clinically Safe Test-Time Adaptation with Evidential Decoupling, Optimal Transport Prototype Alignment, and Closed-Form Parameter Regularization for Digital Pathology"
+    - family-names: "Sanjana"
+      given-names: "Gunnam"
+  title: "SafeAdapt: Geometry-Preserving Optimal Transport and Fail-Closed Safeguards for Test-Time Adaptation in Digital Pathology"
   journal: "IEEE Transactions on Medical Imaging"
   year: 2026
+  doi: "10.5281/zenodo.23658430"
+
