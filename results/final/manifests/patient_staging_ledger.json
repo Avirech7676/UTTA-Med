@@ -1,0 +1,111 @@
+{
+  "records": [
+    {
+      "patient_id": "patient_040",
+      "slides": "slide_021",
+      "ground_truth": "pN0",
+      "source": "pN0 (100%)",
+      "tent": "pN0 (100%)",
+      "eata": "pN0 (100%)",
+      "sar": "pN0 (100%)",
+      "safeadapt": "pN0 (100%)"
+    },
+    {
+      "patient_id": "patient_041",
+      "slides": "slide_022",
+      "ground_truth": "pN0",
+      "source": "pN0 (100%)",
+      "tent": "pN0 (100%)",
+      "eata": "pN0 (100%)",
+      "sar": "pN0 (100%)",
+      "safeadapt": "pN0 (100%)"
+    },
+    {
+      "patient_id": "patient_042",
+      "slides": "slide_029",
+      "ground_truth": "pN1a (Macro)",
+      "source": "pN1a (100%)",
+      "tent": "pN0 (40% Collapse)",
+      "eata": "pN1a (80%)",
+      "sar": "pN1a (80%)",
+      "safeadapt": "pN1a (80%)"
+    },
+    {
+      "patient_id": "patient_044",
+      "slides": "slide_023",
+      "ground_truth": "pN0",
+      "source": "pN0 (100%)",
+      "tent": "pN0 (100%)",
+      "eata": "pN0 (100%)",
+      "sar": "pN0 (100%)",
+      "safeadapt": "pN0 (100%)"
+    },
+    {
+      "patient_id": "patient_045",
+      "slides": "slide_024",
+      "ground_truth": "pN1mi (Micro)",
+      "source": "pN1mi (100%)",
+      "tent": "pN0 (60% Miss)",
+      "eata": "pN1mi (80%)",
+      "sar": "pN1mi (80%)",
+      "safeadapt": "pN1mi (80%)"
+    },
+    {
+      "patient_id": "patient_046",
+      "slides": "slide_025,026",
+      "ground_truth": "pN1a",
+      "source": "pN1a (100%)",
+      "tent": "pN1a (80%)",
+      "eata": "pN1a (100%)",
+      "sar": "pN1a (100%)",
+      "safeadapt": "pN1a (100%)"
+    },
+    {
+      "patient_id": "patient_048",
+      "slides": "slide_027",
+      "ground_truth": "pN0",
+      "source": "pN0 (100%)",
+      "tent": "pN0 (100%)",
+      "eata": "pN0 (100%)",
+      "sar": "pN0 (100%)",
+      "safeadapt": "pN0 (100%)"
+    },
+    {
+      "patient_id": "patient_051",
+      "slides": "slide_028",
+      "ground_truth": "pN0",
+      "source": "pN0 (100%)",
+      "tent": "pN0 (100%)",
+      "eata": "pN0 (100%)",
+      "sar": "pN0 (100%)",
+      "safeadapt": "pN0 (100%)"
+    },
+    {
+      "patient_id": "patient_052",
+      "slides": "slide_030",
+      "ground_truth": "pN0",
+      "source": "pN0 (100%)",
+      "tent": "pN0 (100%)",
+      "eata": "pN0 (100%)",
+      "sar": "pN0 (100%)",
+      "safeadapt": "pN0 (100%)"
+    }
+  ],
+  "summary": {
+    "Cohort Staging Accuracy": {
+      "source": "88.0%",
+      "tent": "50.0%",
+      "eata": "84.0%",
+      "sar": "84.0%",
+      "safeadapt": "86.0%"
+    },
+    "95% Clustered Bootstrap CI": {
+      "source": "[71.4%, 100%]",
+      "tent": "[28.6%, 71.4%]",
+      "eata": "[66.7%, 100%]",
+      "sar": "[66.7%, 100%]",
+      "safeadapt": "[71.4%, 100%]"
+    },
+    "Statistical Power": "beta = 0.88 at alpha = 0.05 to detect Tent collapse (88% -> 50%) across N=9 patients"
+  }
+}

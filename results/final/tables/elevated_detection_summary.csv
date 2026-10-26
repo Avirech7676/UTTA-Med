@@ -1,0 +1,5 @@
+Detection Policy,Mean F1,F1 Std,Precision,Recall,False Silence Alarms,Adaptation Stability
+Frozen Source,0.4774,0.0094,0.4916,0.4718,0,Static
+Unconstrained RoI-TTA,0.4702,0.0151,0.5597,0.4096,0,Unbounded FP
+SafeAdapt v1,0.4774,0.0094,0.4916,0.4718,14,Premature Freeze
+SafeAdapt v2 (CMR),0.5172,0.0012,0.5396,0.5013,0,Active Controlled

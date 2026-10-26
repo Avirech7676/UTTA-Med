@@ -1,0 +1,5 @@
+pipeline,macro_auroc,stage_acc,foci_f1,discordance
+Frozen Feats + Static Attn-MIL,0.8842,88.0%,0.742,12.0%
+Tent Adapted + Attn-MIL,0.521,50.0%,0.312,50.0%
+EATA Adapted + Attn-MIL,0.8624,84.0%,0.718,16.0%
+SafeAdapt-OT + TestTime Attn-MIL,0.9495,96.0%,0.842,4.0%

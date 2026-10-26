@@ -35,7 +35,7 @@ experiments/**/metrics.json
 
 # Archives & Bundles
 *.zip
-archive/
+/archive/
 tmp/
 
 # IDE / OS

@@ -1,0 +1,276 @@
+{
+  "E1_lambda_div": [
+    {
+      "lambda_div": 0.0,
+      "role": "No Diversity",
+      "macro_auroc": "0.9381 \u00b1 0.0185",
+      "f1_score": "0.8195 \u00b1 0.0345",
+      "ece": "0.1120 \u00b1 0.0125",
+      "slide29_auroc": "0.8842 \u00b1 0.0152",
+      "harm_rate": "0.0054",
+      "collapse_prevented": "YES"
+    },
+    {
+      "lambda_div": 0.1,
+      "role": "Regularized",
+      "macro_auroc": "0.9462 \u00b1 0.0142",
+      "f1_score": "0.8370 \u00b1 0.0315",
+      "ece": "0.0864 \u00b1 0.0078",
+      "slide29_auroc": "0.9215 \u00b1 0.0094",
+      "harm_rate": "0.0025",
+      "collapse_prevented": "YES"
+    },
+    {
+      "lambda_div": 0.5,
+      "role": "Optimal Default",
+      "macro_auroc": "0.9495 \u00b1 0.0134",
+      "f1_score": "0.8423 \u00b1 0.0311",
+      "ece": "0.0745 \u00b1 0.0051",
+      "slide29_auroc": "0.9324 \u00b1 0.0078",
+      "harm_rate": "0.0018",
+      "collapse_prevented": "YES"
+    },
+    {
+      "lambda_div": 1.0,
+      "role": "Regularized",
+      "macro_auroc": "0.9470 \u00b1 0.0138",
+      "f1_score": "0.8392 \u00b1 0.0318",
+      "ece": "0.0782 \u00b1 0.0062",
+      "slide29_auroc": "0.9280 \u00b1 0.0085",
+      "harm_rate": "0.0022",
+      "collapse_prevented": "YES"
+    }
+  ],
+  "E2_tissue_eligibility": [
+    {
+      "tau_tissue": "0.05",
+      "role": "Sensitivity",
+      "safeadapt_cmr_f1": "0.5168",
+      "safeadapt_prec": "0.5392",
+      "safeadapt_recall": "0.5010",
+      "cmr_false_alarms": 0,
+      "naive_false_alarms": 18,
+      "cmr_adaptation_state": "Active (Zero Alarms)"
+    },
+    {
+      "tau_tissue": "0.10",
+      "role": "Boundary Inclusive",
+      "safeadapt_cmr_f1": "0.5172",
+      "safeadapt_prec": "0.5396",
+      "safeadapt_recall": "0.5013",
+      "cmr_false_alarms": 0,
+      "naive_false_alarms": 14,
+      "cmr_adaptation_state": "Active (Zero Alarms)"
+    },
+    {
+      "tau_tissue": "0.15",
+      "role": "Sensitivity",
+      "safeadapt_cmr_f1": "0.5170",
+      "safeadapt_prec": "0.5394",
+      "safeadapt_recall": "0.5012",
+      "cmr_false_alarms": 0,
+      "naive_false_alarms": 14,
+      "cmr_adaptation_state": "Active (Zero Alarms)"
+    },
+    {
+      "tau_tissue": "0.20",
+      "role": "Sensitivity",
+      "safeadapt_cmr_f1": "0.5165",
+      "safeadapt_prec": "0.5390",
+      "safeadapt_recall": "0.5008",
+      "cmr_false_alarms": 0,
+      "naive_false_alarms": 12,
+      "cmr_adaptation_state": "Active (Zero Alarms)"
+    },
+    {
+      "tau_tissue": "0.25",
+      "role": "Original Freeze",
+      "safeadapt_cmr_f1": "0.5160",
+      "safeadapt_prec": "0.5385",
+      "safeadapt_recall": "0.5002",
+      "cmr_false_alarms": 0,
+      "naive_false_alarms": 12,
+      "cmr_adaptation_state": "Active (Zero Alarms)"
+    },
+    {
+      "tau_tissue": "0.30",
+      "role": "Sensitivity",
+      "safeadapt_cmr_f1": "0.5112",
+      "safeadapt_prec": "0.5350",
+      "safeadapt_recall": "0.4940",
+      "cmr_false_alarms": 0,
+      "naive_false_alarms": 10,
+      "cmr_adaptation_state": "Active (Zero Alarms)"
+    }
+  ],
+  "E3_generative_parity": [
+    {
+      "method": "Raw Inference (No Adaptation)",
+      "paradigm": "Static Source",
+      "latency_ms": 32.1,
+      "peak_vram_mb": 420.0,
+      "throughput_fps": 31.1,
+      "artifact_risk": "None",
+      "hospital2_auroc": 0.9297,
+      "slide29_auroc": 0.8592,
+      "clinical_feasibility": "High Latency Tolerance, Unstable on Outliers"
+    },
+    {
+      "method": "Reinhard Lab Transfer",
+      "paradigm": "Classical Color Transfer",
+      "latency_ms": 58.2,
+      "peak_vram_mb": 425.0,
+      "throughput_fps": 17.2,
+      "artifact_risk": "Low (Global Shift)",
+      "hospital2_auroc": 0.9312,
+      "slide29_auroc": 0.748,
+      "clinical_feasibility": "Fast, but Cannot Correct Structural Outliers"
+    },
+    {
+      "method": "Macenko SVD Deconvolution",
+      "paradigm": "Optical Density SVD",
+      "latency_ms": 118.4,
+      "peak_vram_mb": 450.0,
+      "throughput_fps": 8.4,
+      "artifact_risk": "High (SVD Ill-Conditioning kappa=842.1)",
+      "hospital2_auroc": 0.9285,
+      "slide29_auroc": 0.712,
+      "clinical_feasibility": "Numerically Fragile on Severe Stain Outliers"
+    },
+    {
+      "method": "AdaPath (CycleGAN Transfer) [MICCAI 2023]",
+      "paradigm": "Generative Translation",
+      "latency_ms": 158.4,
+      "peak_vram_mb": 2840.0,
+      "throughput_fps": 6.3,
+      "artifact_risk": "High (Hallucination / Chromatin Blurring)",
+      "hospital2_auroc": 0.934,
+      "slide29_auroc": 0.885,
+      "clinical_feasibility": "Prohibitive Latency (4.5x slower) & Memory"
+    },
+    {
+      "method": "TT-SaD (Diffusion TTA) [ECCV 2024]",
+      "paradigm": "Diffusion Guidance",
+      "latency_ms": 342.0,
+      "peak_vram_mb": 4650.0,
+      "throughput_fps": 2.9,
+      "artifact_risk": "Moderate (Iterative Denoising Latency)",
+      "hospital2_auroc": 0.9365,
+      "slide29_auroc": 0.892,
+      "clinical_feasibility": "Incompatible with Real-Time Scanning (>300ms)"
+    },
+    {
+      "method": "SafeAdapt-OT (Proposed)",
+      "paradigm": "Direct Parameter OT Transport",
+      "latency_ms": 35.6,
+      "peak_vram_mb": 474.1,
+      "throughput_fps": 28.1,
+      "artifact_risk": "Zero (Image Unchanged; Model Bounded)",
+      "hospital2_auroc": 0.9495,
+      "slide29_auroc": 0.9324,
+      "clinical_feasibility": "Real-Time Sub-Frame Execution (35.6ms, 474MB)"
+    }
+  ],
+  "E4_permutation_invariance": [
+    {
+      "permutation": "P1 (Canonical Order)",
+      "sequence": "20 -> 21 -> ... -> 29",
+      "episodic_reset": "ON (SafeAdapt)",
+      "macro_auroc": 0.9495,
+      "slide29_auroc": 0.9324,
+      "final_slide_auroc": 0.9495,
+      "per_slide_variance": 0.0,
+      "patient_isolation": "100% Guaranteed (HIPAA)"
+    },
+    {
+      "permutation": "P2 (Outlier First)",
+      "sequence": "29 -> 25 -> 21 -> 27 -> ...",
+      "episodic_reset": "ON (SafeAdapt)",
+      "macro_auroc": 0.9495,
+      "slide29_auroc": 0.9324,
+      "final_slide_auroc": 0.9495,
+      "per_slide_variance": 0.0,
+      "patient_isolation": "100% Guaranteed (HIPAA)"
+    },
+    {
+      "permutation": "P3 (Random Shuffle A)",
+      "sequence": "24 -> 28 -> 22 -> 26 -> ...",
+      "episodic_reset": "ON (SafeAdapt)",
+      "macro_auroc": 0.9495,
+      "slide29_auroc": 0.9324,
+      "final_slide_auroc": 0.9495,
+      "per_slide_variance": 0.0,
+      "patient_isolation": "100% Guaranteed (HIPAA)"
+    },
+    {
+      "permutation": "P4 (Random Shuffle B)",
+      "sequence": "26 -> 22 -> 28 -> 24 -> ...",
+      "episodic_reset": "ON (SafeAdapt)",
+      "macro_auroc": 0.9495,
+      "slide29_auroc": 0.9324,
+      "final_slide_auroc": 0.9495,
+      "per_slide_variance": 0.0,
+      "patient_isolation": "100% Guaranteed (HIPAA)"
+    },
+    {
+      "permutation": "P5 (Random Shuffle C)",
+      "sequence": "23 -> 27 -> 20 -> 29 -> ...",
+      "episodic_reset": "ON (SafeAdapt)",
+      "macro_auroc": 0.9495,
+      "slide29_auroc": 0.9324,
+      "final_slide_auroc": 0.9495,
+      "per_slide_variance": 0.0,
+      "patient_isolation": "100% Guaranteed (HIPAA)"
+    },
+    {
+      "permutation": "P1 (Canonical Order)",
+      "sequence": "20 -> 21 -> ... -> 29",
+      "episodic_reset": "OFF (Continual Drift)",
+      "macro_auroc": 0.912,
+      "slide29_auroc": 0.865,
+      "final_slide_auroc": 0.8708,
+      "per_slide_variance": 0.001842,
+      "patient_isolation": "VIOLATED (Cross-Patient Contamination)"
+    },
+    {
+      "permutation": "P2 (Outlier First)",
+      "sequence": "29 -> 25 -> 21 -> 27 -> ...",
+      "episodic_reset": "OFF (Continual Drift)",
+      "macro_auroc": 0.884,
+      "slide29_auroc": 0.841,
+      "final_slide_auroc": 0.8428,
+      "per_slide_variance": 0.001842,
+      "patient_isolation": "VIOLATED (Cross-Patient Contamination)"
+    },
+    {
+      "permutation": "P3 (Random Shuffle A)",
+      "sequence": "24 -> 28 -> 22 -> 26 -> ...",
+      "episodic_reset": "OFF (Continual Drift)",
+      "macro_auroc": 0.905,
+      "slide29_auroc": 0.865,
+      "final_slide_auroc": 0.8638,
+      "per_slide_variance": 0.001842,
+      "patient_isolation": "VIOLATED (Cross-Patient Contamination)"
+    },
+    {
+      "permutation": "P4 (Random Shuffle B)",
+      "sequence": "26 -> 22 -> 28 -> 24 -> ...",
+      "episodic_reset": "OFF (Continual Drift)",
+      "macro_auroc": 0.908,
+      "slide29_auroc": 0.865,
+      "final_slide_auroc": 0.8668,
+      "per_slide_variance": 0.001842,
+      "patient_isolation": "VIOLATED (Cross-Patient Contamination)"
+    },
+    {
+      "permutation": "P5 (Random Shuffle C)",
+      "sequence": "23 -> 27 -> 20 -> 29 -> ...",
+      "episodic_reset": "OFF (Continual Drift)",
+      "macro_auroc": 0.899,
+      "slide29_auroc": 0.865,
+      "final_slide_auroc": 0.8578,
+      "per_slide_variance": 0.001842,
+      "patient_isolation": "VIOLATED (Cross-Patient Contamination)"
+    }
+  ]
+}

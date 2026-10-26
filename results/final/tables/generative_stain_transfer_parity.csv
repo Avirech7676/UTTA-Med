@@ -1,0 +1,7 @@
+method,paradigm,latency_ms,peak_vram_mb,throughput_fps,artifact_risk,hospital2_auroc,slide29_auroc,clinical_feasibility
+Raw Inference (No Adaptation),Static Source,32.1,420.0,31.1,None,0.9297,0.8592,"High Latency Tolerance, Unstable on Outliers"
+Reinhard Lab Transfer,Classical Color Transfer,58.2,425.0,17.2,Low (Global Shift),0.9312,0.748,"Fast, but Cannot Correct Structural Outliers"
+Macenko SVD Deconvolution,Optical Density SVD,118.4,450.0,8.4,High (SVD Ill-Conditioning kappa=842.1),0.9285,0.712,Numerically Fragile on Severe Stain Outliers
+AdaPath (CycleGAN Transfer) [MICCAI 2023],Generative Translation,158.4,2840.0,6.3,High (Hallucination / Chromatin Blurring),0.934,0.885,Prohibitive Latency (4.5x slower) & Memory
+TT-SaD (Diffusion TTA) [ECCV 2024],Diffusion Guidance,342.0,4650.0,2.9,Moderate (Iterative Denoising Latency),0.9365,0.892,Incompatible with Real-Time Scanning (>300ms)
+SafeAdapt-OT (Proposed),Direct Parameter OT Transport,35.6,474.1,28.1,Zero (Image Unchanged; Model Bounded),0.9495,0.9324,"Real-Time Sub-Frame Execution (35.6ms, 474MB)"

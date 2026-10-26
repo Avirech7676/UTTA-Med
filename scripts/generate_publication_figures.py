@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generate high-resolution (300 DPI) publication-quality figures for UTTA-Med v2.
+"""Generate high-resolution (300 DPI) publication-quality figures for SafeAdapt.
 
 Figures generated:
-1. fig_v2_slide29_attractor_reversal: Slide 29 probability distribution shift (Tent collapse vs OT-TTA).
+1. fig_v2_slide29_attractor_reversal: Slide 29 probability distribution shift (Tent collapse vs SafeAdapt-OT).
 2. fig_v2_benchmark_auroc_ece: 5-seed Macro AUROC and ECE comparison bar charts across methods.
 3. fig_v2_cmr_mitosis_detection: Cellularity-Mitosis Ratio (CMR) deconvolution on MIDOG Scanner 3.
 4. fig_v2_gpu_training_convergence: Real Kaggle Nvidia Tesla T4 GPU training convergence curve.
@@ -20,21 +20,21 @@ plt.rcParams.update({
     'font.family': 'sans-serif',
     'font.sans-serif': ['DejaVu Sans', 'Arial', 'Helvetica'],
     'axes.edgecolor': '#222222',
-    'axes.linewidth': 1.0,
-    'axes.titlesize': 11,
+    'axes.linewidth': 1.2,
+    'axes.titlesize': 13,
     'axes.titleweight': 'bold',
-    'axes.labelsize': 10,
+    'axes.labelsize': 12,
     'axes.labelweight': 'bold',
-    'xtick.labelsize': 9,
-    'ytick.labelsize': 9,
-    'legend.fontsize': 8.5,
+    'xtick.labelsize': 11,
+    'ytick.labelsize': 11,
+    'legend.fontsize': 10.5,
     'legend.frameon': True,
     'legend.edgecolor': '#cccccc',
-    'figure.titlesize': 12,
+    'figure.titlesize': 14,
     'figure.dpi': 300,
 })
 
-out_dirs = [Path("paper/figures"), Path("paper/ieee/figs")]
+out_dirs = [Path("paper/figures"), Path("paper/ieee/figs"), Path("results/final/figures")]
 for d in out_dirs:
     d.mkdir(parents=True, exist_ok=True)
 
@@ -42,9 +42,11 @@ def save_fig(fig, base_name):
     for d in out_dirs:
         png_path = d / f"{base_name}.png"
         pdf_path = d / f"{base_name}.pdf"
+        jpg_path = d / f"{base_name}.jpg"
         fig.savefig(png_path, dpi=300, bbox_inches='tight')
         fig.savefig(pdf_path, bbox_inches='tight')
-        print(f"  [+] Saved: {png_path} and {pdf_path}")
+        fig.savefig(jpg_path, dpi=300, bbox_inches='tight')
+        print(f"  [+] Saved: {png_path}, {pdf_path}, and {jpg_path}")
     plt.close(fig)
 
 # -----------------------------------------------------------------------------
@@ -63,42 +65,42 @@ p_src_tum = np.clip(np.random.beta(6.0, 3.5, size=n_tumor), 0.001, 0.999)
 p_tent_norm = np.clip(np.random.beta(0.5, 25.0, size=n_normal), 0.0001, 0.15)
 p_tent_tum = np.clip(np.random.beta(0.6, 20.0, size=n_tumor), 0.0001, 0.20)
 
-# UTTA-Med v2 (OT-TTA): calibrated bimodal separation
+# SafeAdapt-OT: calibrated bimodal separation
 p_utta_norm = np.clip(np.random.beta(1.2, 10.0, size=n_normal), 0.001, 0.999)
 p_utta_tum = np.clip(np.random.beta(9.0, 1.8, size=n_tumor), 0.001, 0.999)
 
-fig, axes = plt.subplots(1, 3, figsize=(12, 3.4), sharey=True)
+fig, axes = plt.subplots(1, 3, figsize=(14.0, 4.2), sharey=True)
 
-bins = np.linspace(0, 1, 40)
+bins = np.linspace(0, 1, 45)
 # Panel (a): Frozen Source
 axes[0].hist(p_src_norm, bins=bins, color='#4575b4', alpha=0.65, label='Normal Tissue', density=True)
 axes[0].hist(p_src_tum, bins=bins, color='#d73027', alpha=0.65, label='Tumor Metastasis', density=True)
-axes[0].set_title("(a) Frozen Source Baseline\n(AUROC = 0.8592, ECE = 0.128)")
+axes[0].set_title("(a) Frozen Source Baseline\n(AUROC = 0.8592, ECE = 0.128)", pad=10)
 axes[0].set_xlabel("Predicted Tumor Probability $p(y=1)$")
 axes[0].set_ylabel("Density")
-axes[0].legend(loc='upper center', framealpha=0.9)
+axes[0].legend(loc='upper center', framealpha=0.92, fontsize=10.5)
 axes[0].grid(True, linestyle=':', alpha=0.5)
 
 # Panel (b): Tent Collapse
 axes[1].hist(p_tent_norm, bins=bins, color='#4575b4', alpha=0.65, density=True)
 axes[1].hist(p_tent_tum, bins=bins, color='#d73027', alpha=0.65, density=True)
-axes[1].set_title("(b) Unconstrained Tent (Seed 7)\n(AUROC = 0.0521 — Complete Collapse)")
+axes[1].set_title("(b) Unconstrained Tent (Seed 7)\n(AUROC = 0.0521 — Complete Collapse)", pad=10)
 axes[1].set_xlabel("Predicted Tumor Probability $p(y=1)$")
 axes[1].annotate("Attractor Collapse:\n100% False Negatives", xy=(0.05, 12), xytext=(0.28, 10),
-                 arrowprops=dict(facecolor='#d73027', shrink=0.08, width=1.5, headwidth=6),
-                 fontsize=8.5, fontweight='bold', color='#990000',
-                 bbox=dict(boxstyle="round,pad=0.3", fc="#ffeeee", ec="#d73027", lw=1))
+                 arrowprops=dict(facecolor='#d73027', shrink=0.08, width=1.8, headwidth=7),
+                 fontsize=10.5, fontweight='bold', color='#990000',
+                 bbox=dict(boxstyle="round,pad=0.35", fc="#ffeeee", ec="#d73027", lw=1.2))
 axes[1].grid(True, linestyle=':', alpha=0.5)
 
-# Panel (c): UTTA-MED (OT-TTA)
+# Panel (c): SafeAdapt-OT
 axes[2].hist(p_utta_norm, bins=bins, color='#4575b4', alpha=0.65, density=True)
 axes[2].hist(p_utta_tum, bins=bins, color='#2ca25f', alpha=0.65, label='Tumor (Recovered)', density=True)
-axes[2].set_title("(c) UTTA-MED (OT-TTA)\n(AUROC = 0.9324 — Restored Geometry)")
+axes[2].set_title("(c) SafeAdapt-OT (Ours)\n(AUROC = 0.9324 — Restored Geometry)", pad=10)
 axes[2].set_xlabel("Predicted Tumor Probability $p(y=1)$")
-axes[2].annotate("Sinkhorn Balance:\n$Q^T 1_B = r$", xy=(0.85, 4.5), xytext=(0.42, 6.0),
-                 arrowprops=dict(facecolor='#2ca25f', shrink=0.08, width=1.5, headwidth=6),
-                 fontsize=8.5, fontweight='bold', color='#006622',
-                 bbox=dict(boxstyle="round,pad=0.3", fc="#eeffee", ec="#2ca25f", lw=1))
+axes[2].annotate("Sinkhorn Balance:\n$Q^T 1_B = r$", xy=(0.85, 4.5), xytext=(0.42, 6.2),
+                 arrowprops=dict(facecolor='#2ca25f', shrink=0.08, width=1.8, headwidth=7),
+                 fontsize=10.5, fontweight='bold', color='#006622',
+                 bbox=dict(boxstyle="round,pad=0.35", fc="#eeffee", ec="#2ca25f", lw=1.2))
 axes[2].grid(True, linestyle=':', alpha=0.5)
 
 plt.tight_layout()
@@ -108,32 +110,32 @@ save_fig(fig, "fig_v2_slide29_attractor_reversal")
 # Figure 2: 5-Seed Primary Benchmark Comparison (AUROC & ECE)
 # -----------------------------------------------------------------------------
 print("[*] Generating Figure 2: Primary Benchmark Comparison...")
-methods = ['Frozen Source', 'Tent (Entropy)', 'EATA', 'Confidence-Gate', 'UTTA-MED']
+methods = ['Frozen Source', 'Tent (Entropy)', 'EATA', 'Confidence-Gate', 'SafeAdapt-OT']
 aurocs = [0.9297, 0.6981, 0.9210, 0.9355, 0.9495]
 auroc_stds = [0.0092, 0.3236, 0.0255, 0.0218, 0.0134]
 eces = [0.1281, 0.2843, 0.1520, 0.1304, 0.0745]
 ece_stds = [0.0258, 0.1792, 0.0240, 0.0305, 0.0051]
 
-fig, ax1 = plt.subplots(figsize=(8.0, 3.8))
+fig, ax1 = plt.subplots(figsize=(11.5, 4.8))
 x = np.arange(len(methods))
-width = 0.36
+width = 0.34
 
 # AUROC bars
 color_auroc = '#1f77b4'
-rects1 = ax1.bar(x - width/2, aurocs, width, yerr=auroc_stds, capsize=4,
-                 label='Macro AUROC (Higher is Better)', color=color_auroc, alpha=0.88, edgecolor='#003366')
-ax1.set_ylabel('Macro AUROC', color=color_auroc, fontweight='bold')
+rects1 = ax1.bar(x - width/2, aurocs, width, yerr=auroc_stds, capsize=5,
+                 label='Macro AUROC (Higher is Better)', color=color_auroc, alpha=0.90, edgecolor='#003366', linewidth=1.2)
+ax1.set_ylabel('Macro AUROC', color=color_auroc, fontweight='bold', fontsize=12)
 ax1.tick_params(axis='y', labelcolor=color_auroc)
 ax1.set_ylim(0.50, 1.02)
 ax1.set_xticks(x)
-ax1.set_xticklabels(methods, fontweight='bold')
+ax1.set_xticklabels(methods, fontweight='bold', fontsize=11)
 
 # ECE bars on secondary axis
 ax2 = ax1.twinx()
 color_ece = '#d95f02'
-rects2 = ax2.bar(x + width/2, eces, width, yerr=ece_stds, capsize=4,
-                 label='Calibration Error ECE (Lower is Better)', color=color_ece, alpha=0.88, edgecolor='#802b00')
-ax2.set_ylabel('Expected Calibration Error (ECE)', color=color_ece, fontweight='bold')
+rects2 = ax2.bar(x + width/2, eces, width, yerr=ece_stds, capsize=5,
+                 label='Calibration Error ECE (Lower is Better)', color=color_ece, alpha=0.90, edgecolor='#802b00', linewidth=1.2)
+ax2.set_ylabel('Expected Calibration Error (ECE)', color=color_ece, fontweight='bold', fontsize=12)
 ax2.tick_params(axis='y', labelcolor=color_ece)
 ax2.set_ylim(0.0, 0.50)
 
@@ -141,20 +143,20 @@ ax2.set_ylim(0.0, 0.50)
 for rect in rects1:
     h = rect.get_height()
     ax1.annotate(f'{h:.3f}', xy=(rect.get_x() + rect.get_width()/2, h),
-                 xytext=(0, 4), textcoords="offset points", ha='center', va='bottom', fontsize=8, fontweight='bold')
+                 xytext=(0, 5), textcoords="offset points", ha='center', va='bottom', fontsize=10, fontweight='bold')
 
 for rect in rects2:
     h = rect.get_height()
     ax2.annotate(f'{h:.3f}', xy=(rect.get_x() + rect.get_width()/2, h),
-                 xytext=(0, 4), textcoords="offset points", ha='center', va='bottom', fontsize=8, fontweight='bold', color='#802b00')
+                 xytext=(0, 5), textcoords="offset points", ha='center', va='bottom', fontsize=10, fontweight='bold', color='#802b00')
 
-ax1.set_title("Camelyon17 Hospital 2 Benchmark: AUROC Elevation & Calibration Sharpness (5 Seeds)", pad=12)
+ax1.set_title("Camelyon17 Hospital 2 Benchmark: AUROC Elevation & Calibration Sharpness (5 Seeds)", pad=14, fontsize=13)
 ax1.grid(True, axis='y', linestyle=':', alpha=0.5)
 
 # Combined legend
 lines1, labels1 = ax1.get_legend_handles_labels()
 lines2, labels2 = ax2.get_legend_handles_labels()
-ax1.legend(lines1 + lines2, labels1 + labels2, loc='upper left', framealpha=0.92)
+ax1.legend(lines1 + lines2, labels1 + labels2, loc='upper left', framealpha=0.94, fontsize=10.5)
 
 plt.tight_layout()
 save_fig(fig, "fig_v2_benchmark_auroc_ece")
@@ -166,7 +168,6 @@ print("[*] Generating Figure 3: CMR Nuclear Gating Decoupling from empirical MID
 manifest_path = Path("results/generalization/h3/scanner_3_target/target_patch_manifest.csv")
 if manifest_path.exists():
     df_man = pd.read_csv(manifest_path)
-    # Biophysical nuclear cellularity index: tissue fraction scaled by texture variance
     cellularity = (df_man["tissue_frac"] * (df_man["variance"] / df_man["variance"].max() * 0.45 + 0.05)).to_numpy()
     mitoses = df_man["gt_mitoses_count"].to_numpy()
     n_tiles = len(df_man)
@@ -175,32 +176,32 @@ else:
     cellularity = np.linspace(0.05, 0.85, n_tiles)
     mitoses = np.zeros(n_tiles, dtype=int)
 
-fig, ax = plt.subplots(figsize=(7.5, 3.8))
+fig, ax = plt.subplots(figsize=(11.0, 4.6))
 
 # Scatter plot: acellular stroma vs cellular tissue
 is_stroma = cellularity < 0.15
 ax.scatter(cellularity[is_stroma], mitoses[is_stroma],
-           color='#7570b3', alpha=0.6, s=24, label='Normal Acellular Stroma (Benign 0 Mitoses)')
+           color='#7570b3', alpha=0.65, s=36, label='Normal Acellular Stroma (Benign 0 Mitoses)')
 
 ax.scatter(cellularity[~is_stroma], mitoses[~is_stroma],
-           color='#1b9e77', alpha=0.6, s=24, label='Cellular Tumor Parenchyma (Active Region)')
+           color='#1b9e77', alpha=0.65, s=36, label='Cellular Tumor Parenchyma (Active Region)')
 
 # Threshold line
-ax.axvline(0.15, color='#d95f02', linestyle='--', linewidth=2.0, label='CMR Safety Threshold ($\u03c1_{cell} = 0.15$)')
+ax.axvline(0.15, color='#d95f02', linestyle='--', linewidth=2.2, label=r'CMR Safety Threshold ($\rho_{cell} = 0.15$)')
 
 ax.annotate("Acellular Silence Zone:\nNo false alarms triggered\n(14 false alarms eliminated)",
-            xy=(0.08, 1.2), xytext=(0.03, 2.2),
-            arrowprops=dict(facecolor='#7570b3', shrink=0.08, width=1.2, headwidth=5),
-            fontsize=8.5, fontweight='bold', color='#4d478a',
-            bbox=dict(boxstyle="round,pad=0.3", fc="#f0eff8", ec="#7570b3", lw=1))
+            xy=(0.08, 1.2), xytext=(0.03, 2.3),
+            arrowprops=dict(facecolor='#7570b3', shrink=0.08, width=1.6, headwidth=6),
+            fontsize=10.5, fontweight='bold', color='#4d478a',
+            bbox=dict(boxstyle="round,pad=0.35", fc="#f0eff8", ec="#7570b3", lw=1.2))
 
-ax.set_xlabel("Nuclear Cellularity Area Fraction $\u03c1_{cell}(x)$ (Hematoxylin Optical Density)")
-ax.set_ylabel("Mitotic Figure Proposals per Tile")
-ax.set_title("Cellularity-Mitosis Ratio (CMR): Decoupling Normal Stroma from Detector Collapse", pad=10)
+ax.set_xlabel(r"Nuclear Cellularity Area Fraction $\rho_{cell}(x)$ (Hematoxylin Optical Density)", fontsize=12, fontweight='bold')
+ax.set_ylabel("Mitotic Figure Proposals per Tile", fontsize=12, fontweight='bold')
+ax.set_title("Cellularity-Mitosis Ratio (CMR): Decoupling Normal Stroma from Detector Collapse", pad=12, fontsize=13)
 ax.set_ylim(-0.3, 4.0)
 ax.yaxis.set_major_locator(ticker.MaxNLocator(integer=True))
 ax.grid(True, linestyle=':', alpha=0.5)
-ax.legend(loc='upper right', framealpha=0.92)
+ax.legend(loc='upper right', framealpha=0.94, fontsize=10.5)
 
 plt.tight_layout()
 save_fig(fig, "fig_v2_cmr_mitosis_detection")
@@ -228,40 +229,40 @@ else:
     latencies = np.array([1501.85] + [54.5] * 19)
     vram = np.array([429.55] + [474.1] * 19)
 
-fig, (ax_loss, ax_telemetry) = plt.subplots(1, 2, figsize=(10.5, 3.6))
+fig, (ax_loss, ax_telemetry) = plt.subplots(1, 2, figsize=(14.0, 4.5))
 
 # Panel 1: Loss curves
-ax_loss.plot(steps, total_loss, 'o-', color='#1f77b4', linewidth=2.0, markersize=5, label='Total Loss $\mathcal{L}_{total}$')
-ax_loss.plot(steps, ot_loss, 's--', color='#2ca02c', linewidth=1.8, markersize=4.5, label='OT Transport Loss $\mathcal{L}_{OT}$')
-ax_loss.set_title("(a) Online Adaptation Loss Convergence\n(Nvidia Tesla T4, Batch Size 32, $\eta = 10^{-4}$)")
-ax_loss.set_xlabel("Online Training Step")
-ax_loss.set_ylabel("Loss Magnitude")
+ax_loss.plot(steps, total_loss, 'o-', color='#1f77b4', linewidth=2.2, markersize=6, label=r'Total Loss $\mathcal{L}_{\mathrm{total}}$')
+ax_loss.plot(steps, ot_loss, 's--', color='#2ca02c', linewidth=2.0, markersize=5.5, label=r'OT Transport Loss $\mathcal{L}_{\mathrm{OT}}$')
+ax_loss.set_title(r"(a) Online Adaptation Loss Convergence" + "\n" + r"(Nvidia Tesla T4, Batch Size 32, $\eta = 10^{-4}$)", pad=10, fontsize=12)
+ax_loss.set_xlabel("Online Training Step", fontsize=11, fontweight='bold')
+ax_loss.set_ylabel("Loss Magnitude", fontsize=11, fontweight='bold')
 ax_loss.grid(True, linestyle=':', alpha=0.5)
-ax_loss.legend(loc='center right', framealpha=0.92)
+ax_loss.legend(loc='center right', framealpha=0.94, fontsize=10.5)
 
 # Panel 2: Telemetry (Latency & VRAM)
 ax_lat = ax_telemetry
 color_lat = '#9467bd'
-ax_lat.plot(steps[1:], latencies[1:], 'D-', color=color_lat, linewidth=1.8, markersize=5, label='Step Latency (ms)')
-ax_lat.set_xlabel("Online Training Step")
-ax_lat.set_ylabel("Latency per 32-Patch Batch (ms)", color=color_lat, fontweight='bold')
+ax_lat.plot(steps[1:], latencies[1:], 'D-', color=color_lat, linewidth=2.0, markersize=6, label='Step Latency (ms)')
+ax_lat.set_xlabel("Online Training Step", fontsize=11, fontweight='bold')
+ax_lat.set_ylabel("Latency per 32-Patch Batch (ms)", color=color_lat, fontweight='bold', fontsize=11)
 ax_lat.tick_params(axis='y', labelcolor=color_lat)
 ax_lat.set_ylim(30, 110)
 
 ax_vram = ax_lat.twinx()
 color_vram = '#e377c2'
-ax_vram.plot(steps[1:], vram[1:], '^--', color=color_vram, linewidth=1.8, markersize=5, label='Peak VRAM (MB)')
-ax_vram.set_ylabel("Peak VRAM Footprint (MB)", color=color_vram, fontweight='bold')
+ax_vram.plot(steps[1:], vram[1:], '^--', color=color_vram, linewidth=2.0, markersize=6, label='Peak VRAM (MB)')
+ax_vram.set_ylabel("Peak VRAM Footprint (MB)", color=color_vram, fontweight='bold', fontsize=11)
 ax_vram.tick_params(axis='y', labelcolor=color_vram)
 ax_vram.set_ylim(300, 600)
 
-ax_lat.set_title("(b) Hardware Efficiency Profile\n(Mean Latency = 54.2 ms, Peak VRAM = 474.1 MB)")
+ax_lat.set_title("(b) Hardware Efficiency Profile\n(Mean Latency = 54.2 ms, Peak VRAM = 474.1 MB)", pad=10, fontsize=12)
 ax_lat.grid(True, linestyle=':', alpha=0.5)
 
 # Combined legend for panel 2
 lines_l, labels_l = ax_lat.get_legend_handles_labels()
 lines_v, labels_v = ax_vram.get_legend_handles_labels()
-ax_lat.legend(lines_l + lines_v, labels_l + labels_v, loc='lower right', framealpha=0.92)
+ax_lat.legend(lines_l + lines_v, labels_l + labels_v, loc='lower right', framealpha=0.94, fontsize=10.5)
 
 plt.tight_layout()
 save_fig(fig, "fig_v2_gpu_training_convergence")

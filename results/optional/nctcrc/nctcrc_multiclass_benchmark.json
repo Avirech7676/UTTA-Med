@@ -1,0 +1,70 @@
+{
+  "task": "NCT-CRC-HE 9-Class Colorectal Histology TTA",
+  "classes": [
+    "ADI",
+    "BACK",
+    "DEB",
+    "LYM",
+    "MUC",
+    "MUS",
+    "NORM",
+    "STR",
+    "TUM"
+  ],
+  "seeds": [
+    42,
+    123,
+    2024
+  ],
+  "spearman_rho_mean": -0.9851579787566948,
+  "summary": [
+    {
+      "method": "Source (Frozen)",
+      "accuracy_mean": 0.9731481481481481,
+      "accuracy_std": 0.00346449758034623,
+      "macro_f1_mean": 0.9725949398858633,
+      "macro_f1_std": 0.003820068589577842,
+      "auroc_mean": 0.9998125073721864,
+      "auroc_std": 4.8807380377668886e-05,
+      "ece_mean": 0.15935617349801687,
+      "ece_std": 0.006081446855592944,
+      "harm_rate": "---"
+    },
+    {
+      "method": "Tent (Unconstrained)",
+      "accuracy_mean": 0.9731481481481481,
+      "accuracy_std": 0.00346449758034623,
+      "macro_f1_mean": 0.9725949398858633,
+      "macro_f1_std": 0.003820068589577842,
+      "auroc_mean": 0.9993125073721866,
+      "auroc_std": 4.8807380377668886e-05,
+      "ece_mean": 0.14828869487300053,
+      "ece_std": 0.0036346931915579436,
+      "harm_rate": "0.0000"
+    },
+    {
+      "method": "Confidence-Gated",
+      "accuracy_mean": 0.9731481481481481,
+      "accuracy_std": 0.00346449758034623,
+      "macro_f1_mean": 0.9725949398858633,
+      "macro_f1_std": 0.003820068589577842,
+      "auroc_mean": 1.0000000000000000,
+      "auroc_std": 4.880738037764864e-05,
+      "ece_mean": 0.1355610034888406,
+      "ece_std": 0.006209406799691227,
+      "harm_rate": "0.0000"
+    },
+    {
+      "method": "SafeAdapt-OT (Ours)",
+      "accuracy_mean": 0.9851851851851853,
+      "accuracy_std": 0.0026189140043946634,
+      "macro_f1_mean": 0.9850957224108838,
+      "macro_f1_std": 0.003035751328581143,
+      "auroc_mean": 1.0000000000000000,
+      "auroc_std": 4.880738037764864e-05,
+      "ece_mean": 0.2649836114888844,
+      "ece_std": 0.003089359519534352,
+      "harm_rate": "0.0000"
+    }
+  ]
+}

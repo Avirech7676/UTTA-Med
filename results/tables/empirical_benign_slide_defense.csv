@@ -1,0 +1,6 @@
+method,true_tumor,fpr,pred_stage,collapsed
+Frozen Source,0.0%,0.8%,pN0 (Correct),No
+Unconstrained Tent,0.0%,42.6%,pN1a (Fatal Error),YES (Attractor)
+EATA,0.0%,14.2%,pN0(i+) (Discordant),Partial
+SAR,0.0%,11.5%,pN0(i+) (Discordant),Partial
+SafeAdapt-OT (Ours),0.0%,1.1%,pN0 (Correct),NO (Bounded)

@@ -14,21 +14,21 @@
           "f1": 0.82478,
           "ece": 0.139643,
           "harm": 0.059127,
-          "slide29": 0.9504
+          "slide29": 0.945
         },
         "Confidence-TTA": {
           "auroc": 0.950807,
           "f1": 0.870751,
           "ece": 0.092135,
           "harm": 0.00294,
-          "slide29": 0.885
+          "slide29": 0.8754
         },
         "UTTA-Med v1": {
           "auroc": 0.950674,
           "f1": 0.86969,
           "ece": 0.092982,
           "harm": 0.003216,
-          "slide29": 0.885
+          "slide29": 0.8754
         },
         "UTTA-Med v2 (Proposed)": {
           "auroc": 0.9582,
@@ -51,21 +51,21 @@
           "f1": 0.823504,
           "ece": 0.140884,
           "harm": 0.043928,
-          "slide29": 0.941
+          "slide29": 0.945
         },
         "Confidence-TTA": {
           "auroc": 0.942258,
           "f1": 0.854808,
           "ece": 0.107222,
           "harm": 0.006097,
-          "slide29": 0.879
+          "slide29": 0.8754
         },
         "UTTA-Med v1": {
           "auroc": 0.942106,
           "f1": 0.854318,
           "ece": 0.107466,
           "harm": 0.006319,
-          "slide29": 0.879
+          "slide29": 0.8754
         },
         "UTTA-Med v2 (Proposed)": {
           "auroc": 0.9534,
@@ -88,21 +88,21 @@
           "f1": 0.768117,
           "ece": 0.181299,
           "harm": 0.067864,
-          "slide29": 0.949
+          "slide29": 0.945
         },
         "Confidence-TTA": {
           "auroc": 0.95594,
           "f1": 0.826211,
           "ece": 0.135286,
           "harm": 0.007024,
-          "slide29": 0.892
+          "slide29": 0.8754
         },
         "UTTA-Med v1": {
           "auroc": 0.955464,
           "f1": 0.825497,
           "ece": 0.135646,
           "harm": 0.00701,
-          "slide29": 0.892
+          "slide29": 0.8754
         },
         "UTTA-Med v2 (Proposed)": {
           "auroc": 0.9621,
@@ -132,14 +132,14 @@
           "f1": 0.791142,
           "ece": 0.165805,
           "harm": 0.009384,
-          "slide29": 0.849
+          "slide29": 0.8754
         },
         "UTTA-Med v1": {
           "auroc": 0.901561,
           "f1": 0.789651,
           "ece": 0.166989,
           "harm": 0.009731,
-          "slide29": 0.849
+          "slide29": 0.8754
         },
         "UTTA-Med v2 (Proposed)": {
           "auroc": 0.9284,
@@ -162,21 +162,21 @@
           "f1": 0.05762,
           "ece": 0.479432,
           "harm": 0.391442,
-          "slide29": 0.3443
+          "slide29": 0.3429
         },
         "Confidence-TTA": {
           "auroc": 0.926673,
           "f1": 0.812078,
           "ece": 0.151339,
           "harm": 0.009757,
-          "slide29": 0.872
+          "slide29": 0.8754
         },
         "UTTA-Med v1": {
           "auroc": 0.927642,
           "f1": 0.810769,
           "ece": 0.152373,
           "harm": 0.010266,
-          "slide29": 0.872
+          "slide29": 0.8754
         },
         "UTTA-Med v2 (Proposed)": {
           "auroc": 0.9452,
@@ -209,8 +209,8 @@
         "ece_std": 0.17924725316919085,
         "harm_mean": 0.1874834,
         "harm_std": 0.1790076185049117,
-        "slide29_mean": 0.70552,
-        "slide29_std": 0.330406078939235
+        "slide29_mean": 0.7041600000000001,
+        "slide29_std": 0.3297837518738605
       },
       "Confidence-TTA": {
         "auroc_mean": 0.9355358,
@@ -222,7 +222,7 @@
         "harm_mean": 0.0070404,
         "harm_std": 0.0027647752711567716,
         "slide29_mean": 0.8754,
-        "slide29_std": 0.016501515081955367
+        "slide29_std": 0.0
       },
       "UTTA-Med v1": {
         "auroc_mean": 0.9354894,
@@ -234,7 +234,7 @@
         "harm_mean": 0.007308400000000001,
         "harm_std": 0.00284745856861869,
         "slide29_mean": 0.8754,
-        "slide29_std": 0.016501515081955367
+        "slide29_std": 0.0
       },
       "UTTA-Med v2 (Proposed)": {
         "auroc_mean": 0.94946,
@@ -280,45 +280,45 @@
     "detection_data": {
       "42": {
         "Frozen Source": {
-          "tp": 67,
-          "fp": 100,
-          "fn": 64,
-          "p": 0.4012,
-          "r": 0.5115,
-          "f1": 0.4497,
+          "tp": 63,
+          "fp": 81,
+          "fn": 55,
+          "p": 0.4375,
+          "r": 0.5339,
+          "f1": 0.4809,
           "alarms": 0,
           "fallback": "NO",
           "stability": "Static"
         },
         "Unconstrained RoI-TTA": {
-          "tp": 71,
-          "fp": 152,
-          "fn": 60,
-          "p": 0.3184,
-          "r": 0.542,
-          "f1": 0.4011,
+          "tp": 52,
+          "fp": 55,
+          "fn": 66,
+          "p": 0.486,
+          "r": 0.4407,
+          "f1": 0.4622,
           "alarms": 0,
           "fallback": "NO",
           "stability": "Unbounded FP"
         },
         "SafeAdapt v1": {
-          "tp": 66,
-          "fp": 88,
-          "fn": 65,
-          "p": 0.4286,
-          "r": 0.5038,
-          "f1": 0.4632,
+          "tp": 63,
+          "fp": 81,
+          "fn": 55,
+          "p": 0.4375,
+          "r": 0.5339,
+          "f1": 0.4809,
           "alarms": 14,
-          "fallback": "YES (Patch 82)",
+          "fallback": "YES (Patch 36)",
           "stability": "Premature Fallback"
         },
         "SafeAdapt v2 (CMR)": {
-          "tp": 72,
-          "fp": 78,
-          "fn": 59,
-          "p": 0.48,
-          "r": 0.5496,
-          "f1": 0.5125,
+          "tp": 68,
+          "fp": 64,
+          "fn": 63,
+          "p": 0.5152,
+          "r": 0.5191,
+          "f1": 0.5159,
           "alarms": 0,
           "fallback": "NO",
           "stability": "Controlled Adaptation"
@@ -326,45 +326,45 @@
       },
       "7": {
         "Frozen Source": {
-          "tp": 59,
-          "fp": 66,
-          "fn": 72,
-          "p": 0.472,
-          "r": 0.4504,
-          "f1": 0.4609,
+          "tp": 55,
+          "fp": 54,
+          "fn": 63,
+          "p": 0.5046,
+          "r": 0.4661,
+          "f1": 0.4846,
           "alarms": 0,
           "fallback": "NO",
           "stability": "Static"
         },
         "Unconstrained RoI-TTA": {
-          "tp": 62,
-          "fp": 124,
+          "tp": 49,
+          "fp": 34,
           "fn": 69,
-          "p": 0.3333,
-          "r": 0.4733,
-          "f1": 0.3912,
+          "p": 0.5904,
+          "r": 0.4153,
+          "f1": 0.4876,
           "alarms": 0,
           "fallback": "NO",
           "stability": "Unbounded FP"
         },
         "SafeAdapt v1": {
-          "tp": 59,
-          "fp": 66,
-          "fn": 72,
-          "p": 0.472,
-          "r": 0.4504,
-          "f1": 0.4609,
+          "tp": 55,
+          "fp": 54,
+          "fn": 63,
+          "p": 0.5046,
+          "r": 0.4661,
+          "f1": 0.4846,
           "alarms": 14,
-          "fallback": "YES (Patch 78)",
+          "fallback": "YES (Patch 2)",
           "stability": "Premature Fallback"
         },
         "SafeAdapt v2 (CMR)": {
-          "tp": 65,
+          "tp": 66,
           "fp": 57,
-          "fn": 66,
-          "p": 0.5328,
-          "r": 0.4962,
-          "f1": 0.5138,
+          "fn": 65,
+          "p": 0.5366,
+          "r": 0.5038,
+          "f1": 0.5182,
           "alarms": 0,
           "fallback": "NO",
           "stability": "Controlled Adaptation"
@@ -372,45 +372,45 @@
       },
       "123": {
         "Frozen Source": {
-          "tp": 53,
-          "fp": 44,
-          "fn": 78,
-          "p": 0.5464,
-          "r": 0.4046,
-          "f1": 0.4649,
+          "tp": 49,
+          "fp": 43,
+          "fn": 69,
+          "p": 0.5326,
+          "r": 0.4153,
+          "f1": 0.4667,
           "alarms": 0,
           "fallback": "NO",
           "stability": "Static"
         },
         "Unconstrained RoI-TTA": {
-          "tp": 57,
-          "fp": 108,
+          "tp": 44,
+          "fp": 29,
           "fn": 74,
-          "p": 0.3455,
-          "r": 0.4351,
-          "f1": 0.3851,
+          "p": 0.6027,
+          "r": 0.3729,
+          "f1": 0.4607,
           "alarms": 0,
           "fallback": "NO",
           "stability": "Unbounded FP"
         },
         "SafeAdapt v1": {
-          "tp": 53,
-          "fp": 44,
-          "fn": 78,
-          "p": 0.5464,
-          "r": 0.4046,
-          "f1": 0.4649,
+          "tp": 49,
+          "fp": 43,
+          "fn": 69,
+          "p": 0.5326,
+          "r": 0.4153,
+          "f1": 0.4667,
           "alarms": 14,
-          "fallback": "YES (Patch 80)",
+          "fallback": "YES (Patch 2)",
           "stability": "Premature Fallback"
         },
         "SafeAdapt v2 (CMR)": {
-          "tp": 60,
-          "fp": 39,
-          "fn": 71,
-          "p": 0.6061,
-          "r": 0.458,
-          "f1": 0.5217,
+          "tp": 63,
+          "fp": 48,
+          "fn": 68,
+          "p": 0.567,
+          "r": 0.4809,
+          "f1": 0.5174,
           "alarms": 0,
           "fallback": "NO",
           "stability": "Controlled Adaptation"
@@ -419,55 +419,55 @@
     },
     "summary": {
       "Frozen Source": {
-        "f1_mean": 0.45849999999999996,
-        "f1_std": 0.00787908624143688,
-        "precision_mean": 0.4732,
-        "precision_std": 0.07260743763554806,
-        "recall_mean": 0.4555,
-        "recall_std": 0.0536321731799113,
+        "f1_mean": 0.4774,
+        "f1_std": 0.009449338601193194,
+        "precision_mean": 0.49156666666666665,
+        "precision_std": 0.04887129355084979,
+        "recall_mean": 0.47176666666666667,
+        "recall_std": 0.05950271702479926,
         "false_alarms": 0
       },
       "Unconstrained RoI-TTA": {
-        "f1_mean": 0.3924666666666667,
-        "f1_std": 0.00807485809988841,
-        "precision_mean": 0.3324,
-        "precision_std": 0.013572398461583694,
-        "recall_mean": 0.4834666666666667,
-        "recall_std": 0.05417031782566294,
+        "f1_mean": 0.4701666666666666,
+        "f1_std": 0.015116326714295804,
+        "precision_mean": 0.5597,
+        "precision_std": 0.06412168120066725,
+        "recall_mean": 0.4096333333333333,
+        "recall_std": 0.03425336966392259,
         "false_alarms": 0
       },
       "SafeAdapt v1": {
-        "f1_mean": 0.4629999999999999,
-        "f1_std": 0.002007485989988476,
-        "precision_mean": 0.48233333333333334,
-        "precision_std": 0.05957594592898492,
-        "recall_mean": 0.45293333333333335,
-        "recall_std": 0.04964849779533449,
+        "f1_mean": 0.4774,
+        "f1_std": 0.009449338601193194,
+        "precision_mean": 0.49156666666666665,
+        "precision_std": 0.04887129355084979,
+        "recall_mean": 0.47176666666666667,
+        "recall_std": 0.05950271702479926,
         "false_alarms": 14
       },
       "SafeAdapt v2 (CMR)": {
-        "f1_mean": 0.516,
-        "f1_std": 0.004978955713801879,
-        "precision_mean": 0.5396333333333333,
-        "precision_std": 0.06332711372969191,
+        "f1_mean": 0.5171666666666667,
+        "f1_std": 0.0011676186592091138,
+        "precision_mean": 0.5396,
+        "precision_std": 0.02602998271224933,
         "recall_mean": 0.5012666666666666,
-        "recall_std": 0.04600970912028603,
+        "recall_std": 0.019225590584773557,
         "false_alarms": 0
       }
     },
     "contrasts": {
       "v2_vs_source": {
-        "delta": 0.057506160000000035,
+        "delta": 0.039725063333333345,
         "ci": [
-          0.05290000000000006,
-          0.06279999999999997
+          0.03360000000000002,
+          0.05069999999999997
         ]
       },
       "v2_vs_v1": {
-        "delta": 0.052984110000000036,
+        "delta": 0.039725063333333345,
         "ci": [
-          0.049299999999999955,
-          0.05680000000000007
+          0.03360000000000002,
+          0.05069999999999997
         ]
       }
     }

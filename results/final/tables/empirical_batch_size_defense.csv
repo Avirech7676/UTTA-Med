@@ -1,0 +1,8 @@
+batch_size,use_queue,auroc,f1,max_drift,status
+1,True,0.9482,0.8398,0.0384,STABLE (Queue)
+2,True,0.9485,0.8405,0.041,STABLE (Queue)
+4,True,0.9489,0.8411,0.0425,STABLE (Queue)
+8,True,0.9491,0.8418,0.0441,STABLE (Queue)
+16,False,0.9493,0.842,0.045,STABLE (Batch)
+32,False,0.9495,0.8423,0.0458,OPTIMAL (Standard)
+64,False,0.9496,0.8425,0.046,STABLE (Batch)

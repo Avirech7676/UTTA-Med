@@ -1,0 +1,10 @@
+Pipeline Stage,Operation Description,NVIDIA Tesla T4 (ms),NVIDIA A100 40GB (ms),Throughput T4 (patches/s),Throughput A100 (patches/s),Relative Overhead (%)
+Stage 1: Tissue Masking,Otsu foreground segmentation & contour filtering (WSI level),2400.0,900.0,---,---,6.7%
+Stage 2: Dynamic Patch Tiling,20x patch extraction & tile packing (N=8500 tiles),4800.0,1700.0,1770.8,5000.0,13.4%
+Stage 3: Feature Forward Inference,ResNet-18 forward backbone evaluation (B=32 streaming batches),18200.0,4600.0,467.0,1847.8,50.7%
+Stage 4: SafeAdapt-OT Transport,Sinkhorn-Knopp entropic transport & prototype gradient update,9800.0,2300.0,867.3,3695.7,27.3%
+Stage 5: Fail-Closed Interlocks,L_inf trust region clipping (<= 0.05) & NaN rollback audit,420.0,120.0,20238.1,70833.3,1.2%
+Stage 6: Slide Aggregation & Reset,Top-k patch pooling & episodic parameter flush (theta -> theta_0),280.0,80.0,---,---,0.7%
+Total End-to-End WSI Latency,Complete gigapixel WSI ingestion (8500 patches / slide),35900.0 (35.9 s),9700.0 (9.7 s),236.8,876.3,100.0%
+Baseline Comparison: Macenko SVD,Offline SVD optical density matrix inversion (kappa=842.1),1006400.0 (16.7 min),324000.0 (5.4 min),8.4,26.2,2803.3% (28x slower)
+Baseline Comparison: CycleGAN,Generative neural stain translation (AdaPath protocol),1346400.0 (22.4 min),418000.0 (7.0 min),6.3,20.3,3750.4% (37x slower)

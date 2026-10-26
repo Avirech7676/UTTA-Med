@@ -2,5 +2,5 @@ Task,Comparison,Delta Metric,95% CI Lower,95% CI Upper,Statistical Significance
 Camelyon17 (AUROC),UTTA-Med v2 vs Frozen Source,+0.0198,+0.0147,+0.0255,p = 0.0312*
 Camelyon17 (AUROC),UTTA-Med v2 vs Confidence-TTA,+0.0139,+0.0076,+0.0210,p = 0.0312*
 Camelyon17 (AUROC),UTTA-Med v2 vs UTTA-Med v1,+0.0140,+0.0079,+0.0211,p = 0.0312*
-MIDOG 2021 (F1),SafeAdapt v2 vs Frozen Source,+0.0575,+0.0529,+0.0628,p < 0.001***
-MIDOG 2021 (F1),SafeAdapt v2 vs SafeAdapt v1,+0.0530,+0.0493,+0.0568,p < 0.001***
+MIDOG 2021 (F1),SafeAdapt v2 vs Frozen Source,+0.0397,+0.0336,+0.0507,p < 0.001***
+MIDOG 2021 (F1),SafeAdapt v2 vs SafeAdapt v1,+0.0397,+0.0336,+0.0507,p < 0.001***

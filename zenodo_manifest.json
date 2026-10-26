@@ -1,0 +1,150 @@
+{
+  "title": "SafeAdapt: Geometry-Preserving Optimal Transport and Fail-Closed Safeguards for Test-Time Adaptation in Digital Pathology",
+  "authors": [
+    {
+      "name": "Avinash Reddy Cheerapareddy",
+      "affiliation": "SRM University-AP",
+      "orcid": "0009-0002-3023-747X"
+    },
+    {
+      "name": "Gunnam Sanjana",
+      "affiliation": "SRM University-AP"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "github_url": "https://github.com/Avirech7676/SafeAdapt",
+  "checkpoints": {
+    "camelyon17_resnet18_source_s123_BEST.pt": {
+      "sha256": "cb57d805869f1176d0c68762bf62f5510fb0492a9012bcf7af6e5c7b60446224",
+      "size_bytes": 45841153,
+      "size_mb": 43.72
+    },
+    "camelyon17_resnet18_source_s2024_BEST.pt": {
+      "sha256": "d9bed5d9bc05edd7c060610d73a135d6daa56a2a2238a4873b4ea45a2e32c261",
+      "size_bytes": 45840579,
+      "size_mb": 43.72
+    },
+    "camelyon17_resnet18_source_s42_BEST.pt": {
+      "sha256": "f0b85ec1a89707a8ad1807a544280ac2302a572abd0ba84233dff6d4dd35d000",
+      "size_bytes": 45839231,
+      "size_mb": 43.72
+    },
+    "camelyon17_resnet18_source_s7_BEST.pt": {
+      "sha256": "9c18d65ab0a97527eac12be8ce60b94a87720c357166cc6805364e52d1cf9a1b",
+      "size_bytes": 45840509,
+      "size_mb": 43.72
+    },
+    "camelyon17_resnet18_source_s99_BEST.pt": {
+      "sha256": "0b299932abd1841901b2e5bbee5c0735f3c79be9790b7feb9019c3094f42f540",
+      "size_bytes": 45840319,
+      "size_mb": 43.72
+    },
+    "midog_resnet18_s42_BEST.pt": {
+      "sha256": "409a9c7d3b9d10523221affc477f5a85660009fabd6359999a5b9b95a07c0287",
+      "size_bytes": 44785291,
+      "size_mb": 42.71
+    },
+    "nctcrc_resnet18_s42_BEST.pt": {
+      "sha256": "92631223343f5a7770b4da7671b9c7f2f26eee052c00807f263cfb4300b33d8e",
+      "size_bytes": 44801867,
+      "size_mb": 42.73
+    },
+    "pathmnist_r18_s42.pt": {
+      "sha256": "ce2cfcf0db4378f56dc3013e079d3095f150e91f0013639bb6c5774655703f73",
+      "size_bytes": 44800843,
+      "size_mb": 42.73
+    },
+    "source_centroids_s42.pt": {
+      "sha256": "08340599c894de6ae43a57b40a90b96953934e9a2a3841742cc387c83956c2ec",
+      "size_bytes": 18244,
+      "size_mb": 0.02
+    },
+    "source_fasterrcnn_s123.pt": {
+      "sha256": "44584d70480a7913eeff93e9ac6a8e4217c5ea90298d3de3623356817afd9348",
+      "size_bytes": 165732308,
+      "size_mb": 158.05
+    },
+    "source_fasterrcnn_s42.pt": {
+      "sha256": "af9c34437e37cb13e38a6179c247ea8069ce74869fbd180201590b6137347003",
+      "size_bytes": 165731879,
+      "size_mb": 158.05
+    },
+    "source_fasterrcnn_s7.pt": {
+      "sha256": "3f1ed8e0e3997eac411cd41bf663a3eafe36fc6f37ec44ec03ba2b880a4fa58e",
+      "size_bytes": 165731578,
+      "size_mb": 158.05
+    },
+    "utta_med_v2_resnet18_adapted_s42.pt": {
+      "sha256": "185cb4c7215ad10a82051c6bde14b22ca9c732463b2111542892b748221a9a1b",
+      "size_bytes": 45964632,
+      "size_mb": 43.84
+    }
+  },
+  "configs": {
+    "configs/authoritative_resnet18_utta.yaml": {
+      "sha256": "3de29be528704dc8f535f514ff0d88c58ffb75c9027318fb256519bfa520971b",
+      "size_bytes": 954
+    },
+    "configs/camelyon17.yaml": {
+      "sha256": "a2362b5db0adfdc0d39f6544f55530563c6a0c6a2be814ccb63f97ce06e07741",
+      "size_bytes": 1480
+    },
+    "configs/FINAL/evaluation.yaml": {
+      "sha256": "70cb1325f63654fd8c5aad67daf572702a6d3b66e94b1379cbcc11629cab8d9f",
+      "size_bytes": 338
+    },
+    "configs/FINAL/source_resnet18.yaml": {
+      "sha256": "9c9e07ce29f15f9ee3486f47338ed9adb576732d0e50dc4ebe9d153be8f54109",
+      "size_bytes": 483
+    },
+    "configs/FINAL/tta_utta_med.yaml": {
+      "sha256": "fabb187ff6287a9805a0f9f5d0153ad7473714355db83dc25dfb3e966d41188d",
+      "size_bytes": 454
+    },
+    "configs/nct_crc_evidential.yaml": {
+      "sha256": "b7288439e82e2fa8eaad7f5725e193bbc6005ec74f236c4f592ecb3bff074b34",
+      "size_bytes": 1190
+    },
+    "configs/tau_by_seed.yaml": {
+      "sha256": "79722d4a5554c90b8e4ffec0b4520e98a90ce32cb3b9c07b57a976f22c92c153",
+      "size_bytes": 530
+    },
+    "configs/v2/gating_confidence.yaml": {
+      "sha256": "68ea8d5e5779bfdcb1e043170e21c1045b0b978a9b5f8eee7c7eaa5c82cf780c",
+      "size_bytes": 674
+    },
+    "configs/v2/gating_frozen_source.yaml": {
+      "sha256": "a45513152833f07fece77839bec134601e07e39501d93c7d51fe4a848e003c6d",
+      "size_bytes": 595
+    },
+    "configs/v2/gating_hybrid.yaml": {
+      "sha256": "14958fdc10a57421927c41dbf26ab05e6cc769475f1465cc18a1e6b27701a1ef",
+      "size_bytes": 962
+    },
+    "configs/v2/gating_mc_only.yaml": {
+      "sha256": "9e5394b43a73a2580876be76bec3505f2a4c911f25df9351f2582417ee645061",
+      "size_bytes": 735
+    },
+    "configs/v2/safeadapt_c1_monitor.yaml": {
+      "sha256": "4e84bd94d3c734d3edbbe1c3120c11e05685a9d6ea8c5b30e3e408bea8717860",
+      "size_bytes": 2428
+    },
+    "configs/v2/safeadapt_c2_calibrated.yaml": {
+      "sha256": "15a0f59836d4d2f4415458664b3f5af731391bbf7ec3936bc1d957bc5840fa3f",
+      "size_bytes": 2900
+    },
+    "configs/v2/safeadapt_e1_frozen.yaml": {
+      "sha256": "185eb3d4d064ff281114189b33bb0403a9db35717784bfbe46dfd0a41c288145",
+      "size_bytes": 1664
+    },
+    "configs/v2/safeadapt_e2_frozen.yaml": {
+      "sha256": "3042225de8be5bd013a5725898a787802714004fb2b3ee95d61ba14e18df1418",
+      "size_bytes": 1462
+    },
+    "configs/v2/safeadapt_minimal.yaml": {
+      "sha256": "8901fc4935bb4eebc778d18699482d1bd09585d68c8e1ec9755edc5d14e84ddb",
+      "size_bytes": 1031
+    }
+  },
+  "verification_passed": true
+}

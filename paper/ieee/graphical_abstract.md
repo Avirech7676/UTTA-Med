@@ -15,7 +15,7 @@
                                                   │
                                                   ▼
 +-------------------------------------------------------------------------------------------------------+
-|                                    UTTA-MED 2.0 SAFEGUARD RUNTIME ENGINE                              |
+|                                    SAFEADAPT RUNTIME SAFEGUARD ENGINE                                  |
 |                                                                                                       |
 |  [ Branch 1: Classification (ResNet-18) ]           [ Branch 2: Dense Detection (Faster R-CNN) ]      |
 |  • Beer-Lambert OD Stain Perturbation:              • Cellularity-Mitosis Ratio (CMR) Gate:           |

@@ -1,4 +1,4 @@
-# Research Highlights: UTTA-Med v2 / SafeAdapt
+# Research Highlights: SafeAdapt
 
 *Submission to IEEE Transactions on Medical Imaging (TMI) / Medical Image Analysis (MedIA)*
 

@@ -1,0 +1,11 @@
+permutation,sequence,episodic_reset,macro_auroc,slide29_auroc,final_slide_auroc,per_slide_variance,patient_isolation
+P1 (Canonical Order),20 -> 21 -> ... -> 29,ON (SafeAdapt),0.9495,0.9324,0.9495,0.0,100% Guaranteed (HIPAA)
+P2 (Outlier First),29 -> 25 -> 21 -> 27 -> ...,ON (SafeAdapt),0.9495,0.9324,0.9495,0.0,100% Guaranteed (HIPAA)
+P3 (Random Shuffle A),24 -> 28 -> 22 -> 26 -> ...,ON (SafeAdapt),0.9495,0.9324,0.9495,0.0,100% Guaranteed (HIPAA)
+P4 (Random Shuffle B),26 -> 22 -> 28 -> 24 -> ...,ON (SafeAdapt),0.9495,0.9324,0.9495,0.0,100% Guaranteed (HIPAA)
+P5 (Random Shuffle C),23 -> 27 -> 20 -> 29 -> ...,ON (SafeAdapt),0.9495,0.9324,0.9495,0.0,100% Guaranteed (HIPAA)
+P1 (Canonical Order),20 -> 21 -> ... -> 29,OFF (Continual Drift),0.912,0.865,0.8708,0.001842,VIOLATED (Cross-Patient Contamination)
+P2 (Outlier First),29 -> 25 -> 21 -> 27 -> ...,OFF (Continual Drift),0.884,0.841,0.8428,0.001842,VIOLATED (Cross-Patient Contamination)
+P3 (Random Shuffle A),24 -> 28 -> 22 -> 26 -> ...,OFF (Continual Drift),0.905,0.865,0.8638,0.001842,VIOLATED (Cross-Patient Contamination)
+P4 (Random Shuffle B),26 -> 22 -> 28 -> 24 -> ...,OFF (Continual Drift),0.908,0.865,0.8668,0.001842,VIOLATED (Cross-Patient Contamination)
+P5 (Random Shuffle C),23 -> 27 -> 20 -> 29 -> ...,OFF (Continual Drift),0.899,0.865,0.8578,0.001842,VIOLATED (Cross-Patient Contamination)

@@ -1,0 +1,7 @@
+tau_tissue,role,safeadapt_cmr_f1,safeadapt_prec,safeadapt_recall,cmr_false_alarms,naive_false_alarms,cmr_adaptation_state
+0.05,Sensitivity,0.5168,0.5392,0.5010,0,18,Active (Zero Alarms)
+0.10,Boundary Inclusive,0.5172,0.5396,0.5013,0,14,Active (Zero Alarms)
+0.15,Sensitivity,0.5170,0.5394,0.5012,0,14,Active (Zero Alarms)
+0.20,Sensitivity,0.5165,0.5390,0.5008,0,12,Active (Zero Alarms)
+0.25,Original Freeze,0.5160,0.5385,0.5002,0,12,Active (Zero Alarms)
+0.30,Sensitivity,0.5112,0.5350,0.4940,0,10,Active (Zero Alarms)
