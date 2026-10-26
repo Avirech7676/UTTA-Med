@@ -370,8 +370,8 @@ Whole-slide image IDs are strictly partitioned across splits to avoid leakage. T
 
 \subsection{MIDOG 2021 Multi-Scanner Mitosis Detection}
 MIDOG 2021 evaluates domain shift induced by whole-slide scanner optics across human breast carcinoma cases~\cite{aubreville2023mitosis}.
-Source training uses Scanners 1 and 2 (Hamamatsu NanoZoomer 2.0-HT and S360, Cases 001–100, $0.23\,\mu\text{m/pixel}$). Target test domain is Scanner 3 (Aperio ScanScope CS2, Cases 101–150, 50 held-out cases, $0.25\,\mu\text{m/pixel}$).
-A spatially stratified 4x4 grid across standardized 10-HPF tumor regions ($1.96\,\mathrm{mm}^2$ per case) yields a frozen budget of $50 \text{ cases} \times 22 \text{ windows} = \mathbf{1{,}100\text{ patches}}$ ($512 \times 512$ px), capturing 118 verified ground-truth mitoses across 101 positive windows. Centroid matching radius is $r=30.0\text{ px}$ ($7.5\,\mu\text{m}$), with detection threshold $\tau=0.20$. For boundary tiles, tissue eligibility was systematically audited across $\tau_{\text{tissue}} \in [0.05, 0.30]$; as documented in Section~\ref{sec:cmr_sensitivity}, CMR guarantees zero false alarms across the entire range.
+Source training uses Scanners 1 and 2 (Hamamatsu NanoZoomer 2.0-HT and S360, Cases 001--100, $0.23\,\mu\text{m/pixel}$). Target test domain is Scanner 3 (Aperio ScanScope CS2, Cases 101--150, 50 held-out cases, $0.25\,\mu\text{m/pixel}$).
+A spatially stratified 4x4 grid across standardized 10-HPF tumor regions ($1.96\,\mathrm{mm}^2$ per case) yields a frozen budget of $50 \text{ cases} \times 22 \text{ windows} = \mathbf{1{,}100\text{ patches}}$ ($512 \times 512$ px), capturing 118 verified ground-truth mitoses across 101 positive windows. Centroid matching radius is $r=30.0\text{ px}$ ($7.5\,\mu\text{m}$), with detection threshold $\tau=0.20$. For boundary tiles, tissue eligibility was systematically audited across $\tau_{\text{tissue}} \in [0.05, 0.30]$; as documented in Section~\ref{sec:cmr}, CMR guarantees zero false alarms across the entire range.
 
 \begin{figure*}[t]
 \centering
@@ -725,12 +725,12 @@ Continuously adapting parameters across patient streams introduces diagnostic no
 A natural inquiry is whether OT-TTA extends to non-parametric open-set pathology scenarios where target slides present unanticipated tissue morphologies, necrosis, or non-neoplastic inflammatory infiltrates absent from certified source prototypes. The entropic transport formulation~(\ref{eq:ot_objective}) extends directly to open-set adaptation by augmenting prototype dictionary $\mathcal{P}_{\text{source}}$ with a virtual $(K+1)$-th ``slack/dustbin'' prototype $\boldsymbol{\mu}_{\text{slack}}$. Assigning a calibrated constant transport cost $C_{i, K+1} = \tau_{\text{slack}}$ with marginal prior capacity $r_{K+1} = 1 - \sum_{k=1}^K r_k$ allows anomalous out-of-distribution patches to be naturally absorbed into the dustbin sink. This prevents out-of-distribution features from exerting distortive gradient pull on authentic diagnostic prototypes, ensuring graceful degradation under open-set distribution shifts. Empirical benchmarking of this slack formulation across non-neoplastic inflammatory mimics represents an important direction for future investigation.
 
 \subsection{Practical Stress-Testing: Streaming Micro-Batches, Purely Benign Slides, and Weakly-Supervised WSI-MIL}
-To address critical clinical boundary conditions beyond standard balanced mini-batch evaluation, we practically stress-tested SafeAdapt across four rigorous deployment regimes (detailed with complete tabular metrics in Supplementary Material Section~\ref{sec:supp_empirical_defenses}):
+To address critical clinical boundary conditions beyond standard balanced mini-batch evaluation, we practically stress-tested SafeAdapt across four rigorous deployment regimes (detailed with complete tabular metrics in Supplementary Material Section~S.II):
 \begin{enumerate}
-\item \textbf{Single-Patch Streaming ($B=1$) with FIFO Memory Buffering:} While batch-mode inference ($B=32$) is standard for digitized whole-slide tiles, real-time edge scanners may stream patches individually. Standard Sinkhorn-Knopp transport requires multi-sample ensembles to establish empirical row marginals. To resolve this boundary, SafeAdapt-OT incorporates an online FIFO feature queue ($Q=64$ patches) active whenever $B < 16$. Empirically (Supplementary Table~\ref{tab:supp_batch_size_sweep}), single-patch streaming ($B=1$) achieves an AUROC of $0.9482 \pm 0.0062$ and F1 score of $0.8398$---within $0.0013$ of standard $B=32$ performance ($0.9495$)---with maximum parameter drift $\|\Delta\theta\|_\infty \le 0.0384$ strictly contained within the $L_\infty \le 0.05$ ball, proving practical batch-size invariance.
-\item \textbf{Resilience on Purely Benign Slides (0.0\% Tumor Burden):} In routine clinical practice, the vast majority of lymph node biopsies are benign. When presented with a 100\% benign slide, unconstrained Tent attempts to force entropy minimization on normal tissue, triggering catastrophic attractor collapse into a tumor prediction state (false positive rate surges to $42.6\%$, erroneously escalating the slide to pN1a macro-metastasis; Supplementary Table~\ref{tab:supp_benign_slides}). In contrast, SafeAdapt-OT bounds parameter deviation via Theorem~1 ($\Delta p \le 0.0460$) while entropy gating bypasses confident benign stroma, maintaining an FPR of $1.1\%$ and correctly preserving pN0 nodal staging.
-\item \textbf{Integration with Weakly-Supervised Whole-Slide Attention-MIL:} In clinical pathology workflows, patch representations are aggregated into slide-level diagnoses via Multiple Instance Learning (CLAM / Ilse et al.). Adapting patch representations prior to gated attention pooling (Supplementary Table~\ref{tab:supp_attn_mil}) yields $0.9495$ macro-AUROC and $96.0\%$ AJCC 8th Edition pTNM staging classification accuracy (only $4.0\%$ discordance across Hospital 2 WSIs), whereas Tent causes severe attention dispersion, collapsing macro-staging accuracy to $50.0\%$.
-\item \textbf{Comparison with Continual and Sharpness-Aware TTA (SAR \& CoTTA):} Benchmarking against recent continual TTA (CoTTA, CVPR 2022) and sharpness-aware adaptation (SAR, ICLR 2023) across all five seeds (Supplementary Table~\ref{tab:supp_extended_baselines}) confirms that while SAR and CoTTA improve over unconstrained Tent, both remain vulnerable to localized attractor collapse on severe stain outliers ($20.0\%$ and $40.0\%$ collapse rates on Slide~29, respectively). SafeAdapt-OT is the only paradigm exhibiting certified $0.0\%$ collapse rate across all seeds while delivering top-tier discrimination ($0.9495$ AUROC) and calibration ($0.0512$ ECE).
+\item \textbf{Single-Patch Streaming ($B=1$) with FIFO Memory Buffering:} While batch-mode inference ($B=32$) is standard for digitized whole-slide tiles, real-time edge scanners may stream patches individually. Standard Sinkhorn-Knopp transport requires multi-sample ensembles to establish empirical row marginals. To resolve this boundary, SafeAdapt-OT incorporates an online FIFO feature queue ($Q=64$ patches) active whenever $B < 16$. Empirically (Supplementary Table~S.II), single-patch streaming ($B=1$) achieves an AUROC of $0.9482 \pm 0.0062$ and F1 score of $0.8398$---within $0.0013$ of standard $B=32$ performance ($0.9495$)---with maximum parameter drift $\|\Delta\theta\|_\infty \le 0.0384$ strictly contained within the $L_\infty \le 0.05$ ball, proving practical batch-size invariance.
+\item \textbf{Resilience on Purely Benign Slides (0.0\% Tumor Burden):} In routine clinical practice, the vast majority of lymph node biopsies are benign. When presented with a 100\% benign slide, unconstrained Tent attempts to force entropy minimization on normal tissue, triggering catastrophic attractor collapse into a tumor prediction state (false positive rate surges to $42.6\%$, erroneously escalating the slide to pN1a macro-metastasis; Supplementary Table~S.III). In contrast, SafeAdapt-OT bounds parameter deviation via Theorem~1 ($\Delta p \le 0.0460$) while entropy gating bypasses confident benign stroma, maintaining an FPR of $1.1\%$ and correctly preserving pN0 nodal staging.
+\item \textbf{Integration with Weakly-Supervised Whole-Slide Attention-MIL:} In clinical pathology workflows, patch representations are aggregated into slide-level diagnoses via Multiple Instance Learning (CLAM / Ilse et al.). Adapting patch representations prior to gated attention pooling (Supplementary Table~S.IV) yields $0.9495$ macro-AUROC and $96.0\%$ AJCC 8th Edition pTNM staging classification accuracy (only $4.0\%$ discordance across Hospital 2 WSIs), whereas Tent causes severe attention dispersion, collapsing macro-staging accuracy to $50.0\%$.
+\item \textbf{Comparison with Continual and Sharpness-Aware TTA (SAR \& CoTTA):} Benchmarking against recent continual TTA (CoTTA, CVPR 2022) and sharpness-aware adaptation (SAR, ICLR 2023) across all five seeds (Supplementary Table~S.V) confirms that while SAR and CoTTA improve over unconstrained Tent, both remain vulnerable to localized attractor collapse on severe stain outliers ($20.0\%$ and $40.0\%$ collapse rates on Slide~29, respectively). SafeAdapt-OT is the only paradigm exhibiting certified $0.0\%$ collapse rate across all seeds while delivering top-tier discrimination ($0.9495$ AUROC) and calibration ($0.0512$ ECE).
 \end{enumerate}
 
 \section{Scope, Clinical Governance, and Translational Roadmap}
@@ -808,9 +808,9 @@ For any target sample whose baseline prediction margin satisfies $|p_0(x) - 0.5|
 \end{IEEEproof}
 
 \enlargethispage{2\baselineskip}
-\begin{thebibliography}{25}
+\begin{thebibliography}{28}
 \footnotesize
-\setlength{\itemsep}{-1.5pt}
+\setlength{\itemsep}{-2.5pt}
 \setlength{\parskip}{0pt}
 \providecommand{\url}[1]{#1}
 \csname url@samestyle\endcsname
@@ -908,6 +908,15 @@ J.~Liang, D.~Hu, and J.~Feng, ``Do we really need to access the source data? Sou
 
 \bibitem{kather2019nctcrc}
 J.~N. Kather, J.~Krisam, P.~Charoentong, T.~Luedde, E.~Herpel, C.-A. Weis, T.~Gaiser, A.~Marx, N.~A. Valous, D.~Ferber, \emph{et~al.}, ``Predicting survival from colorectal cancer histology slides using deep learning: A multicenter retrospective study,'' \emph{PLOS Med.}, vol.~16, no.~1, p. e1002730, 2019.
+
+\bibitem{macenko2009}
+M.~Macenko, M.~Niethammer, J.~S.~Marron, D.~Borland, J.~T.~Woosley, X.~Guan, C.~Schmitt, and N.~E.~Thomas, ``A method for normalizing histology slides for quantitative analysis,'' in \emph{Proc. IEEE Int. Symp. Biomed. Imaging (ISBI)}, 2009, pp. 1107--1110.
+
+\bibitem{decideai2022}
+B.~Vasey, M.~Nagendran, B.~Campbell, D.~A.~Clifton, G.~S.~Collins, S.~Denaxas, A.~K.~Denniston, \emph{et~al.}, ``Reporting guideline for the early-stage clinical evaluation of decision support systems driven by artificial intelligence: {DECIDE-AI},'' \emph{Nat. Med.}, vol.~28, no.~5, pp. 924--933, 2022.
+
+\bibitem{stardai2020}
+V.~Sounderajah, H.~Ashrafian, R.~Aggarwal, J.~De~Fauw, A.~K.~Denniston, F.~Greaves, A.~Karthikesalingam, \emph{et~al.}, ``Developing specific reporting guidelines for diagnostic accuracy studies of artificial intelligence: {STARD-AI},'' \emph{Lancet Digit. Health}, vol.~2, no.~11, pp. e552--e553, 2020.
 
 \end{thebibliography}
 
