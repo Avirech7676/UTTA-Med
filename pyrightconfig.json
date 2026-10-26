@@ -1,0 +1,14 @@
+{
+  "include": [
+    "src",
+    "scripts",
+    "tests",
+    "notebooks"
+  ],
+  "exclude": [
+    "**/__pycache__",
+    ".git"
+  ],
+  "reportMissingImports": "none",
+  "reportMissingModuleSource": "none"
+}

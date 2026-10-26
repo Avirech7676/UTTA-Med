@@ -36,10 +36,10 @@ def ensure_libraries(packages: list[str]) -> None:
 ensure_libraries(["torch", "torchvision", "numpy", "PIL", "sklearn", "scipy", "tqdm", "medmnist"])
 
 import numpy as np
-import torch
-import torch.nn.functional as F
-from torch.utils.data import DataLoader
-from torchvision import transforms
+import torch  # type: ignore
+import torch.nn.functional as F  # type: ignore
+from torch.utils.data import DataLoader  # type: ignore
+from torchvision import transforms  # type: ignore
 from tqdm.auto import tqdm
 
 HERE = Path(__file__).resolve().parent
@@ -251,15 +251,15 @@ def main():
     seed_all(SEED)
     print("device", DEVICE)
     try:
-        import medmnist
-        from medmnist import PathMNIST
+        import medmnist  # type: ignore
+        from medmnist import PathMNIST  # type: ignore
     except ImportError:
         import subprocess
 
         print("Installing medmnist...")
         subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", "medmnist"])
-        import medmnist
-        from medmnist import PathMNIST
+        import medmnist  # type: ignore
+        from medmnist import PathMNIST  # type: ignore
 
     tf = transforms.Compose(
         [

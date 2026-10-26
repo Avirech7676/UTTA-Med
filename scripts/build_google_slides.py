@@ -9,11 +9,11 @@ Includes:
 """
 
 import os
-from pptx import Presentation
-from pptx.util import Inches, Pt
-from pptx.enum.text import PP_ALIGN
-from pptx.dml.color import RGBColor
-from pptx.enum.shapes import MSO_SHAPE
+from pptx import Presentation  # type: ignore
+from pptx.util import Inches, Pt  # type: ignore
+from pptx.enum.text import PP_ALIGN  # type: ignore
+from pptx.dml.color import RGBColor  # type: ignore
+from pptx.enum.shapes import MSO_SHAPE  # type: ignore
 
 def create_deck():
     prs = Presentation()

@@ -58,8 +58,8 @@ except Exception:
     pass
 
 import numpy as np
-import torch
-import torch.nn as nn
+import torch  # type: ignore
+import torch.nn as nn  # type: ignore
 from PIL import Image, ImageDraw, ImageFont
 
 # Whole slide pathology images exceed default PIL decompression limits
@@ -208,7 +208,7 @@ def parse_midog_annotation_box(abox: List[float]) -> Tuple[float, float, float, 
 # ------------------------------------------------------------------------------
 def build_detector_architecture(num_classes: int = 2) -> nn.Module:
     """Reconstruct exact Faster R-CNN ResNet-50-FPN detector used during source training."""
-    from torchvision.models.detection import fasterrcnn_resnet50_fpn
+    from torchvision.models.detection import fasterrcnn_resnet50_fpn  # type: ignore
 
     model = fasterrcnn_resnet50_fpn(
         weights=None,
@@ -516,7 +516,7 @@ def main() -> None:
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     git_rev = get_git_revision()
-    import torchvision
+    import torchvision  # type: ignore
     tv_version = torchvision.__version__
     torch_version = torch.__version__
 

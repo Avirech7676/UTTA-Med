@@ -39,11 +39,11 @@ def ensure_libraries(packages: list[str]) -> None:
 ensure_libraries(["torch", "torchvision", "numpy", "PIL", "sklearn", "scipy", "tqdm"])
 
 import numpy as np
-import torch
-import torch.nn.functional as F
+import torch  # type: ignore
+import torch.nn.functional as F  # type: ignore
 from PIL import Image, ImageFile
-from torch.utils.data import DataLoader, Dataset
-from torchvision import transforms
+from torch.utils.data import DataLoader, Dataset  # type: ignore
+from torchvision import transforms  # type: ignore
 from tqdm.auto import tqdm
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
