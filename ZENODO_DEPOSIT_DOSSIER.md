@@ -6,8 +6,8 @@
 **Corresponding Authors:** Avinash Reddy Cheerapareddy & Gunnam Sanjana  
 **Affiliation:** Department of Computer Science and Engineering, SRM University-AP, Amaravati, Andhra Pradesh 522240, India  
 **Target Repository:** Zenodo (CERN / OpenAIRE Open Access Repository)  
-**Permanent Target DOI Schema:** `10.5281/zenodo.<RECORD_ID>`  
-**Primary Archive Package:** `safeadapt_reproducibility_package.tar.gz`  
+**Permanent Target DOI:** [https://doi.org/10.5281/zenodo.23658430](https://doi.org/10.5281/zenodo.23658430) (`10.5281/zenodo.23658430`)  
+**Primary Archive Package:** `safeadapt_checkpoints.zip` (802.28 MB)  
 
 
 ---
