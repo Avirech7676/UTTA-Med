@@ -1,9 +1,10 @@
 # Submission Cover Letter: SafeAdapt
 
 **Manuscript Title:** SafeAdapt: Geometry-Preserving Optimal Transport and Fail-Closed Safeguards for Test-Time Adaptation in Digital Pathology  
-**Author:** Avinash Reddy Cheerapareddy  
-**Affiliation:** Department of Computer Science and Engineering  
-**Corresponding Contact:** Avinash Reddy Cheerapareddy  
+**Authors:** Avinash Reddy Cheerapareddy & Gunnam Sanjana  
+**Affiliation:** Department of Computer Science and Engineering, SRM University-AP, Amaravati, Andhra Pradesh 522240, India  
+**Corresponding Contact:** Avinash Reddy Cheerapareddy (avinashreddy_c@srmap.edu.in)  
+
 **Target Venue:** IEEE International Symposium on Biomedical Imaging (ISBI) / IEEE Transactions on Medical Imaging (TMI)  
 
 ---
