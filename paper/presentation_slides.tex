@@ -1,0 +1,609 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+% Theme and Color Scheme (Professional Academic Medical AI)
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+% Typography & Packages
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+
+% Custom Colors
+\definecolor{MedNavy}{RGB}{14, 43, 92}
+\definecolor{MedBlue}{RGB}{28, 90, 160}
+\definecolor{MedRed}{RGB}{180, 40, 40}
+\definecolor{MedGreen}{RGB}{34, 139, 34}
+\definecolor{MedGray}{RGB}{245, 247, 250}
+\definecolor{TextDark}{RGB}{30, 41, 59}
+
+\setbeamercolor{palette primary}{bg=MedNavy,fg=white}
+\setbeamercolor{palette secondary}{bg=MedBlue,fg=white}
+\setbeamercolor{palette tertiary}{bg=MedNavy,fg=white}
+\setbeamercolor{title}{fg=MedNavy}
+\setbeamercolor{frametitle}{bg=MedNavy,fg=white}
+\setbeamercolor{structure}{fg=MedBlue}
+\setbeamercolor{block title}{bg=MedBlue,fg=white}
+\setbeamercolor{block body}{bg=MedGray,fg=TextDark}
+\setbeamercolor{alerted text}{fg=MedRed}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Metadata
+\title[\textbf{SafeAdapt} (TTA in Digital Pathology)]{\textbf{SafeAdapt: Geometry-Preserving Optimal Transport and Fail-Closed Safeguards for Test-Time Adaptation in Digital Pathology}}
+\subtitle{Reversing Negative Transfer and Precluding Attractor Collapse Under Multicenter Clinical Shift}
+\author[\textbf{A. R. Cheerapareddy \& G. Sanjana}]{\textbf{Avinash Reddy Cheerapareddy} \and \textbf{Gunnam Sanjana}}
+\institute[SRM University-AP]{
+    Department of Computer Science and Engineering\\
+    SRM University-AP, Andhra Pradesh, India\\
+    \vspace{0.2cm}
+    \texttt{\{avinashreddy\_cheerapareddy, sanjana\_gunnam\}@srmap.edu.in}\\
+    \vspace{0.15cm}
+    \small \textbf{Zenodo Archive DOI:} \href{https://doi.org/10.5281/zenodo.23658430}{10.5281/zenodo.23658430} \quad \textbf{GitHub:} \href{https://github.com/Avirech7676/UTTA-Med}{Avirech7676/UTTA-Med}
+}
+\date{IEEE TMI / Medical AI Presentation 2026}
+
+\begin{document}
+
+% -------------------------------------------------------------
+% SLIDE 1: TITLE SLIDE
+% -------------------------------------------------------------
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 2: MOTIVATION
+% -------------------------------------------------------------
+\begin{frame}{Cross-Center Stain and Scanner Variability Degrades Deep Pathology Models}
+    \begin{columns}[T]
+        \begin{column}{0.58\textwidth}
+            \textbf{The Clinical Reality:}
+            \begin{itemize}
+                \item Digital whole-slide imaging (WSI) algorithms suffer severe accuracy drops when deployed across different clinical centers.
+                \item Tissue microtomy variations, staining reagent batches (H\&E), and distinct optical scanners induce massive domain shifts.
+            \end{itemize}
+            \vspace{0.2cm}
+            \textbf{Why Conventional Transfer Fails:}
+            \begin{itemize}
+                \item Centralized data sharing is prohibited by patient privacy regulations (HIPAA, GDPR).
+                \item Source models must operate online on streaming, unlabeled target slides without human-in-the-loop re-annotation.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            \begin{block}{The Camelyon17 Gap}
+                \centering
+                \small
+                \textbf{Sentinel Lymph Node Metastases}\\
+                $N = 455,954$ Patches, 50 WSIs\\
+                \vspace{0.2cm}
+                Transfer from Hospitals $\{0, 3, 4\} \to$ Hospital 2 drops slide-level sensitivity by up to \alert{$\mathbf{28\%}$}.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 3: RESEARCH GAP
+% -------------------------------------------------------------
+\begin{frame}{Existing Test-Time Adaptation Methods Suffer Catastrophic Attractor Collapse}
+    \begin{columns}[T]
+        \begin{column}{0.55\textwidth}
+            \textbf{Unconstrained Entropy Minimization (Tent):}
+            \begin{itemize}
+                \item Updates BatchNorm affine parameters ($\gamma, \beta$) online by minimizing prediction entropy $\mathcal{L}_{\text{tent}} = -\sum p \log p$.
+                \item \alert{\textbf{Failure Mode:}} Erroneous high-confidence predictions yield destructive pseudo-gradients that drive all outputs toward a single majority class.
+            \end{itemize}
+            \vspace{0.2cm}
+            \textbf{Our Multi-Seed Audit Discovery:}
+            \begin{itemize}
+                \item Under a rigorous 5-seed evaluation on Camelyon17, \alert{\textbf{Tent collapses on 40\% of seeds}} (Seeds 7 and 99).
+                \item AUROC plummets from $0.930 \to \mathbf{0.3429}$, and sensitivity falls below $3\%$.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.42\textwidth}
+            \begin{alertblock}{The 5-Seed Instability Trap}
+                \small
+                \begin{tabular}{lcc}
+                    \toprule
+                    \textbf{Seed} & \textbf{Source Only} & \textbf{Tent (ICLR'21)} \\
+                    \midrule
+                    Seed 42 & 0.9355 & 0.9294 \\
+                    Seed 123 & 0.9349 & 0.9410 \\
+                    Seed 2024 & 0.9320 & 0.9331 \\
+                    \textbf{Seed 7} & 0.9134 & \alert{\textbf{0.3429 (Collapse)}} \\
+                    \textbf{Seed 99} & 0.9328 & \alert{\textbf{0.3444 (Collapse)}} \\
+                    \bottomrule
+                \end{tabular}
+                \vspace{0.1cm}\\
+                \textit{Average harm rate reaches $18.7\% \pm 17.9\%$.}
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 4: RESEARCH QUESTION & OBJECTIVE
+% -------------------------------------------------------------
+\begin{frame}{Research Question and Objectives}
+    \begin{block}{Central Research Question}
+        \centering\large
+        \textit{Can test-time adaptation achieve guaranteed positive transfer in computational pathology without falling into single-class attractor collapse or violating clinical safety bounds?}
+    \end{block}
+
+    \vspace{0.3cm}
+    \textbf{Three Concrete Research Objectives:}
+    \begin{enumerate}
+        \item \textbf{Analyze the Failure Mechanism:} Mathematically characterize why confidence and scalar uncertainty gating fail to prevent representation collapse under class imbalance.
+        \item \textbf{Formulate Geometry-Preserving Alignment:} Enforce optimal transport with exact marginal prior constraints against certified source prototypes ($\mathbf{Q}^T \mathbf{1}_B = \mathbf{r}$).
+        \item \textbf{Engineer Clinical Fail-Closed Safeguards:} Bound parameter drift ($\|\theta_t - \theta_0\|_\infty \le 0.05$), eliminate false silence alarms on acellular stroma, and ensure patient isolation via per-WSI resets.
+    \end{enumerate}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 5: CONTRIBUTION OVERVIEW
+% -------------------------------------------------------------
+\begin{frame}{Core Contributions of SafeAdapt}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\textbf{1. Theoretical & Empirical Disproof}}
+                \small
+                \textbf{Taylor Equivalence Trap:} We prove that for single-logit binary heads, MC-Dropout predictive variance is asymptotically rank-equivalent to softmax confidence ($\rho = -0.9917$). Uncertainty gating merely throttles update steps without stopping collapse.
+            \end{block}
+            \vspace{0.2cm}
+            \begin{block}{\textbf{2. Geometry-Preserving OT-TTA}}
+                \small
+                \textbf{Sinkhorn-Knopp Alignment:} Formulates batch adaptation as an Entropic Optimal Transport problem with exact target marginals, mathematically precluding attractor collapse.
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\textbf{3. Biological Safeguards (CMR)}}
+                \small
+                \textbf{Optical Density Gating:} Cellularity-Mitosis Ratio uses Beer-Lambert stain deconvolution, eliminating all 14 false silence alarms on benign acellular stroma in MIDOG 2021.
+            \end{block}
+            \vspace{0.2cm}
+            \begin{block}{\textbf{4. Provable PAC Trust Regions}}
+                \small
+                \textbf{Bounded Drift & Rollback:} Parameter projection $\|\theta_t - \theta_0\|_\infty \le 0.05$ guarantees output change $\Delta p \le 0.0460$, combined with 1.8\,ms atomic rollback and per-WSI resets.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 6: PROPOSED APPROACH OVERVIEW
+% -------------------------------------------------------------
+\begin{frame}{SafeAdapt Architecture: High-Level End-to-End Pipeline}
+    \centering
+    \begin{tikzpicture}[node distance=1.1cm, auto,
+        block/.style={rectangle, draw=MedNavy, fill=MedGray, thick, rounded corners, text width=2.4cm, align=center, minimum height=1cm, font=\scriptsize},
+        gate/.style={diamond, draw=MedBlue, fill=blue!10, thick, text width=1.6cm, align=center, font=\tiny},
+        arrow/.style={thick, ->, >=stealth}]
+        
+        \node[block] (input) {Streaming Target WSI Patches $x_t$};
+        \node[block, right of=input, xshift=2.2cm] (infer) {Pre-Adaptation Inference $\hat{y}_t$};
+        \node[gate, right of=infer, xshift=2.2cm] (filter) {Biological Gate $\tau_{\text{OD}}, \tau_{\text{conf}}$};
+        \node[block, right of=filter, xshift=2.2cm] (ot) {Entropic OT Alignment ($\mathbf{Q}^T \mathbf{1} = \mathbf{r}$)};
+        \node[block, below of=ot, yshift=-0.5cm] (guard) {Runtime Sentinel ($\|\Delta \theta\|_\infty \le 0.05$)};
+        \node[block, left of=guard, xshift=-2.2cm] (update) {BN-Affine Atomic Commit};
+        \node[block, left of=update, xshift=-2.2cm] (reset) {Slide-Boundary Episode Reset};
+
+        \draw[arrow] (input) -- (infer);
+        \draw[arrow] (infer) -- (filter);
+        \draw[arrow] (filter) -- node[above, font=\tiny]{Admit} (ot);
+        \draw[arrow] (ot) -- (guard);
+        \draw[arrow] (guard) -- node[above, font=\tiny]{Finite \& Bounded} (update);
+        \draw[arrow] (update) -- (reset);
+        \draw[arrow] (guard.east) -- ++(0.3,0) |- node[near start, right, font=\tiny, text=MedRed]{Anomaly} ++(0,-0.8) -| (reset.south);
+    \end{tikzpicture}
+    
+    \vspace{0.4cm}
+    \begin{block}{Execution Philosophy}
+        \small
+        \textbf{Diagnostics precede adaptation:} Clinical predictions $\hat{y}_t$ are logged from the pristine state before parameter updates. The model resets to $\theta_0$ at every slide boundary, guaranteeing complete patient diagnostic isolation.
+    \end{block}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 7: METHOD COMPONENT 1 (OPTIMAL TRANSPORT)
+% -------------------------------------------------------------
+\begin{frame}{Method: Entropic Optimal Transport Precludes Attractor Collapse}
+    \begin{columns}[T]
+        \begin{column}{0.55\textwidth}
+            \textbf{The Mathematical Formulation:}
+            \begin{equation*}
+                \min_{\mathbf{Q} \in \mathcal{U}(\mathbf{p}, \mathbf{r})} \langle \mathbf{Q}, \mathbf{M} \rangle - \epsilon H(\mathbf{Q}), \quad \mathbf{M}_{ik} = -\log p(y=k \mid x_i)
+            \end{equation*}
+            \begin{itemize}
+                \item $\mathbf{p} = \frac{1}{B} \mathbf{1}_B$ (uniform patch weight constraint).
+                \item $\mathbf{r} = [r_0, r_1]^T$ (certified target class marginal prior).
+            \end{itemize}
+            \vspace{0.2cm}
+            \textbf{Why Attractor Collapse is Impossible:}
+            \begin{itemize}
+                \item The marginal constraint $\mathbf{Q}^T \mathbf{1}_B = \mathbf{r}$ \textbf{forces} the transportation matrix to assign exactly $r_1 \cdot B$ mass to the tumor class.
+                \item Solved via rapid Sinkhorn-Knopp iterations in $< 2.5$\,ms per batch on GPU.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.42\textwidth}
+            \begin{block}{Reversing Stain Outliers (Slide 29)}
+                \centering
+                \small
+                \textbf{Camelyon17 Severe Outlier Slide 29}\\
+                $N = 9,456$ Patches, Extreme Dark Staining\\
+                \vspace{0.2cm}
+                \begin{tabular}{lc}
+                    \toprule
+                    \textbf{Method} & \textbf{Slide 29 AUROC} \\
+                    \midrule
+                    Source-Only & 0.8592 \\
+                    Tent (Collapses) & \alert{\textbf{0.0521}} \\
+                    EATA & 0.8845 \\
+                    \textbf{SafeAdapt-OT} & \textbf{\textcolor{MedGreen}{0.9324 $\pm$ 0.0078}} \\
+                    \bottomrule
+                \end{tabular}
+                \vspace{0.1cm}\\
+                \textit{Completely rescues outlier slides where standard TTA fails.}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 8: METHOD COMPONENT 2 (BIOLOGICAL SAFEGUARDS & PAC BOUNDS)
+% -------------------------------------------------------------
+\begin{frame}{Method: Tissue Optical Density Safeguards and PAC Drift Bounds}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\textbf{Tissue Gating via Beer-Lambert Law}}
+                \small
+                \textbf{Problem:} Dense mitosis detectors (MIDOG 2021) misinterpret tumor-free acellular stroma as model silence, latching false alarm rollbacks.
+                \vspace{0.1cm}\\
+                \textbf{Solution:} \textbf{Cellularity-Mitosis Ratio (CMR)}:
+                \begin{equation*}
+                    \text{OD} = -\log_{10}(\mathbf{I} / \mathbf{I}_0), \quad \mathcal{H} = \mathbf{v}_{\text{hematoxylin}}^T \text{OD}
+                \end{equation*}
+                Silences adaptation triggers if tissue cellularity $\mathcal{H} < \tau_{\text{cellularity}}$, \textbf{eliminating all 14 false silence alarms}.
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\textbf{Provable PAC $L_\infty$ Trust Region}}
+                \small
+                \textbf{Problem:} Parameter drift during continuous adaptation can corrupt decision boundaries over thousands of patches.
+                \vspace{0.1cm}\\
+                \textbf{Theorem (Drift Projection):}
+                Confining updates to $\|\theta_t - \theta_0\|_\infty \le 0.05$ on terminal normalization layers strictly bounds output probability drift:
+                \begin{equation*}
+                    |\sigma(z_t) - \sigma(z_0)| \le \Delta p_{\max} = \mathbf{0.0460}
+                \end{equation*}
+                Guarantees fail-closed safety under any corrupt stream.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 9: EXPERIMENTAL SETUP
+% -------------------------------------------------------------
+\begin{frame}{Experimental Setup: Multicenter Pathology Benchmarks}
+    \begin{columns}[T]
+        \begin{column}{0.55\textwidth}
+            \textbf{Two Multicenter Digital Pathology Benchmarks:}
+            \begin{enumerate}
+                \item \textbf{Camelyon17-WILDS (Metastasis Classification):}
+                \begin{itemize}
+                    \item 455,954 patches ($96 \times 96$ px) from 5 clinical centers.
+                    \item Train: Centers 0, 3, 4 ($n=302,436$). Val: Center 1 ($n=34,904$).
+                    \item Target Cohort: Center 2 ($n=85,054$ across 10 WSIs).
+                \end{itemize}
+                \item \textbf{MIDOG 2021 (Mitotic Figure Detection):}
+                \begin{itemize}
+                    \item 50 cases, 1,100 patches ($512 \times 512$ px), Faster R-CNN R50-FPN.
+                    \item Unseen Target: Scanner 3 (cross-scanner domain shift).
+                \end{itemize}
+            \end{enumerate}
+        \end{column}
+        \begin{column}{0.42\textwidth}
+            \begin{block}{Rigorous Evaluation Protocol}
+                \small
+                \begin{itemize}
+                    \item \textbf{5 Random Seeds:} $\{42, 123, 2024, 7, 99\}$.
+                    \item \textbf{No Target Label Peeking:} All hyperparameters $(\tau, \text{lr})$ tuned strictly on held-out Hospital 1.
+                    \item \textbf{Competitive Baselines:} Frozen Source, Tent (ICLR'21), EATA (ICML'22), SAR (ICLR'23), Random-Gated Controls.
+                    \item \textbf{Hardware:} NVIDIA Tesla T4 \& RTX 4090.
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 10: MAIN RESULTS
+% -------------------------------------------------------------
+\begin{frame}{Primary Results: SafeAdapt Outperforms All Baselines and Halts Harm}
+    \small
+    \textbf{Five-Seed Benchmark on Camelyon17 Target Hospital 2 ($N = 85,054$ patches, mean $\pm$ SD):}
+    \vspace{0.15cm}
+    \centering
+    \begin{tabular}{lccccc}
+        \toprule
+        \textbf{Method} & \textbf{AUROC} $\uparrow$ & \textbf{F1 Score} $\uparrow$ & \textbf{ECE} $\downarrow$ & \textbf{Coverage} & \textbf{Harm Rate} $\downarrow$ \\
+        \midrule
+        Source-Only & 0.930 $\pm$ 0.009 & 0.807 $\pm$ 0.025 & 0.128 $\pm$ 0.026 & --- & --- \\
+        Tent (ICLR'21) & 0.698 $\pm$ 0.324 & 0.506 $\pm$ 0.411 & 0.284 $\pm$ 0.179 & 1.000 & 0.187 $\pm$ 0.179 \\
+        EATA (ICML'22) & 0.921 $\pm$ 0.026 & 0.809 $\pm$ 0.031 & 0.152 $\pm$ 0.023 & 0.885 & 0.025 $\pm$ 0.015 \\
+        Random-Gated & 0.697 $\pm$ 0.304 & 0.487 $\pm$ 0.385 & 0.298 $\pm$ 0.166 & 0.700 & 0.194 $\pm$ 0.170 \\
+        Confidence-Gated & 0.936 $\pm$ 0.022 & 0.831 $\pm$ 0.032 & 0.130 $\pm$ 0.030 & 0.581 & 0.007 $\pm$ 0.003 \\
+        \midrule
+        \textbf{SafeAdapt (Ours)} & \textbf{\textcolor{MedGreen}{0.9495 $\pm$ 0.013}} & \textbf{\textcolor{MedGreen}{0.842 $\pm$ 0.031}} & \textbf{\textcolor{MedGreen}{0.075 $\pm$ 0.005}} & 0.612 & \textbf{\textcolor{MedGreen}{0.0018 $\pm$ 0.0003}} \\
+        \bottomrule
+    \end{tabular}
+
+    \vspace{0.3cm}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Statistical Superiority}
+                \scriptsize
+                $\Delta$F1 vs. Source is \textbf{positive on all 5 seeds} ($+0.041, +0.035, +0.038, +0.028, +0.022$). Paired Wilcoxon test: \textbf{$p = 0.0312$}.
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Over $100\times$ Harm Reduction}
+                \scriptsize
+                Harmful adaptation drops from $\mathbf{18.7\%}$ (Tent) to $\mathbf{0.18\%}$ (SafeAdapt), while Expected Calibration Error (ECE) is cut by $\mathbf{43\%}$.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 11: ABLATION STUDY
+% -------------------------------------------------------------
+\begin{frame}{Ablation Study: Gating Selection and the Taylor Trap Disproof}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\textbf{Does Gating Mechanism Matter?}}
+                \small
+                \textbf{Matched-Coverage Control:}
+                \begin{itemize}
+                    \item Dropping 30\% of patches randomly (\textit{Random-Gated}) yields catastrophic collapse on Seeds 7 and 99 (AUROC $\approx 0.35$).
+                    \item \textbf{Insight:} Gains do not come from simply taking fewer gradient steps; \textbf{sample identity is paramount}.
+                \end{itemize}
+            \end{block}
+            \vspace{0.1cm}
+            \begin{block}{\textbf{Adaptation Steps ($k$) Sensitivity}}
+                \small
+                For $k=1$, AUROC = $0.977$; for $k \ge 5$, AUROC plummets to $0.375$. \textbf{Single-step updates ($k=1$) are strictly optimal.}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{alertblock}{\textbf{The Binary Uncertainty Taylor Trap}}
+                \small
+                \textbf{Common Assumption:} Bayesian MC-Dropout provides orthogonal epistemic information over softmax confidence.
+                \vspace{0.1cm}\\
+                \textbf{Our Mathematical Disproof:}
+                Via Taylor expansion around $\mu_z$:
+                \begin{equation*}
+                    \text{Var}_{w}[p(y=1 \mid x, w)] \approx p_0^2 (1 - p_0)^2 \sigma_z^2
+                \end{equation*}
+                \begin{itemize}
+                    \item Empirical Spearman correlation: \alert{$\mathbf{\rho = -0.9917}$}.
+                    \item MC-Dropout incurs a \alert{$\mathbf{3.55\times}$ latency penalty} with zero incremental sample discrimination.
+                \end{itemize}
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 12: QUALITATIVE / CASE STUDY
+% -------------------------------------------------------------
+\begin{frame}{Qualitative Case Study: Slide 29 Restoration & MIDOG Tissue Detection}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{\textbf{Case 1: Severe Stain Outlier (Slide 29)}}
+                \small
+                \begin{itemize}
+                    \item Slide 29 features extreme, dark hematoxylin over-staining from Hospital 2.
+                    \item Standard Tent collapses logits into negative infinity, missing 100\% of micro-metastases (Sensitivity $\to 0\%$).
+                    \item \textbf{SafeAdapt-OT} maintains transport balance: restored AUROC to \textbf{\textcolor{MedGreen}{0.9324 $\pm$ 0.0078}}.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\textbf{Case 2: MIDOG Mitotic Detection}}
+                \small
+                \begin{itemize}
+                    \item Across 50 Scanner-3 cases, benign stroma patches contain zero mitoses.
+                    \item Standard detectors trip 14 false silence alarms.
+                    \item \textbf{CMR Tissue Gating} measures optical density $\mathcal{H}$, recognizes stroma physiologically, and lifts F1:
+                    \begin{equation*}
+                        F_1 = \mathbf{0.5172 \pm 0.0012} \quad (p < 0.001)
+                    \end{equation*}
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    \vspace{0.3cm}
+    \centering
+    \scriptsize \textbf{Key Takeaway:} Quantitative gains correspond to authentic morphological preservation on real clinical tissue slides.
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 13: DISCUSSION
+% -------------------------------------------------------------
+\begin{frame}{Discussion: Why SafeAdapt Succeeds Where Prior TTA Fails}
+    \begin{columns}[T]
+        \begin{column}{0.32\textwidth}
+            \begin{block}{\textbf{Geometric Balance}}
+                \small
+                Entropic Optimal Transport replaces unstable unconstrained gradient descent with exact marginal transportation, preventing models from seeking trivial single-class minima.
+            \end{block}
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            \begin{block}{\textbf{Biological Grounding}}
+                \small
+                Incorporating Beer-Lambert stain deconvolution bridges the gap between abstract neural losses and physical histology tissue properties.
+            \end{block}
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            \begin{block}{\textbf{Fail-Closed Runtime}}
+                \small
+                Hard parameter trust regions ($\|\Delta\theta\|_\infty \le 0.05$) and atomic rollbacks guarantee that even adversarial or non-finite inputs cannot corrupt the baseline model.
+            \end{block}
+        \end{column}
+    \end{columns}
+    \vspace{0.4cm}
+    \begin{quote}
+        \centering\small
+        \textit{"Operational failure containment does not equal clinical readiness, but geometric transport constraints make positive transfer provably achievable."}
+    \end{quote}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 14: LIMITATIONS
+% -------------------------------------------------------------
+\begin{frame}{Honest Limitations and Methodological Boundary Conditions}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{alertblock}{\textbf{1. Multi-Step Drift Sensitivity}}
+                \small
+                SafeAdapt requires single-step adaptation ($k=1$). Setting $k \ge 5$ triggers representation collapse even with selective gating, as accumulated affine drift overpowers the margin.
+            \end{alertblock}
+            \vspace{0.2cm}
+            \begin{alertblock}{\textbf{2. Class Prior Dependence}}
+                \small
+                Optimal transport requires a coarse estimate of the target class marginal prior ($\mathbf{r}$). While robust to $\pm 15\%$ estimation errors, radical prior shifts require adaptive estimation.
+            \end{alertblock}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{alertblock}{\textbf{3. Architectural Focus}}
+                \small
+                Evaluated rigorously on ResNet-18 (Camelyon17) and Faster R-CNN R50-FPN (MIDOG 2021). Deeper architectures (e.g., Vision Transformers, ResNet-50) are verified in code but require further multicenter compute runs.
+            \end{alertblock}
+            \vspace{0.2cm}
+            \begin{alertblock}{\textbf{4. Streaming Batch Requirement}}
+                \small
+                Optimal Transport Sinkhorn alignment operates over mini-batches ($B \ge 32$) to compute empirical margins; single-sample ($B=1$) streaming requires running buffer memory.
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 15: FUTURE WORK
+% -------------------------------------------------------------
+\begin{frame}{Future Work: Scaling SafeAdapt to Next-Generation Pathology AI}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Immediate Technical Roadmap:}
+            \begin{itemize}
+                \item \textbf{Pathology Foundation Models:} Extend SafeAdapt-OT to self-supervised vision transformer backbones (UNI, Prov-GigaPath, Virchow).
+                \item \textbf{Online Prior Estimation:} Implement Bayesian Dirichlet-multinomial updating to infer target class marginals $\mathbf{r}_t$ dynamically during streaming.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Clinical Translation & Hardware:}
+            \begin{itemize}
+                \item \textbf{Scanner-Side Deployment:} Embed SafeAdapt into DICOM whole-slide scanner firmware for real-time inference during tissue digitization.
+                \item \textbf{Multi-Stain & Multi-Organ Extension:} Validate SafeAdapt across immunohistochemical (IHC) markers and multiplex fluorescence cohorts.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    \vspace{0.4cm}
+    \begin{block}{Open-Source Commitment}
+        \centering\small
+        All code, configurations, weights, and automated verification scripts are public to accelerate reproducible research in trustworthy clinical AI.
+    \end{block}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 16: CONCLUSION
+% -------------------------------------------------------------
+\begin{frame}{Conclusion}
+    \begin{block}{Summary of Findings}
+        \small
+        \begin{itemize}
+            \item \textbf{The Vulnerability:} Unconstrained test-time adaptation collapses catastrophically on 40\% of random seeds in digital pathology, while MC-Dropout uncertainty is mathematically equivalent to confidence.
+            \item \textbf{The Solution:} \textbf{SafeAdapt} combines Entropic Optimal Transport alignment ($\mathbf{Q}^T \mathbf{1}_B = \mathbf{r}$) with tissue optical density gating and PAC $L_\infty$ parameter trust regions.
+            \item \textbf{The Impact:} Elevates 5-seed cohort performance to \textbf{0.9495 AUROC} ($p = 0.0312$), reverses collapse on outlier slides ($0.859 \to 0.932$), and reduces harmful adaptation by over \textbf{$100\times$}.
+        \end{itemize}
+    \end{block}
+    \vspace{0.3cm}
+    \centering
+    \large
+    \textbf{SafeAdapt demonstrates that test-time adaptation can be both clinically safe and mathematically robust under real-world hospital shift.}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 17: KEY TAKEAWAYS
+% -------------------------------------------------------------
+\begin{frame}{Three Key Takeaways for Clinical AI Practitioners}
+    \vspace{0.2cm}
+    \begin{enumerate}
+        \setlength{\itemsep}{1.2em}
+        \item \textbf{\large Attractor Collapse is a Solvable Geometric Problem:}
+        \begin{itemize}
+            \item Entropy minimization collapses because it lacks marginal constraints; Entropic Optimal Transport guarantees balanced class allocation.
+        \end{itemize}
+        
+        \item \textbf{\large MC-Dropout Uncertainty is Unnecessary in 1D Heads:}
+        \begin{itemize}
+            \item Softmax confidence provides identical sample ranking ($\rho = -0.9917$) without the $3.55\times$ computational inference penalty.
+        \end{itemize}
+
+        \item \textbf{\large Fail-Closed Safeguards are Mandatory for Clinical Translation:}
+        \begin{itemize}
+            \item Parameter displacement bounding ($\|\Delta\theta\|_\infty \le 0.05$), Beer-Lambert cellularity gating, and per-WSI resets prevent silent clinical errors.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+% -------------------------------------------------------------
+% SLIDE 18: THANK YOU / QUESTIONS
+% -------------------------------------------------------------
+\begin{frame}{Thank You! Questions?}
+    \centering
+    \vspace{0.2cm}
+    {\Large \textbf{SafeAdapt: Clinically Safe Test-Time Adaptation}}
+    \vspace{0.4cm}
+
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\textbf{Research Team & Contacts}}
+                \small
+                \textbf{Avinash Reddy Cheerapareddy}\\
+                \texttt{avinashreddy\_cheerapareddy@srmap.edu.in}\\
+                \vspace{0.15cm}
+                \textbf{Gunnam Sanjana}\\
+                \texttt{sanjana\_gunnam@srmap.edu.in}\\
+                \vspace{0.15cm}
+                Department of Computer Science and Engineering\\
+                SRM University-AP, Amaravati, India
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\textbf{Artifacts & Reproducibility}}
+                \small
+                \textbf{Zenodo Dataset & Checkpoint Archive:}\\
+                \href{https://doi.org/10.5281/zenodo.23658430}{\texttt{doi: 10.5281/zenodo.23658430}}\\
+                \vspace{0.15cm}
+                \textbf{Official GitHub Repository:}\\
+                \href{https://github.com/Avirech7676/UTTA-Med}{\texttt{github.com/Avirech7676/UTTA-Med}}\\
+                \vspace{0.15cm}
+                \textbf{Tests:} 148 Passed Unit Tests\\
+                \textbf{Audit:} 57/57 Bit-Exact Matches
+            \end{block}
+        \end{column}
+    \end{columns}
+
+    \vspace{0.5cm}
+    {\large \textbf{We welcome questions and discussion!}}
+\end{frame}
+
+\end{document}
