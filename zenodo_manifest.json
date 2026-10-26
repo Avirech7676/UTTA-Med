@@ -12,7 +12,7 @@
     }
   ],
   "license": "CC-BY-4.0",
-  "github_url": "https://github.com/Avirech7676/SafeAdapt",
+  "github_url": "https://github.com/Avirech7676/UTTA-Med",
   "checkpoints": {
     "camelyon17_resnet18_source_s123_BEST.pt": {
       "sha256": "cb57d805869f1176d0c68762bf62f5510fb0492a9012bcf7af6e5c7b60446224",

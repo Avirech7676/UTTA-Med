@@ -2,7 +2,7 @@
 
 **Protocol Stage:** P3 — Post-Submission / Post-Acceptance Archival Protocol  
 **Repository Name:** SafeAdapt Research Workspace  
-**GitHub Repository:** [https://github.com/Avirech7676/SafeAdapt](https://github.com/Avirech7676/SafeAdapt)  
+**GitHub Repository:** [https://github.com/Avirech7676/UTTA-Med](https://github.com/Avirech7676/UTTA-Med)  
 **Corresponding Authors:** Avinash Reddy Cheerapareddy & Gunnam Sanjana  
 **Affiliation:** Department of Computer Science and Engineering, SRM University-AP, Amaravati, Andhra Pradesh 522240, India  
 **Target Repository:** Zenodo (CERN / OpenAIRE Open Access Repository)  

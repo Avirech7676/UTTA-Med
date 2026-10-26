@@ -29,7 +29,7 @@ def main():
             {"name": "Gunnam Sanjana", "affiliation": "SRM University-AP"}
         ],
         "license": "CC-BY-4.0",
-        "github_url": "https://github.com/Avirech7676/SafeAdapt",
+        "github_url": "https://github.com/Avirech7676/UTTA-Med",
         "checkpoints": {},
         "configs": {},
         "verification_passed": True
