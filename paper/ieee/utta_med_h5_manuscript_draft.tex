@@ -278,19 +278,19 @@ where $\bar{\mathbf{p}} = \frac{1}{B} \sum_{i=1}^B \mathbf{p}(x_i)$, $\lambda_{\
 
 \subsection{Parameter-Space Trust Regions and Atomic Rollback Mechanics}
 \label{sec:trust_region_mechanics}
-To prevent gradual unconstrained parameter drift during online adaptation, SafeAdapt confines all trainable parameters $\theta$ (the Batch Normalization affine scales $\gamma$ and shifts $\beta$) within a strictly bounded $L_\infty$ trust region centered at certified source parameters $\theta_0$:
+To prevent unconstrained parameter drift during extended online adaptation, SafeAdapt confines all trainable parameters $\theta$ (the Batch Normalization affine scales $\gamma$ and shifts $\beta$) within a strictly bounded $L_\infty$ trust region centered at certified source parameters $\theta_0$:
 \begin{equation}
 \label{eq:trust_clip}
 \theta_t = \operatorname{clip}\bigl(\theta_t, \theta_0 - \epsilon_{\text{trust}}, \theta_0 + \epsilon_{\text{trust}}\bigr),
 \end{equation}
-where $\epsilon_{\text{trust}} = 0.05$. By Theorem~1, this projection bounds maximum output probability displacement to $\Delta p \le 0.0460$, ensuring that confident baseline predictions cannot flip into false attractors under histochemical shift.
+where $\epsilon_{\text{trust}} = 0.05$. By Theorem~1, this projection bounds the maximum output probability displacement to $\Delta p \le 0.0460$, ensuring that reliable baseline predictions cannot flip into false attractors under histochemical shift.
 
-Furthermore, SafeAdapt maintains dual asynchronous parameter ring buffers: a high-speed GPU state snapshot $\mathcal{B}_{\text{GPU}}$ and an immutable host CPU anchor $\mathcal{B}_{\text{CPU}} = \theta_0$. If an empirical anomaly is detected (e.g., a batch gradient norm spike $\|\nabla_\theta \mathcal{L}\|_2 > \tau_{\text{grad}}$ or consecutive collapse alarms), an atomic rollback is triggered:
+Moreover, SafeAdapt maintains dual asynchronous parameter ring buffers: a high-speed GPU state snapshot $\mathcal{B}_{\text{GPU}}$ and an immutable host CPU anchor $\mathcal{B}_{\text{CPU}} = \theta_0$. If an empirical anomaly is detected (e.g., a batch gradient norm spike $\|\nabla_\theta \mathcal{L}\|_2 > \tau_{\text{grad}}$ or consecutive collapse alarms), an atomic rollback is triggered:
 \begin{equation}
 \label{eq:rollback_op}
 \theta \leftarrow \mathcal{B}_{\text{GPU}}, \quad \Delta W = 0.00000000.
 \end{equation}
-Profiling on dedicated GPU hardware confirms that this memory copy completes in $1.8$\,ms ($<4\%$ of a standard $53.5$\,ms inference forward pass), executing within the inter-batch latency budget. If five consecutive rollbacks occur within a single Whole-Slide Image, SafeAdapt permanently latches global fallback: the model locks to certified source state $\theta_0$ for the remainder of that slide. Upon detecting the boundary of a new slide, model parameters and optimizer momentum buffers are deterministically reset to $\theta_0$, guaranteeing that patient diagnostic trajectories remain strictly isolated.
+Hardware profiling on dedicated GPUs confirms that this memory copy completes in $1.8$\,ms ($<4\%$ of a standard $53.5$\,ms inference forward pass), executing within the inter-batch latency budget. If five consecutive rollbacks occur within a single Whole-Slide Image, SafeAdapt permanently latches global fallback: the model locks to certified source state $\theta_0$ for the remainder of that slide. Upon detecting the boundary of a new slide, model parameters and optimizer momentum buffers are deterministically reset to $\theta_0$, guaranteeing that patient diagnostic trajectories remain strictly isolated.
 
 \subsection{Risk-Aware Selective Adaptation via Weighted Conformal Scoring}
 \label{sec:conformal_risk}
