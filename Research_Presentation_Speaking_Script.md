@@ -187,3 +187,4 @@
 
 ### 30-Second Elevator Pitch
 > "Clinical pathology AI frequently breaks when transferred between hospital scanners due to stain shifts. Standard online adaptation makes this worse—collapsing on 40% of random seeds because confident predictions are wrong. We created **SafeAdapt**, which combines Optimal Transport to preserve class geometry with a mathematical trust region that provably limits parameter drift. SafeAdapt completely eliminates collapse across multi-center consortium benchmarks, reverses negative transfer on clinical outliers, and executes in 35 milliseconds with zero patient cross-contamination."
+
