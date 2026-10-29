@@ -2,13 +2,26 @@
 Comprehensive SafeAdapt Presentation Generator (16:9 Widescreen)
 Builds SafeAdapt_Presentation.pptx and paper/SafeAdapt_Google_Slides.pptx.
 
-Design Principles:
-- Self-explanatory, publication-grade academic presentation.
-- Beautiful clinical AI palette (Deep Navy #0F172A, Clinical Teal #0D9488, Emerald #059669, Alert Red #DC2626).
-- Structured Bento cards with bold lead-ins and quantitative metrics.
-- High-resolution publication figures embedded directly with preserved aspect ratios.
-- Styled comparison and benchmark tables for CAMELYON17, MIDOG 2021, Hardware Latency, and Ablation.
-- Complete, professional speaker notes with intuitive real-world analogies embedded into every slide.
+Slide Sequence:
+1. Title & Executive Overview
+2. Problem Statement, What We Are Solving & Our Proposed Solution
+3. Relevant Research, Critical Gaps & What We Are Doing Differently
+4. Theoretical Foundation: Proposition 1 & The Variance-Confidence Paradox
+5. Workflow & Pipeline Used: End-to-End System Architecture
+6. Mechanism 1: Dual-Stream Sinkhorn Optimal Transport
+7. Mechanism 2: Cross-Attention Memory-Augmented Routing (CMR)
+8. Mechanism 3: Finite-Sample Conformal Risk Control & Rollback (Theorem 1)
+9. Experimental Benchmark Setup & 8 Baselines
+10. Main Results: CAMELYON17 Multicenter Benchmark (Table I + Pareto Plot)
+11. Deep-Dive Case Study: Resolving Slide 29 Catastrophic Collapse (UMAP)
+12. Cross-Domain Generalization: Mitosis Detection (MIDOG 2021 Table III + PR Plot)
+13. Clinical Boundary & Stress-Testing Regimes (Single-Patch B=1, Benign, MIL)
+14. Hardware Efficiency & Real-Time Edge Latency (Table IV + Convergence Plot)
+15. Clinical Governance, DICOM Integration & Safety (HIPAA/GDPR)
+16. Comprehensive Ablation Study (Table V Component Breakdown)
+17. Comparison with 2023-2024 Continual Adaptation Paradigms (SAR, CoTTA, RoTTA)
+18. Summary of Four Foundational Contributions
+19. Future Improvements, Clinical Translation & Open-Source Roadmap
 """
 
 import os
@@ -298,81 +311,93 @@ def build_presentation():
         "KEY HIGHLIGHTS: +14.2% AUROC gain, 0.0% collapse rate, and 1.8 ms GPU rollback."
     )
 
-    # ==================== SLIDE 2: MOTIVATION & CLINICAL PROBLEM ====================
+    # ==================== SLIDE 2: PROBLEM STATEMENT, WHAT WE ARE SOLVING & SOLUTION ====================
     s2 = prs.slides.add_slide(blank_layout)
     set_slide_background(s2)
-    add_header(s2, "The Multi-Center Domain Shift Dilemma in Pathology AI", "Clinical Motivation",
-               "Diagnostic models trained on one hospital fail silently when deployed across multi-scanner clinical networks.")
+    add_header(s2, "Problem Statement, Clinical Target & The SafeAdapt Solution", "Core Research Foundation",
+               "We solve silent multi-scanner AI diagnostic failure by introducing a fail-closed, real-time adaptation framework.")
 
     card_y = Inches(1.8)
     card_h = Inches(5.1)
     card_w = Inches(3.75)
 
-    add_card(s2, Inches(0.8), card_y, card_w, card_h, "1. Hardware & Scanner Drift", [
-        ("Multi-Vendor Scanners", "Pathology centers use Hamamatsu NanoZoomer, Philips Ultra Fast, and Leica Aperio digitizers."),
-        ("Sensor Discrepancies", "Divergent optical lenses, CCD/CMOS sensors, and LED vs. halogen illumination spectra produce drastic chromatic variations."),
-        ("Physical Artifacts", "Variations in tissue thickness (3-5 µm), micro-vibrations, and focus plane drifts alter cellular texture patterns across centers.")
-    ], badge="Optical Heterogeneity")
+    add_card(s2, Inches(0.8), card_y, card_w, card_h, "1. What is the Problem Statement?", [
+        ("Multi-Center Scanner Drift", "Digital pathology digitizers (Hamamatsu, Philips, Leica) use divergent sensors, optical calibrations, and illumination spectra."),
+        ("Stain & Chemical Heterogeneity", "Tissue slice thickness variations (3-5 µm) and chemical Hematoxylin/Eosin (H&E) batch differences alter pixel intensity histograms."),
+        ("Catastrophic Accuracy Drop", "A ResNet model trained at Radboud achieving >0.98 AUROC plummets to 0.73 AUROC when tested on Center 3 or Center 4.")
+    ], badge="The Dilemma", accent_color=ACCENT_RED)
 
-    add_card(s2, Inches(4.8), card_y, card_w, card_h, "2. Chemical & Staining Shifts", [
-        ("Reagent Protocols", "Different laboratories use variable concentrations of Hematoxylin (nuclei) and Eosin (cytoplasm/stroma)."),
-        ("Pre-Analytical Factors", "Tissue fixation delays, alcohol dehydration variations, and paraffin temperature alter staining uptake."),
-        ("Consequence", "Even identical biological specimens digitized at two different hospitals exhibit non-overlapping pixel value manifolds.")
-    ], badge="Chemical Heterogeneity")
+    add_card(s2, Inches(4.8), card_y, card_w, card_h, "2. What are we Solving?", [
+        ("Silent Diagnostic Failure", "Crucially, the model does NOT output low confidence—it fails silently with 99% confidence on misclassified tissue."),
+        ("Zero Target Labels", "In real clinical workflows, patient slides must be diagnosed immediately without human re-annotations or retraining."),
+        ("High Clinical Stakes", "Preventing missed axillary lymph node metastases, delayed chemotherapy, and cancer under-staging in patient care.")
+    ], badge="Clinical Mission", accent_color=NAVY)
 
-    add_card(s2, Inches(8.8), card_y, card_w, card_h, "3. Silent Diagnostic Failure", [
-        ("The Performance Drop", "A ResNet-50 trained at Radboud achieving >0.98 AUROC plummets to 0.73 AUROC when deployed at CWZ or UMC Utrecht."),
-        ("The Clinical Danger", "The model does NOT output low confidence—it fails silently with 99% confidence on misclassified tissue."),
-        ("Urgent Requirement", "An autonomous, unsupervised adaptation method that operates in real-time during Whole Slide Image (WSI) streaming.")
-    ], badge="Patient Safety Risk", accent_color=ACCENT_RED)
+    add_card(s2, Inches(8.8), card_y, card_w, card_h, "3. Our Proposed Solution", [
+        ("SafeAdapt Framework", "A real-time, fail-closed Test-Time Adaptation architecture that safely adapts models during live WSI streaming."),
+        ("Sinkhorn Optimal Transport", "Enforces balanced marginal transport, making single-class representation collapse mathematically impossible."),
+        ("Conformal Risk Rollback", "Finite-sample statistical bounds guarantee bounded error with an instantaneous 1.8 ms state recovery.")
+    ], badge="The Solution", accent_color=ACCENT_GREEN)
 
     s2.notes_slide.notes_text_frame.text = (
         "SPOKEN SCRIPT:\n"
-        "In digital pathology, cancer diagnosis begins by digitizing tissue slices into multi-gigabyte Whole-Slide Images. "
-        "Across hospitals, hardware digitizers (Hamamatsu, Philips, Leica), lens calibrations, and chemical staining concentrations "
-        "vary significantly. A model trained at Radboud University achieving over 0.98 AUROC plummets to 0.73 AUROC when tested at "
-        "CWZ or UMC Utrecht. Crucially, the model does not express uncertainty—it fails silently with high confidence on misclassified tissue.\n\n"
+        "Slide 2 establishes the core foundation: What is the problem statement? What are we solving? And what is our solution?\n"
+        "The problem statement: Deep learning models trained at one hospital fail when deployed to external hospital networks due to hardware "
+        "scanner differences and chemical staining variations—dropping AUROC from 0.98 down to 0.73.\n"
+        "What are we solving? We are solving the dangerous reality of silent diagnostic failure: models fail with 99% confidence, missing "
+        "metastatic cancer on unlabelled patient slides where no human annotations are available.\n"
+        "Our solution: SafeAdapt. A fail-closed, real-time adaptation framework that uses Optimal Transport to preserve category geometry, "
+        "Cross-Attention Memory Routing to filter artifacts, and finite-sample Conformal Risk Control with 1.8 ms rollback to guarantee zero collapse.\n\n"
         "REAL-WORLD ANALOGY:\n"
-        "Imagine an expert human pathologist walking into a clinic where lights are tinted deep yellow and the microscope lenses are tinted blue. "
-        "The human doctor pauses, adjusts their mental color balance, and continues diagnosing accurately. But a standard computer vision model "
-        "trained on exact RGB values looks at the same image and thinks it is an alien planet—a 10% shift in dye concentration completely blinds the AI.\n\n"
-        "KEY HIGHLIGHTS: AUROC drop from >0.98 to 0.73 across centers; 3-5 µm slice thickness variability."
+        "Reading Through Tinted Sunglasses: Imagine an expert human pathologist walking into a clinic where lights are tinted deep yellow and "
+        "the microscope lenses are tinted blue. The human doctor pauses, adjusts their mental color balance, and continues diagnosing accurately. "
+        "But a standard computer vision model trained on exact RGB values looks at the same image and thinks it is an alien planet—a 10% shift in "
+        "dye concentration completely blinds the AI. SafeAdapt provides that autonomous mental color balance with a built-in safety net.\n\n"
+        "KEY HIGHLIGHTS: AUROC drop from >0.98 to 0.73; silent 99% confident failures; SafeAdapt fail-closed solution."
     )
 
-    # ==================== SLIDE 3: FAILURE OF CURRENT TTA ====================
+    # ==================== SLIDE 3: RELEVANT RESEARCH, GAPS & OUR DIFFERENTIATION ====================
     s3 = prs.slides.add_slide(blank_layout)
     set_slide_background(s3)
-    add_header(s3, "Why Standard Test-Time Adaptation Collapses in Pathology", "Prior Art Breakdown",
-               "Entropy minimization creates an unsupervised feedback loop that pulls models into degenerate single-class attractors.")
+    add_header(s3, "Relevant Prior Art, Critical Research Gaps & Our Key Innovations", "Literature Positioning",
+               "Existing TTA methods fail because they minimize entropy on corrupted data; SafeAdapt preserves geometry and bounds risk.")
 
-    add_card(s3, Inches(0.8), Inches(1.8), Inches(5.8), Inches(2.4), "The Entropy Minimization Trap (Tent / EATA)", [
-        ("Core Assumption", "Minimizing prediction entropy H(p) assumes that confident predictions are predominantly correct."),
-        ("Histopathology Reality", "Severe stain drift causes false predictions to have moderate entropy; minimizing entropy actively reinforces false class assignments."),
-        ("Feedback Loop", "Corrupted normalization parameters bias the next batch, leading to runaway confirmation bias.")
-    ], badge="Flawed Premise", accent_color=ACCENT_RED)
+    add_card(s3, Inches(0.8), card_y, card_w, card_h, "1. Relevant Research (Prior Art)", [
+        ("Classical Vision TTA", "Tent (ICLR '21: Shannon entropy minimization on BN layers), EATA (ICML '22: Fisher regularized), SAR (ICLR '23: sharpness-aware minimization)."),
+        ("Continual Adaptation", "CoTTA (CVPR '22: mean-teacher with stochastic restoration), RoTTA (CVPR '23: category-balanced memory banks)."),
+        ("Test-Time Augmentation", "MEMO (NeurIPS '22: marginal entropy across 16 augmented views).")
+    ], badge="Prior Art", accent_color=NAVY)
 
-    add_card(s3, Inches(0.8), Inches(4.4), Inches(5.8), Inches(2.5), "Catastrophic Attractor State Collapse", [
-        ("Single-Class Attractor", "Batch Normalization running statistics drift until all features collapse into a single degenerate cluster."),
-        ("Clinical Consequence", "The network predicts 100% of tissue patches as normal, driving cancer detection F1-score from 0.85 down to 0.05."),
-        ("40% Collapse Rate", "On CAMELYON17 Center 4, standard Tent collapses on 40% of patient slides (e.g., Slide 29 drops to 0.51 AUROC).")
-    ], badge="40% Collapse", accent_color=ACCENT_RED)
+    add_card(s3, Inches(4.8), card_y, card_w, card_h, "2. Critical Gaps in Prior Art", [
+        ("Flawed Core Premise", "All existing methods assume low entropy = correct predictions. In digital pathology, this triggers catastrophic collapse on 40% of slides."),
+        ("Scalar Gating Blindness", "Fisher weighting (EATA) and gradient-spike checks (SAR) fail because stain drift produces smooth, low-norm gradients that silently drift into collapse."),
+        ("HIPAA & Regulatory Breaches", "Continual memory banks (CoTTA, RoTTA) allow Patient A's tissue to pollute Patient B's diagnosis, violating medical privacy.")
+    ], badge="Identified Gaps", accent_color=ACCENT_RED)
 
-    add_image_box(s3, "paper/ieee/figs/fig_tent_collapse_mechanism.png", Inches(6.9), Inches(1.8), Inches(5.6), Inches(5.1),
-                  "Empirical Collapse: Tent entropy optimization destroys latent feature margins across streaming WSI batches.")
+    add_card(s3, Inches(8.8), card_y, card_w, card_h, "3. What We Are Doing Differently", [
+        ("Exact Marginal Transport", "Replaces entropy minimization with Sinkhorn Optimal Transport to preserve category geometry without label feedback."),
+        ("Explicit OOD Slack Channel", "Routes non-neoplastic tissue artifacts (surgical ink, air bubbles) into a slack channel to protect diagnostic prototypes."),
+        ("Provable Finite-Sample Safety", "Establishes Theorem 1 conformal bounds with sub-2ms GPU rollback and deterministic episodic per-slide resets.")
+    ], badge="Our Innovations", accent_color=ACCENT_GREEN)
 
     s3.notes_slide.notes_text_frame.text = (
         "SPOKEN SCRIPT:\n"
-        "In computer vision, the standard technique to adapt models during inference is Test-Time Adaptation, like Tent or EATA, "
-        "which minimize Shannon prediction entropy. In digital pathology, this logic is fatal. Extreme stain shifts produce moderate "
-        "entropy on false predictions; forcing entropy down reinforces the wrong class assignments. This creates an unsupervised "
-        "feedback loop that pulls all feature embeddings into a single degenerate 'attractor state'. On CAMELYON17 Center 4, Tent "
-        "collapsed on 40% of slides, driving cancer detection F1 down to 0.05.\n\n"
+        "On Slide 3, we analyze the relevant research, the critical gaps in prior art, and exactly what we are doing differently.\n"
+        "Relevant research: In computer vision, Test-Time Adaptation methods like Tent, EATA, SAR, CoTTA, and RoTTA adapt models by minimizing "
+        "prediction entropy or maintaining continual memory banks.\n"
+        "Critical gaps: These methods operate on an unverified premise—that low entropy means correct predictions. Under histochemical stain drift, "
+        "this causes catastrophic representation collapse on 40% of slides! Scalar threshold detectors like SAR fail because stain drift produces "
+        "smooth, low-norm gradients that bypass detection. Furthermore, continual methods leak patient data across slides, violating HIPAA.\n"
+        "What we are doing differently: SafeAdapt replaces entropy minimization with geometry-preserving Sinkhorn Optimal Transport, isolates "
+        "staining artifacts via Cross-Attention Memory Routing into an explicit slack channel, and enforces finite-sample Conformal Risk Control "
+        "with sub-2ms rollback and deterministic episodic slide resets.\n\n"
         "REAL-WORLD ANALOGY:\n"
         "The Echo Chamber / Overconfident Medical Intern: Imagine a junior intern who misidentifies normal tissue as cancer. If the attending "
         "physician says, 'Whatever you do, be 100% decisive!', the intern assumes their mistake was correct and becomes aggressively "
         "overconfident. In the next room, they repeat the error with even higher confidence. Within two hours, the intern diagnoses every "
-        "single patient on the floor with cancer. That is what entropy minimization does.\n\n"
-        "KEY HIGHLIGHTS: 40.0% collapse rate on CAMELYON17; complete loss of diagnostic margins on Slide 29."
+        "single patient on the floor with cancer. That is what entropy minimization does. SafeAdapt introduces a strict clinical checklist "
+        "and an emergency brake that stops the echo chamber.\n\n"
+        "KEY HIGHLIGHTS: 40% collapse rate in Tent; failure of scalar gating; SafeAdapt's geometry-preserving and conformal safeguards."
     )
 
     # ==================== SLIDE 4: THEORETICAL ROOT CAUSE ====================
@@ -415,11 +440,11 @@ def build_presentation():
         "KEY HIGHLIGHTS: Spearman rho = -0.9917; vanishing gradient formula grad p = p(1-p) grad z."
     )
 
-    # ==================== SLIDE 5: SAFEADAPT ARCHITECTURE ====================
+    # ==================== SLIDE 5: WORKFLOW & PIPELINE ====================
     s5 = prs.slides.add_slide(blank_layout)
     set_slide_background(s5)
-    add_header(s5, "SafeAdapt: A Deterministic, Fail-Closed TTA Architecture", "Proposed Framework",
-               "SafeAdapt introduces geometry-preserving optimal transport, contextual artifact rejection, and finite-sample risk bounds.")
+    add_header(s5, "End-to-End Workflow Pipeline & System Architecture", "Workflow & Execution Pipeline",
+               "Four interlocking safeguards execute in a single forward-backward pass per patch batch, with deterministic state reset per slide.")
 
     add_image_box(s5, "paper/ieee/figs/fig_architecture.png", Inches(0.8), Inches(1.8), Inches(11.733), Inches(3.1),
                   "SafeAdapt System Architecture: Dual-Stream Sinkhorn OT, Cross-Attention Memory Routing (CMR), and Conformal Rollback.")
@@ -427,10 +452,10 @@ def build_presentation():
     box_w = Inches(2.78)
     box_h = Inches(1.85)
     modules = [
-        ("1. Dual-Stream Anchor", "Maintains frozen source anchor theta_0 in parallel with adaptive student theta_t to preserve diagnostic geometry.", TEAL),
-        ("2. Sinkhorn Optimal Transport", "Aligns streaming patch feature marginals to class prototypes without label-dependent reinforcement.", TEAL),
-        ("3. Memory Routing (CMR)", "Cross-attention memory routes OOD tissue debris and non-neoplastic mimics to a dedicated slack prototype.", NAVY),
-        ("4. Conformal Risk Rollback", "Finite-sample risk monitor halts adaptation and restores theta_0 in 1.8 ms if parameter drift exceeds alpha.", ACCENT_GREEN)
+        ("Step 1: Dual-Stream Anchor", "Streams patches through frozen anchor theta_0 in parallel with adaptive student theta_t to preserve diagnostic geometry.", TEAL),
+        ("Step 2: Sinkhorn Optimal Transport", "Aligns streaming patch feature marginals to class prototypes without label-dependent reinforcement.", TEAL),
+        ("Step 3: Memory Routing (CMR)", "Cross-attention memory routes OOD tissue debris and non-neoplastic mimics to a dedicated slack prototype.", NAVY),
+        ("Step 4: Conformal Risk Rollback", "Finite-sample risk monitor halts adaptation and restores theta_0 in 1.8 ms if parameter drift exceeds alpha.", ACCENT_GREEN)
     ]
     for idx, (m_title, m_desc, m_col) in enumerate(modules):
         bx = Inches(0.8) + idx * Inches(2.98)
@@ -449,10 +474,13 @@ def build_presentation():
 
     s5.notes_slide.notes_text_frame.text = (
         "SPOKEN SCRIPT:\n"
-        "Here is our proposed solution: SafeAdapt. SafeAdapt replaces uncontrolled entropy minimization with four interlocking safeguards: "
-        "1) A Dual-Stream feature extractor pairing a frozen source anchor with an adaptive student; 2) Sinkhorn Optimal Transport to align feature "
-        "marginals without label feedback; 3) Cross-Attention Memory Routing (CMR) to isolate staining artifacts into a slack channel; and 4) Finite-Sample "
-        "Conformal Risk Control that triggers an instantaneous 1.8 ms GPU rollback if parameter drift breaches safety limits.\n\n"
+        "Here is the workflow and execution pipeline used by SafeAdapt. As shown in the architectural flow diagram, whole-slide images "
+        "stream patches sequentially into the network during clinical inference. The pipeline operates in four coordinated steps:\n"
+        "Step 1: Input patches pass through a dual-stream architecture pairing a frozen source anchor with an adaptive student network.\n"
+        "Step 2: Features are aligned via entropy-regularized Sinkhorn Optimal Transport between streaming embeddings and anchor class prototypes.\n"
+        "Step 3: Cross-Attention Memory Routing compares features against episodic memory and routes tissue artifacts into a slack channel.\n"
+        "Step 4: Finite-Sample Conformal Risk Control continuously tracks non-conformity scores. If parameter drift exceeds safety threshold "
+        "alpha = 0.05, an atomic rollback restores anchor weights in 1.8 milliseconds. Upon slide completion, state resets deterministically.\n\n"
         "REAL-WORLD ANALOGY:\n"
         "Commercial Airliner Dual-Pilot Cockpit: You have a senior Captain (the frozen anchor) who knows the flight envelope. You have a First Officer "
         "(the adaptive student) who flies the plane and adjusts for wind shear. A flight computer (CMR) ignores weather radar noise. And an envelope "
@@ -1000,29 +1028,29 @@ def build_presentation():
         "KEY HIGHLIGHTS: Proposition 1 proof, Theorem 1 conformal bound, 0.9495 AUROC, 0.0% collapse."
     )
 
-    # ==================== SLIDE 19: CONCLUSION & ROADMAP ====================
+    # ==================== SLIDE 19: FUTURE IMPROVEMENTS & ROADMAP ====================
     s19 = prs.slides.add_slide(blank_layout)
     set_slide_background(s19)
-    add_header(s19, "Clinical Impact, Open-Source Release & Future Directions", "Conclusion & Translation",
+    add_header(s19, "Future Improvements, Clinical Translation & Open-Source Roadmap", "Future Horizons",
                "SafeAdapt bridges the gap between academic TTA research and real-world clinical whole-slide pathology deployment.")
 
-    add_card(s19, Inches(0.8), Inches(1.8), Inches(3.75), Inches(4.0), "1. Open-Source Reproducibility", [
-        ("Complete Codebase", "Fully documented PyTorch implementation with automated reproduction scripts."),
-        ("Pretrained Checkpoints", "Source anchors and adaptation weights published under permissive academic open-source license."),
-        ("Audit Verification", "100% reproducible across CAMELYON17 and MIDOG benchmarks with fixed seeds.")
-    ], badge="Fully Reproducible", accent_color=TEAL)
+    add_card(s19, Inches(0.8), Inches(1.8), Inches(3.75), Inches(4.0), "1. Foundation Model Extensions", [
+        ("Pathology Foundation Models", "Extending SafeAdapt to self-supervised vision-language models like CONCH, UNI, and Virchow."),
+        ("Multi-Modal Adaptation", "Adapting text prompts and visual tokens simultaneously under multi-center slide scanner shifts."),
+        ("Low-Compute Adapters", "Implementing LoRA rank-decomposition adapters to adapt multi-billion parameter foundation backbones in <5 ms.")
+    ], badge="Future Frontier 1", accent_color=TEAL)
 
-    add_card(s19, Inches(4.8), Inches(1.8), Inches(3.75), Inches(4.0), "2. Prospective Clinical Deployment", [
-        ("Digital Pathology Integration", "Active integration with open-source pathology viewers (QuPath) and hospital PACS (Orthanc)."),
-        ("Live Multi-Scanner Trials", "Prospective validation planned across 3 hospital centers to evaluate real-world oncologist turnaround times."),
-        ("Pathologist Trust", "Provides transparent confidence metrics alongside whole-slide heatmaps.")
-    ], badge="Clinical Trials", accent_color=NAVY)
+    add_card(s19, Inches(4.8), Inches(1.8), Inches(3.75), Inches(4.0), "2. Intraoperative & 3D Histology", [
+        ("Intraoperative Frozen Sections", "Adapting to rapid intraoperative biopsies where freezing artifacts distort tissue and surgeons need diagnosis in <15 mins."),
+        ("3D Volumetric Histology", "Extending optimal transport alignment across sequential multi-slice 3D spatial histopathology reconstructions."),
+        ("Rare Cancer Subtyping", "Evaluating on ultra-rare sarcomas and pediatric brain tumors with limited source training data.")
+    ], badge="Future Frontier 2", accent_color=NAVY)
 
-    add_card(s19, Inches(8.8), Inches(1.8), Inches(3.75), Inches(4.0), "3. Future Research Frontiers", [
-        ("Pathology Foundation Models", "Extending SafeAdapt to self-supervised vision-language foundation models (CONCH, UNI, Virchow)."),
-        ("Intraoperative Diagnostics", "Adapting SafeAdapt to rapid intraoperative frozen section analysis under extreme time constraints."),
-        ("3D Volumetric Pathology", "Extending optimal transport alignment to multi-slice 3D spatial histopathology.")
-    ], badge="Future Horizons", accent_color=ACCENT_GREEN)
+    add_card(s19, Inches(8.8), Inches(1.8), Inches(3.75), Inches(4.0), "3. Clinical Translation & Open Source", [
+        ("PACS & Viewer Integration", "Live plugin integration with open-source digital pathology viewers (QuPath) and hospital PACS (Orthanc)."),
+        ("Prospective Hospital Trials", "Active multi-center trial integration across 3 hospitals to evaluate oncologist turnaround times."),
+        ("Open-Source Code Release", "Full PyTorch codebase, weights, and reproduction scripts released under permissive academic license.")
+    ], badge="Translation Ready", accent_color=ACCENT_GREEN)
 
     thank_banner = s19.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(6.0), Inches(11.733), Inches(0.9))
     thank_banner.fill.solid(); thank_banner.fill.fore_color.rgb = NAVY
@@ -1040,16 +1068,18 @@ def build_presentation():
 
     s19.notes_slide.notes_text_frame.text = (
         "SPOKEN SCRIPT:\n"
-        "In conclusion, SafeAdapt transforms test-time adaptation into a robust, clinically certified safety framework. "
-        "Our complete PyTorch codebase, model checkpoints, and reproduction scripts are released under an open-source license. "
-        "We are actively integrating SafeAdapt into QuPath and Orthanc PACS for prospective multi-scanner clinical trials, and extending "
-        "it to pathology foundation models (CONCH, UNI). Thank you very much for your time and guidance. I welcome your questions, "
-        "technical discussion, and viva voce examination.\n\n"
+        "On our final slide, we present future improvements, clinical translation, and our open-source roadmap.\n"
+        "1. Foundation Model Extensions: Extending SafeAdapt to large pathology foundation models like CONCH and UNI using low-rank LoRA adapters.\n"
+        "2. Intraoperative & 3D Histology: Deploying SafeAdapt to rapid intraoperative frozen sections where surgeons need answers in under 15 minutes, "
+        "and extending OT alignment to 3D volumetric histology.\n"
+        "3. Clinical Translation: Complete open-source PyTorch release, with live integration into QuPath and Orthanc PACS for prospective multi-scanner trials.\n"
+        "SafeAdapt bridges the gap between academic TTA research and dependable clinical cancer diagnosis.\n"
+        "Thank you very much for your time and guidance. I welcome your questions, technical discussion, and viva voce examination.\n\n"
         "REAL-WORLD ANALOGY:\n"
         "From the Lab Bench to the Patient's Bedside: A vaccine in a university freezer saves zero lives. It only saves lives when packaged "
         "into vials, shipped across hospitals, and injected safely into patients. SafeAdapt takes TTA out of the computer science lab and puts "
         "it directly onto the hospital workstation, ready for clinicians to trust tomorrow.\n\n"
-        "KEY HIGHLIGHTS: Open-source PyTorch release; QuPath/PACS integration; ready for viva Q&A."
+        "KEY HIGHLIGHTS: Open-source PyTorch release; QuPath/PACS integration; Foundation models roadmap; ready for viva Q&A."
     )
 
     def safe_save(prs, path):

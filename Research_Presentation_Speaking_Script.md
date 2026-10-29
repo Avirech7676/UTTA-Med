@@ -10,65 +10,92 @@
 
 ---
 
-## Guide Structure for Every Slide
-1. **Slide Overview & Visual Hook:** What appears on screen and the core takeaway.
-2. **Spoken Explanation:** Natural, confident, spoken English (no tongue-twisting jargon).
-3. **Real-World Analogy / Clinical Hospital Example:** An intuitive story or hospital scenario that makes the concept instantly clear to any faculty or committee member.
-4. **Key Numbers to Point to:** The 2–3 numbers or figures on screen to highlight.
-5. **Smooth Transition:** The exact sentence to bridge into the next slide.
+## Required Slide Sequence & Architecture Flow
+1. **Slide 1:** Title & Executive Overview
+2. **Slide 2: Problem Statement, What We Are Solving & Our Proposed Solution** *(Mandatory Opening Anchor 1)*
+3. **Slide 3: Relevant Research, Critical Gaps & What We Are Doing Differently** *(Mandatory Opening Anchor 2)*
+4. **Slide 4:** Theoretical Foundation: Proposition 1 & The Variance-Confidence Paradox
+5. **Slide 5: Workflow & Pipeline Used: End-to-End System Architecture** *(Step-by-Step Execution)*
+6. **Slide 6:** Mechanism 1: Dual-Stream Sinkhorn Optimal Transport
+7. **Slide 7:** Mechanism 2: Cross-Attention Memory-Augmented Routing (CMR)
+8. **Slide 8:** Mechanism 3: Finite-Sample Conformal Risk Control & Rollback (Theorem 1)
+9. **Slide 9:** Experimental Benchmark Setup & 8 Competing Baselines
+10. **Slide 10: Results & Outputs (Benchmark):** CAMELYON17 Multicentric Evaluation (Table I + Pareto Plot)
+11. **Slide 11: Results & Outputs (Case Study):** Resolving Slide 29 Catastrophic Collapse (UMAP)
+12. **Slide 12: Results & Outputs (Detection):** Cross-Scanner & Cross-Species Mitosis Detection (MIDOG 2021)
+13. **Slide 13: Results & Outputs (Stress-Testing):** Clinical Boundary Validation (B=1, Benign Slides, MIL)
+14. **Slide 14: Results & Outputs (Hardware):** Edge GPU Latency, Memory & PACS Feasibility (Table IV)
+15. **Slide 15: Related Content:** Clinical Governance, DICOM Integration & Patient Safety (HIPAA/GDPR)
+16. **Slide 16: Related Content:** Comprehensive Component Ablation Study (Table V Breakdown)
+17. **Slide 17: Related Content:** SafeAdapt vs. Recent Continual Paradigms (SAR, CoTTA, RoTTA)
+18. **Slide 18:** Summary of Four Foundational Contributions
+19. **Slide 19: Future Improvements, Clinical Translation & Open-Source Roadmap**
 
 ---
+
+## Slide-by-Slide Presenter Script & Intuitive Analogies
 
 ### Slide 1: Title & Executive Overview
 * **Slide Overview & Visual Hook:**  
   Deep Navy widescreen hero layout displaying the title, target journal (*IEEE Transactions on Medical Imaging*), and four executive impact stat chips: `+14.2% AUROC Gain`, `0.0% Collapse Rate`, `1.8 ms GPU Rollback`, and `Zero Patient Leakage`.
 * **Spoken Explanation:**  
-  "Respected members of the committee, faculty advisors, and examiners: Good morning. My name is Avinash Reddy Cheerapareddy, and today I am presenting our research entitled: **SafeAdapt: Robust Test-Time Adaptation via Optimal Transport and Conformal Risk Control in Digital Pathology**.  
-  In clinical medicine, artificial intelligence has shown incredible diagnostic promise in the lab. But the moment you take that trained model and deploy it to a new hospital, it encounters scanner variations, tissue staining differences, and sensor noise that cause severe performance drops. In this work, we solve this critical clinical bottleneck. We design a fail-closed, mathematically bounded test-time adaptation framework that autonomously adapts models to new hospital scanners in real time, with zero ground-truth labels, and with a mathematical guarantee of zero catastrophic failure."
+  "Respected committee members, faculty advisors, and examiners: Good morning. My name is Avinash Reddy Cheerapareddy, and today I am presenting our research entitled: **SafeAdapt: Robust Test-Time Adaptation via Optimal Transport and Conformal Risk Control in Digital Pathology**.  
+  In clinical medicine, artificial intelligence models achieve high accuracy in research labs. But the moment you deploy a model to a new hospital, scanner variations, tissue staining differences, and sensor noise cause severe diagnostic failure. In this work, we solve this critical clinical bottleneck. We introduce SafeAdapt: a fail-closed, real-time adaptation framework that adapts models during clinical whole-slide scanning without ground-truth labels and with certified mathematical safety."
 * **Real-World Analogy / Clinical Hospital Example:**  
   *The Self-Driving Car on Snowy Roads:*  
-  "Think of a high-end self-driving car trained exclusively on the sunny, dry asphalt of California. It drives with 99% accuracy. But ship that exact same car to Chicago in the dead of winter, and it encounters snowstorms and icy roads. If the car refuses to adapt, it slips. But if it tries to adapt blindly on the ice without guardrails, it hallucinates the lane markers and steers straight off a bridge. In clinical pathology, existing algorithms do exactly that—they steer off the bridge. SafeAdapt gives the model an intelligent co-pilot and an automatic emergency brake."
+  "Think of a high-end self-driving car tuned exclusively on sunny California roads. When shipped to Chicago in a snowstorm, it encounters ice and snow. If the car refuses to adapt, it slips. But if it tries to adapt blindly without guardrails, it hallucinates lane markers and steers straight off a bridge. In clinical pathology, existing algorithms do exactly that—they steer off the bridge. SafeAdapt gives the model an intelligent co-pilot and an automatic emergency brake."
 * **Key Numbers to Point To:**  
   - Point to **+14.2% AUROC Gain** on CAMELYON17 multicenter shifts.  
   - Point to **0.0% Collapse Rate** (completely eliminating the 40% collapse of classical methods).  
   - Point to **1.8 ms GPU Rollback** speed.
 * **Smooth Transition:**  
-  "To understand why this happens, let us look at the real-world clinical problem in computational pathology."
+  "Let us examine the exact problem statement, what we are solving, and our proposed solution."
 
 ---
 
-### Slide 2: The Multi-Center Domain Shift Dilemma in Pathology AI
+### Slide 2: Problem Statement, What We Are Solving & Our Proposed Solution
 * **Slide Overview & Visual Hook:**  
-  Three structured Bento cards illustrating: (1) Hardware & Scanner Drift, (2) Chemical & Staining Shifts, and (3) Silent Diagnostic Failure.
+  Three structured Bento cards explicitly answering: (1) What is the Problem Statement? (2) What are we Solving? and (3) Our Proposed Solution.
 * **Spoken Explanation:**  
-  "In digital pathology, diagnosing cancer begins by slicing lymph node biopsies into microscopic sections, staining them with dyes, and digitizing them into multi-gigabyte Whole-Slide Images.  
-  Here is the dilemma: Hospital A uses a high-end Leica scanner and stains tissue with dark purple Hematoxylin; Hospital B across town uses a Philips scanner with pale pink Eosin dye; Hospital C slices tissue slightly thicker at 5 micrometers instead of 3.  
-  When an AI model trained at Hospital A is tested on Hospital B, the pixel values have shifted drastically. A ResNet model that achieved 98% AUROC in its home lab plummets to 73% at the new hospital. Crucially, the model does not say 'I don't know'—it outputs false diagnoses with 99% confidence, missing metastatic cancer."
+  "Slide 2 establishes the core foundation of our work across three clear questions:  
+  **1. What is the Problem Statement?**  
+  Digital pathology scanners (Hamamatsu, Philips, Leica) use different lenses, sensors, and illumination spectra. Furthermore, tissue slice thickness varies from 3 to 5 micrometers, and chemical Hematoxylin/Eosin dye concentrations vary between labs. As a result, a deep learning model trained at Radboud achieving over 0.98 AUROC plummets to 0.73 AUROC when tested on Center 3 or Center 4.  
+  **2. What are we Solving?**  
+  We are solving the dangerous reality of *silent clinical failure*. The model does not report low confidence; it fails silently with 99% confidence on misclassified tissue. In real hospital workflows, patient slides must be diagnosed immediately with zero human re-annotations. If an AI misses metastatic lymph node cancer, the patient suffers delayed chemotherapy and disease progression.  
+  **3. Our Proposed Solution:**  
+  We created **SafeAdapt**: an autonomous, fail-closed Test-Time Adaptation framework. SafeAdapt uses Optimal Transport to preserve category geometry, Cross-Attention Memory Routing to filter staining debris, and finite-sample Conformal Risk Control to bound diagnostic error with an instantaneous 1.8-millisecond parameter rollback."
 * **Real-World Analogy / Clinical Hospital Example:**  
   *Reading Through Tinted Sunglasses:*  
-  "Imagine an expert human pathologist walking into a clinic where the fluorescent lights have been replaced with deep yellow bulbs and the microscope lenses are tinted blue. The human doctor pauses for two seconds, adjusts their mental color balance, and continues diagnosing accurately. But a standard computer vision model looks at the exact same image and thinks it is looking at an alien planet. Because it was trained on exact RGB color coordinates, even a 10% change in chemical dye concentration completely blinds the AI."
+  "Imagine an expert human pathologist walking into a clinic where lights are tinted deep yellow and the microscope lenses are tinted blue. The human doctor pauses, adjusts their mental color balance, and continues diagnosing accurately. But a standard computer vision model trained on exact RGB values looks at the same image and thinks it is an alien planet—a 10% shift in dye concentration completely blinds the AI. SafeAdapt provides that autonomous mental color balance with a built-in safety net."
 * **Key Numbers to Point To:**  
   - Point to the **AUROC drop from >0.98 down to 0.73** when crossing hospital centers.  
-  - Highlight the **3–5 µm slice thickness variation** and heterogeneous scanner brands (Hamamatsu, Philips, Leica).
+  - Highlight the **3–5 µm slice thickness variation** and heterogeneous scanner brands.  
+  - Point to the **1.8 ms rollback** in the solution card.
 * **Smooth Transition:**  
-  "Naturally, the AI community tried to solve this with Test-Time Adaptation. But as we show next, standard adaptation methods produce a catastrophic failure."
+  "Naturally, computer vision researchers tried to solve this with Test-Time Adaptation. Why did their methods fail, and what are we doing differently?"
 
 ---
 
-### Slide 3: Why Standard Test-Time Adaptation Collapses in Pathology
+### Slide 3: Relevant Prior Art, Critical Research Gaps & Our Key Innovations
 * **Slide Overview & Visual Hook:**  
-  Left side: The Entropy Minimization Trap and Attractor Collapse cards. Right side: Embedded publication figure [`fig_tent_collapse_mechanism.png`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/paper/ieee/figs/fig_tent_collapse_mechanism.png) showing feature space collapsing over streaming batches.
+  Three structured cards explicitly detailing: (1) Relevant Research (Prior Art), (2) Critical Research Gaps, and (3) What We Are Doing in Them Differently.
 * **Spoken Explanation:**  
-  "In computer vision, the standard technique to fix domain shifts at test time is called Test-Time Adaptation (TTA), popularized by algorithms like Tent and EATA. They do something simple: they minimize the Shannon entropy of the model's predictions. The logic sounds reasonable: 'A good model should be confident, so let us tune Batch Normalization parameters to make its predictions sharp.'  
-  In digital pathology, this logic is fatal. When a stained tissue patch has a color shift, the model's false prediction has moderate entropy. When you force the network to minimize entropy on an incorrect prediction, you reinforce the error. The corrupted normalization statistics skew the next batch, creating an unsupervised feedback loop. Within 20 batches, the model collapses into a single degenerate 'attractor state' where it predicts 100% of tissue patches as normal. In our multicenter benchmarks, Tent collapsed on 40% of random seeds, driving detection F1 scores down to 0.05."
+  "On Slide 3, we position our work against existing literature:  
+  **1. Relevant Prior Research:**  
+  To adapt models during inference without labels, computer vision researchers developed Test-Time Adaptation (TTA). Leading methods include Tent (minimizing prediction entropy), EATA (Fisher-regularized entropy), SAR (sharpness-aware optimization), CoTTA (continual mean-teacher), and RoTTA (category memory banks).  
+  **2. Critical Research Gaps in Prior Art:**  
+  Every one of these methods relies on an unverified foundational premise: that low entropy indicates a correct prediction. In digital pathology, this premise completely collapses. Under extreme stain shift, false predictions have moderate entropy; forcing entropy down creates an unsupervised feedback loop that pulls all features into a single degenerate 'attractor state'. On CAMELYON17, Tent collapses on **40.0% of slides**, predicting 100% of tissue as normal! Furthermore, scalar threshold detectors like SAR fail because stain drift produces smooth, low-norm gradients that silently slip past detection. And continual memory banks leak patient data across slides, violating HIPAA and GDPR.  
+  **3. What We Are Doing Differently:**  
+  SafeAdapt eliminates these failure modes at the root: we replace unconstrained entropy minimization with exact marginal Sinkhorn Optimal Transport; we introduce an explicit OOD slack channel to absorb staining artifacts; and we establish finite-sample Conformal Risk bounds with sub-2ms rollback and deterministic per-slide episodic resets."
 * **Real-World Analogy / Clinical Hospital Example:**  
-  *The Echo Chamber / Overconfident Medical Resident:*  
-  "Imagine a junior medical intern who misidentifies a benign lymph node as metastatic cancer. If the attending physician tells the intern: *'Whatever you do, don't be hesitant—make up your mind with 100% certainty!'*, the intern tells themselves: *'Aha, my attending wants confidence, so my gut feeling was right!'* The intern becomes aggressively overconfident in their error. In the next room, they make the same mistake with even more confidence. Within two hours, the intern has diagnosed every single patient on the floor with cancer. That is exactly what entropy minimization does to a neural network."
+  *The Echo Chamber / Overconfident Medical Intern:*  
+  "Imagine a junior intern who misidentifies normal tissue as cancer. If the attending physician says, 'Whatever you do, be 100% decisive!', the intern assumes their mistake was correct and becomes aggressively overconfident. In the next room, they repeat the error with even higher confidence. Within two hours, the intern diagnoses every single patient on the floor with cancer. That is what entropy minimization does. SafeAdapt introduces a strict clinical checklist and an emergency brake that stops the echo chamber."
 * **Key Numbers to Point To:**  
-  - Point to the **40.0% Collapse Rate** on CAMELYON17.  
-  - Point to the right-hand figure showing the latent representations collapsing into a single point on Slide 29.
+  - Point to the **40.0% Collapse Rate** in Tent.  
+  - Point to **Prior Art (Tent, EATA, SAR, CoTTA, RoTTA)**.  
+  - Point to our **Exact Marginal Transport + Conformal Bounds**.
 * **Smooth Transition:**  
-  "We asked: Why does this happen mathematically? Why couldn't existing regularizers like EATA or SAR detect this collapse?"
+  "We asked: Why does entropy minimization fail so catastrophically in pathology? We prove the mathematical root cause in Proposition 1."
 
 ---
 
@@ -81,34 +108,33 @@
   This produces a shocking paradox: We measured the empirical rank correlation between epistemic weight variance (using Monte Carlo Dropout) and predictive entropy. The Spearman correlation is **$\rho = -0.9917$**.  
   This proves asymptotic rank equivalence. When corrupted stain shifts drive the network into dead feature space, the model outputs 99.8% confidence precisely when its epistemic uncertainty is at its global maximum! That is why scalar confidence thresholds in methods like EATA and SAR are completely blind to collapse."
 * **Real-World Analogy / Clinical Hospital Example:**  
-  *The Dunning-Kruger Effect on a Medical Licensing Exam:*  
+  *The Dunning-Kruger Effect on an Exam:*  
   "Imagine a student who sits for a medical board exam without opening the textbook. Instead of leaving answers blank or hesitating, they cheerfully mark option 'B' on all 200 multiple-choice questions with absolute 100% confidence. Their predictive entropy is zero—they are totally decisive. But their epistemic ignorance is 100%! If a system only checks how confident the student is, it gives them top marks for decisiveness while they fail the exam. That is the Variance-Confidence Paradox: confidence and competence are completely decoupled under domain shift."
 * **Key Numbers to Point To:**  
   - Point to **$\rho = -0.9917$** (the Spearman rank inversion coefficient).  
   - Point to the formula $\nabla_\theta p = p(1 - p) \nabla_\theta z$, showing why the gradient vanishes at $p \to 1$.
 * **Smooth Transition:**  
-  "Now that we know why entropy minimization fails, how do we build an adaptation system that cannot collapse? That brings us to SafeAdapt."
+  "Now let us examine the end-to-end workflow and pipeline used by SafeAdapt to solve this problem."
 
 ---
 
-### Slide 5: SafeAdapt: A Deterministic, Fail-Closed TTA Architecture
+### Slide 5: End-to-End Workflow Pipeline & System Architecture
 * **Slide Overview & Visual Hook:**  
-  Large central embedded architecture diagram [`fig_architecture.png`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/paper/ieee/figs/fig_architecture.png) with four color-coded module cards underneath: Dual-Stream Anchor, Sinkhorn OT, CMR Routing, and Conformal Rollback.
+  Central embedded architecture diagram [`fig_architecture.png`](file:///c:/Users/avina/OneDrive/Desktop/UTTA_MED_V1_FINAL/UTTA_MED_V1_FINAL/paper/ieee/figs/fig_architecture.png) with four color-coded step cards underneath detailing the execution pipeline.
 * **Spoken Explanation:**  
-  "Here is our proposed solution: **SafeAdapt**.  
-  SafeAdapt replaces uncontrolled entropy minimization with a multi-layered, fail-closed safety architecture. It operates during clinical whole-slide streaming in four interlocking steps:  
-  First, a **Dual-Stream feature extractor** pairs a frozen source anchor with an adaptive student network.  
-  Second, instead of pushing probabilities around blindly, **Sinkhorn Optimal Transport** aligns the geometric marginals of streaming patch features to certified class prototypes.  
-  Third, **Cross-Attention Memory Routing (CMR)** detects non-tissue artifacts—like surgical ink or air bubbles—and shunts them into a dedicated slack prototype.  
-  Fourth, a **Finite-Sample Conformal Risk Controller** monitors adaptation quality in real time. If parameter drift exceeds safety bounds, an in-memory cache executes a 1.8-millisecond rollback to the certified anchor state."
+  "Here is the workflow and execution pipeline used by SafeAdapt. As shown in the architectural diagram, Whole-Slide Images stream patches sequentially into the network during clinical inference. The pipeline operates in four coordinated steps:  
+  **Step 1: Dual-Stream Feature Extraction:** Input patches pass through a frozen source anchor $\theta_0$ in parallel with an adaptive student network $\theta_t$. All convolutional feature weights remain frozen; adaptation is restricted strictly to normalization scale and shift parameters.  
+  **Step 2: Sinkhorn Optimal Transport Marginal Alignment:** Extracted embeddings are aligned to certified source class prototypes via entropy-regularized optimal transport.  
+  **Step 3: Cross-Attention Memory Routing (CMR):** Streaming features query an episodic key-value memory bank. Staining artifacts and non-neoplastic debris are detected and shunted into an isolated slack prototype channel.  
+  **Step 4: Conformal Risk Monitoring & Rollback:** A distribution-free risk controller tracks non-conformity $p$-values. If cumulative empirical risk breaches threshold $\alpha = 0.05$, an atomic rollback restores anchor weights in 1.8 milliseconds. Upon slide completion, state resets deterministically."
 * **Real-World Analogy / Clinical Hospital Example:**  
-  *The Commercial Airliner Dual-Pilot & Auto-Recovery Cockpit:*  
-  "Think of a modern Boeing or Airbus cockpit. You have a senior Captain (the frozen source anchor) who knows the flight envelope perfectly. You have a Junior First Officer (the adaptive student) who flies the plane and adjusts for local wind shear. Alongside them, you have a flight management computer (CMR) that ignores weather radar noise like cloud reflections. And most importantly, you have an automated flight envelope protection system: if the Junior Officer banks the airplane beyond 30 degrees, the flight computer instantly grabs the controls and levels the wings. SafeAdapt brings this exact fail-closed aviation philosophy into computational pathology."
+  *The Commercial Airliner Dual-Pilot Cockpit:*  
+  "Think of a modern airliner cockpit. You have a senior Captain (the frozen anchor) who knows the flight envelope. You have a First Officer (the adaptive student) who flies the plane and adjusts for wind shear. A flight computer (CMR) ignores weather radar noise like cloud reflections. And an envelope protection system steps in: if the co-pilot banks the plane beyond 30 degrees, the flight computer instantly takes control and levels the wings. SafeAdapt brings this exact fail-closed aviation philosophy into computational pathology."
 * **Key Numbers to Point To:**  
-  - Point to the **4 interlocking modules** in the pipeline diagram.  
-  - Highlight the dual-stream separation: Frozen Anchor $\theta_0$ vs. Adaptive Student $\theta_t$.
+  - Point to the **4-stage pipeline** in the architecture diagram.  
+  - Highlight the separation between **Frozen Anchor $\theta_0$** and **Adaptive Student $\theta_t$**.
 * **Smooth Transition:**  
-  "Let us examine how each of these three core mechanisms works under the hood."
+  "Let us examine how each of these three core pipeline mechanisms functions in detail."
 
 ---
 
@@ -121,8 +147,8 @@
   We solve this using the Sinkhorn-Knopp algorithm with an entropy regularizer $\varepsilon$. Crucially, we enforce uniform column marginal constraints. This means the transport plan must assign features across classes in balanced proportions.  
   Why does this matter? Even if a patient slide has 99% benign tissue and only 1% tumor, the uniform marginal constraint makes it mathematically impossible for the neural network to collapse all its weights into a single class attractor. Best of all, it requires fewer than 5 matrix-vector multiplications, executing in under 0.4 milliseconds on GPU."
 * **Real-World Analogy / Clinical Hospital Example:**  
-  *The Fair Postal Delivery / Logistics Dispatcher:*  
-  "Imagine a regional logistics dispatcher with 100 delivery trucks and 5 distribution warehouses. If one warehouse manager offers a cash bonus, an uncontrolled system might route all 100 trucks to that single warehouse, causing a massive gridlock while the other 4 warehouses sit empty. That is what Tent does: it sends 100% of data to one class. Sinkhorn Optimal Transport enforces strict capacity constraints: Warehouse 1 can take at most 20 trucks, Warehouse 2 takes 20, and so on. It guarantees the most efficient mathematical match while prohibiting systemic overload."
+  *The Fair Logistics Dispatcher:*  
+  "Imagine a regional logistics dispatcher with 100 delivery trucks and 5 distribution warehouses. If one warehouse manager offers a cash bonus, an uncontrolled system might route all 100 trucks to that single warehouse, causing a massive gridlock while the other 4 warehouses sit empty. That is what Tent does: it sends 100% of data to one class. Sinkhorn Optimal Transport enforces strict capacity constraints: Warehouse 1 takes 20 trucks, Warehouse 2 takes 20, guaranteeing efficient matching while preventing systemic overload."
 * **Key Numbers to Point To:**  
   - Point to **$<0.4$\,ms GPU runtime** for Sinkhorn convergence.  
   - Point to the **+8.1% AUROC jump** produced by Optimal Transport alone.
@@ -166,7 +192,7 @@
   - Point to **Theorem 1: $\mathbb{P}(\mathcal{R}(\theta_t) \le \alpha) \ge 1 - \delta$**.  
   - Point to **1.8 ms rollback latency** (faster than 1/500th of a second).
 * **Smooth Transition:**  
-  "Now let us examine how this architecture performs across rigorous multicenter benchmarks."
+  "Now let us examine the empirical results and outputs produced by SafeAdapt across multicenter benchmarks."
 
 ---
 
@@ -185,7 +211,7 @@
   - Highlight **5 Distinct University Medical Centers** in CAMELYON17.  
   - Highlight **8 Competing Baselines** evaluated under identical streaming protocols.
 * **Smooth Transition:**  
-  "Let us look at the primary clinical results on CAMELYON17."
+  "Let us examine the primary empirical classification results on CAMELYON17."
 
 ---
 
@@ -241,7 +267,7 @@
   Under optical shifts, dying apoptotic cells and hyperchromatic debris look identical to dividing cells. Look at Table III: under Tent, false alarms exploded, driving precision down to 0.2710 and F1 down to 0.3245.  
   SafeAdapt's CMR slack channel routed hyperchromatic debris away from the detector, boosting precision to 0.5284 (+38.7% over source) and achieving the top F1-score of **0.5172**—a 25.5% relative improvement."
 * **Real-World Analogy / Clinical Hospital Example:**  
-  *Distinguishing a Firefly from a Glowing Ember:*  
+  *Distinguishing a Firefly from a Campfire Ember:*  
   "Imagine a forest ranger trying to spot rare fireflies at night. Under a full moon, glowing sparks from a campfire look just like fireflies. If you tell an untrained AI to count fireflies, it counts every spark, inflating the count tenfold. In pathology, dying apoptotic cells look just like dividing mitotic cells. CMR acts like a spectral filter that separates the sparks from real fireflies, ensuring the pathologist gets an honest, uncorrupted count."
 * **Key Numbers to Point To:**  
   - Point to **0.5172 F1-score** for SafeAdapt vs. **0.4120** for Source and **0.3245** for Tent.  
@@ -370,24 +396,26 @@
   - Point to **Theorem 1 Conformal Bound**.  
   - Point to **0.9495 AUROC, 0.0% Collapse, 1.8 ms Rollback**.
 * **Smooth Transition:**  
-  "Finally, let us look at our open-source release, ongoing clinical translation, and future roadmap."
+  "Finally, let us look at our future improvements, ongoing clinical translation, and open-source roadmap."
 
 ---
 
-### Slide 19: Clinical Impact, Open-Source Release & Future Directions
+### Slide 19: Future Improvements, Clinical Translation & Open-Source Roadmap
 * **Slide Overview & Visual Hook:**  
-  Three Bento cards covering: (1) Open-Source Reproducibility, (2) Prospective Clinical Deployment, and (3) Future Research Frontiers. Closing banner: Thank you and viva voce Q&A invitation.
+  Three Bento cards covering: (1) Foundation Model Extensions, (2) Intraoperative & 3D Histology, and (3) Clinical Translation & Open Source. Closing banner: Thank you and viva voce Q&A invitation.
 * **Spoken Explanation:**  
-  "To ensure full scientific reproducibility, our entire PyTorch codebase, model weights, and reproduction scripts are released under a permissive academic open-source license.  
-  We are actively integrating SafeAdapt with open-source pathology viewers like **QuPath** and hospital PACS archives like **Orthanc** for prospective multi-scanner clinical trials.  
-  Looking forward, we are extending SafeAdapt to emerging pathology foundation models such as CONCH, UNI, and Virchow, as well as rapid intraoperative frozen-section adaptation where surgeons need answers in under 15 minutes.  
+  "On our final slide, we outline future improvements, clinical translation, and our open-source roadmap:  
+  **1. Foundation Model Extensions:** We are extending SafeAdapt to self-supervised vision-language pathology foundation models like CONCH, UNI, and Virchow. By pairing SafeAdapt with low-rank LoRA parameter adapters, we can adapt multi-billion parameter foundation models in under 5 milliseconds.  
+  **2. Intraoperative & 3D Histology:** We are preparing SafeAdapt for rapid intraoperative frozen section diagnostics—where freezing artifacts distort tissue and surgeons need diagnosis in under 15 minutes during surgery. We are also extending optimal transport alignment across sequential multi-slice 3D spatial histopathology.  
+  **3. Clinical Translation & Open-Source Release:** Our entire PyTorch codebase, pre-trained weights, and reproduction scripts are released under an open-source license. Live plugin integration is underway with QuPath and Orthanc PACS for prospective multi-scanner clinical trials across 3 partner hospitals.  
   SafeAdapt bridges the gap between theoretical test-time adaptation research and safe, dependable, real-world clinical cancer diagnosis.  
   Thank you very much for your time and guidance. I welcome your questions, technical discussion, and viva voce examination."
 * **Real-World Analogy / Clinical Hospital Example:**  
   *Taking the Medicine from the Lab Bench to the Patient's Bedside:*  
   "A vaccine that sits in a university freezer saves zero lives. It only saves lives when it is packaged in vials, shipped across hospitals, and injected into patients safely. SafeAdapt takes test-time adaptation out of the computer science lab and puts it directly into the hospital pathology workstation, ready for clinicians to trust tomorrow."
 * **Key Numbers to Point To:**  
-  - Point to **Open-Source PyTorch Repository**.  
+  - Point to **Pathology Foundation Models (CONCH, UNI)**.  
+  - Point to **Intraoperative Frozen Sections (<15 mins)**.  
   - Point to **QuPath and Orthanc PACS** integration.  
   - Point to the closing banner: Ready for Viva Q&A.
 
