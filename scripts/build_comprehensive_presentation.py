@@ -407,13 +407,13 @@ def build_presentation():
                "We prove that predictive entropy is asymptotic to epistemic uncertainty, blinding scalar confidence gating to catastrophic drift.")
 
     add_card(s4, Inches(0.8), Inches(1.8), Inches(3.75), Inches(5.1), "1. Taylor Expansion Proof", [
-        ("Weight Perturbation", "Consider parameter uncertainty delta_theta ~ N(0, Sigma_theta) around adapted weights."),
-        ("Prediction Variance", "Var[p(y|x)] = grad_theta p(y|x)^T Sigma_theta grad_theta p(y|x) + O(||Sigma||^2)."),
-        ("Vanishing Gradient", "As softmax probability p -> 1 or p -> 0, the derivative grad_theta p vanishes quadratically: grad p = p(1 - p) grad z."),
-        ("Fatal Consequence", "Predictive entropy approaches zero exactly when epistemic weight variance reaches its global peak!")
+        ("Weight Perturbation", "Consider parameter uncertainty Δθ ~ 𝒩(0, Σ_θ) around adapted normalization weights."),
+        ("Prediction Variance", "Var[p(y|x)] = ∇_θ p(y|x)ᵀ Σ_θ ∇_θ p(y|x) + 𝒪(‖Σ_θ‖²)."),
+        ("Vanishing Gradient", "As softmax probability p → 1 or p → 0, the derivative ∇_θ p vanishes quadratically: ∇_θ p = p(1 − p) ∇_θ z."),
+        ("Fatal Consequence", "Predictive entropy approaches zero (ℋ(p) → 0) exactly when epistemic weight variance reaches its global peak!")
     ], badge="Mathematical Proof", accent_color=NAVY)
 
-    add_card(s4, Inches(4.8), Inches(1.8), Inches(3.75), Inches(5.1), "2. Rank Inversion: rho = -0.9917", [
+    add_card(s4, Inches(4.8), Inches(1.8), Inches(3.75), Inches(5.1), "2. Rank Inversion: ρ = −0.9917", [
         ("Spearman Rank Test", "We measured the empirical rank correlation between epistemic variance (MC-Dropout) and Shannon entropy."),
         ("Inverse Equivalence", "Spearman rank coefficient rho = -0.9917 reveals asymptotic rank equivalence."),
         ("The Paradox", "When corrupted patches drive representations into collapsed feature space, the model outputs 99.8% confidence while being totally wrong."),
@@ -452,10 +452,10 @@ def build_presentation():
     box_w = Inches(2.78)
     box_h = Inches(1.85)
     modules = [
-        ("Step 1: Dual-Stream Anchor", "Streams patches through frozen anchor theta_0 in parallel with adaptive student theta_t to preserve diagnostic geometry.", TEAL),
+        ("Step 1: Dual-Stream Anchor", "Streams patches through frozen anchor θ_0 in parallel with adaptive student θ_t to preserve diagnostic geometry.", TEAL),
         ("Step 2: Sinkhorn Optimal Transport", "Aligns streaming patch feature marginals to class prototypes without label-dependent reinforcement.", TEAL),
         ("Step 3: Memory Routing (CMR)", "Cross-attention memory routes OOD tissue debris and non-neoplastic mimics to a dedicated slack prototype.", NAVY),
-        ("Step 4: Conformal Risk Rollback", "Finite-sample risk monitor halts adaptation and restores theta_0 in 1.8 ms if parameter drift exceeds alpha.", ACCENT_GREEN)
+        ("Step 4: Conformal Risk Rollback", "Finite-sample risk monitor halts adaptation and restores θ_0 in 1.8 ms if parameter drift exceeds α = 0.05.", ACCENT_GREEN)
     ]
     for idx, (m_title, m_desc, m_col) in enumerate(modules):
         bx = Inches(0.8) + idx * Inches(2.98)
@@ -495,13 +495,13 @@ def build_presentation():
                "Replaces unconstrained entropy minimization with exact marginal transport, mathematically preventing single-class collapse.")
 
     add_card(s6, Inches(0.8), Inches(1.8), Inches(3.75), Inches(5.1), "1. Optimal Transport Polytope", [
-        ("Wasserstein Discrepancy", "Measures the geometric distance between streaming batch features Z in R^(B x d) and anchor prototype dictionary C in R^(K x d)."),
-        ("Transport Optimization", "min_{P in U(B, K)} <P, M> - epsilon H(P), where cost matrix M_ik = ||z_i - c_k||_2^2."),
-        ("Marginal Constraints", "Row constraint P 1_K = (1/B) 1_B ensures every patch is mapped; column constraint P^T 1_B = (1/K) 1_K enforces balanced class capacity.")
+        ("Wasserstein Discrepancy", "Measures the geometric distance between streaming batch features Z ∈ ℝ^(B×d) and anchor prototype dictionary C ∈ ℝ^(K×d)."),
+        ("Transport Optimization", "min_{P ∈ 𝒰(B, K)} ⟨P, M⟩ − ε ℋ(P), where cost matrix M_ik = ‖z_i − c_k‖₂²."),
+        ("Marginal Constraints", "Row constraint P 1_K = (1/B) 1_B ensures every patch is mapped; column constraint Pᵀ 1_B = (1/K) 1_K enforces balanced class capacity.")
     ], badge="Formulation", accent_color=TEAL)
 
     add_card(s6, Inches(4.8), Inches(1.8), Inches(3.75), Inches(5.1), "2. Ultrafast Sinkhorn Scaling", [
-        ("Iterative Dual Scaling", "Solved via alternating matrix scaling: P* = diag(u) exp(-M / epsilon) diag(v)."),
+        ("Iterative Dual Scaling", "Solved via alternating matrix scaling: P* = diag(u) exp(−M / ε) diag(v)."),
         ("GPU Acceleration", "Converges in under 5 matrix-vector multiplications, taking less than 0.4 ms per batch on modern GPU hardware."),
         ("Exact Marginals", "Unlike heuristic pseudo-labeling, Sinkhorn transport guarantees smooth, entropy-regularized assignments without label reinforcement.")
     ], badge="<0.4 ms GPU", accent_color=NAVY)
@@ -533,8 +533,8 @@ def build_presentation():
                "Dynamic memory routing identifies non-neoplastic tissue artifacts and isolates them from diagnostic prototypes.")
 
     add_card(s7, Inches(0.8), Inches(1.8), Inches(3.75), Inches(5.1), "1. Cross-Attention Query-Key", [
-        ("Episodic Memory Bank", "Maintains high-confidence source representations in a compact key-value memory bank M_mem = (K_mem, V_mem)."),
-        ("Attention Alignment", "Attention weights A = Softmax(Q K_mem^T / sqrt(d)) compute contextual similarity between streaming patches and trusted source knowledge."),
+        ("Episodic Memory Bank", "Maintains high-confidence source representations in a compact key-value memory bank ℳ_mem = (K_mem, V_mem)."),
+        ("Attention Alignment", "Attention weights A = Softmax(Q K_memᵀ / √d) compute contextual similarity between streaming patches and trusted source knowledge."),
         ("Feature Augmentation", "Streaming features are enriched with clean source context before classification, filtering out scanner-specific high-frequency noise.")
     ], badge="Memory Bank", accent_color=TEAL)
 
@@ -570,21 +570,21 @@ def build_presentation():
                "A distribution-free fail-closed mechanism guarantees that clinical risk is strictly bounded at significance level alpha.")
 
     add_card(s8, Inches(0.8), Inches(1.8), Inches(3.75), Inches(5.1), "1. Theorem 1: Conformal Bound", [
-        ("Non-Conformity Scoring", "Evaluates non-conformity s_i = 1 - f_theta(x_i)_y on streaming calibration batches."),
-        ("Finite-Sample Risk Bound", "P( R(theta_t) <= alpha ) >= 1 - delta, where empirical risk R is bounded with high probability."),
+        ("Non-Conformity Scoring", "Evaluates non-conformity s_i = 1 − f_θ(x_i)_y on streaming calibration batches."),
+        ("Finite-Sample Risk Bound", "ℙ( ℛ(θ_t) ≤ α ) ≥ 1 − δ, where empirical risk ℛ is bounded with high probability."),
         ("Distribution-Free", "The guarantee holds strictly without making parametric assumptions on target scanner distributions."),
         ("Clinical Significance", "Provides a mathematical certificate that test-time adaptation cannot violate the hospital's safety envelope.")
     ], badge="Theorem 1", accent_color=NAVY)
 
     add_card(s8, Inches(4.8), Inches(1.8), Inches(3.75), Inches(5.1), "2. Dynamic Drift Monitoring", [
         ("Online Risk Tracking", "Monitors cumulative non-conformity p-values across sliding temporal window of patch batches."),
-        ("Interlock Trigger", "If empirical risk breaches threshold alpha = 0.05, the adaptation controller trips an emergency interlock."),
+        ("Interlock Trigger", "If empirical risk breaches threshold α = 0.05, the adaptation controller trips an emergency interlock."),
         ("Immediate Freeze", "Halts gradient backpropagation immediately, preventing corrupt batches from altering model normalization parameters.")
     ], badge="Safety Interlock", accent_color=ACCENT_RED)
 
     add_card(s8, Inches(8.8), Inches(1.8), Inches(3.75), Inches(5.1), "3. Sub-2ms Deterministic Rollback", [
-        ("In-Memory Parameter Cache", "Maintains an atomic FIFO cache of pristine anchor parameters theta_0 in GPU VRAM."),
-        ("1.8 ms State Restore", "Upon interlock trigger, restores theta_0 in exactly 1.8 ms—completely sub-frame and non-blocking."),
+        ("In-Memory Parameter Cache", "Maintains an atomic FIFO cache of pristine anchor parameters θ_0 in GPU VRAM."),
+        ("1.8 ms State Restore", "Upon interlock trigger, restores θ_0 in exactly 1.8 ms—completely sub-frame and non-blocking."),
         ("Zero Collapse Guarantee", "Eliminates 100% of catastrophic collapse modes, dropping collapse rate from 40% to exactly 0.0% across all seeds.")
     ], badge="1.8 ms Rollback", accent_color=ACCENT_GREEN)
 
@@ -1086,15 +1086,20 @@ def build_presentation():
         try:
             prs.save(path)
             print(f"[SUCCESS] Saved to {path}")
+            return True
         except PermissionError:
-            alt_path = path.replace(".pptx", "_Updated.pptx")
-            prs.save(alt_path)
-            print(f"[INFO] {path} is currently open in PowerPoint. Saved updated version to {alt_path}")
+            print(f"[LOCKED] {path} is currently locked by PowerPoint.")
+            return False
 
     out_path_1 = "SafeAdapt_Presentation.pptx"
     out_path_2 = "paper/SafeAdapt_Google_Slides.pptx"
+    out_path_master = "SafeAdapt_Presentation_Master_Clean.pptx"
+    out_path_updated = "SafeAdapt_Presentation_Updated.pptx"
+
     safe_save(prs, out_path_1)
     safe_save(prs, out_path_2)
+    safe_save(prs, out_path_master)
+    safe_save(prs, out_path_updated)
     print(f"Total slides generated: {len(prs.slides)}")
 
 if __name__ == "__main__":
